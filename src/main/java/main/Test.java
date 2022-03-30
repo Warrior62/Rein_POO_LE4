@@ -11,7 +11,7 @@ package main;
  */
 public class Test {
     public static void main(String[] args) {
-        System.out.println("test + new");
+        System.out.println("test + new + re test");
     }
     
 }
