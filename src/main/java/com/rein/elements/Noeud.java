@@ -6,7 +6,8 @@ public class Noeud {
     public Noeud(int id) {
         this.id = id;
     }
-    
-    
-    
+
+    public int getId() {
+        return id;
+    }
 }
