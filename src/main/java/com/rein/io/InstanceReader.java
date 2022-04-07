@@ -58,17 +58,15 @@ public class InstanceReader {
             String nom = this.instanceFile.getName();
             FileReader f = new FileReader(this.instanceFile.getAbsolutePath());
             BufferedReader br = new BufferedReader(f);
-            int paires = Integer.valueOf(lire(br));
-            int altruistes = Integer.valueOf(lire(br));
-            int cycles = Integer.valueOf(lire(br));
-            int chaines = Integer.valueOf(lire(br));
-            Instance instance = new Instance(nom, paires, altruistes, cycles, chaines);
-            instance.setTabNoeuds(new int[altruistes+paires][paires]);
-            
-            
-            int count=0;
+            int nbPaires = Integer.valueOf(lire(br));
+            int nbAltruistes = Integer.valueOf(lire(br));
+            int tailleMaxCycles = Integer.valueOf(lire(br));
+            int tailleMaxChaines = Integer.valueOf(lire(br));
+            Instance instance = new Instance(nom, nbPaires, nbAltruistes, tailleMaxCycles, tailleMaxChaines);
+            instance.setTabNoeuds(new int[nbAltruistes+nbPaires][nbPaires]);
 
-            while(count < (paires+altruistes)){
+            int count=0;
+            while(count < (nbPaires+nbAltruistes)){
                 String Noeud = lireNoeud(br, instance, count);
                 if(!"".equals(Noeud))
                     count++;
@@ -112,14 +110,15 @@ public class InstanceReader {
     private String lireNoeud(BufferedReader br, Instance instance, int count) throws IOException {
         String ligne = br.readLine();
         
-        while(!ligne.matches("^(-?\\d+\\t)*-?\\d+$")) {
+        while(!ligne.matches("^(-?\\d+\\t)+(-?\\d+)?$")) {
             ligne = br.readLine();
         }
+
         if(ligne!="")
         {
             //On ajoute les echanges
             String[] ligneNoeud = ligne.split("\t");
-            int i = instance.getAltruistes();
+            int i = 0;
             for(String Noeud : ligneNoeud)
             {
                 int benefMedical = Integer.valueOf(Noeud);

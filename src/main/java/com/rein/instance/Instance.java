@@ -20,14 +20,12 @@ public class Instance {
     
     private final int nbPaires;
     private final int nbAltruistes;
-    private final int nbCycles;
-    private final int nbChaines;
-
-    private int tailleMaxCycle, tailleMaxChaine;
+    private final int tailleMaxCycles;
+    private final int tailleMaxChaines;
     
     private int[][] TabNoeuds;
 
-    /**
+        /**
      * Constructeur d'Instances.
      * @param nom nom du fichier d'instance
      * @param paires nombre de paires patient-donneur P
@@ -39,8 +37,8 @@ public class Instance {
         this.nom = nom;
         this.nbPaires = paires;
         this.nbAltruistes = altruistes;
-        this.nbCycles = cycles;
-        this.nbChaines = chaines;
+        this.tailleMaxCycles = cycles;
+        this.tailleMaxChaines = chaines;
     }
     
     
@@ -70,19 +68,19 @@ public class Instance {
         return nom;
     }
 
-    public int getPaires() {
+    public int getNbPaires() {
         return nbPaires;
     }
 
-    public int getAltruistes() {
+    public int getNbAltruistes() {
         return nbAltruistes;
     }
 
-    public int getCycles() {
-        return nbCycles;
+    public int getTailleMaxCycles() {
+        return tailleMaxCycles;
     }
 
-    public int getChaines() {
-        return nbChaines;
+    public int getTailleMaxChaines() {
+        return tailleMaxChaines;
     }
 }
