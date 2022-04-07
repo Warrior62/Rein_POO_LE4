@@ -14,6 +14,7 @@ import java.util.ArrayList;
 
 public abstract class Sequence {
 
+    private int id;
     private int benefMedicalTotal = 0;
     private ArrayList<Noeud> listeNoeuds;
 
@@ -23,6 +24,10 @@ public abstract class Sequence {
 
     public void decreaseBenefMedicalTotal(int nb){
         this.benefMedicalTotal -= nb;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public int getBenefMedicalTotal() {

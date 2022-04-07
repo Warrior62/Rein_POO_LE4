@@ -54,12 +54,7 @@ public class Instance {
 
     @Override
     public String toString() {
-        String s = "Instance{" + "nom=" + nom + ", paires=" + nbPaires + ", altruistes=" + nbAltruistes + ", cycles=" + nbCycles + ", chaines=" + nbChaines + ",\ntabNoeuds= {";
-        for(int[] l : this.TabNoeuds)
-        {
-            s += Arrays.toString(l) + "\n";
-        }
-        s += "}}";
+        String s = "Instance{" + "nom=" + nom + ", paires=" + nbPaires + ", altruistes=" + nbAltruistes + ", cycles=" + nbCycles + ", chaines=" + nbChaines + "}";
         return s;
     }
 

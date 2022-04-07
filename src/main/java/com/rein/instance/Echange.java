@@ -8,6 +8,7 @@ public class Echange {
     private Sequence sequence;
     private Noeud donneur;
     private Paire receveur;
+    private boolean isRealise;
 
     public int getBenefMedical() {
         return benefMedical;
