@@ -62,15 +62,15 @@ public class InstanceReader {
             String nom = this.instanceFile.getName();
             FileReader f = new FileReader(this.instanceFile.getAbsolutePath());
             BufferedReader br = new BufferedReader(f);
-            int paires = Integer.valueOf(lire(br));
-            int altruistes = Integer.valueOf(lire(br));
-            int cycles = Integer.valueOf(lire(br));
-            int chaines = Integer.valueOf(lire(br));
-            Instance instance = new Instance(nom, paires, altruistes, cycles, chaines);
-            instance.setTabNoeuds(new int[altruistes+paires][paires]);
+            int nbPaires = Integer.valueOf(lire(br));
+            int nbAltruistes = Integer.valueOf(lire(br));
+            int tailleMaxCycles = Integer.valueOf(lire(br));
+            int tailleMaxChaines = Integer.valueOf(lire(br));
+            Instance instance = new Instance(nom, nbPaires, nbAltruistes, tailleMaxCycles, tailleMaxChaines);
+            instance.setTabNoeuds(new int[nbAltruistes+nbPaires][nbPaires]);
 
             int count=0;
-            while(count < (paires+altruistes)){
+            while(count < (nbPaires+nbAltruistes)){
                 String Noeud = lireNoeud(br, instance, count);
                 if(!"".equals(Noeud))
                     count++;

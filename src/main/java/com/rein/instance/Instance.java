@@ -18,10 +18,10 @@ public class Instance {
     // le nom doit être unique
     private final String nom;
     
-    private final int paires;
-    private final int altruistes;
-    private final int cycles;
-    private final int chaines;
+    private final int nbPaires;
+    private final int nbAltruistes;
+    private final int tailleMaxCycles;
+    private final int tailleMaxChaines;
     
     private int[][] TabNoeuds;
 
@@ -35,10 +35,10 @@ public class Instance {
      */
     public Instance(String nom, int paires, int altruistes, int cycles, int chaines) {
         this.nom = nom;
-        this.paires = paires;
-        this.altruistes = altruistes;
-        this.cycles = cycles;
-        this.chaines = chaines;
+        this.nbPaires = paires;
+        this.nbAltruistes = altruistes;
+        this.tailleMaxCycles = cycles;
+        this.tailleMaxChaines = chaines;
     }
     
     
@@ -52,7 +52,7 @@ public class Instance {
 
     @Override
     public String toString() {
-        String s = "Instance{" + "nom=" + nom + ", paires=" + paires + ", altruistes=" + altruistes + ", cycles=" + cycles + ", chaines=" + chaines + ",\ntabNoeuds= {";
+        String s = "Instance{" + "nom=" + nom + ", nbPaires=" + nbPaires + ", nbAltruistes=" + nbAltruistes + ", tailleMaxCycles=" + tailleMaxCycles + ", tailleMaxChaines=" + tailleMaxChaines + ",\ntabNoeuds= {";
         for(int[] l : this.TabNoeuds)
         {
             s += Arrays.toString(l) + "\n";
@@ -73,19 +73,19 @@ public class Instance {
         return nom;
     }
 
-    public int getPaires() {
-        return paires;
+    public int getNbPaires() {
+        return nbPaires;
     }
 
-    public int getAltruistes() {
-        return altruistes;
+    public int getNbAltruistes() {
+        return nbAltruistes;
     }
 
-    public int getCycles() {
-        return cycles;
+    public int getTailleMaxCycles() {
+        return tailleMaxCycles;
     }
 
-    public int getChaines() {
-        return chaines;
+    public int getTailleMaxChaines() {
+        return tailleMaxChaines;
     }
 }
