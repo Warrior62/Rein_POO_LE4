@@ -52,7 +52,7 @@ public class Instance {
 
     @Override
     public String toString() {
-        String s = "Instance{" + "nom=" + nom + ", paires=" + nbPaires + ", altruistes=" + nbAltruistes + ", cycles=" + nbCycles + ", chaines=" + nbChaines + "}";
+        String s = "Instance{" + "nom=" + nom + ", paires=" + nbPaires + ", altruistes=" + nbAltruistes + ", cycles=" + tailleMaxCycles + ", chaines=" + tailleMaxChaines + "}";
         return s;
     }
 
