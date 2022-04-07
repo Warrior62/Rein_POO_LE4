@@ -15,11 +15,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  *
@@ -73,10 +68,8 @@ public class InstanceReader {
             int chaines = Integer.valueOf(lire(br));
             Instance instance = new Instance(nom, paires, altruistes, cycles, chaines);
             instance.setTabNoeuds(new int[altruistes+paires][paires]);
-            
-            
-            int count=0;
 
+            int count=0;
             while(count < (paires+altruistes)){
                 String Noeud = lireNoeud(br, instance, count);
                 if(!"".equals(Noeud))
@@ -121,14 +114,15 @@ public class InstanceReader {
     private String lireNoeud(BufferedReader br, Instance instance, int count) throws IOException {
         String ligne = br.readLine();
         
-        while(!ligne.matches("^(-?\\d+\\t)*-?\\d+$")) {
+        while(!ligne.matches("^(-?\\d+\\t)+(-?\\d+)?$")) {
             ligne = br.readLine();
         }
+
         if(ligne!="")
         {
             //On ajoute les echanges
             String[] ligneNoeud = ligne.split("\t");
-            int i = instance.getAltruistes();
+            int i = 0;
             for(String Noeud : ligneNoeud)
             {
                 int benefMedical = Integer.valueOf(Noeud);
