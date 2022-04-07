@@ -3,16 +3,16 @@
  * @author Mathis
  * Project : rein-poo-le4
  * Situation in transplantation
- * Description : Situation class
+ * Description : Séquence class
  */
 
 package com.rein.transplantation;
 
-import com.rein.elements.Noeud;
+import com.rein.instance.Noeud;
 
 import java.util.ArrayList;
 
-public abstract class Situation {
+public abstract class Sequence {
 
     private int benefMedicalTotal = 0;
     private ArrayList<Noeud> listeNoeuds;

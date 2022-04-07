@@ -8,7 +8,7 @@
 
 package com.rein.transplantation;
 
-public class Cycle extends Situation{
+public class Cycle extends Sequence {
 
     private int id;
     private int tailleMax;

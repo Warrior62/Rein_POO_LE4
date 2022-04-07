@@ -18,14 +18,16 @@ public class Instance {
     // le nom doit être unique
     private final String nom;
     
-    private final int paires;
-    private final int altruistes;
-    private final int cycles;
-    private final int chaines;
+    private final int nbPaires;
+    private final int nbAltruistes;
+    private final int nbCycles;
+    private final int nbChaines;
+
+    private int tailleMaxCycle, tailleMaxChaine;
     
     private int[][] TabNoeuds;
 
-        /**
+    /**
      * Constructeur d'Instances.
      * @param nom nom du fichier d'instance
      * @param paires nombre de paires patient-donneur P
@@ -35,10 +37,10 @@ public class Instance {
      */
     public Instance(String nom, int paires, int altruistes, int cycles, int chaines) {
         this.nom = nom;
-        this.paires = paires;
-        this.altruistes = altruistes;
-        this.cycles = cycles;
-        this.chaines = chaines;
+        this.nbPaires = paires;
+        this.nbAltruistes = altruistes;
+        this.nbCycles = cycles;
+        this.nbChaines = chaines;
     }
     
     
@@ -52,7 +54,7 @@ public class Instance {
 
     @Override
     public String toString() {
-        String s = "Instance{" + "nom=" + nom + ", paires=" + paires + ", altruistes=" + altruistes + ", cycles=" + cycles + ", chaines=" + chaines + ",\ntabNoeuds= {";
+        String s = "Instance{" + "nom=" + nom + ", paires=" + nbPaires + ", altruistes=" + nbAltruistes + ", cycles=" + nbCycles + ", chaines=" + nbChaines + ",\ntabNoeuds= {";
         for(int[] l : this.TabNoeuds)
         {
             s += Arrays.toString(l) + "\n";
@@ -74,18 +76,18 @@ public class Instance {
     }
 
     public int getPaires() {
-        return paires;
+        return nbPaires;
     }
 
     public int getAltruistes() {
-        return altruistes;
+        return nbAltruistes;
     }
 
     public int getCycles() {
-        return cycles;
+        return nbCycles;
     }
 
     public int getChaines() {
-        return chaines;
+        return nbChaines;
     }
 }

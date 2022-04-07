@@ -6,11 +6,12 @@
  * Description : Chaine class
  */
 
-package com.rein.transplantation;
+package com.rein.solution;
 
-import com.rein.elements.Altruiste;
+import com.rein.instance.Altruiste;
+import com.rein.transplantation.Sequence;
 
-public class Chaine extends Situation{
+public class Chaine extends Sequence {
 
     private int id;
     private int tailleMax;

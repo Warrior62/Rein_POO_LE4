@@ -1,10 +1,6 @@
 package com.rein.io;
 
 
-import com.rein.elements.Altruiste;
-import com.rein.elements.Echange;
-import com.rein.elements.Paire;
-import com.rein.elements.Noeud;
 import com.rein.instance.Instance;
 import com.rein.io.exception.FileExistException;
 import com.rein.io.exception.FormatFileException;
@@ -15,11 +11,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  *
