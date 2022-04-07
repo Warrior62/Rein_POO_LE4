@@ -22,8 +22,6 @@ public class Instance {
     private final int nbAltruistes;
     private final int tailleMaxCycles;
     private final int tailleMaxChaines;
-    
-    private int[][] TabNoeuds;
 
         /**
      * Constructeur d'Instances.
@@ -54,14 +52,6 @@ public class Instance {
     public String toString() {
         String s = "Instance{" + "nom=" + nom + ", paires=" + nbPaires + ", altruistes=" + nbAltruistes + ", cycles=" + tailleMaxCycles + ", chaines=" + tailleMaxChaines + "}";
         return s;
-    }
-
-    public int[][] getTabNoeuds() {
-        return TabNoeuds;
-    }
-
-    public void setTabNoeuds(int[][] TabNoeuds) {
-        this.TabNoeuds = TabNoeuds;
     }
 
     public String getNom() {
