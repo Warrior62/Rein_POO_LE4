@@ -1,7 +1,9 @@
 package com.rein.instance;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  *
@@ -23,7 +25,7 @@ public class Instance {
     private final int tailleMaxCycles;
     private final int tailleMaxChaines;
     
-    private int[][] TabNoeuds;
+    private ArrayList<Echange> echanges;
 
         /**
      * Constructeur d'Instances.
@@ -39,6 +41,7 @@ public class Instance {
         this.nbAltruistes = altruistes;
         this.tailleMaxCycles = cycles;
         this.tailleMaxChaines = chaines;
+        this.echanges = new ArrayList<Echange>();
     }
     
     
@@ -52,16 +55,14 @@ public class Instance {
 
     @Override
     public String toString() {
-        String s = "Instance{" + "nom=" + nom + ", paires=" + nbPaires + ", altruistes=" + nbAltruistes + ", cycles=" + tailleMaxCycles + ", chaines=" + tailleMaxChaines + "}";
-        return s;
-    }
-
-    public int[][] getTabNoeuds() {
-        return TabNoeuds;
-    }
-
-    public void setTabNoeuds(int[][] TabNoeuds) {
-        this.TabNoeuds = TabNoeuds;
+        return "Instance{" +
+                "nom='" + nom + '\'' +
+                ", nbPaires=" + nbPaires +
+                ", nbAltruistes=" + nbAltruistes +
+                ", tailleMaxCycles=" + tailleMaxCycles +
+                ", tailleMaxChaines=" + tailleMaxChaines +
+                ", echanges=" + echanges +
+                '}';
     }
 
     public String getNom() {
@@ -82,5 +83,13 @@ public class Instance {
 
     public int getTailleMaxChaines() {
         return tailleMaxChaines;
+    }
+
+    public ArrayList<Echange> getEchanges() {
+        return echanges;
+    }
+
+    public void setEchanges(ArrayList<Echange> echanges) {
+        this.echanges = echanges;
     }
 }

@@ -1,7 +1,7 @@
 package com.rein.io;
 
 
-import com.rein.instance.Instance;
+import com.rein.instance.*;
 import com.rein.io.exception.FileExistException;
 import com.rein.io.exception.FormatFileException;
 import com.rein.io.exception.OpenFileException;
@@ -26,7 +26,8 @@ public class InstanceReader {
      * Le fichier contenant l'instance.
      */
     private File instanceFile;
-    
+    private Noeud  tabNoeud[];
+
     /**
      * Constructeur par donnee du chemin du fichier d'instance.
      * @param inputPath le chemin du fichier d'instance, qui doit se terminer 
@@ -54,7 +55,7 @@ public class InstanceReader {
      * sont manquantes ou au mauvais format.
      */
     public Instance readInstance() throws ReaderException {
-        try{
+        try {
             String nom = this.instanceFile.getName();
             FileReader f = new FileReader(this.instanceFile.getAbsolutePath());
             BufferedReader br = new BufferedReader(f);
@@ -62,10 +63,20 @@ public class InstanceReader {
             int nbAltruistes = Integer.valueOf(lire(br));
             int tailleMaxCycles = Integer.valueOf(lire(br));
             int tailleMaxChaines = Integer.valueOf(lire(br));
+            tabNoeud = new Noeud[nbPaires+nbAltruistes];
             Instance instance = new Instance(nom, nbPaires, nbAltruistes, tailleMaxCycles, tailleMaxChaines);
-            instance.setTabNoeuds(new int[nbAltruistes+nbPaires][nbPaires]);
 
-            int count=0;
+            int count = 0;
+            while(count < (nbPaires+nbAltruistes)){
+                if (count < instance.getNbAltruistes()) {
+                    tabNoeud[count] = new Altruiste(count+1);
+                    System.out.println(tabNoeud[count]);
+                } else {
+                    tabNoeud[count] = new Paire(count+1);
+                }
+                count++;
+            }
+            count=0;
             while(count < (nbPaires+nbAltruistes)){
                 String Noeud = lireNoeud(br, instance, count);
                 if(!"".equals(Noeud))
@@ -117,14 +128,14 @@ public class InstanceReader {
         if(ligne!="")
         {
             //On ajoute les echanges
-            String[] ligneNoeud = ligne.split("\t");
             int i = 0;
+            String[] ligneNoeud = ligne.split("\t");
             for(String Noeud : ligneNoeud)
             {
                 int benefMedical = Integer.valueOf(Noeud);
                 if(benefMedical != -1)
                 {
-                    instance.getTabNoeuds()[count][i] = benefMedical;
+                    instance.getEchanges().add(new Echange(benefMedical,tabNoeud[count], (Paire) tabNoeud[i+instance.getNbAltruistes()]));
                 }
                 i++;
             }
@@ -140,7 +151,7 @@ public class InstanceReader {
      */
     public static void main(String[] args) {
         try {
-            InstanceReader reader = new InstanceReader("instancesInitiales/KEP_p9_n0_k3_l0.txt");
+            InstanceReader reader = new InstanceReader("instancesInitiales/KEP_p50_n3_k3_l4.txt");
             reader.readInstance();
             System.out.print(reader.readInstance().toString());
         } catch (ReaderException ex) {

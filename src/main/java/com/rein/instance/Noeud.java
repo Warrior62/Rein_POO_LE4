@@ -7,9 +7,9 @@ public class Noeud {
     private int id = -1;
     private Map<Noeud, Echange> listeEchanges;
 
-    public Noeud() {
-        this.id++;
-        this.listeEchanges = new HashMap<>();
+    public Noeud(int id) {
+        this.id = id;
+        this.listeEchanges = null;
     }
 
     public int getId() {
@@ -22,16 +22,17 @@ public class Noeud {
 
     @Override
     public String toString() {
-        String res = "";
-        for(Echange e : listeEchanges.values())
-            res += e + " ";
-        return "Noeud{" +
-                "id=" + id +
-                ", listeEchanges=[" + listeEchanges + "]}";
+        String s = "Noeud{" +
+                "id=" + id;
+        if (listeEchanges!=null) {
+            s += ", listeEchanges=[" + listeEchanges + "]";
+        }
+            s += "}";
+        return s;
     }
 
     public static void main(String[] args) {
-        Noeud n = new Noeud();
+        Noeud n = new Noeud(1);
 
     }
 }
