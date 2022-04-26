@@ -6,11 +6,11 @@ import com.rein.io.exception.FileExistException;
 import com.rein.io.exception.FormatFileException;
 import com.rein.io.exception.OpenFileException;
 import com.rein.io.exception.ReaderException;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+
+import java.io.*;
+import java.util.Arrays;
+
+
 
 /**
  *
@@ -26,7 +26,7 @@ public class InstanceReader {
      * Le fichier contenant l'instance.
      */
     private File instanceFile;
-    private Noeud  tabNoeud[];
+
 
     /**
      * Constructeur par donnee du chemin du fichier d'instance.
@@ -63,16 +63,14 @@ public class InstanceReader {
             int nbAltruistes = Integer.parseInt(lire(br));
             int tailleMaxCycles = Integer.parseInt(lire(br));
             int tailleMaxChaines = Integer.parseInt(lire(br));
-            tabNoeud = new Noeud[nbPaires+nbAltruistes];
-            Instance instance = new Instance(nom, nbPaires, nbAltruistes, tailleMaxCycles, tailleMaxChaines);
+            Instance instance = new Instance(nom, nbPaires, nbAltruistes, tailleMaxCycles, tailleMaxChaines, new Noeud[nbPaires+nbAltruistes]);
 
             int count = 0;
             while(count < (nbPaires+nbAltruistes)){
                 if (count < instance.getNbAltruistes()) {
-                    tabNoeud[count] = new Altruiste(count+1);
-                    System.out.println(tabNoeud[count]);
+                    instance.addAltruiste(count);
                 } else {
-                    tabNoeud[count] = new Paire(count+1);
+                    instance.addPaire(count);
                 }
                 count++;
             }
@@ -128,7 +126,7 @@ public class InstanceReader {
             for(String noeud : ligneNoeud) {
                 int benefMedical = Integer.parseInt(noeud);
                 if(benefMedical != -1) {
-                    instance.getEchanges().add(new Echange(benefMedical,tabNoeud[count], (Paire) tabNoeud[i+instance.getNbAltruistes()]));
+                    instance.getEchanges().add(new Echange(benefMedical,instance.getTabNoeud()[count], (Paire) instance.getTabNoeud()[i+instance.getNbAltruistes()]));
                 }
                 i++;
             }
@@ -144,9 +142,10 @@ public class InstanceReader {
      */
     public static void main(String[] args) {
         try {
-            InstanceReader reader = new InstanceReader("instancesInitiales/KEP_p50_n3_k3_l4.txt");
-            reader.readInstance();
-            System.out.print(reader.readInstance().toString());
+            System.out.println(Arrays.toString(args));
+            InstanceReader reader = new InstanceReader("instancesInitiales/" + args[0]);
+            Instance r = reader.readInstance();
+            System.out.print(r.toString());
         } catch (ReaderException ex) {
             System.out.println(ex.getMessage());
         }

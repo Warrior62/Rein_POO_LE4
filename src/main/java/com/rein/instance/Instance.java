@@ -22,7 +22,8 @@ public class Instance {
     private final int nbAltruistes;
     private final int tailleMaxCycles;
     private final int tailleMaxChaines;
-    
+
+    private Noeud  tabNoeud[];
     private ArrayList<Echange> echanges;
 
         /**
@@ -33,13 +34,14 @@ public class Instance {
      * @param cycles  taille maximale des cycles K
      * @param chaines  taille maximale des chaines L
      */
-    public Instance(String nom, int paires, int altruistes, int cycles, int chaines) {
+    public Instance(String nom, int paires, int altruistes, int cycles, int chaines, Noeud tabNoeud[]) {
         this.nom = nom;
         this.nbPaires = paires;
         this.nbAltruistes = altruistes;
         this.tailleMaxCycles = cycles;
         this.tailleMaxChaines = chaines;
         this.echanges = new ArrayList<>();
+        this.tabNoeud = tabNoeud;
     }
     
     
@@ -89,5 +91,23 @@ public class Instance {
 
     private void setEchanges(ArrayList<Echange> echanges) {
         this.echanges = echanges;
+    }
+
+    public Noeud[] getTabNoeud() {
+        return tabNoeud;
+    }
+
+    private void setTabNoeud(Noeud[] tabNoeud) {
+        this.tabNoeud = tabNoeud;
+    }
+
+    public Noeud[] addAltruiste(int indice) {
+        this.tabNoeud[indice] = new Altruiste(indice+1);
+        return this.tabNoeud.clone();
+    }
+
+    public Noeud[] addPaire(int indice) {
+        this.tabNoeud[indice] = new Paire(indice+1);
+        return this.tabNoeud.clone();
     }
 }
