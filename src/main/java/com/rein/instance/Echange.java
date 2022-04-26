@@ -13,7 +13,6 @@ public class Echange {
         this.benefMedical = benefMedical;
         this.donneur = donneur;
         this.receveur = receveur;
-        this.sequence = null;
         this.isRealise = false;
     }
 
@@ -21,7 +20,7 @@ public class Echange {
         return benefMedical;
     }
 
-    public void setBenefMedical(int benefMedical) {
+    private void setBenefMedical(int benefMedical) {
         this.benefMedical = benefMedical;
     }
 
@@ -29,7 +28,7 @@ public class Echange {
         return donneur;
     }
 
-    public void setDonneur(Noeud donneur) {
+    private void setDonneur(Noeud donneur) {
         this.donneur = donneur;
     }
 
@@ -37,7 +36,7 @@ public class Echange {
         return receveur;
     }
 
-    public void setReceveur(Paire receveur) {
+    private void setReceveur(Paire receveur) {
         this.receveur = receveur;
     }
 
@@ -45,7 +44,6 @@ public class Echange {
     public String toString() {
         return "Echange{" +
                 "benefMedical=" + benefMedical +
-                ", sequence=" + sequence +
                 ", donneur=" + donneur +
                 ", receveur=" + receveur +
                 ", isRealise=" + isRealise +

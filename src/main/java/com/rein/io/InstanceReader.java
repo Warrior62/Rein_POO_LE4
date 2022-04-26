@@ -59,10 +59,10 @@ public class InstanceReader {
             String nom = this.instanceFile.getName();
             FileReader f = new FileReader(this.instanceFile.getAbsolutePath());
             BufferedReader br = new BufferedReader(f);
-            int nbPaires = Integer.valueOf(lire(br));
-            int nbAltruistes = Integer.valueOf(lire(br));
-            int tailleMaxCycles = Integer.valueOf(lire(br));
-            int tailleMaxChaines = Integer.valueOf(lire(br));
+            int nbPaires = Integer.parseInt(lire(br));
+            int nbAltruistes = Integer.parseInt(lire(br));
+            int tailleMaxCycles = Integer.parseInt(lire(br));
+            int tailleMaxChaines = Integer.parseInt(lire(br));
             tabNoeud = new Noeud[nbPaires+nbAltruistes];
             Instance instance = new Instance(nom, nbPaires, nbAltruistes, tailleMaxCycles, tailleMaxChaines);
 
@@ -78,12 +78,10 @@ public class InstanceReader {
             }
             count=0;
             while(count < (nbPaires+nbAltruistes)){
-                String Noeud = lireNoeud(br, instance, count);
-                if(!"".equals(Noeud))
+                String noeud = lireNoeud(br, instance, count);
+                if(!"".equals(noeud))
                     count++;
             }
-
-            
             br.close();
             f.close();
             return instance;
@@ -120,21 +118,16 @@ public class InstanceReader {
      */
     private String lireNoeud(BufferedReader br, Instance instance, int count) throws IOException {
         String ligne = br.readLine();
-        
         while(!ligne.matches("^(-?\\d+\\t)+(-?\\d+)?$")) {
             ligne = br.readLine();
         }
-
-        if(ligne!="")
-        {
+        if(ligne!="") {
             //On ajoute les echanges
             int i = 0;
             String[] ligneNoeud = ligne.split("\t");
-            for(String Noeud : ligneNoeud)
-            {
-                int benefMedical = Integer.valueOf(Noeud);
-                if(benefMedical != -1)
-                {
+            for(String noeud : ligneNoeud) {
+                int benefMedical = Integer.parseInt(noeud);
+                if(benefMedical != -1) {
                     instance.getEchanges().add(new Echange(benefMedical,tabNoeud[count], (Paire) tabNoeud[i+instance.getNbAltruistes()]));
                 }
                 i++;

@@ -10,7 +10,7 @@ import com.rein.io.InstanceReader;
 import com.rein.transplantation.Sequence;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -21,7 +21,7 @@ import java.util.logging.Logger;
 public class Solution {
 
     private int benefMedicalTotal;
-    private ArrayList<Sequence> listeSequences;
+    private Collection<Sequence> listeSequences;
     private Instance instance;
 
     public Solution(Instance instance) {
@@ -30,19 +30,17 @@ public class Solution {
     }
 
     public Solution(Solution s) {
-        this.instance = s.instance;
+        this(s.instance);
         this.benefMedicalTotal = s.benefMedicalTotal;
-        ArrayList<Sequence> list = new ArrayList<>();
         for(int i=0; i<s.listeSequences.size(); i++)
-            list.add(i, s.listeSequences.get(i));
-        this.listeSequences = list;
+            this.listeSequences.add((Sequence) s.listeSequences.toArray()[i]);
     }
 
     public int getBenefMedicalTotal() {
         return benefMedicalTotal;
     }
 
-    public ArrayList<Sequence> getListeSequences() {
+    public Collection<Sequence> getListeSequences() {
         return listeSequences;
     }
 
@@ -63,7 +61,7 @@ public class Solution {
             reader = new InstanceReader("instancesInitiales/KEP_p9_n0_k3_l0.txt");
             Instance i = reader.readInstance();
             Solution sZeroEchange = new Solution(i);
-            System.out.println("Solution à 0 échange: \n\t" + sZeroEchange.toString());
+            System.out.println("Solution à 0 échange: \n\t" + sZeroEchange);
         } catch (Exception ex) {
             Logger.getLogger(Instance.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Noeud {
-    private int id = -1;
+    private final int id;
     private Map<Noeud, Echange> listeEchanges;
 
     public Noeud(int id) {
@@ -16,8 +16,10 @@ public class Noeud {
         return id;
     }
 
-    public Map<Noeud, Echange> getListeEchanges() {
-        return listeEchanges;
+    public Map<Noeud, Echange> getListeEchanges() { return new HashMap<>(listeEchanges); }
+
+    private void setListeEchanges(Map<Noeud, Echange> listeEchanges) {
+        this.listeEchanges = listeEchanges;
     }
 
     @Override
@@ -29,10 +31,5 @@ public class Noeud {
         }
             s += "}";
         return s;
-    }
-
-    public static void main(String[] args) {
-        Noeud n = new Noeud(1);
-
     }
 }

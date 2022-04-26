@@ -1,9 +1,7 @@
 package com.rein.instance;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Objects;
-import java.util.Set;
 
 /**
  *
@@ -41,7 +39,7 @@ public class Instance {
         this.nbAltruistes = altruistes;
         this.tailleMaxCycles = cycles;
         this.tailleMaxChaines = chaines;
-        this.echanges = new ArrayList<Echange>();
+        this.echanges = new ArrayList<>();
     }
     
     
@@ -89,7 +87,7 @@ public class Instance {
         return echanges;
     }
 
-    public void setEchanges(ArrayList<Echange> echanges) {
+    private void setEchanges(ArrayList<Echange> echanges) {
         this.echanges = echanges;
     }
 }
