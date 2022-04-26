@@ -15,15 +15,16 @@ import java.util.ArrayList;
 public abstract class Sequence {
 
     private int id;
-    private int benefMedicalTotal = 0;
+    private int benefMedicalSequence = 0;
     private ArrayList<Noeud> listeNoeuds;
+    private int tailleMaxSequence;
 
     public void increaseBenefMedicalTotal(int nb){
-        this.benefMedicalTotal += nb;
+        this.benefMedicalSequence += nb;
     }
 
     public void decreaseBenefMedicalTotal(int nb){
-        this.benefMedicalTotal -= nb;
+        this.benefMedicalSequence -= nb;
     }
 
     public int getId() {
@@ -31,11 +32,11 @@ public abstract class Sequence {
     }
 
     public int getBenefMedicalTotal() {
-        return benefMedicalTotal;
+        return benefMedicalSequence;
     }
 
     public void setBenefMedicalTotal(int benefMedicalTotal) {
-        this.benefMedicalTotal = benefMedicalTotal;
+        this.benefMedicalSequence = benefMedicalTotal;
     }
 
     public ArrayList<Noeud> getListeNoeuds() {
@@ -48,7 +49,7 @@ public abstract class Sequence {
         for(Noeud n : listeNoeuds)
             noeuds += n.getId() + " ";
         return "Situation {" +
-                "benefMedicalTotal=" + benefMedicalTotal +
+                "benefMedicalTotal=" + benefMedicalSequence +
                 ", listeIdNoeuds=[" + noeuds + "]}";
     }
 }
