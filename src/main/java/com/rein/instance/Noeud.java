@@ -24,12 +24,11 @@ public class Noeud {
 
     @Override
     public String toString() {
-        String s = "Noeud{" +
-                "id=" + id;
+        String s = "Noeud{" + "id=" + id;
         if (listeEchanges!=null) {
             s += ", listeEchanges=[" + listeEchanges + "]";
         }
-            s += "}";
+        s += "}";
         return s;
     }
 }
