@@ -1,5 +1,8 @@
 package com.rein.instance;
 
+import com.rein.io.InstanceReader;
+import com.rein.io.exception.ReaderException;
+
 import java.util.ArrayList;
 import java.util.Objects;
 
