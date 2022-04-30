@@ -6,14 +6,17 @@ public class Echange {
 
     private int benefMedical;
     private Noeud donneur;
-    private Paire receveur;
+    private Noeud receveur;
     private boolean isRealise;
 
-    public Echange(int benefMedical, Noeud donneur, Paire receveur) {
+    public Echange(int benefMedical, Noeud donneur, Noeud receveur) {
         this.benefMedical = benefMedical;
         this.donneur = donneur;
         this.receveur = receveur;
         this.isRealise = false;
+
+        this.donneur.getListeEchanges().put(this.receveur, this.benefMedical);
+        //System.out.println(this.donneur.getListeEchanges());
     }
 
     public int getBenefMedical() {
@@ -32,21 +35,23 @@ public class Echange {
         this.donneur = donneur;
     }
 
-    public Paire getReceveur() {
+    public Noeud getReceveur() {
         return receveur;
     }
 
-    private void setReceveur(Paire receveur) {
+    private void setReceveur(Noeud receveur) {
         this.receveur = receveur;
     }
 
     @Override
     public String toString() {
-        return "Echange{" +
+        return "\n Echange{" +
                 "benefMedical=" + benefMedical +
-                ", donneur=" + donneur +
-                ", receveur=" + receveur +
-                ", isRealise=" + isRealise +
+                ", \t donneur=" + donneur +
+                ", \t receveur=" + receveur +
+                ", \t isRealise=" + isRealise +
                 '}';
     }
+
+
 }

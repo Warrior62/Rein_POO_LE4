@@ -14,6 +14,12 @@ import com.rein.transplantation.Sequence;
 public class Chaine extends Sequence {
     private Altruiste altruiste;
 
+    public Chaine(int tailleMax,Altruiste a){
+        super();
+        this.setTailleMaxSequence(tailleMax);
+        this.altruiste = a;
+        super.getListeNoeuds().add(a);
+    }
     public Altruiste getAltruiste() {
         return altruiste;
     }
@@ -24,6 +30,7 @@ public class Chaine extends Sequence {
 
     @Override
     public String toString() {
-        return "Chaine { altruiste=" + altruiste.toString() + '}';
+        return "Chaine { altruiste=" + altruiste.toString() + " listeNoeuds = "+this.getListeNoeuds()+'}';
     }
+
 }

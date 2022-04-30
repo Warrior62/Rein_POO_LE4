@@ -10,4 +10,11 @@ package com.rein.transplantation;
 
 public class Cycle extends Sequence {
 
+    public Cycle(int tailleMax){
+
+        this.setTailleMaxSequence(tailleMax);
+
+    }
+
+
 }

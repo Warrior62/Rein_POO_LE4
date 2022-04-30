@@ -11,6 +11,8 @@ import com.rein.transplantation.Sequence;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -36,6 +38,25 @@ public class Solution {
             this.listeSequences.add((Sequence) s.listeSequences.toArray()[i]);
     }
 
+    public void calculBenefice(){
+        System.out.println("calcul de bénéfice total");
+        this.suppressionSequencesVides();
+        for (Sequence seq : listeSequences){
+            seq.calculBenefice(instance.getEchanges());
+                this.benefMedicalTotal += seq.getBenefMedicalSequence();
+        }
+    }
+
+    public void suppressionSequencesVides(){
+        Collection<Sequence> listeSequencesCopy = new ArrayList<>(listeSequences);
+        for (Sequence seq: listeSequencesCopy){
+            //si la séquence comporte 0 ou 1 noeud on la supprime de la solution finale
+            if (seq.getListeNoeuds().size()<=1) {
+                this.listeSequences.remove(seq);
+            }
+        }
+    }
+
     public int getBenefMedicalTotal() {
         return benefMedicalTotal;
     }
@@ -47,12 +68,11 @@ public class Solution {
     @Override
     public String toString() {
         String res = "";
-        for(Sequence s : listeSequences)
-            res += s.getId() + " ";
+
         return "Solution{" +
                 "benefMedicalTotal=" + benefMedicalTotal +
-                ", listeSequences=[" + res +
-                "], " + instance + '}';
+                ", \nlisteSequences=[" + listeSequences +
+                "] }";
     }
 
     public static void main(String[] args) {
