@@ -1,16 +1,18 @@
 package com.rein.io;
 
 
-import com.rein.instance.*;
+import com.rein.instance.Echange;
+import com.rein.instance.Instance;
+import com.rein.instance.Noeud;
+import com.rein.instance.Paire;
 import com.rein.io.exception.FileExistException;
 import com.rein.io.exception.FormatFileException;
 import com.rein.io.exception.OpenFileException;
 import com.rein.io.exception.ReaderException;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import org.apache.commons.cli.*;
+import java.io.*;
+
+
 
 /**
  *
@@ -26,7 +28,7 @@ public class InstanceReader {
      * Le fichier contenant l'instance.
      */
     private File instanceFile;
-    private Noeud  tabNoeud[];
+
 
     /**
      * Constructeur par donnee du chemin du fichier d'instance.
@@ -59,31 +61,27 @@ public class InstanceReader {
             String nom = this.instanceFile.getName();
             FileReader f = new FileReader(this.instanceFile.getAbsolutePath());
             BufferedReader br = new BufferedReader(f);
-            int nbPaires = Integer.valueOf(lire(br));
-            int nbAltruistes = Integer.valueOf(lire(br));
-            int tailleMaxCycles = Integer.valueOf(lire(br));
-            int tailleMaxChaines = Integer.valueOf(lire(br));
-            tabNoeud = new Noeud[nbPaires+nbAltruistes];
-            Instance instance = new Instance(nom, nbPaires, nbAltruistes, tailleMaxCycles, tailleMaxChaines);
+            int nbPaires = Integer.parseInt(lire(br));
+            int nbAltruistes = Integer.parseInt(lire(br));
+            int tailleMaxCycles = Integer.parseInt(lire(br));
+            int tailleMaxChaines = Integer.parseInt(lire(br));
+            Instance instance = new Instance(nom, nbPaires, nbAltruistes, tailleMaxCycles, tailleMaxChaines, new Noeud[nbPaires+nbAltruistes]);
 
             int count = 0;
             while(count < (nbPaires+nbAltruistes)){
                 if (count < instance.getNbAltruistes()) {
-                    tabNoeud[count] = new Altruiste(count+1);
-                    System.out.println(tabNoeud[count]);
+                    instance.addAltruiste(count);
                 } else {
-                    tabNoeud[count] = new Paire(count+1);
+                    instance.addPaire(count);
                 }
                 count++;
             }
             count=0;
             while(count < (nbPaires+nbAltruistes)){
-                String Noeud = lireNoeud(br, instance, count);
-                if(!"".equals(Noeud))
+                String noeud = lireNoeud(br, instance, count);
+                if(!"".equals(noeud))
                     count++;
             }
-
-            
             br.close();
             f.close();
             return instance;
@@ -120,22 +118,17 @@ public class InstanceReader {
      */
     private String lireNoeud(BufferedReader br, Instance instance, int count) throws IOException {
         String ligne = br.readLine();
-        
         while(!ligne.matches("^(-?\\d+\\t)+(-?\\d+)?$")) {
             ligne = br.readLine();
         }
-
-        if(ligne!="")
-        {
+        if(ligne!="") {
             //On ajoute les echanges
             int i = 0;
             String[] ligneNoeud = ligne.split("\t");
-            for(String Noeud : ligneNoeud)
-            {
-                int benefMedical = Integer.valueOf(Noeud);
-                if(benefMedical != -1)
-                {
-                    instance.getEchanges().add(new Echange(benefMedical,tabNoeud[count], (Paire) tabNoeud[i+instance.getNbAltruistes()]));
+            for(String noeud : ligneNoeud) {
+                int benefMedical = Integer.parseInt(noeud);
+                if(benefMedical != -1) {
+                    instance.getEchanges().add(new Echange(benefMedical,instance.getTabNoeud()[count], (Paire) instance.getTabNoeud()[i+instance.getNbAltruistes()]));
                 }
                 i++;
             }
@@ -151,9 +144,37 @@ public class InstanceReader {
      */
     public static void main(String[] args) {
         try {
-            InstanceReader reader = new InstanceReader("instancesInitiales/KEP_p50_n3_k3_l4.txt");
-            reader.readInstance();
-            System.out.print(reader.readInstance().toString());
+            CommandLineParser parser = new DefaultParser();
+            // create the Options
+            Options options = new Options();
+            options.addOption(Option.builder("inst")
+                    .hasArg(true)
+                    .valueSeparator(' ')
+                    .desc("Nom du fichier d'instance")
+                    .build());
+            options.addOption(Option.builder("dSol")
+                    .hasArg(true)
+                    .valueSeparator(' ')
+                    .desc("Répertoire des fichiers solutions")
+                    .build());
+
+            try {
+                // Lecture des arguments CLI
+                CommandLine line = parser.parse(options, args);
+
+                // Validation des argument
+                if (line.hasOption("inst")) {
+                    System.out.println(line.getOptionValue("inst"));
+                }
+                if (line.hasOption("dSol")) {
+                    System.out.println(line.getOptionValue("dSol"));
+                }
+                InstanceReader reader = new InstanceReader("instancesInitiales/" + line.getOptionValue("inst"));
+                Instance r = reader.readInstance();
+                System.out.print(r.toString());
+            } catch (ParseException exp) {
+                System.out.println("Unexpected exception:" + exp.getMessage());
+            }
         } catch (ReaderException ex) {
             System.out.println(ex.getMessage());
         }
