@@ -162,16 +162,13 @@ public class InstanceReader {
                 // Lecture des arguments CLI
                 CommandLine line = parser.parse(options, args);
 
-                // Validation des argument
-                if (line.hasOption("inst")) {
-                    System.out.println(line.getOptionValue("inst"));
-                }
-                if (line.hasOption("dSol")) {
-                    System.out.println(line.getOptionValue("dSol"));
-                }
+
+                System.out.println(line.getOptionValue("inst"));
+                System.out.println(line.getOptionValue("dSol"));
+
                 InstanceReader reader = new InstanceReader("instancesInitiales/" + line.getOptionValue("inst"));
-                Instance r = reader.readInstance();
-                System.out.print(r.toString());
+                Instance i = reader.readInstance();
+                System.out.print(i.toString());
             } catch (ParseException exp) {
                 System.out.println("Unexpected exception:" + exp.getMessage());
             }
