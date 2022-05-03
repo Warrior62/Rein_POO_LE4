@@ -6,9 +6,8 @@ import com.rein.io.exception.FileExistException;
 import com.rein.io.exception.FormatFileException;
 import com.rein.io.exception.OpenFileException;
 import com.rein.io.exception.ReaderException;
-
+import org.apache.commons.cli.*;
 import java.io.*;
-import java.util.Arrays;
 
 
 
@@ -142,10 +141,34 @@ public class InstanceReader {
      */
     public static void main(String[] args) {
         try {
-            System.out.println(Arrays.toString(args));
-            InstanceReader reader = new InstanceReader("instancesInitiales/" + args[0]);
-            Instance r = reader.readInstance();
-            System.out.print(r.toString());
+            CommandLineParser parser = new DefaultParser();
+            // create the Options
+            Options options = new Options();
+            options.addOption(Option.builder("inst")
+                    .hasArg(true)
+                    .valueSeparator(' ')
+                    .desc("Nom du fichier d'instance")
+                    .build());
+            options.addOption(Option.builder("dSol")
+                    .hasArg(true)
+                    .valueSeparator(' ')
+                    .desc("Répertoire des fichiers solutions")
+                    .build());
+
+            try {
+                // Lecture des arguments CLI
+                CommandLine line = parser.parse(options, args);
+
+
+                System.out.println(line.getOptionValue("inst"));
+                System.out.println(line.getOptionValue("dSol"));
+
+                InstanceReader reader = new InstanceReader("instancesInitiales/" + line.getOptionValue("inst"));
+                Instance i = reader.readInstance();
+                System.out.print(i.toString());
+            } catch (ParseException exp) {
+                System.out.println("Unexpected exception:" + exp.getMessage());
+            }
         } catch (ReaderException ex) {
             System.out.println(ex.getMessage());
         }
