@@ -86,4 +86,7 @@ public abstract class Sequence {
                 "benefMedicalTotal=" + benefMedicalSequence +
                 ", listeIdNoeuds=[" + noeuds + "]}";
     }
+
+    //--
+
 }

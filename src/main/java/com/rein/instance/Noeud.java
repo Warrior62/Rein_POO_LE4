@@ -62,6 +62,20 @@ public class Noeud {
         boolean possible = this.listeEchanges.containsKey(n);
         return possible;
     }
+
+    //-- Méthode renvoyant le bénéfice médical du Noeud courant vers le Noeud n
+    // Si le noeud est incompatible avec le noeud n, renvoie -1.
+    public int getBenefMedicalVers(Noeud n) {
+        if (this.listeEchanges.get(n) == null)
+            return -1;
+        else {
+            int benef = this.listeEchanges.get(n);
+            //System.out.println(benef);
+            return benef;
+        }
+    }
+
+
     @Override
     public String toString() {
         String s = "Noeud{" +

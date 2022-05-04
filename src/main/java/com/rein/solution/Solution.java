@@ -7,6 +7,7 @@ package com.rein.solution;
 
 import com.rein.instance.Instance;
 import com.rein.io.InstanceReader;
+import com.rein.transplantation.Cycle;
 import com.rein.transplantation.Sequence;
 
 import java.util.ArrayList;
@@ -86,33 +87,40 @@ public class Solution {
 
     public boolean check() {
 
-        return (isInstanceAssociee() && areSequencesValides() && isBenefMedicalCorrect());
+        return (verifInstanceAssociee() && verifSequencesValides() && verifBenefMedicalCorrect());
     }
 
     /**
      * Return true si la solution découle d'une instance existante, false sinon.
      * **/
-    private boolean isInstanceAssociee() {
+    private boolean verifInstanceAssociee() {
         return (this.instance.getNom() != "" && this.instance.getNom() != null);
     }
 
     /**
      * Return true si le benef medical total est bien la somme des benefs medicaux de toutes les séquences, false sinon.
      * **/
-    private boolean isBenefMedicalCorrect() {
+    private boolean verifBenefMedicalCorrect() {
         int somme = 0;
         for (Sequence s: this.listeSequences)
-            somme += s.getBenefMedicalTotal();
+            somme += s.getBenefMedicalSequence();
         return (somme == this.benefMedicalTotal);
     }
 
     /**
      * Return true si l'ENSEMBLE des séquences de la solution sont valides, false sinon.
      * **/
-    private boolean areSequencesValides() {
-        for (Sequence s: this.listeSequences)
-            if (!s.check())
+    private boolean verifSequencesValides() {
+        boolean ans = false;
+        for (Sequence s: this.listeSequences){
+            if (s instanceof Chaine)
+                ans = ((Chaine) s).check();
+            else
+                ans = ((Cycle) s).check();
+
+            if (!ans)
                 return false;
+        }
         return true;
     }
 
@@ -127,5 +135,7 @@ public class Solution {
             Logger.getLogger(Instance.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
+
+
 }

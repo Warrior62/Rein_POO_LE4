@@ -10,4 +10,10 @@ public class Paire extends Noeud {
     public Paire(int id) {
         super(id);
     }
+
+
+    @Override
+    public String toString() {
+        return "Paire{id=" + this.getId()+"}";
+    }
 }
