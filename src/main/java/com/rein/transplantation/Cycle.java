@@ -69,7 +69,6 @@ public class Cycle extends Sequence {
         noeudCourant = (Noeud) listeNoeuds.get(i);
         noeudSuivant = (Noeud) listeNoeuds.get(0);
         somme += noeudCourant.getBenefMedicalVers(noeudSuivant);
-        System.out.println("OUIIIIIIIIIIII");
 
         return (somme == this.getBenefMedicalSequence());
     }
