@@ -4,13 +4,11 @@
  * and open the template in the editor.
  */
 package com.rein.io.exception;
-
 /**
  *
  * @author mogier01
  */
 public class OpenFileException extends ReaderException {
-
     public OpenFileException() {
         super("Impossible d'ouvrir le fichier", 
                 "Assurez-vous que le nom du fichier est correctement rentré");

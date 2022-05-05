@@ -5,33 +5,28 @@
  * Chaine in transplantation
  * Description : Chaine class
  */
-
 package com.rein.solution;
 
-import com.rein.instance.*;
+import com.rein.instance.Altruiste;
+import com.rein.instance.Instance;
+import com.rein.instance.Noeud;
 import com.rein.io.InstanceReader;
-import com.rein.solveur.StrategieBasique;
 import com.rein.transplantation.Sequence;
 
 import java.util.List;
-
 public class Chaine extends Sequence {
-
     public Chaine(int tailleMax,Altruiste a){
         super();
         this.setTailleMaxSequence(tailleMax);
         super.getListeNoeuds().add(a);
     }
-
     public Altruiste getAltruiste() {
         return (Altruiste) this.getListeNoeuds().get(0);
     }
-
     //Peut être supprimée à priori
     public void setAltruiste(Altruiste altruiste) {
         this.getListeNoeuds().add(0, altruiste);
     }
-
     @Override
     public String toString() {
         return "Chaine : { \n"
@@ -41,9 +36,6 @@ public class Chaine extends Sequence {
                 +"\ttaille max : "+this.getTailleMaxSequence() + "\n"
                 +"}";
     }
-
-
-
     // Vérifie que le noeud est ajoutable (en terme de taille)
     // Attention
     private boolean isNoeudAjoutable(int position) {
@@ -58,7 +50,6 @@ public class Chaine extends Sequence {
             return false;
         }
     }
-
     // Vérifie si le noeud n à insérer est compatible avec les noeuds en position 'position-1' et 'posittion'
     // NB : Si le noeud est ajouté en bout de chaine, la compatibilité n'est pas testée avec le neoud suivant (puisqu'il n'y en a pas)
     private boolean isNoeudCompatible(Noeud n, int position) {
@@ -85,7 +76,6 @@ public class Chaine extends Sequence {
             }
         }
     }
-
     //Permet d'ajouter le noeud dans la chaine.
     //1) Vérifie si le noeud est ajoutable en position n
     //2) Insère le noeud en retranchant le benef médical précédent, et ajoutant les nouveaux benefs médicaux.
@@ -123,16 +113,12 @@ public class Chaine extends Sequence {
                 System.out.println(" ---- ^^ ---- Ajout ---- ^^ ----");
                 return true;
             }
-
         }else {
             System.out.println("Peut pas ajouter le noeud");
             System.out.println(" ---- ^^ ---- Ajout ---- ^^ ----");
             return false;
         }
-
     }
-
-
     //--------------- Checker de chaine ---------------
     /**
      * Une chaine est valide si :
@@ -167,7 +153,6 @@ public class Chaine extends Sequence {
                 noeudSuivant = (Noeud) listeNoeuds.get(i+1);
                 somme += noeudCourant.getBenefMedicalVers(noeudSuivant);
             }
-
             if (somme == this.getBenefMedicalSequence()) {
                 System.out.println("verifBenefMedical() : OK");
                 return true;
@@ -178,9 +163,7 @@ public class Chaine extends Sequence {
         }else {
             return (this.getBenefMedicalSequence() == 0);
         }
-
     }
-
     // Méthode métier du check vérifiant que l'altruiste du début de chaine est le seul Altruiste de la chaine
     private boolean verifAltruistes() {
         int nbAltruistes = 0;
@@ -197,17 +180,13 @@ public class Chaine extends Sequence {
         }
     }
     //-------------------------------------------------
-
-
     public static void main(String[] args) {
-
         InstanceReader reader;
         try {
             reader = new InstanceReader("instancesInitiales/KEP_p9_n1_k3_l3.txt");
             Instance i = reader.readInstance();
             //System.out.println(i);
             Noeud[] tab = i.getTabNoeud();
-
             Altruiste a1 = (Altruiste) tab[0]; //id=1 - compatibilités vers {Paire{id=9}=10, Paire{id=5}=5, Paire{id=2}=4}
             Noeud p2 = tab[1]; //id=2 - compatibilités vers {Paire{id=9}=4, Paire{id=3}=7, Paire{id=5}=10, Paire{id=8}=9, Paire{id=4}=4}
             Noeud p3 = tab[2]; //id=3 - compatibilités vers {Paire{id=9}=4, Paire{id=6}=1, Paire{id=8}=10, Paire{id=2}=2, Paire{id=4}=6, Paire{id=10}=2}
@@ -217,7 +196,6 @@ public class Chaine extends Sequence {
             Noeud p7 = tab[6]; //id=7 - compatibilités vers {Paire{id=3}=1, Paire{id=6}=8, Paire{id=8}=8, Paire{id=2}=10}
             Noeud p8 = tab[7]; //id=8 - compatibilités vers {Paire{id=9}=9, Paire{id=6}=6, Paire{id=5}=8, Paire{id=7}=7, Paire{id=10}=4}
             Noeud p9 = tab[8]; //id=9 - compatibilités vers {Paire{id=4}=8}
-
             // ### Test ajout (noeuds compatibles et incompatibles, ordres corrects et incorrects) ###
             Chaine c1 = new Chaine(5, a1); //chaine a1 [benef 0]
             c1.ajouterNoeud(p2, 1); //chaine a1-p2 [benef 4]
@@ -228,13 +206,10 @@ public class Chaine extends Sequence {
             c1.ajouterNoeud(p6, 3); //chaine a1-p2-p5-p6-p7 [benef 28]
             System.out.println(c1);
             // ===> TEST OK
-
             System.out.println("Checker : "+c1.check());
-
         } catch(Exception e){
             System.out.println("ERROR test ajout");
             System.out.println(e.toString());
         }
     }
-
 }

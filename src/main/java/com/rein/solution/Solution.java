@@ -4,39 +4,32 @@
  * and open the template in the editor.
  */
 package com.rein.solution;
-
 import com.rein.instance.Instance;
 import com.rein.io.InstanceReader;
 import com.rein.transplantation.Cycle;
 import com.rein.transplantation.Sequence;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 /**
  *
  * @author tryla
  */
 public class Solution {
-
     private int benefMedicalTotal;
     private Collection<Sequence> listeSequences;
     private Instance instance;
-
     public Solution(Instance instance) {
         this.instance = instance;
         this.listeSequences = new ArrayList<>();
     }
-
     public Solution(Solution s) {
         this(s.instance);
         this.benefMedicalTotal = s.benefMedicalTotal;
         for(int i=0; i<s.listeSequences.size(); i++)
             this.listeSequences.add((Sequence) s.listeSequences.toArray()[i]);
     }
-
     public void calculBenefice(){
         System.out.println("calcul de bénéfice total");
         this.suppressionSequencesVides();
@@ -45,7 +38,6 @@ public class Solution {
                 this.benefMedicalTotal += seq.getBenefMedicalSequence();
         }
     }
-
     public void suppressionSequencesVides(){
         Collection<Sequence> listeSequencesCopy = new ArrayList<>(listeSequences);
         for (Sequence seq: listeSequencesCopy){
@@ -55,26 +47,20 @@ public class Solution {
             }
         }
     }
-
     public int getBenefMedicalTotal() {
         return benefMedicalTotal;
     }
-
     public Collection<Sequence> getListeSequences() {
         return listeSequences;
     }
-
     @Override
     public String toString() {
         String res = "";
-
         return "Solution{" +
                 "benefMedicalTotal=" + benefMedicalTotal +
                 ", \nlisteSequences=[" + listeSequences +
                 "] }";
     }
-
-
     /**
      * Checker de Solution :
      * Condition de validité :
@@ -82,18 +68,15 @@ public class Solution {
      * - Le Bénéf médical est correctement calculé
      * - Chaque séquence est valide
      * **/
-
     public boolean check() {
         return (verifInstanceAssociee() && verifSequencesValides() && verifBenefMedicalCorrect());
     }
-
     /**
      * Return true si la solution découle d'une instance existante, false sinon.
      * **/
     private boolean verifInstanceAssociee() {
         return (this.instance.getNom() != "" && this.instance.getNom() != null);
     }
-
     /**
      * Return true si le benef medical total est bien la somme des benefs medicaux de toutes les séquences, false sinon.
      * **/
@@ -103,7 +86,6 @@ public class Solution {
             somme += s.getBenefMedicalSequence();
         return (somme == this.benefMedicalTotal);
     }
-
     /**
      * Return true si l'ENSEMBLE des séquences de la solution sont valides, false sinon.
      * **/
@@ -114,13 +96,11 @@ public class Solution {
                 ans = ((Chaine) s).check();
             else
                 ans = ((Cycle) s).check();
-
             if (!ans)
                 return false;
         }
         return true;
     }
-
     public String exportSol() {
         StringBuilder stringSol = new StringBuilder("// Cout total de la solution\n" +
             this.getBenefMedicalTotal() +
@@ -140,8 +120,6 @@ public class Solution {
             stringSol.append("\n");
         return stringSol.toString();
     }
-
-
     public static void main(String[] args) {
         InstanceReader reader;
         try {

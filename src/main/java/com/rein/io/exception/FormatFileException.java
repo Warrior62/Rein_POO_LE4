@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package com.rein.io.exception;
-
 /**
  *
  * @author mogier01

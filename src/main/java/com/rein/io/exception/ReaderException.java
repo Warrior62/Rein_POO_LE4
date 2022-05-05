@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package com.rein.io.exception;
-
 /**
  *
  * @author mogier01
@@ -12,12 +11,10 @@ package com.rein.io.exception;
 public class ReaderException extends Exception {
     private String infos;
     private String conseils;
-
     public ReaderException(String infos, String conseils) {
         this.infos = infos;
         this.conseils = conseils;
     }
-
     @Override
     public String getMessage() {
         return "ERREUR : "+infos+"\n\t--> "+conseils;

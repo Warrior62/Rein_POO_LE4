@@ -5,26 +5,16 @@
  * Cycle in transplantation
  * Description : Cycle class
  */
-
 package com.rein.transplantation;
-
 import com.rein.instance.Altruiste;
 import com.rein.instance.Instance;
 import com.rein.instance.Noeud;
 import com.rein.io.InstanceReader;
-import com.rein.solution.Chaine;
-
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-
 public class Cycle extends Sequence {
-
     public Cycle(int tailleMax){
         this.setTailleMaxSequence(tailleMax);
     }
-
-
     public String toString() {
         return "Cycle : { \n"
                 + "\tlisteNoeuds : "+this.getListeNoeuds() + "\n"
@@ -32,8 +22,6 @@ public class Cycle extends Sequence {
                 +"\ttaille max : "+this.getTailleMaxSequence() + "\n"
                 +"}";
     }
-
-
     //--------------- Checker de cycle ---------------
     /**
      * Un cycle est valide si :
@@ -46,15 +34,12 @@ public class Cycle extends Sequence {
     public boolean check() {
         return (verifTailleMax() && verifNoAltruiste() && verifBenefMedical());
     }
-
-
     private boolean verifTailleMax() {
         if (this.getListeNoeuds().size() <= this.getTailleMaxSequence())
             return true;
         else
             return false;
     }
-
     private boolean verifBenefMedical() {
         List listeNoeuds = this.getListeNoeuds();
         int somme = 0, i;
@@ -65,14 +50,11 @@ public class Cycle extends Sequence {
             noeudSuivant = (Noeud) listeNoeuds.get(i+1);
             somme += noeudCourant.getBenefMedicalVers(noeudSuivant);
         }
-
         noeudCourant = (Noeud) listeNoeuds.get(i);
         noeudSuivant = (Noeud) listeNoeuds.get(0);
         somme += noeudCourant.getBenefMedicalVers(noeudSuivant);
-
         return (somme == this.getBenefMedicalSequence());
     }
-
     private boolean verifNoAltruiste() {
         for (Noeud n: this.getListeNoeuds()) {
             if (n instanceof Altruiste)
@@ -81,8 +63,6 @@ public class Cycle extends Sequence {
         return true;
     }
     //-------------------------------------------------
-
-
     //Méthode chargée d'ajouter un noeud dans un cycle.
     //1) Vérifie si le noeud est ajoutable en position n
     //2) Insère le noeud en retranchant le benef médical précédent, et ajoutant les nouveaux benefs médicaux.
@@ -95,30 +75,24 @@ public class Cycle extends Sequence {
         Noeud noeudPrecedent;
         Noeud noeudSuivant;
         int benefMedical = this.getBenefMedicalSequence();
-
         if (this.getListeNoeuds().size() == 0) {
             this.getListeNoeuds().add(n);
             System.out.println("Methode rustine 1");
             return true;
         }
-
         if (this.getListeNoeuds().size() == 1 && (position == 0 || position == 1) ) {
             int benef1 = n.getBenefMedicalVers(this.getListeNoeuds().get(0));
             int benef2 = this.getListeNoeuds().get(0).getBenefMedicalVers(n);
-
             System.out.println(this.getBenefMedicalSequence());
             System.out.println(benef1);
             System.out.println(benef2);
             System.out.println(this.getListeNoeuds().get(0));
             System.out.println(n);
-
             this.getListeNoeuds().add(position, n);
             this.setBenefMedicalTotal(benef1 + benef2);
             System.out.println("Methode rustine 2");
-
             return true;
         }
-
         if (this.isNoeudAjoutable(position) && this.isNoeudCompatible(n, position)) {
             if (position == 0) { // Ajout en début de cycle
                 noeudPrecedent = this.getListeNoeuds().get(this.getListeNoeuds().size()-1);
@@ -144,7 +118,6 @@ public class Cycle extends Sequence {
             return false;
         }
     }
-
     // Vérifie si le noeud n à insérer est compatible avec les noeuds en position 'position-1' et 'posittion'
     // NB : 3 cas principaux :
     //      - Ajout en 'début' de cycle (au début de la liste)
@@ -154,7 +127,6 @@ public class Cycle extends Sequence {
     private boolean isNoeudCompatible(Noeud n, int position) {
         Noeud noeudPrecedent;
         Noeud noeudSuivant;
-
         if (position == 0) { // Ajout en début de cycle
             noeudPrecedent = this.getListeNoeuds().get(this.getListeNoeuds().size()-1);
             noeudSuivant = this.getListeNoeuds().get(0);
@@ -168,7 +140,6 @@ public class Cycle extends Sequence {
             noeudSuivant = this.getListeNoeuds().get(position);
             System.out.println("Ajout en milieu de cycle");
         }
-
         if (noeudPrecedent.getBenefMedicalVers(n) != -1 && n.getBenefMedicalVers(noeudSuivant) != 1) { //Compatibilité OK
             System.out.println("Noeud compatible");
             return true;
@@ -177,7 +148,6 @@ public class Cycle extends Sequence {
             return false;
         }
     }
-
     // Vérifie que le noeud est ajoutable (en terme de taille)
     private boolean isNoeudAjoutable(int position) {
         if ( (this.getListeNoeuds().size() < this.getTailleMaxSequence()) && (position <= this.getListeNoeuds().size()) ) {
@@ -187,8 +157,6 @@ public class Cycle extends Sequence {
             return false;
         }
     }
-
-
     public static void main(String[] args) {
         InstanceReader reader;
         try {
@@ -196,7 +164,6 @@ public class Cycle extends Sequence {
             Instance i = reader.readInstance();
             //System.out.println(i);
             Noeud[] tab = i.getTabNoeud();
-
             Altruiste a1 = (Altruiste) tab[0]; //id=1 - compatibilités vers {Paire{id=9}=10, Paire{id=5}=5, Paire{id=2}=4}
             Noeud p2 = tab[1]; //id=2 - compatibilités vers {Paire{id=9}=4, Paire{id=3}=7, Paire{id=5}=10, Paire{id=8}=9, Paire{id=4}=4}
             Noeud p3 = tab[2]; //id=3 - compatibilités vers {Paire{id=9}=4, Paire{id=6}=1, Paire{id=8}=10, Paire{id=2}=2, Paire{id=4}=6, Paire{id=10}=2}
@@ -206,7 +173,6 @@ public class Cycle extends Sequence {
             Noeud p7 = tab[6]; //id=7 - compatibilités vers {Paire{id=3}=1, Paire{id=6}=8, Paire{id=8}=8, Paire{id=2}=10}
             Noeud p8 = tab[7]; //id=8 - compatibilités vers {Paire{id=9}=9, Paire{id=6}=6, Paire{id=5}=8, Paire{id=7}=7, Paire{id=10}=4}
             Noeud p9 = tab[8]; //id=9 - compatibilités vers {Paire{id=4}=8}
-
             // ### Test ajout (noeuds compatibles et incompatibles, ordres corrects et incorrects) ###
             Cycle c1 = new Cycle(5); // cycle vide [benef 0]
             c1.ajouterNoeud(p6, 0);
@@ -214,19 +180,13 @@ public class Cycle extends Sequence {
             c1.ajouterNoeud(p4, 2); // cycle p3-p6-p4 benef 16
             c1.ajouterNoeud(p8, 1); // cycle p3-p8-p6-p4 benef 16
             c1.ajouterNoeud(p8, 6); // cycle p3-p8-p6-p4 benef 16
-
             System.out.println(c1);
             // ===> TEST OK
-
-
             // ### Test ajout d'un altruiste ###
-
             System.out.println("Checker : "+c1.check());
-
         } catch(Exception e){
             System.out.println("ERROR test ajout");
             System.out.println(e.toString());
         }
     }
-
 }

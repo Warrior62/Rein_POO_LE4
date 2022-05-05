@@ -1,5 +1,4 @@
 package com.rein.solveur;
-
 import com.rein.instance.Altruiste;
 import com.rein.instance.Instance;
 import com.rein.instance.Noeud;
@@ -11,18 +10,14 @@ import com.rein.transplantation.Cycle;
 import com.rein.transplantation.Sequence;
 import org.apache.commons.cli.*;
 import org.apache.commons.lang3.ArrayUtils;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-
 public class StrategieBasique implements Solveur{
-
     private Solveur solveur;
     @Override
     public String getNom() {
         return this.solveur.getNom()+"StrategieBasique"; }
-
     @Override
     public Solution solve(Instance instance) {
         Solution s = new Solution(instance);
@@ -31,7 +26,6 @@ public class StrategieBasique implements Solveur{
         if(instance.getNbAltruistes()>0){
             int i;
             for(i=1;i<=instance.getNbAltruistes();i++){
-
                 Altruiste a = (Altruiste) tabTest[0];
                 Chaine ch = new Chaine(instance.getTailleMaxChaines(), a);
                 tabTest= ArrayUtils.remove(tabTest,0);
@@ -39,19 +33,14 @@ public class StrategieBasique implements Solveur{
             }
         }
         System.out.println(s.getListeSequences());
-
         for(int i=0;i<tabTest.length;i++) {
-
             boolean coutEffectue= false; // variable qui indique si la cout a ete effectue
             boolean rechercheCycle = true; // recherche d'insertion de la paire dans un cycle
             int meilleurBenef =1; // recherche du N meilleur benefice, par defaut 1 soit le premier meilleur benef
             Paire pRecherche = (Paire) tabTest[0]; // premiere paire du tableau
             System.out.println("PAIRE SELECTIONNEE " + pRecherche);
-
             while(rechercheCycle){
-
                 Paire paireBest = (Paire) pRecherche.MeilleurNBenefice(meilleurBenef);
-
                 if(paireBest != null){
                     if(paireBest.isPossible(pRecherche) && isPresent(tabTest,paireBest)) {
                         System.out.println("Cycle possible entre "+ pRecherche+ "et"+paireBest );
@@ -61,7 +50,6 @@ public class StrategieBasique implements Solveur{
                         coutEffectue = true;
                         rechercheCycle = false;
                         s.getListeSequences().add(cy);
-
                         //suppression de la paire associée dans le tableau de recherche
                         // (on ne veut pas qu'elle recherche
                         // vu qu'elle est insérée dans le cycle avec notre paire de recherche)
@@ -82,7 +70,6 @@ public class StrategieBasique implements Solveur{
                     rechercheCycle = false;
                 }
             }
-
             //recherche insertion de la paire dans une chaine si elle n'a pas ete inseree
             if (!coutEffectue && s.getListeSequences().size()>0){
                 System.out.println("Recherche Insertion Chaîne");
@@ -110,8 +97,6 @@ public class StrategieBasique implements Solveur{
         s.calculBenefice();
         return s;
     }
-
-
     // Fonction pour savoir si le noeud est présent dans le tableau des paires pas encore insérées dans la solution
     public boolean isPresent(Noeud[] tab, Noeud n){
         for(int i=0;i<tab.length;i++){
@@ -121,7 +106,6 @@ public class StrategieBasique implements Solveur{
         }
         return false;
     }
-
     //Fonction qui renvoie la place du noeud dans le tableau de recherche
     public int recherchePlace(Noeud[] tab, Noeud n){
         for(int i=0;i<tab.length;i++){
@@ -131,7 +115,6 @@ public class StrategieBasique implements Solveur{
         }
         return -1;
     }
-
     public static void main(String[] args) {
         CommandLineParser parser = new DefaultParser();
         // Création des options
