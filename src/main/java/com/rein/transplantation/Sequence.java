@@ -9,7 +9,6 @@
 package com.rein.transplantation;
 
 import com.rein.instance.Echange;
-import com.rein.instance.Instance;
 import com.rein.instance.Noeud;
 
 import java.util.ArrayList;
@@ -77,13 +76,18 @@ public abstract class Sequence {
         return listeNoeuds;
     }
 
-    @Override
-    public String toString() {
+    public String getListeIdNoeuds()
+    {
         String noeuds = "";
         for(Noeud n : listeNoeuds)
             noeuds += n.getId() + " ";
+        return noeuds;
+    }
+
+    @Override
+    public String toString() {
         return "\nSequence {" +
                 "benefMedicalTotal=" + benefMedicalSequence +
-                ", listeIdNoeuds=[" + noeuds + "]}";
+                ", listeIdNoeuds=[" + this.getListeIdNoeuds() + "]}";
     }
 }

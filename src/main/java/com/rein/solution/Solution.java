@@ -11,8 +11,6 @@ import com.rein.transplantation.Sequence;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -102,7 +100,7 @@ public class Solution {
     private boolean isBenefMedicalCorrect() {
         int somme = 0;
         for (Sequence s: this.listeSequences)
-            somme += s.getBenefMedicalTotal();
+            somme += s.getBenefMedicalSequence();
         return (somme == this.benefMedicalTotal);
     }
 
@@ -110,11 +108,32 @@ public class Solution {
      * Return true si l'ENSEMBLE des séquences de la solution sont valides, false sinon.
      * **/
     private boolean areSequencesValides() {
-        for (Sequence s: this.listeSequences)
+      /*  for (Sequence s: this.listeSequences)
             if (!s.check())
-                return false;
+                return false;*/
         return true;
     }
+
+    public String exportSol() {
+        StringBuilder stringSol = new StringBuilder("// Cout total de la solution\n" +
+            this.getBenefMedicalTotal() +
+            "\n\n// Description de la solution\n" +
+            "// Cycles\n");
+            for(Sequence s : this.getListeSequences()) {
+                if (s.getClass().toString().equals("class com.rein.transplantation.Cycle")){
+                    stringSol.append(s.getListeIdNoeuds() + "\n");
+                }
+            }
+            stringSol.append("\n// Chaines\n");
+            for(Sequence s : this.getListeSequences()) {
+                if (s.getClass().toString().equals("class com.rein.solution.Chaine")){
+                    stringSol.append(s.getListeIdNoeuds() + "\n");
+                }
+            }
+            stringSol.append("\n");
+        return stringSol.toString();
+    }
+
 
     public static void main(String[] args) {
         InstanceReader reader;
