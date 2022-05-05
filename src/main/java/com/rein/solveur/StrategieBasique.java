@@ -147,6 +147,7 @@ public class StrategieBasique implements Solveur{
                 .desc("Répertoire des fichiers solutions")
                 .build());
         try {
+            System.out.println("OUIIIIIIIIIIIIIIIIIII");
             // Lecture des arguments CLI
             CommandLine line = parser.parse(options, args);
             System.out.println(line.getOptionValue("inst"));
@@ -177,6 +178,7 @@ public class StrategieBasique implements Solveur{
                 //System.out.println("s1 : " + s1.toString() + "\n\tcheck : " + s1.check());
                 System.out.println("Checker : " + s1.check());
             } catch(Exception e){
+                System.out.println(e.getMessage());
                 System.err.println("ERROR Strategie basique");
             }
         } catch (ParseException exp) {

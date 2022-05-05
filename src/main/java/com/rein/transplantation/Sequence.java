@@ -10,6 +10,7 @@ package com.rein.transplantation;
 
 import com.rein.instance.Altruiste;
 import com.rein.instance.Echange;
+import com.rein.instance.Instance;
 import com.rein.instance.Noeud;
 import com.rein.io.InstanceReader;
 import com.rein.solution.Chaine;
