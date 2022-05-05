@@ -8,9 +8,13 @@
 
 package com.rein.transplantation;
 
+import com.rein.instance.Altruiste;
 import com.rein.instance.Echange;
 import com.rein.instance.Instance;
 import com.rein.instance.Noeud;
+import com.rein.io.InstanceReader;
+import com.rein.solution.Chaine;
+import org.w3c.dom.ls.LSOutput;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -88,5 +92,44 @@ public abstract class Sequence {
     }
 
     //--
+    public static void main(String[] args) {
+        InstanceReader reader;
+        try {
+            reader = new InstanceReader("instancesInitiales/KEP_p9_n1_k3_l3.txt");
+            Instance i = reader.readInstance();
+            //System.out.println(i);
+            Noeud[] tab = i.getTabNoeud();
+
+            Altruiste a1 = (Altruiste) tab[0]; //id=1 - compatibilités vers {Paire{id=9}=10, Paire{id=5}=5, Paire{id=2}=4}
+            Noeud p2 = tab[1]; //id=2 - compatibilités vers {Paire{id=9}=4, Paire{id=3}=7, Paire{id=5}=10, Paire{id=8}=9, Paire{id=4}=4}
+            Noeud p3 = tab[2]; //id=3 - compatibilités vers {Paire{id=9}=4, Paire{id=6}=1, Paire{id=8}=10, Paire{id=2}=2, Paire{id=4}=6, Paire{id=10}=2}
+            Noeud p4 = tab[3]; //id=4 - compatibilités vers {Paire{id=9}=3, Paire{id=3}=6, Paire{id=6}=6, Paire{id=5}=8}
+            Noeud p5 = tab[4]; //id=5 - compatibilités vers {Paire{id=6}=6, Paire{id=7}=8}
+            Noeud p6 = tab[5]; //id=6 - compatibilités vers {Paire{id=3}=2, Paire{id=8}=9, Paire{id=7}=8, Paire{id=4}=9}
+            Noeud p7 = tab[6]; //id=7 - compatibilités vers {Paire{id=3}=1, Paire{id=6}=8, Paire{id=8}=8, Paire{id=2}=10}
+            Noeud p8 = tab[7]; //id=8 - compatibilités vers {Paire{id=9}=9, Paire{id=6}=6, Paire{id=5}=8, Paire{id=7}=7, Paire{id=10}=4}
+            Noeud p9 = tab[8]; //id=9 - compatibilités vers {Paire{id=4}=8}
+
+            // ### Test ajout (noeuds compatibles et incompatibles, ordres corrects et incorrects) ###
+            Cycle c1 = new Cycle(5); // cycle vide [benef 0]
+            c1.ajouterNoeud(p6, 0);
+            c1.ajouterNoeud(p3, 0); // cycle p6-p3 benef 3
+            c1.ajouterNoeud(p4, 2); // cycle p3-p6-p4 benef 16
+            c1.ajouterNoeud(p8, 1); // cycle p3-p8-p6-p4 benef 16
+            c1.ajouterNoeud(p8, 6); // cycle p3-p8-p6-p4 benef 16
+
+            System.out.println(c1);
+            // ===> TEST OK
+
+
+            // ### Test ajout d'un altruiste ###
+
+            System.out.println("Checker : "+c1.check());
+
+        } catch(Exception e){
+            System.out.println("ERROR test ajout");
+            System.out.println(e.toString());
+        }
+    }
 
 }

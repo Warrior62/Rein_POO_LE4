@@ -86,7 +86,6 @@ public class Solution {
      * **/
 
     public boolean check() {
-
         return (verifInstanceAssociee() && verifSequencesValides() && verifBenefMedicalCorrect());
     }
 

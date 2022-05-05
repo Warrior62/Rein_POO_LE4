@@ -27,6 +27,7 @@ public class Chaine extends Sequence {
         return (Altruiste) this.getListeNoeuds().get(0);
     }
 
+    //Peut être supprimée à priori
     public void setAltruiste(Altruiste altruiste) {
         this.getListeNoeuds().add(0, altruiste);
     }
@@ -37,18 +38,19 @@ public class Chaine extends Sequence {
                 + "\taltruiste : " + this.getAltruiste().toString() + "\n"
                 + "\tlisteNoeuds : "+this.getListeNoeuds() + "\n"
                 +"\tbenefMedical : "+this.getBenefMedicalSequence() + "\n"
+                +"\ttaille max : "+this.getTailleMaxSequence() + "\n"
                 +"}";
     }
 
 
 
-    // Vérifie que le noeud est ajoutable (en terme de taille et de compatibilité)
+    // Vérifie que le noeud est ajoutable (en terme de taille)
     // Attention
     private boolean isNoeudAjoutable(int position) {
-        System.out.println(this.getListeNoeuds().size() < this.getTailleMaxSequence());
+        /*System.out.println(this.getListeNoeuds().size() < this.getTailleMaxSequence());
         System.out.println(position <= this.getListeNoeuds().size());
         System.out.println(position);
-        System.out.println(this.getListeNoeuds().size());
+        System.out.println(this.getListeNoeuds().size());*/
         if ( (this.getListeNoeuds().size() < this.getTailleMaxSequence()) && (position > 0) && (position <= this.getListeNoeuds().size()) ) {
             return true;
         }else {
@@ -82,8 +84,6 @@ public class Chaine extends Sequence {
                 return false;
             }
         }
-
-
     }
 
     //Permet d'ajouter le noeud dans la chaine.
@@ -91,7 +91,7 @@ public class Chaine extends Sequence {
     //2) Insère le noeud en retranchant le benef médical précédent, et ajoutant les nouveaux benefs médicaux.
     // Attention : La position match avec l'index (une insertion en 1ère position est isNoeudCompatible(0))
     // Si position passé en paramètre est 0, l'ajout n'est pas effecté car c'est la position de l'altruiste
-    private boolean ajouterNoeud(Noeud n, int position) {
+    public boolean ajouterNoeud(Noeud n, int position) {
         System.out.println(" ---- vv ---- Ajout ---- vv ----");
         //NB : La position 0 est réservée à l'altruiste... On ne peut donc pas y ajouter un noeud
         if ( (position != 0) && this.isNoeudAjoutable(position) && this.isNoeudCompatible(n, position) ) {

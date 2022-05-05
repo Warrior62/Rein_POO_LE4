@@ -139,6 +139,7 @@ public class StrategieBasique implements Solveur{
             Solution s1 = sb.solve(i);
             System.out.println(s1);
             //System.out.println("s1 : " + s1.toString() + "\n\tcheck : " + s1.check());
+            System.out.println("Checker : " + s1.check());
         } catch(Exception e){
             System.out.println("ERROR Strategie basique");
         }
