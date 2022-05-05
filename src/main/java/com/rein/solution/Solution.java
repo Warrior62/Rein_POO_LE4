@@ -12,8 +12,6 @@ import com.rein.transplantation.Sequence;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -123,6 +121,27 @@ public class Solution {
         return true;
     }
 
+    public String exportSol() {
+        StringBuilder stringSol = new StringBuilder("// Cout total de la solution\n" +
+            this.getBenefMedicalTotal() +
+            "\n\n// Description de la solution\n" +
+            "// Cycles\n");
+            for(Sequence s : this.getListeSequences()) {
+                if (s.getClass().toString().equals("class com.rein.transplantation.Cycle")){
+                    stringSol.append(s.getListeIdNoeuds() + "\n");
+                }
+            }
+            stringSol.append("\n// Chaines\n");
+            for(Sequence s : this.getListeSequences()) {
+                if (s.getClass().toString().equals("class com.rein.solution.Chaine")){
+                    stringSol.append(s.getListeIdNoeuds() + "\n");
+                }
+            }
+            stringSol.append("\n");
+        return stringSol.toString();
+    }
+
+
     public static void main(String[] args) {
         InstanceReader reader;
         try {
@@ -134,7 +153,4 @@ public class Solution {
             Logger.getLogger(Instance.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
-
-
 }

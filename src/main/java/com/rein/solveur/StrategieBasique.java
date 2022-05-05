@@ -9,9 +9,12 @@ import com.rein.solution.Chaine;
 import com.rein.solution.Solution;
 import com.rein.transplantation.Cycle;
 import com.rein.transplantation.Sequence;
+import org.apache.commons.cli.*;
 import org.apache.commons.lang3.ArrayUtils;
 
-import java.util.Arrays;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class StrategieBasique implements Solveur{
 
@@ -130,18 +133,54 @@ public class StrategieBasique implements Solveur{
     }
 
     public static void main(String[] args) {
-        InstanceReader reader;
+        CommandLineParser parser = new DefaultParser();
+        // Création des options
+        Options options = new Options();
+        options.addOption(Option.builder("inst")
+                .hasArg(true)
+                .valueSeparator(' ')
+                .desc("Nom du fichier d'instance")
+                .build());
+        options.addOption(Option.builder("dSol")
+                .hasArg(true)
+                .valueSeparator(' ')
+                .desc("Répertoire des fichiers solutions")
+                .build());
         try {
-            reader = new InstanceReader("instancesInitiales/KEP_p18_n2_k4_l4.txt");
-            Instance i = reader.readInstance();
-            System.out.println(i);
-            StrategieBasique sb = new StrategieBasique();
-            Solution s1 = sb.solve(i);
-            System.out.println(s1);
-            //System.out.println("s1 : " + s1.toString() + "\n\tcheck : " + s1.check());
-            System.out.println("Checker : " + s1.check());
-        } catch(Exception e){
-            System.out.println("ERROR Strategie basique");
+            // Lecture des arguments CLI
+            CommandLine line = parser.parse(options, args);
+            System.out.println(line.getOptionValue("inst"));
+            System.out.println(line.getOptionValue("dSol"));
+            InstanceReader reader;
+            try {
+                // Lecture du fichier d'instance
+                reader = new InstanceReader("instancesInitiales/" + line.getOptionValue("inst"));
+                Instance i = reader.readInstance();
+                // Résolution de l'instance
+                StrategieBasique sb = new StrategieBasique();
+                Solution s1 = sb.solve(i);
+                System.out.println(s1);
+                try {
+                    // Création du fichier de solution
+                    String nomFicSol = line.getOptionValue("dSol") + "/" + line.getOptionValue("inst").split("\\.")[0] + "_sol.txt";
+                    File ficSol = new File(nomFicSol);
+                    ficSol.getParentFile().mkdirs();
+                    // Ecriture du fichier de solution
+                    FileWriter myWriter = new FileWriter(ficSol);
+                    myWriter.write(s1.exportSol());
+                    myWriter.close();
+                    System.out.println("Fichier de solution créé : " + nomFicSol);
+                } catch (IOException e) {
+                    System.err.println("ERROR fichier solution");
+                    e.printStackTrace();
+                }
+                //System.out.println("s1 : " + s1.toString() + "\n\tcheck : " + s1.check());
+                System.out.println("Checker : " + s1.check());
+            } catch(Exception e){
+                System.err.println("ERROR Strategie basique");
+            }
+        } catch (ParseException exp) {
+            System.err.println("Unexpected exception:" + exp.getMessage());
         }
     }
 }
