@@ -1,0 +1,6 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Projet_Fremaux_Robert_Shahpazian_Tryla.jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Projet_Fremaux_Robert_Shahpazian_Tryla_jar</output-path>
+    <root id="archive" name="Projet_Fremaux_Robert_Shahpazian_Tryla.jar.jar" />
+  </artifact>
+</component>
