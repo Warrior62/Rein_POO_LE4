@@ -61,6 +61,11 @@ public class Solution {
                 ", \nlisteSequences=[" + listeSequences +
                 "] }";
     }
+
+    public Instance getInstance() {
+        return instance;
+    }
+
     /**
      * Checker de Solution :
      * Condition de validité :
