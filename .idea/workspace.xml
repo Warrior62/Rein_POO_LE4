@@ -5,26 +5,39 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5dbe1660-c9ae-497e-83b8-a85dacef2117" name="Changes" comment="Ajout import Instance dans Sequence">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/test_extract_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_cli_commons_cli_1_5_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_lang3_3_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/apache_commons_lang3.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/commons_lang3_3_10.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_06_05_2022_18_40__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_06_05_2022_18_40__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_03_05_2022_17_29__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_03_05_2022_17_29__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_cli_commons_cli_1_5_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_lang3_3_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_lang3_3_3_2.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/commons-lang3-3.1.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rein-poo-le4.iml" beforeDir="false" afterPath="$PROJECT_DIR$/rein-poo-le4.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results.html" beforeDir="false" afterPath="$PROJECT_DIR$/results.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solution/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solution/Solution.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/solution/Solution.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/solution/Solution.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/solveur/StrategieBasique.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/solveur/StrategieBasique.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/instance/Altruiste.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/instance/Echange.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/instance/Instance.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/instance/Noeud.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/instance/Paire.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/io/InstanceReader.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/io/exception/FileExistException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/io/exception/FormatFileException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/io/exception/OpenFileException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/io/exception/ReaderException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/operateur/Operateur.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/operateur/OperateurInterSequence.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/operateur/OperateurIntraSequence.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/solution/Chaine.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/solution/Solution.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/solveur/Solveur.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/solveur/StrategieBasique.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/transplantation/Cycle.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/transplantation/Sequence.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="ajout_methode_ajouterSequence()" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -44,6 +57,13 @@
     <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/commons-cli-1.5.0" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
   <component name="RunManager">
     <configuration name="StrategieBasique" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.rein.solveur.StrategieBasique" />
@@ -62,10 +82,20 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.StrategieBasique" />
+        <item itemvalue="Application.StrategieBasique" />
+        <item itemvalue="Application.StrategieBasique" />
       </list>
     </recent_temporary>
   </component>
   <component name="TaskManager">
+    <task id="LOCAL-00001" summary="Ajout methode ajouterSequence dans la classe Solution">
+      <created>1652256448665</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1652256448665</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -79,7 +109,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="ajout_methode_ajouterSequence()" />
+                        <option value="dev" />
                       </list>
                     </value>
                   </entry>
@@ -90,5 +120,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Ajout methode ajouterSequence dans la classe Solution" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ajout methode ajouterSequence dans la classe Solution" />
   </component>
 </project>
