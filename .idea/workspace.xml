@@ -4,8 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5dbe1660-c9ae-497e-83b8-a85dacef2117" name="Changes" comment="unversioned files">
+    <list default="true" id="5dbe1660-c9ae-497e-83b8-a85dacef2117" name="Changes" comment="Ajout import Instance dans Sequence">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/test_extract_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_cli_commons_cli_1_5_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_lang3_3_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/apache_commons_lang3.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/commons_lang3_3_10.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_06_05_2022_18_40__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_06_05_2022_18_40__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_03_05_2022_17_29__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_03_05_2022_17_29__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rein-poo-le4.iml" beforeDir="false" afterPath="$PROJECT_DIR$/rein-poo-le4.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results.html" beforeDir="false" afterPath="$PROJECT_DIR$/results.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solution/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solution/Solution.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/rein/solution/Solution.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/solution/Solution.class" afterDir="false" />
@@ -16,12 +26,22 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="dev" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/transplantation/Sequence.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/transplantation/Cycle.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/pom.xml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/io/InstanceReader.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/instance/Noeud.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/transplantation/Sequence.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/solution/Solution.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="RunManager">
@@ -47,5 +67,28 @@
   </component>
   <component name="TaskManager">
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="ajout_methode_ajouterSequence()" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

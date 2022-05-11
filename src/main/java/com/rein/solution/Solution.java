@@ -24,12 +24,25 @@ public class Solution {
         this.instance = instance;
         this.listeSequences = new ArrayList<>();
     }
+
     public Solution(Solution s) {
         this(s.instance);
         this.benefMedicalTotal = s.benefMedicalTotal;
         for(int i=0; i<s.listeSequences.size(); i++)
             this.listeSequences.add((Sequence) s.listeSequences.toArray()[i]);
     }
+
+    private boolean ajouterSequence(Sequence s) {
+        try {
+            this.listeSequences.add(s);
+            this.benefMedicalTotal += s.getBenefMedicalSequence();
+            return true;
+        }catch (Error e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+
     public void calculBenefice(){
         System.out.println("calcul de bénéfice total");
         this.suppressionSequencesVides();

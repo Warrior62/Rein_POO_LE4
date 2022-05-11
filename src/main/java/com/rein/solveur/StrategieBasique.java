@@ -213,7 +213,7 @@ public class StrategieBasique implements Solveur{
                 "</html>";
 
         String html = begin + nodes + edges + end;
-        String pathname = "/Users/tryla/Documents/LE4_2021_2022/POO/Rein_POO_LE4/results.html";
+        String pathname = "./results.html";
         File result = new File(pathname);
         result.createNewFile();
         FileWriter myWriter = new FileWriter(pathname);
