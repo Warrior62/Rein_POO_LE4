@@ -53,6 +53,11 @@ public class Solution {
     public Collection<Sequence> getListeSequences() {
         return listeSequences;
     }
+
+    public Instance getInstance() {
+        return instance;
+    }
+
     @Override
     public String toString() {
         String res = "";
