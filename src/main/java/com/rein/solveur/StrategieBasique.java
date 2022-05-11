@@ -244,14 +244,13 @@ public class StrategieBasique implements Solveur{
             InstanceReader reader;
             try {
                 // Lecture du fichier d'instance
-                //reader = new InstanceReader("instancesInitiales/" + line.getOptionValue("inst"));
-                reader = new InstanceReader("instancesInitiales/KEP_p100_n11_k5_l17.txt");
+                reader = new InstanceReader("instancesInitiales/" + line.getOptionValue("inst"));
                 Instance i = reader.readInstance();
                 // Résolution de l'instance
                 StrategieBasique sb = new StrategieBasique();
                 Solution s1 = sb.solve(i);
                 System.out.println(s1);
-                /**try {
+                try {
                     // Création du fichier de solution
                     String nomFicSol = line.getOptionValue("dSol") + "/" + line.getOptionValue("inst").split("\\.")[0] + "_sol.txt";
                     File ficSol = new File(nomFicSol);
@@ -264,7 +263,7 @@ public class StrategieBasique implements Solveur{
                 } catch (IOException e) {
                     System.err.println("ERROR fichier solution");
                     e.printStackTrace();
-                }**/
+                }
                 //System.out.println("s1 : " + s1.toString() + "\n\tcheck : " + s1.check());
                 System.out.println("Checker : " + s1.check());
                 displayWebInterface(s1);

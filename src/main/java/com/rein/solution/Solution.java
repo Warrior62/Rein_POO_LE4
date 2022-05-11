@@ -67,10 +67,6 @@ public class Solution {
                 "] }";
     }
 
-    public Instance getInstance() {
-        return instance;
-    }
-
     /**
      * Checker de Solution :
      * Condition de validité :
