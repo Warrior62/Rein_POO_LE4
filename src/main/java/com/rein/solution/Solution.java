@@ -6,6 +6,10 @@
 package com.rein.solution;
 import com.rein.instance.Instance;
 import com.rein.io.InstanceReader;
+import com.rein.operateur.OperateurInterSequence;
+import com.rein.operateur.OperateurIntraSequence;
+import com.rein.operateur.OperateurLocal;
+import com.rein.operateur.TypeOperateurLocal;
 import com.rein.transplantation.Cycle;
 import com.rein.transplantation.Sequence;
 import java.util.ArrayList;
@@ -125,6 +129,60 @@ public class Solution {
             stringSol.append("\n");
         return stringSol.toString();
     }
+
+    public boolean doMouvementRechercheLocale(OperateurLocal infos){
+        if(infos == null) return false;
+        if(!infos.doMouvementIfRealisable()) return false;
+
+        this.benefMedicalTotal += infos.getDeltaBeneficeMedical();
+        if(!this.check()){
+            System.out.println("ERROR doMouvementRechercheLocale");
+            System.out.println(infos);
+            System.exit(-1);
+        }
+        return true;
+    }
+
+    private OperateurLocal getMeilleurOperateurIntra(TypeOperateurLocal type){
+        return null;
+        /*OperateurLocal best = OperateurLocal.getOperateur(type);
+        for(Tournee t : this.listeTournees){
+            for(int i=0; i<t.getClients().size(); i++) {
+                for(int j=0; j<t.getClients().size()+1; j++) {
+                    if(j < t.getClients().size()){
+                        OperateurIntraTournee op = OperateurLocal.getOperateurIntra(type, t, i, j);
+                        if(op.isMeilleur(best)) {
+                            best = op;
+                        }
+                    }
+                }
+            }
+        }
+        return best;*/
+    }
+
+    private OperateurLocal getMeilleurOperateurInter(TypeOperateurLocal type){
+        return null;
+        /*OperateurLocal best = OperateurLocal.getOperateur(type), op;
+        for(Tournee t : this.listeTournees){
+            for(Tournee t1 : this.listeTournees) {
+                op = t.getMeilleurOperateurInter(type, t1);
+                if(op.isMeilleur(best))
+                    best = op;
+            }
+        }
+        return best;*/
+    }
+
+    public OperateurLocal getMeilleurOperateurLocal(TypeOperateurLocal type){
+        if(OperateurLocal.getOperateur(type) instanceof OperateurIntraSequence)
+            return this.getMeilleurOperateurIntra(type);
+        else if(OperateurLocal.getOperateur(type) instanceof OperateurInterSequence)
+            return this.getMeilleurOperateurInter(type);
+        //this.getMeilleurOperateurInter(type);
+        return null;
+    }
+
     public static void main(String[] args) {
         InstanceReader reader;
         try {

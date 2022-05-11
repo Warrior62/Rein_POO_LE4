@@ -1,4 +1,8 @@
 package com.rein.operateur;
 
-public class OperateurIntraSequence {
+public abstract class OperateurIntraSequence extends OperateurLocal {
+
+    public OperateurIntraSequence(){
+        super();
+    }
 }

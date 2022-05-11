@@ -4,17 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6a9d1413-cf5c-4746-827d-ae378770fdae" name="Changes" comment="sout martrein">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/commons_cli_1_5_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/commons_lang3_3_10.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rein/operateur/Operateur.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rein/operateur/OperateurInterSequence.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rein/operateur/OperateurIntraSequence.java" afterDir="false" />
+    <list default="true" id="5dbe1660-c9ae-497e-83b8-a85dacef2117" name="Changes" comment="getinstance doublon enlevé">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rein/operateur/InsertionNoeud.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rein/operateur/InterDeplacement.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rein/operateur/IntraDeplacement.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rein/operateur/OperateurLocal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rein/solveur/RechercheLocale.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rein-poo-le4.iml" beforeDir="false" afterPath="$PROJECT_DIR$/rein-poo-le4.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/operateur/Operateur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/operateur/Operateur.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/operateur/OperateurInterSequence.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/operateur/OperateurInterSequence.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/operateur/OperateurIntraSequence.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/operateur/OperateurIntraSequence.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solution/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solution/Solution.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/solution/Solution.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/solution/Solution.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/transplantation/Sequence.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/transplantation/Sequence.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/rein/solveur/StrategieBasique.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/solveur/StrategieBasique.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

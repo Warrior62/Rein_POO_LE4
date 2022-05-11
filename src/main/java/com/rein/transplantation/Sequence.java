@@ -11,6 +11,10 @@ import com.rein.instance.Echange;
 import com.rein.instance.Instance;
 import com.rein.instance.Noeud;
 import com.rein.io.InstanceReader;
+import com.rein.operateur.InsertionNoeud;
+import com.rein.operateur.InterDeplacement;
+import com.rein.operateur.IntraDeplacement;
+
 import java.util.ArrayList;
 import java.util.List;
 public abstract class Sequence {
@@ -70,6 +74,91 @@ public abstract class Sequence {
             noeuds += n.getId() + " ";
         return noeuds;
     }
+
+    public boolean doInsertion(InsertionNoeud infos){
+        return false;
+        /*if(infos==null) return false;
+        if(!infos.isMouvementRealisable()) return false;
+
+        Client client = infos.getClient();
+
+        this.coutTotal += infos.getDeltaCout();
+        this.clients.add(infos.getPosition(), client);
+        this.demandeTotale += client.getQuantiteAMeLivrer();
+
+        if(!this.check()){
+            System.out.println("ERROR doInsertion");
+            System.out.println(infos);
+            System.exit(-1);
+        }
+        return true;*/
+    }
+
+    public boolean doDeplacement(IntraDeplacement infos){
+        return false;
+        /*if(infos==null) return false;
+        if(!infos.isMouvementRealisable()) return false;
+
+        Client clientI = infos.getClientI();
+        Client clientJ = infos.getClientJ();
+        int positionI = infos.getPositionI();
+        int positionJ = infos.getPositionJ();
+
+        // déplacement du client I avant le client J
+        //System.out.println("je veux déplacer le client°" + clientI.getId() + " en position " + positionI + ", avant le client°" + clientJ.getId() + " en position " + positionJ);
+        this.clients.remove(positionI);
+        if(positionI < positionJ) this.clients.add(positionJ-1, clientI);
+        if(positionI > positionJ) this.clients.add(positionJ, clientI);
+        //System.out.println("le client en position " + this.clients.indexOf(clientI) + " est le " + this.clients.get(this.clients.indexOf(clientI)).getId());
+
+        for(Client c : this.clients)
+            System.out.print(c.getId() + " ");
+
+        // maj du coût du déplacement
+        //this.coutTotal += this.deltaCoutDeplacement(positionI, positionJ);
+        this.coutTotal += infos.getDeltaCout();
+
+        if(!this.check()){
+            System.out.println("ERROR doDeplacement intra");
+            System.out.println(infos);
+            System.exit(-1);
+        }
+        return true;*/
+    }
+
+    public boolean doDeplacement(InterDeplacement infos){
+        return false;
+        /*if(infos==null) return false;
+        if(!infos.isMouvementAmeliorant()) return false;
+
+        Client clientI = infos.getClientI();
+        int positionI = infos.getPositionI();
+        int positionJ = infos.getPositionJ();
+
+        // déplacement du client I avant le client J
+        this.clients.remove(positionI);
+        infos.getAutreTournee().clients.add(positionJ, clientI);
+
+        // maj du coût du déplacement
+        this.coutTotal += infos.getDeltaCoutTournee();
+        infos.getAutreTournee().coutTotal += infos.getDeltaCoutAutreTournee();
+
+        this.demandeTotale -= clientI.getQuantiteAMeLivrer();
+        infos.getAutreTournee().demandeTotale += clientI.getQuantiteAMeLivrer();
+
+        if(!this.check()){
+            System.out.println("ERROR doDeplacement inter tournee courante");
+            System.out.println(infos);
+            System.exit(-1);
+        }
+        if(!infos.getAutreTournee().check()){
+            System.out.println("ERROR doDeplacement inter autre tournee");
+            System.out.println(infos);
+            System.exit(-1);
+        }
+        return true;*/
+    }
+
     @Override
     public String toString() {
         return "\nSequence {" +
