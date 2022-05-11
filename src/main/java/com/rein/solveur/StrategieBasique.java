@@ -13,6 +13,8 @@ import org.apache.commons.lang3.ArrayUtils;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Map;
+
 public class StrategieBasique implements Solveur{
     private Solveur solveur;
     @Override
@@ -115,6 +117,111 @@ public class StrategieBasique implements Solveur{
         }
         return -1;
     }
+
+    public static void displayWebInterface(Solution s) throws IOException {
+        int beneficeMedicalTotal = s.getBenefMedicalTotal();
+        String begin = "<!DOCTYPE html>\n" +
+                "<html lang=\"en\">\n" +
+                "  <head>\n" +
+                "    <script src=\"https://d3js.org/d3.v6.min.js\"></script>\n" +
+                "    <script src=\"https://visjs.github.io/vis-network/standalone/umd/vis-network.min.js\"></script>\n" +
+                "    <style type=\"text/css\">\n" +
+                "      #mynetwork {\n" +
+                "        width: 600px;\n" +
+                "        height: 600px;\n" +
+                "        border: 1px solid lightgray;\n" +
+                "      }\n" +
+                "    </style>\n" +
+                "  </head>\n" +
+                "  <body>\n" +
+                "    <div>" + s.getInstance().getNom() + "</div>\n" +
+                "    <div id=\"results\">Bénéfice médical total : " + beneficeMedicalTotal + "</div>\n" +
+                "    <div id=\"mynetwork\"></div>\n" +
+                "    <script type=\"text/javascript\">";
+
+        String nodes = "var nodes = new vis.DataSet([";
+        for (Sequence sequence : s.getListeSequences()) {
+            boolean isAltruiste = false;
+            for (Noeud noeud : sequence.getListeNoeuds()) {
+                int idNoeud = noeud.getId();
+                String shape = "circle";
+                String color = "orange";
+                if (sequence instanceof Chaine && !isAltruiste) {
+                    shape = "box";
+                    color = "#97C2FC";
+                    isAltruiste = true;
+                }
+                nodes += "{ id: " + idNoeud + ", label: \"" + idNoeud + "\", shape: \"" + shape + "\", color: \"" + color + "\" },";
+            }
+        }
+        nodes = nodes.substring(0, nodes.length() - 1);
+        nodes += "]);";
+
+        String edges = "var edges = [";
+        for (Sequence sequence : s.getListeSequences()) {
+            for (int i = 0; i < sequence.getListeNoeuds().size(); i++) {
+                // if it's not the last node of the sequence
+                if (i + 1 < sequence.getListeNoeuds().size()) {
+                    Noeud donneur = sequence.getListeNoeuds().get(i);
+                    Noeud receveur = sequence.getListeNoeuds().get(i + 1);
+                    int benefMedical = -1;
+                    // CHAINE
+                    if (sequence instanceof Chaine) {
+                        System.out.println("chaine");
+                        for (Map.Entry<Noeud, Integer> entry : sequence.getListeNoeuds().get(i).getListeEchanges().entrySet())
+                            if (entry.getKey().getId() == receveur.getId())
+                                benefMedical = entry.getValue();
+                        edges += "{ from: " + donneur.getId() + ", to: " + receveur.getId() + ", label: \"" + benefMedical + "\", color: { color: \"black\" }, font: { align: \"top\" }, arrows: \"to\" },";
+                    }
+                    // CYCLE
+                    if (sequence instanceof Cycle) {
+                        System.out.println("cycle");
+                        for (Map.Entry<Noeud, Integer> entry : donneur.getListeEchanges().entrySet())
+                            if (entry.getKey().getId() == receveur.getId())
+                                benefMedical = entry.getValue();
+                        edges += "{ from: " + donneur.getId() + ", to: " + receveur.getId() + ", label: \"" + benefMedical + "\", color: { color: \"black\" }, font: { align: \"top\" }, arrows: \"from\" },";
+                    }
+                } else {
+                    // CYCLE
+                    if (sequence instanceof Cycle) {
+                        System.out.println("cycle");
+                        int benefMedical = -1;
+                        Noeud donneur = sequence.getListeNoeuds().get(i);
+                        Noeud receveur = sequence.getListeNoeuds().get(0);
+                        for (Map.Entry<Noeud, Integer> entry : donneur.getListeEchanges().entrySet()) {
+                            if (entry.getKey().getId() == receveur.getId()) {
+                                benefMedical = entry.getValue();
+                                edges += "{ from: " + donneur.getId() + ", to: " + receveur.getId() + ", label: \"" + benefMedical + "\", color: { color: \"black\" }, font: { align: \"top\" }, arrows: \"from\" },";
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        edges = edges.substring(0, edges.length() - 1);
+        edges += "];";
+        System.out.println(edges);
+        String end = "var container = document.getElementById(\"mynetwork\");\n" +
+                "      var data = {\n" +
+                "        nodes: nodes,\n" +
+                "        edges: edges,\n" +
+                "      };\n" +
+                "      var options = {};\n" +
+                "      var network = new vis.Network(container, data, options);\n" +
+                "    </script>\n" +
+                "  </body>\n" +
+                "</html>";
+
+        String html = begin + nodes + edges + end;
+        String pathname = "/Users/tryla/Documents/LE4_2021_2022/POO/Rein_POO_LE4/results.html";
+        File result = new File(pathname);
+        result.createNewFile();
+        FileWriter myWriter = new FileWriter(pathname);
+        myWriter.write(html);
+        myWriter.close();
+
+    }
+
     public static void main(String[] args) {
         CommandLineParser parser = new DefaultParser();
         // Création des options
@@ -130,7 +237,6 @@ public class StrategieBasique implements Solveur{
                 .desc("Répertoire des fichiers solutions")
                 .build());
         try {
-            System.out.println("OUIIIIIIIIIIIIIIIIIII");
             // Lecture des arguments CLI
             CommandLine line = parser.parse(options, args);
             System.out.println(line.getOptionValue("inst"));
@@ -160,6 +266,7 @@ public class StrategieBasique implements Solveur{
                 }
                 //System.out.println("s1 : " + s1.toString() + "\n\tcheck : " + s1.check());
                 System.out.println("Checker : " + s1.check());
+                displayWebInterface(s1);
             } catch(Exception e){
                 System.out.println(e.getMessage());
                 System.err.println("ERROR Strategie basique");
