@@ -245,7 +245,7 @@ public class StrategieBasique implements Solveur{
             try {
                 // Lecture du fichier d'instance
                 //reader = new InstanceReader("instancesInitiales/" + line.getOptionValue("inst"));
-                reader = new InstanceReader("instancesInitiales/KEP_p100_n11_k5_l17.txt");
+                reader = new InstanceReader("instancesInitiales/KEP_p50_n6_k5_l17.txt");
                 Instance i = reader.readInstance();
                 // Résolution de l'instance
                 StrategieBasique sb = new StrategieBasique();
