@@ -162,16 +162,15 @@ public class Solution {
     }
 
     private OperateurLocal getMeilleurOperateurInter(TypeOperateurLocal type){
-        return null;
-        /*OperateurLocal best = OperateurLocal.getOperateur(type), op;
-        for(Tournee t : this.listeTournees){
-            for(Tournee t1 : this.listeTournees) {
-                op = t.getMeilleurOperateurInter(type, t1);
+        OperateurLocal best = OperateurLocal.getOperateur(type), op;
+        for(Sequence s : this.listeSequences){
+            for(Sequence s1 : this.listeSequences) {
+                op = s.getMeilleurOperateurInter(type, s1);
                 if(op.isMeilleur(best))
                     best = op;
             }
         }
-        return best;*/
+        return best;
     }
 
     public OperateurLocal getMeilleurOperateurLocal(TypeOperateurLocal type){

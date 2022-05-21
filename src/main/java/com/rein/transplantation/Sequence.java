@@ -11,9 +11,7 @@ import com.rein.instance.Echange;
 import com.rein.instance.Instance;
 import com.rein.instance.Noeud;
 import com.rein.io.InstanceReader;
-import com.rein.operateur.InsertionNoeud;
-import com.rein.operateur.InterDeplacement;
-import com.rein.operateur.IntraDeplacement;
+import com.rein.operateur.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,9 +47,23 @@ public abstract class Sequence {
             }
         }
     }
-    /*public int getId() {
-        return id;
-    }*/
+
+    private boolean isPositionValide(int position){
+        if(position >= 0 && position <= this.getNbNoeuds()-1)
+            return true;
+        return false;
+    }
+
+    public int getNbNoeuds() {
+        return this.listeNoeuds.size();
+    }
+
+    public Noeud getNoeud(int position){
+        if(this.isPositionValide(position))
+            return this.getListeNoeuds().get(position);
+        return null;
+    }
+
     public int getBenefMedicalSequence() {
         return benefMedicalSequence;
     }
@@ -157,6 +169,33 @@ public abstract class Sequence {
             System.exit(-1);
         }
         return true;*/
+    }
+
+    public OperateurLocal getMeilleurOperateurInter(TypeOperateurLocal type, Sequence autreSequence) {
+        OperateurLocal best = OperateurLocal.getOperateur(type);
+        if(this.equals(autreSequence)) return best;
+        for(int i=0; i<this.listeNoeuds.size(); i++) {
+            for(int j=0; j<autreSequence.listeNoeuds.size()+1; j++) {
+                OperateurInterSequence op = OperateurLocal.getOperateurInter(type, this, autreSequence, i, j);
+                /**if(op.isMeilleur(best) && !ListeTabou.getInstance().isTabou(op)) {
+                    best = op;
+                }*/
+            }
+        }
+        return best;
+    }
+
+    // renvoie le noeud de la séquence qui précéde la position position
+    // position doit être comprise entre 0 et n-1
+    private Noeud getPrec(int position){
+        if(position == 0) return this.getListeNoeuds().get(position);
+        return this.getListeNoeuds().get(position-1);
+    }
+
+    // renvoie le noeud de la séquence qui est actuellemment  la position position
+    private Noeud getCurrent(int position) {
+        if(position == this.getNbNoeuds()) return this.getListeNoeuds().get(0);
+        return this.getListeNoeuds().get(position);
     }
 
     @Override

@@ -4,20 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5dbe1660-c9ae-497e-83b8-a85dacef2117" name="Changes" comment="getinstance doublon enlevé">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rein/operateur/InsertionNoeud.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rein/operateur/InterDeplacement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rein/operateur/IntraDeplacement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rein/operateur/OperateurLocal.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rein/solveur/RechercheLocale.java" afterDir="false" />
+    <list default="true" id="5dbe1660-c9ae-497e-83b8-a85dacef2117" name="Changes" comment="init operateurs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/operateur/Operateur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/operateur/Operateur.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/operateur/InterDeplacement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/operateur/InterDeplacement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/operateur/OperateurInterSequence.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/operateur/OperateurInterSequence.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/operateur/OperateurIntraSequence.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/operateur/OperateurIntraSequence.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/operateur/OperateurLocal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/operateur/OperateurLocal.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solution/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solution/Solution.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solveur/RechercheLocale.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solveur/RechercheLocale.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/transplantation/Sequence.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/transplantation/Sequence.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/solveur/StrategieBasique.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/solveur/StrategieBasique.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +100,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="6a9d1413-cf5c-4746-827d-ae378770fdae" name="Changes" comment="" />
+      <changelist id="5dbe1660-c9ae-497e-83b8-a85dacef2117" name="Changes" comment="init operateurs" />
       <created>1649313157800</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -126,7 +120,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652250070127</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="init operateurs">
+      <created>1652263593028</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1652263593028</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -140,7 +141,29 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/solution-0-echange" />
+                        <option value="operateurs" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+        <entry key="a52d546c-5c65-49e3-9de2-fc43d76e79bd">
+          <value>
+            <State>
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
+                <map>
+                  <entry key="Show.Git.Branches" value="true" />
+                </map>
+              </option>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/strategie-1" />
                       </list>
                     </value>
                   </entry>
@@ -151,10 +174,26 @@
         </entry>
       </map>
     </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="origin/strategie-1" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="sout martrein" />
     <MESSAGE value="test" />
-    <option name="LAST_COMMIT_MESSAGE" value="test" />
+    <MESSAGE value="init operateurs" />
+    <option name="LAST_COMMIT_MESSAGE" value="init operateurs" />
   </component>
 </project>

@@ -11,6 +11,13 @@ public abstract class OperateurInterSequence extends OperateurLocal{
         this.autreSequence = null;
     }
 
+    public OperateurInterSequence(Sequence sequence, Sequence autreSequence, int positionI, int positionJ) {
+        super(sequence, positionI, positionJ);
+        this.autreSequence = autreSequence;
+        this.noeudJ = autreSequence.getNoeud(positionJ);
+        this.deltaBeneficeMedical = this.evalDeltaBenefice();
+    }
+
     protected abstract int evalDeltaBeneficeSequence();
     protected abstract int evalDeltaBeneficeAutreSequence();
 

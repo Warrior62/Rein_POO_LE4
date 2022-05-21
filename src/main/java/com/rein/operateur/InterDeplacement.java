@@ -1,9 +1,15 @@
 package com.rein.operateur;
 
+import com.rein.transplantation.Sequence;
+
 public class InterDeplacement extends OperateurInterSequence{
 
     public InterDeplacement(){
         super();
+    }
+
+    public InterDeplacement(Sequence sequence, Sequence autreSequence, int positionI, int positionJ){
+        super(sequence, autreSequence, positionI, positionJ);
     }
 
     @Override
