@@ -171,19 +171,19 @@ public abstract class Sequence {
         return true;*/
     }
 
-    public OperateurLocal getMeilleurOperateurInter(TypeOperateurLocal type, Sequence autreSequence) {
+    /*public OperateurLocal getMeilleurOperateurInter(TypeOperateurLocal type, Sequence autreSequence) {
         OperateurLocal best = OperateurLocal.getOperateur(type);
         if(this.equals(autreSequence)) return best;
         for(int i=0; i<this.listeNoeuds.size(); i++) {
             for(int j=0; j<autreSequence.listeNoeuds.size()+1; j++) {
                 OperateurInterSequence op = OperateurLocal.getOperateurInter(type, this, autreSequence, i, j);
-                /**if(op.isMeilleur(best) && !ListeTabou.getInstance().isTabou(op)) {
+                if(op.isMeilleur(best) && !ListeTabou.getInstance().isTabou(op)) {
                     best = op;
-                }*/
+                }
             }
         }
         return best;
-    }
+    }*/
 
     // renvoie le noeud de la séquence qui précéde la position position
     // position doit être comprise entre 0 et n-1

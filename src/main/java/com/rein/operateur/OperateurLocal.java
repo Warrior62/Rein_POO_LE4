@@ -29,7 +29,7 @@ public abstract class OperateurLocal extends Operateur {
         return noeudJ;
     }
 
-    public static OperateurLocal getOperateur(TypeOperateurLocal type){
+    /*public static OperateurLocal getOperateur(TypeOperateurLocal type){
         switch(type){
             case INTRA_DEPLACEMENT:
                 return new IntraDeplacement();
@@ -42,9 +42,9 @@ public abstract class OperateurLocal extends Operateur {
             default:
                 return null;
         }
-    }
+    }*/
 
-    public static OperateurIntraSequence getOperateurIntra(TypeOperateurLocal type, Sequence sequence){
+    /*public static OperateurIntraSequence getOperateurIntra(TypeOperateurLocal type, Sequence sequence){
         switch(type){
             case INTRA_DEPLACEMENT:
                 return new IntraDeplacement();
@@ -53,9 +53,9 @@ public abstract class OperateurLocal extends Operateur {
             default:
                 return null;
         }
-    }
+    }*/
 
-    public static OperateurInterSequence getOperateurInter(TypeOperateurLocal type, Sequence sequence, Sequence autreSequence, int positionI, int positionJ){
+    /*public static OperateurInterSequence getOperateurInter(TypeOperateurLocal type, Sequence sequence, Sequence autreSequence, int positionI, int positionJ){
         switch(type){
             case INTER_DEPLACEMENT:
                 return new InterDeplacement(sequence, autreSequence, positionI, positionJ);
@@ -64,5 +64,5 @@ public abstract class OperateurLocal extends Operateur {
             default:
                 return null;
         }
-    }
+    }*/
 }

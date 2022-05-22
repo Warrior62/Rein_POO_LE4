@@ -9,7 +9,6 @@ import com.rein.io.InstanceReader;
 import com.rein.operateur.OperateurInterSequence;
 import com.rein.operateur.OperateurIntraSequence;
 import com.rein.operateur.OperateurLocal;
-import com.rein.operateur.TypeOperateurLocal;
 import com.rein.transplantation.Cycle;
 import com.rein.transplantation.Sequence;
 import java.util.ArrayList;
@@ -143,9 +142,9 @@ public class Solution {
         return true;
     }
 
-    private OperateurLocal getMeilleurOperateurIntra(TypeOperateurLocal type){
+    /*private OperateurLocal getMeilleurOperateurIntra(TypeOperateurLocal type){
         return null;
-        /*OperateurLocal best = OperateurLocal.getOperateur(type);
+        OperateurLocal best = OperateurLocal.getOperateur(type);
         for(Tournee t : this.listeTournees){
             for(int i=0; i<t.getClients().size(); i++) {
                 for(int j=0; j<t.getClients().size()+1; j++) {
@@ -158,10 +157,10 @@ public class Solution {
                 }
             }
         }
-        return best;*/
-    }
+        return best;
+    }*/
 
-    private OperateurLocal getMeilleurOperateurInter(TypeOperateurLocal type){
+    /*private OperateurLocal getMeilleurOperateurInter(TypeOperateurLocal type){
         OperateurLocal best = OperateurLocal.getOperateur(type), op;
         for(Sequence s : this.listeSequences){
             for(Sequence s1 : this.listeSequences) {
@@ -171,16 +170,16 @@ public class Solution {
             }
         }
         return best;
-    }
+    }*/
 
-    public OperateurLocal getMeilleurOperateurLocal(TypeOperateurLocal type){
+   /* public OperateurLocal getMeilleurOperateurLocal(TypeOperateurLocal type){
         if(OperateurLocal.getOperateur(type) instanceof OperateurIntraSequence)
             return this.getMeilleurOperateurIntra(type);
         else if(OperateurLocal.getOperateur(type) instanceof OperateurInterSequence)
             return this.getMeilleurOperateurInter(type);
         //this.getMeilleurOperateurInter(type);
         return null;
-    }
+    }*/
 
     public static void main(String[] args) {
         InstanceReader reader;
