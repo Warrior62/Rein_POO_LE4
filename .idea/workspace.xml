@@ -4,15 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5dbe1660-c9ae-497e-83b8-a85dacef2117" name="Changes" comment="propal°1 arbre">
+    <list default="true" id="5dbe1660-c9ae-497e-83b8-a85dacef2117" name="Changes" comment="propal°2 arbre">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rein/interface_web/InterfaceWeb.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/instance/Noeud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/instance/Noeud.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solution/Arbre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solution/Arbre.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/operateur/Operateur.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/operateur/Operateur.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/operateur/OperateurInterSequence.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/operateur/OperateurInterSequence.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/operateur/OperateurIntraSequence.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/operateur/OperateurIntraSequence.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/solution/Solution.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/solution/Solution.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/transplantation/Sequence.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/transplantation/Sequence.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/instance/Noeud.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/instance/Noeud.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +63,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
-  <component name="RunManager" selected="Application.Arbre">
+  <component name="RunManager" selected="Application.StrategieBasique">
     <configuration name="Arbre" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.rein.solution.Arbre" />
       <module name="rein-poo-le4" />
@@ -108,8 +104,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Arbre" />
         <item itemvalue="Application.StrategieBasique" />
+        <item itemvalue="Application.Arbre" />
       </list>
     </recent_temporary>
   </component>
@@ -157,7 +153,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653210542262</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="propal°2 arbre">
+      <created>1653399302500</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1653399302500</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -226,7 +229,8 @@
     <MESSAGE value="init operateurs" />
     <MESSAGE value="init operateurs + recherche locale" />
     <MESSAGE value="propal°1 arbre" />
-    <option name="LAST_COMMIT_MESSAGE" value="propal°1 arbre" />
+    <MESSAGE value="propal°2 arbre" />
+    <option name="LAST_COMMIT_MESSAGE" value="propal°2 arbre" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
