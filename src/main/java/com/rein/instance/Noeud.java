@@ -1,6 +1,7 @@
 package com.rein.instance;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 
 public class Noeud {
@@ -28,6 +29,12 @@ public class Noeud {
         Map<Noeud, Integer> copy = new HashMap<>();
         copy.putAll(original);
         return copy;
+    }
+
+    public boolean isPresent(HashSet<Integer> set){
+        if(set.contains(this.getId()))
+            return true;
+        return false;
     }
 
 
