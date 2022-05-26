@@ -2,6 +2,7 @@ package com.rein.interface_web;
 
 import com.rein.instance.Altruiste;
 import com.rein.instance.Noeud;
+import com.rein.instance.Paire;
 import com.rein.solution.Chaine;
 import com.rein.solution.Solution;
 import com.rein.transplantation.Cycle;
@@ -46,11 +47,32 @@ public class InterfaceWeb {
                 this.altruistesNonUtilises.add(id);
     }
 
+    public void setPairesNonUtilisees() {
+        ArrayList<Integer> allPaires = new ArrayList<>();
+        ArrayList<Integer> solutionPaires = new ArrayList<>();
+        // Itère sur les noeuds de l'instance
+        for(Noeud noeud : this.solution.getInstance().getTabNoeud())
+            if(noeud instanceof Paire)
+                allPaires.add(noeud.getId());
+        // Itère sur les noeuds de la solution
+        for(Sequence sequence : this.solution.getListeSequences())
+            for(Noeud n : sequence.getListeNoeuds())
+                if(n instanceof Paire)
+                    solutionPaires.add(n.getId());
+        // si noeud de allPaires n'est pas dans solutionPaires
+        for(Integer id : allPaires)
+            if(!solutionPaires.contains(id))
+                this.pairesNonUtilisees.add(id);
+    }
+
     public String getBeginningOfHtml() {
-        String idsAltruistes = "";
+        String idsAltruistes = "", idsPaires = "";
         this.setAltruistesNonUtilises();
         for(Integer id : this.altruistesNonUtilises)
             idsAltruistes += id + " ";
+        this.setPairesNonUtilisees();
+        for(Integer id : this.pairesNonUtilisees)
+            idsPaires += id + " ";
         return "<!DOCTYPE html>\n" +
                 "<html lang=\"en\">\n" +
                 "  <head>\n" +
@@ -61,8 +83,11 @@ public class InterfaceWeb {
                 "    <h2>" + this.solution.getInstance().getNom() + "</h2>\n" +
                 "    <p>Bénéfice médical total : " + this.solution.getBenefMedicalTotal() + "</p>\n" +
                 "    <hr>" +
+                "    <p>Taille max chaînes : " + this.solution.getInstance().getTailleMaxChaines() + "</p>" +
+                "    <p>Taille max cycles : " + this.solution.getInstance().getTailleMaxCycles() + "</p>" +
                 "    <p>Paire(s) non-utilisée(s) : </p>\n" +
                 "    <p>Altruiste(s) non-utilisé(s) : [ " + idsAltruistes + "]</p>\n" +
+                "    <p>Paire(s) non-utilisée(s) : [ " + idsPaires + "]</p>\n" +
                 "    <p>Bénéfice de chaque séquence : </p>\n" +
                 "    <hr>" +
                 "    <div id=\"mynetwork\"></div>\n" +
