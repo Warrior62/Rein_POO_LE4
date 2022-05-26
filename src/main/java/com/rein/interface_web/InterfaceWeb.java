@@ -21,6 +21,7 @@ public class InterfaceWeb {
     private ArrayList<Integer> pairesNonUtilisees;
     private ArrayList<Integer> altruistesNonUtilises;
     private Integer nbNoeudsNonUtilises;
+    private String beneficeChaqueSequence;
     private String html;
 
     public InterfaceWeb(Solution solution) {
@@ -28,6 +29,7 @@ public class InterfaceWeb {
         this.pairesNonUtilisees = new ArrayList<>();
         this.altruistesNonUtilises = new ArrayList<>();
         this.nbNoeudsNonUtilises = 0;
+        this.beneficeChaqueSequence = "";
         this.html = "";
     }
 
@@ -71,6 +73,20 @@ public class InterfaceWeb {
         this.nbNoeudsNonUtilises = this.altruistesNonUtilises.size() + this.pairesNonUtilisees.size();
     }
 
+    public void setBeneficeChaqueSequence() {
+        String res = "<ul>";
+        for(Sequence sequence : this.solution.getListeSequences()){
+            res += "<li>";
+            for(Noeud n : sequence.getListeNoeuds()){
+                res += n.getId() + "->";
+            }
+            res = res.substring(0, res.length()-2);
+            res += " : <b>" + sequence.getBenefMedicalSequence() + "</b></li>";
+        }
+        res += "</ul>";
+        this.beneficeChaqueSequence = res;
+    }
+
     public String getBeginningOfHtml() {
         String idsAltruistes = "", idsPaires = "";
         this.setAltruistesNonUtilises();
@@ -80,6 +96,7 @@ public class InterfaceWeb {
         for(Integer id : this.pairesNonUtilisees)
             idsPaires += id + " ";
         this.setNbNoeudsNonUtilises();
+        this.setBeneficeChaqueSequence();
         return "<!DOCTYPE html>\n" +
                 "<html lang=\"en\">\n" +
                 "  <head>\n" +
@@ -88,14 +105,15 @@ public class InterfaceWeb {
                 "  </head>\n" +
                 "  <body>\n" +
                 "    <h2>" + this.solution.getInstance().getNom() + "</h2>\n" +
-                "    <p>Bénéfice médical total : " + this.solution.getBenefMedicalTotal() + "</p>\n" +
+                "    <p>Bénéfice médical total : <b>" + this.solution.getBenefMedicalTotal() + "</b></p>\n" +
                 "    <hr>" +
-                "    <p>Taille max chaînes : " + this.solution.getInstance().getTailleMaxChaines() + "</p>" +
-                "    <p>Taille max cycles : " + this.solution.getInstance().getTailleMaxCycles() + "</p>" +
-                "    <p>Nombre de noeud(s) non-utilisé(s) : " + this.nbNoeudsNonUtilises + "</p>\n" +
-                "    <p>Altruiste(s) non-utilisé(s) : [ " + idsAltruistes + "]</p>\n" +
-                "    <p>Paire(s) non-utilisée(s) : [ " + idsPaires + "]</p>\n" +
-                "    <p>Bénéfice de chaque séquence : </p>\n" +
+                "    <p>Taille max chaînes : <b>" + this.solution.getInstance().getTailleMaxChaines() + "</b></p>" +
+                "    <p>Taille max cycles : <b>" + this.solution.getInstance().getTailleMaxCycles() + "</b></p>" +
+                "    <p>Nombre de noeud(s) non-utilisé(s) : <b>" + this.nbNoeudsNonUtilises + "</b></p>\n" +
+                "    <p>Altruiste(s) non-utilisé(s) : <b>[ " + idsAltruistes + "]</b></p>\n" +
+                "    <p>Paire(s) non-utilisée(s) : <b>[ " + idsPaires + "]</b></p>\n" +
+                "    <p>Bénéfice de chaque séquence : </p>" +
+                     this.beneficeChaqueSequence +
                 "    <hr>" +
                 "    <div id=\"mynetwork\"></div>\n" +
                 "    <script type=\"text/javascript\">";

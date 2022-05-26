@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5dbe1660-c9ae-497e-83b8-a85dacef2117" name="Changes" comment="affichage liste des paires non-utilisés">
+    <list default="true" id="5dbe1660-c9ae-497e-83b8-a85dacef2117" name="Changes" comment="affichage nombre de noeuds non-utilisés">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/interface_web/InterfaceWeb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/interface_web/InterfaceWeb.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -201,7 +202,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653582116200</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="affichage nombre de noeuds non-utilisés">
+      <created>1653582553616</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1653582553616</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -274,7 +282,8 @@
     <MESSAGE value="problème d'orientation des flèches pour les cycles de 3 résolu" />
     <MESSAGE value="affichage flèche directions canva + liste des altruistes non-utilisés" />
     <MESSAGE value="affichage liste des paires non-utilisés" />
-    <option name="LAST_COMMIT_MESSAGE" value="affichage liste des paires non-utilisés" />
+    <MESSAGE value="affichage nombre de noeuds non-utilisés" />
+    <option name="LAST_COMMIT_MESSAGE" value="affichage nombre de noeuds non-utilisés" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
