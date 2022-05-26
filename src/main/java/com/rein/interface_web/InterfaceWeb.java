@@ -87,7 +87,7 @@ public class InterfaceWeb {
                         for (Map.Entry<Noeud, Integer> entry : donneur.getListeEchanges().entrySet())
                             if (entry.getKey().getId() == receveur.getId())
                                 benefMedical = entry.getValue();
-                        edges += "{ from: " + donneur.getId() + ", to: " + receveur.getId() + ", label: \"" + benefMedical + "\", color: { color: \"black\" }, font: { align: \"top\" }, arrows: \"from\" },";
+                        edges += "{ from: " + donneur.getId() + ", to: " + receveur.getId() + ", label: \"" + benefMedical + "\", color: { color: \"black\" }, font: { align: \"top\" }, arrows: \"to\" },";
                     }
                 } else {
                     // CYCLE
@@ -99,7 +99,7 @@ public class InterfaceWeb {
                         for (Map.Entry<Noeud, Integer> entry : donneur.getListeEchanges().entrySet()) {
                             if (entry.getKey().getId() == receveur.getId()) {
                                 benefMedical = entry.getValue();
-                                edges += "{ from: " + donneur.getId() + ", to: " + receveur.getId() + ", label: \"" + benefMedical + "\", color: { color: \"black\" }, font: { align: \"top\" }, arrows: \"from\" },";
+                                edges += "{ from: " + donneur.getId() + ", to: " + receveur.getId() + ", label: \"" + benefMedical + "\", color: { color: \"black\" }, font: { align: \"top\" }, arrows: \"to\" },";
                             }
                         }
                     }
