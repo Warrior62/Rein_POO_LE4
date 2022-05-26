@@ -3,6 +3,7 @@ import com.rein.instance.Altruiste;
 import com.rein.instance.Instance;
 import com.rein.instance.Noeud;
 import com.rein.instance.Paire;
+import com.rein.interface_web.InterfaceWeb;
 import com.rein.io.InstanceReader;
 import com.rein.solution.Chaine;
 import com.rein.solution.Solution;
@@ -118,109 +119,6 @@ public class StrategieBasique implements Solveur{
         return -1;
     }
 
-    public static void displayWebInterface(Solution s) throws IOException {
-        int beneficeMedicalTotal = s.getBenefMedicalTotal();
-        String begin = "<!DOCTYPE html>\n" +
-                "<html lang=\"en\">\n" +
-                "  <head>\n" +
-                "    <script src=\"https://d3js.org/d3.v6.min.js\"></script>\n" +
-                "    <script src=\"https://visjs.github.io/vis-network/standalone/umd/vis-network.min.js\"></script>\n" +
-                "    <style type=\"text/css\">\n" +
-                "      #mynetwork {\n" +
-                "        width: 600px;\n" +
-                "        height: 600px;\n" +
-                "        border: 1px solid lightgray;\n" +
-                "      }\n" +
-                "    </style>\n" +
-                "  </head>\n" +
-                "  <body>\n" +
-                "    <div>" + s.getInstance().getNom() + "</div>\n" +
-                "    <div id=\"results\">Bénéfice médical total : " + beneficeMedicalTotal + "</div>\n" +
-                "    <div id=\"mynetwork\"></div>\n" +
-                "    <script type=\"text/javascript\">";
-
-        String nodes = "var nodes = new vis.DataSet([";
-        for (Sequence sequence : s.getListeSequences()) {
-            boolean isAltruiste = false;
-            for (Noeud noeud : sequence.getListeNoeuds()) {
-                int idNoeud = noeud.getId();
-                String shape = "circle";
-                String color = "orange";
-                if (sequence instanceof Chaine && !isAltruiste) {
-                    shape = "box";
-                    color = "#97C2FC";
-                    isAltruiste = true;
-                }
-                nodes += "{ id: " + idNoeud + ", label: \"" + idNoeud + "\", shape: \"" + shape + "\", color: \"" + color + "\" },";
-            }
-        }
-        nodes = nodes.substring(0, nodes.length() - 1);
-        nodes += "]);";
-
-        String edges = "var edges = [";
-        for (Sequence sequence : s.getListeSequences()) {
-            for (int i = 0; i < sequence.getListeNoeuds().size(); i++) {
-                // if it's not the last node of the sequence
-                if (i + 1 < sequence.getListeNoeuds().size()) {
-                    Noeud donneur = sequence.getListeNoeuds().get(i);
-                    Noeud receveur = sequence.getListeNoeuds().get(i + 1);
-                    int benefMedical = -1;
-                    // CHAINE
-                    if (sequence instanceof Chaine) {
-                        System.out.println("chaine");
-                        for (Map.Entry<Noeud, Integer> entry : sequence.getListeNoeuds().get(i).getListeEchanges().entrySet())
-                            if (entry.getKey().getId() == receveur.getId())
-                                benefMedical = entry.getValue();
-                        edges += "{ from: " + donneur.getId() + ", to: " + receveur.getId() + ", label: \"" + benefMedical + "\", color: { color: \"black\" }, font: { align: \"top\" }, arrows: \"to\" },";
-                    }
-                    // CYCLE
-                    if (sequence instanceof Cycle) {
-                        System.out.println("cycle");
-                        for (Map.Entry<Noeud, Integer> entry : donneur.getListeEchanges().entrySet())
-                            if (entry.getKey().getId() == receveur.getId())
-                                benefMedical = entry.getValue();
-                        edges += "{ from: " + donneur.getId() + ", to: " + receveur.getId() + ", label: \"" + benefMedical + "\", color: { color: \"black\" }, font: { align: \"top\" }, arrows: \"from\" },";
-                    }
-                } else {
-                    // CYCLE
-                    if (sequence instanceof Cycle) {
-                        System.out.println("cycle");
-                        int benefMedical = -1;
-                        Noeud donneur = sequence.getListeNoeuds().get(i);
-                        Noeud receveur = sequence.getListeNoeuds().get(0);
-                        for (Map.Entry<Noeud, Integer> entry : donneur.getListeEchanges().entrySet()) {
-                            if (entry.getKey().getId() == receveur.getId()) {
-                                benefMedical = entry.getValue();
-                                edges += "{ from: " + donneur.getId() + ", to: " + receveur.getId() + ", label: \"" + benefMedical + "\", color: { color: \"black\" }, font: { align: \"top\" }, arrows: \"from\" },";
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        edges = edges.substring(0, edges.length() - 1);
-        edges += "];";
-        System.out.println(edges);
-        String end = "var container = document.getElementById(\"mynetwork\");\n" +
-                "      var data = {\n" +
-                "        nodes: nodes,\n" +
-                "        edges: edges,\n" +
-                "      };\n" +
-                "      var options = {};\n" +
-                "      var network = new vis.Network(container, data, options);\n" +
-                "    </script>\n" +
-                "  </body>\n" +
-                "</html>";
-
-        String html = begin + nodes + edges + end;
-        String pathname = "/Users/tryla/Documents/LE4_2021_2022/POO/Rein_POO_LE4/results.html";
-        File result = new File(pathname);
-        result.createNewFile();
-        FileWriter myWriter = new FileWriter(pathname);
-        myWriter.write(html);
-        myWriter.close();
-
-    }
 
     public static void main(String[] args) {
         CommandLineParser parser = new DefaultParser();
@@ -244,14 +142,13 @@ public class StrategieBasique implements Solveur{
             InstanceReader reader;
             try {
                 // Lecture du fichier d'instance
-                //reader = new InstanceReader("instancesInitiales/" + line.getOptionValue("inst"));
-                reader = new InstanceReader("instancesInitiales/KEP_p50_n6_k5_l17.txt");
+                reader = new InstanceReader("instancesInitiales/" + line.getOptionValue("inst"));
                 Instance i = reader.readInstance();
                 // Résolution de l'instance
                 StrategieBasique sb = new StrategieBasique();
                 Solution s1 = sb.solve(i);
                 System.out.println(s1);
-                /**try {
+                try {
                     // Création du fichier de solution
                     String nomFicSol = line.getOptionValue("dSol") + "/" + line.getOptionValue("inst").split("\\.")[0] + "_sol.txt";
                     File ficSol = new File(nomFicSol);
@@ -264,10 +161,11 @@ public class StrategieBasique implements Solveur{
                 } catch (IOException e) {
                     System.err.println("ERROR fichier solution");
                     e.printStackTrace();
-                }**/
+                }
                 //System.out.println("s1 : " + s1.toString() + "\n\tcheck : " + s1.check());
                 System.out.println("Checker : " + s1.check());
-                displayWebInterface(s1);
+                InterfaceWeb interfaceWeb = new InterfaceWeb(s1);
+                interfaceWeb.createHtmlFile();
             } catch(Exception e){
                 System.out.println(e.getMessage());
                 System.err.println("ERROR Strategie basique");
