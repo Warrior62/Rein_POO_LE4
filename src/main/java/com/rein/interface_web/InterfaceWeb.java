@@ -1,5 +1,6 @@
 package com.rein.interface_web;
 
+import com.rein.instance.Altruiste;
 import com.rein.instance.Noeud;
 import com.rein.solution.Chaine;
 import com.rein.solution.Solution;
@@ -9,35 +10,61 @@ import com.rein.transplantation.Sequence;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Map;
 
 public class InterfaceWeb {
 
     private final Solution solution;
+    private ArrayList<Integer> pairesNonUtilisees;
+    private ArrayList<Integer> altruistesNonUtilises;
     private String html;
 
     public InterfaceWeb(Solution solution) {
         this.solution = solution;
+        this.pairesNonUtilisees = new ArrayList<>();
+        this.altruistesNonUtilises = new ArrayList<>();
         this.html = "";
     }
 
+    public void setAltruistesNonUtilises() {
+        ArrayList<Integer> allAltruistes = new ArrayList<>();
+        ArrayList<Integer> solutionAltruistes = new ArrayList<>();
+        // Itère sur les noeuds de l'instance
+        for(Noeud noeud : this.solution.getInstance().getTabNoeud())
+            if(noeud instanceof Altruiste)
+                allAltruistes.add(noeud.getId());
+        // Itère sur les noeuds de la solution
+        for(Sequence sequence : this.solution.getListeSequences())
+            for(Noeud n : sequence.getListeNoeuds())
+                if(n instanceof Altruiste)
+                    solutionAltruistes.add(n.getId());
+        // si noeud de allAltruistes n'est pas dans solutionAltruistes
+        for(Integer id : allAltruistes)
+            if(!solutionAltruistes.contains(id))
+                this.altruistesNonUtilises.add(id);
+    }
+
     public String getBeginningOfHtml() {
+        String idsAltruistes = "";
+        this.setAltruistesNonUtilises();
+        for(Integer id : this.altruistesNonUtilises)
+            idsAltruistes += id + " ";
         return "<!DOCTYPE html>\n" +
                 "<html lang=\"en\">\n" +
                 "  <head>\n" +
                 "    <script src=\"https://d3js.org/d3.v6.min.js\"></script>\n" +
                 "    <script src=\"https://visjs.github.io/vis-network/standalone/umd/vis-network.min.js\"></script>\n" +
-                "    <style type=\"text/css\">\n" +
-                "      #mynetwork {\n" +
-                "        width: 600px;\n" +
-                "        height: 600px;\n" +
-                "        border: 1px solid lightgray;\n" +
-                "      }\n" +
-                "    </style>\n" +
                 "  </head>\n" +
                 "  <body>\n" +
-                "    <div>" + this.solution.getInstance().getNom() + "</div>\n" +
-                "    <div id=\"results\">Bénéfice médical total : " + this.solution.getBenefMedicalTotal() + "</div>\n" +
+                "    <h2>" + this.solution.getInstance().getNom() + "</h2>\n" +
+                "    <p>Bénéfice médical total : " + this.solution.getBenefMedicalTotal() + "</p>\n" +
+                "    <hr>" +
+                "    <p>Paire(s) non-utilisée(s) : </p>\n" +
+                "    <p>Altruiste(s) non-utilisé(s) : [ " + idsAltruistes + "]</p>\n" +
+                "    <p>Bénéfice de chaque séquence : </p>\n" +
+                "    <hr>" +
                 "    <div id=\"mynetwork\"></div>\n" +
                 "    <script type=\"text/javascript\">";
     }
@@ -113,13 +140,16 @@ public class InterfaceWeb {
     }
 
     public String getEndOfHtml() {
+        String options = "width:'1200px', height:'500px',";
+        options += "interaction:{navigationButtons:true, hover:true, hoverConnectedEdges:true},";
         return "var container = document.getElementById(\"mynetwork\");\n" +
                 "      var data = {\n" +
                 "        nodes: nodes,\n" +
                 "        edges: edges,\n" +
                 "      };\n" +
-                "      var options = {};\n" +
+                "      var options = {"+options+"};\n" +
                 "      var network = new vis.Network(container, data, options);\n" +
+                "      network.setOptions(options);" +
                 "    </script>\n" +
                 "  </body>\n" +
                 "</html>";
