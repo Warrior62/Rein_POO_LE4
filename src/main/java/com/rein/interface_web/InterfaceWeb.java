@@ -20,12 +20,14 @@ public class InterfaceWeb {
     private final Solution solution;
     private ArrayList<Integer> pairesNonUtilisees;
     private ArrayList<Integer> altruistesNonUtilises;
+    private Integer nbNoeudsNonUtilises;
     private String html;
 
     public InterfaceWeb(Solution solution) {
         this.solution = solution;
         this.pairesNonUtilisees = new ArrayList<>();
         this.altruistesNonUtilises = new ArrayList<>();
+        this.nbNoeudsNonUtilises = 0;
         this.html = "";
     }
 
@@ -65,6 +67,10 @@ public class InterfaceWeb {
                 this.pairesNonUtilisees.add(id);
     }
 
+    public void setNbNoeudsNonUtilises() {
+        this.nbNoeudsNonUtilises = this.altruistesNonUtilises.size() + this.pairesNonUtilisees.size();
+    }
+
     public String getBeginningOfHtml() {
         String idsAltruistes = "", idsPaires = "";
         this.setAltruistesNonUtilises();
@@ -73,6 +79,7 @@ public class InterfaceWeb {
         this.setPairesNonUtilisees();
         for(Integer id : this.pairesNonUtilisees)
             idsPaires += id + " ";
+        this.setNbNoeudsNonUtilises();
         return "<!DOCTYPE html>\n" +
                 "<html lang=\"en\">\n" +
                 "  <head>\n" +
@@ -85,7 +92,7 @@ public class InterfaceWeb {
                 "    <hr>" +
                 "    <p>Taille max chaînes : " + this.solution.getInstance().getTailleMaxChaines() + "</p>" +
                 "    <p>Taille max cycles : " + this.solution.getInstance().getTailleMaxCycles() + "</p>" +
-                "    <p>Paire(s) non-utilisée(s) : </p>\n" +
+                "    <p>Nombre de noeud(s) non-utilisé(s) : " + this.nbNoeudsNonUtilises + "</p>\n" +
                 "    <p>Altruiste(s) non-utilisé(s) : [ " + idsAltruistes + "]</p>\n" +
                 "    <p>Paire(s) non-utilisée(s) : [ " + idsPaires + "]</p>\n" +
                 "    <p>Bénéfice de chaque séquence : </p>\n" +
