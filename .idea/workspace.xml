@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5dbe1660-c9ae-497e-83b8-a85dacef2117" name="Changes" comment="Ajout methode ajouterSequence dans la classe Solution (correctif)">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_cli_commons_cli_1_5_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_lang3_3_1.xml" afterDir="false" />
+    <list default="true" id="5dbe1660-c9ae-497e-83b8-a85dacef2117" name="Changes" comment="Commit intermédiaire de construction d'arbres">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rein-poo-le4.iml" beforeDir="false" afterPath="$PROJECT_DIR$/rein-poo-le4.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solution/Arbre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solution/Arbre.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/instance/Noeud.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/instance/Noeud.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,7 +153,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653210542262</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Commit intermédiaire de construction d'arbres">
+      <created>1653604682393</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1653604682393</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -226,7 +229,8 @@
     <MESSAGE value="init operateurs" />
     <MESSAGE value="init operateurs + recherche locale" />
     <MESSAGE value="propal°1 arbre" />
-    <option name="LAST_COMMIT_MESSAGE" value="propal°1 arbre" />
+    <MESSAGE value="Commit intermédiaire de construction d'arbres" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commit intermédiaire de construction d'arbres" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -12,9 +12,9 @@ public class Arbre {
     private Noeud noeudRacine;
     private ArrayList<Arbre> listeFils;
     private int niveauProfondeur;
-    static final int PROFONDEUR_MAX = 5;
-    static ArrayList<HashSet<Integer>> listeChainesPossibles = new ArrayList<HashSet<Integer>>();
-    static ArrayList<HashSet<Integer>> listeCyclesPossibles = new ArrayList<HashSet<Integer>>();
+    static final int PROFONDEUR_MAX = 8;
+    static LinkedHashSet<HashSet<Integer>> listeChainesPossibles = new LinkedHashSet<HashSet<Integer>>();
+    static LinkedHashSet<HashSet<Integer>> listeCyclesPossibles = new LinkedHashSet<HashSet<Integer>>();
 
     // --------------------------------------------------
     // --------------------------------------------------
@@ -64,6 +64,8 @@ public class Arbre {
         if (listeIdBis.add(arbre.getId())) {
             if(profondeur < PROFONDEUR_MAX){
                 arbre.remplirListeFils();       //Récupération de ses fils
+                System.out.println("liste de fils : ");
+                System.out.println(arbre.getListeFils());
                 for(Arbre fils : arbre.getListeFils()) {
                     //System.out.println("\tracine=" + a.noeudRacine.getId() + " -> " + fils.noeudRacine.getId());
                     //System.out.println("\n");"";
@@ -73,19 +75,20 @@ public class Arbre {
                 }
             }else {
                 System.out.println("Detection d'une chaine !!! ---> " + listeIdBis);
-                listeChainesPossibles.add(listeId);
+                listeChainesPossibles.add(listeIdBis);
             }
-        }else {
+        }else { //Lorsque l'on détecte un cycle, il faut enregistrer le cycle et la chaîne que cela peut aussi former
+            listeChainesPossibles.add(new LinkedHashSet<>(listeIdBis));
             Iterator it = listeIdBis.iterator();
             System.out.println("Detection d'un cycle !!! ---> " + listeIdBis);
-            int idCourant = 0;
+            int idCourant = (int) it.next();
             while (idCourant != arbre.getId()) {
-                //System.out.println("aaaa");
+                System.out.println("aaaa : " + idCourant);
+                it.remove();
                 idCourant = (int) it.next();
             }
-                listeIdBis.remove(idCourant);
             System.out.println("Detection d'un cycle !!! ---> " + listeIdBis);
-            listeCyclesPossibles.add(listeId);
+            listeCyclesPossibles.add(listeIdBis);
         }
     }
 
@@ -133,14 +136,13 @@ public class Arbre {
 
     public static void main(String[] args) {
         try{
-            InstanceReader reader = new InstanceReader("instancesInitiales/KEP_p100_n11_k5_l17.txt");
+            InstanceReader reader = new InstanceReader("instancesInitiales/test.txt");
             Instance i = reader.readInstance();
             Arbre a = new Arbre(i.getTabNoeud()[0]);
             LinkedHashSet<Integer> listeId = new LinkedHashSet<Integer>();
             recurrArbre(a, listeId, 0);
             System.out.println(a);
-            /*for(Arbre fils : a.getListeFils())
-                System.out.println("\t" + fils);*/
+
             System.out.println(i.getEchanges());
             System.out.println("id : " + a.getId());
             System.out.println("On est bons");
