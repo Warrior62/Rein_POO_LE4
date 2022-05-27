@@ -74,7 +74,7 @@ public class InterfaceWeb {
     }
 
     public void setBeneficeChaqueSequence() {
-        String res = "<ul>";
+        String res = "<ul style=\"list-style-type:none;\">";
         for(Sequence sequence : this.solution.getListeSequences()){
             res += "<li>";
             for(Noeud n : sequence.getListeNoeuds()){
@@ -88,33 +88,28 @@ public class InterfaceWeb {
     }
 
     public String getBeginningOfHtml() {
-        String idsAltruistes = "", idsPaires = "";
         this.setAltruistesNonUtilises();
-        for(Integer id : this.altruistesNonUtilises)
-            idsAltruistes += id + " ";
-        this.setPairesNonUtilisees();
-        for(Integer id : this.pairesNonUtilisees)
-            idsPaires += id + " ";
-        this.setNbNoeudsNonUtilises();
         this.setBeneficeChaqueSequence();
         return "<!DOCTYPE html>\n" +
                 "<html lang=\"en\">\n" +
+                "<meta charset='utf-8'>\n" +
                 "  <head>\n" +
                 "    <script src=\"https://d3js.org/d3.v6.min.js\"></script>\n" +
                 "    <script src=\"https://visjs.github.io/vis-network/standalone/umd/vis-network.min.js\"></script>\n" +
                 "  </head>\n" +
                 "  <body>\n" +
                 "    <h2>" + this.solution.getInstance().getNom() + "</h2>\n" +
-                "    <p>Bénéfice médical total : <b>" + this.solution.getBenefMedicalTotal() + "</b></p>\n" +
-                "    <hr>" +
-                "    <p>Taille max chaînes : <b>" + this.solution.getInstance().getTailleMaxChaines() + "</b></p>" +
-                "    <p>Taille max cycles : <b>" + this.solution.getInstance().getTailleMaxCycles() + "</b></p>" +
-                "    <p>Nombre de noeud(s) non-utilisé(s) : <b>" + this.nbNoeudsNonUtilises + "</b></p>\n" +
-                "    <p>Altruiste(s) non-utilisé(s) : <b>[ " + idsAltruistes + "]</b></p>\n" +
-                "    <p>Paire(s) non-utilisée(s) : <b>[ " + idsPaires + "]</b></p>\n" +
-                "    <p>Bénéfice de chaque séquence : </p>" +
-                     this.beneficeChaqueSequence +
-                "    <hr>" +
+                "    <div style='margin: 0; width: 100%; border-top: 1px solid black; border-bottom: 1px solid black; display: grid; grid-template-columns: repeat(3, 1fr); grid-gap: 10px; background-color: #bbb'>" +
+                "       <div>" +
+                "           <p>Taille max chaînes : <b>" + this.solution.getInstance().getTailleMaxChaines() + "</b></p>" +
+                "        </div>" +
+                "       <div style='text-align: center;'>" +
+                "           <p>Bénéfice médical total : <b>" + this.solution.getBenefMedicalTotal() + "</b></p>\n" +
+                "       </div>" +
+                "       <div style='text-align: right;'>" +
+                "           <p>Taille max cycles : <b>" + this.solution.getInstance().getTailleMaxCycles() + "</b></p>" +
+                "       </div>" +
+                "    </div>" +
                 "    <div id=\"mynetwork\"></div>\n" +
                 "    <script type=\"text/javascript\">";
     }
@@ -190,7 +185,14 @@ public class InterfaceWeb {
     }
 
     public String getEndOfHtml() {
-        String options = "width:'1200px', height:'500px',";
+        String idsAltruistes = "", idsPaires = "";
+        for(Integer id : this.altruistesNonUtilises)
+            idsAltruistes += id + " ";
+        this.setPairesNonUtilisees();
+        for(Integer id : this.pairesNonUtilisees)
+            idsPaires += id + " ";
+        this.setNbNoeudsNonUtilises();
+        String options = "width:'100%', height:'500px',";
         options += "interaction:{navigationButtons:true, hover:true, hoverConnectedEdges:true},";
         return "var container = document.getElementById(\"mynetwork\");\n" +
                 "      var data = {\n" +
@@ -201,6 +203,16 @@ public class InterfaceWeb {
                 "      var network = new vis.Network(container, data, options);\n" +
                 "      network.setOptions(options);" +
                 "    </script>\n" +
+                "    <hr>" +
+                "    <div style='float: left; width: 50%;'>" +
+                "       <p>Nombre de noeud(s) non-utilisé(s) : <b>" + this.nbNoeudsNonUtilises + "</b></p>\n" +
+                "       <p>Altruiste(s) non-utilisé(s) : <b>[ " + idsAltruistes + "]</b></p>\n" +
+                "       <p>Paire(s) non-utilisée(s) : <b>[ " + idsPaires + "]</b></p>\n" +
+                "    </div>" +
+                "    <div style='float: right; width: 50%; text-align: right;'>" +
+                "       <p>Bénéfice de chaque séquence : </p>" +
+                this.beneficeChaqueSequence +
+                "   </div>" +
                 "  </body>\n" +
                 "</html>";
     }
