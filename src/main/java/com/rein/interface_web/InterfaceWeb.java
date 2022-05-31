@@ -109,25 +109,25 @@ public class InterfaceWeb {
                 "       <div style='text-align: right;'>" +
                 "           <p>Taille max cycles : <b>" + this.solution.getInstance().getTailleMaxCycles() + "</b></p>" +
                 "       </div>" +
-                "    </div>" +
-                "    <div id=\"mynetwork\"></div>\n" +
-                "    <script type=\"text/javascript\">";
+                "    </div>";
     }
 
-    public String getNodes() {
+    //@type
+        //0 = altruiste
+        //1 = paire
+    public String getNodes(int type) {
         String nodes = "var nodes = new vis.DataSet([";
         for (Sequence sequence : this.solution.getListeSequences()) {
             boolean isAltruiste = false;
             for (Noeud noeud : sequence.getListeNoeuds()) {
                 int idNoeud = noeud.getId();
-                String shape = "circle";
-                String color = "orange";
+                String group = "paire";
                 if (sequence instanceof Chaine && !isAltruiste) {
-                    shape = "box";
-                    color = "#97C2FC";
+                    group = "altruiste";
                     isAltruiste = true;
                 }
-                nodes += "{ id: " + idNoeud + ", label: \"" + idNoeud + "\", shape: \"" + shape + "\", color: \"" + color + "\" },";
+                if ((type==0 && sequence instanceof Chaine) || (type==1 && sequence instanceof Cycle))
+                    nodes += "{ id: " + idNoeud + ", label: \"" + idNoeud + "\", group: \"" + group + "\" },";
             }
         }
         nodes = nodes.substring(0, nodes.length() - 1);
@@ -184,17 +184,22 @@ public class InterfaceWeb {
         return edges;
     }
 
-    public String getEndOfHtml() {
-        String idsAltruistes = "", idsPaires = "";
-        for(Integer id : this.altruistesNonUtilises)
-            idsAltruistes += id + " ";
-        this.setPairesNonUtilisees();
-        for(Integer id : this.pairesNonUtilisees)
-            idsPaires += id + " ";
+    public String getEndOfJs(String type) {
         this.setNbNoeudsNonUtilises();
-        String options = "width:'100%', height:'500px',";
-        options += "interaction:{navigationButtons:true, hover:true, hoverConnectedEdges:true},";
-        return "var container = document.getElementById(\"mynetwork\");\n" +
+        String options;
+        if (type == "Chaines") {
+            options = "width:'100%', height:'200px',";
+        }
+        else {
+            options = "width:'100%', height:'500px',";
+        }
+        options += "interaction:{navigationButtons:true, hover:true, hoverConnectedEdges:true}, physics:{" +
+                "enabled: true, repulsion: { centralGravity: 0.2, nodeDistance: 4 }, hierarchicalRepulsion: { centralGravity: 0.0, nodeDistance: 4, avoidOverlap: 0 }}" +
+                ", groups: { altruiste: {color:{background:'#97C2FC'}, shape: 'box'}, paire: {color:{background:'orange'}, shape : 'circle'}}";
+        if (type == "Chaines")
+            options += ", layout: { hierarchical: { direction: 'UD', levelSeparation: 45, nodeSpacing: 10, treeSpacing: 45 }}";
+
+        return  "var container = document.getElementById(\"" + type + "\");\n" +
                 "      var data = {\n" +
                 "        nodes: nodes,\n" +
                 "        edges: edges,\n" +
@@ -202,8 +207,18 @@ public class InterfaceWeb {
                 "      var options = {"+options+"};\n" +
                 "      var network = new vis.Network(container, data, options);\n" +
                 "      network.setOptions(options);" +
-                "    </script>\n" +
-                "    <hr>" +
+                "    </script>\n";
+    }
+
+    public String getEndOfHtml()
+    {
+        String idsAltruistes = "", idsPaires = "";
+        for(Integer id : this.altruistesNonUtilises)
+            idsAltruistes += id + " ";
+        this.setPairesNonUtilisees();
+        for(Integer id : this.pairesNonUtilisees)
+            idsPaires += id + " ";
+        return "    <hr>" +
                 "    <div style='float: left; width: 50%;'>" +
                 "       <p>Nombre de noeud(s) non-utilisé(s) : <b>" + this.nbNoeudsNonUtilises + "</b></p>\n" +
                 "       <p>Altruiste(s) non-utilisé(s) : <b>[ " + idsAltruistes + "]</b></p>\n" +
@@ -218,7 +233,15 @@ public class InterfaceWeb {
     }
 
     public void setHtmlCode() {
-        this.html = this.getBeginningOfHtml() + this.getNodes() + this.getEdges() + this.getEndOfHtml();
+        this.html = this.getBeginningOfHtml() +
+                this.getBeginningOfJs("Chaines") + this.getNodes(0) + this.getEdges() + this.getEndOfJs("Chaines") +
+                this.getBeginningOfJs("Cycles") + this.getNodes(1) + this.getEdges() + this.getEndOfJs("Cycles") +
+                this.getEndOfHtml();
+    }
+
+    private String getBeginningOfJs(String type) {
+        return "    <div id=\"" + type +"\"></div>" +
+                "    <script type=\"text/javascript\">\n";
     }
 
     public void createHtmlFile() throws IOException {
