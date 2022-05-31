@@ -1,8 +1,11 @@
 package com.rein.interface_web;
 
 import com.rein.instance.Altruiste;
+import com.rein.instance.Instance;
 import com.rein.instance.Noeud;
 import com.rein.instance.Paire;
+import com.rein.io.InstanceReader;
+import com.rein.io.exception.ReaderException;
 import com.rein.solution.Chaine;
 import com.rein.solution.Solution;
 import com.rein.transplantation.Cycle;
@@ -11,9 +14,9 @@ import com.rein.transplantation.Sequence;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.Objects;
 
 public class InterfaceWeb {
 
@@ -23,6 +26,7 @@ public class InterfaceWeb {
     private Integer nbNoeudsNonUtilises;
     private String beneficeChaqueSequence;
     private String html;
+    private String INSTANCES_PATHNAME = "./instances";
 
     public InterfaceWeb(Solution solution) {
         this.solution = solution;
@@ -87,19 +91,8 @@ public class InterfaceWeb {
         this.beneficeChaqueSequence = res;
     }
 
-    public String getBeginningOfHtml() {
-        this.setAltruistesNonUtilises();
-        this.setBeneficeChaqueSequence();
-        return "<!DOCTYPE html>\n" +
-                "<html lang=\"en\">\n" +
-                "<meta charset='utf-8'>\n" +
-                "  <head>\n" +
-                "    <script src=\"https://d3js.org/d3.v6.min.js\"></script>\n" +
-                "    <script src=\"https://visjs.github.io/vis-network/standalone/umd/vis-network.min.js\"></script>\n" +
-                "  </head>\n" +
-                "  <body>\n" +
-                "    <h2>" + this.solution.getInstance().getNom() + "</h2>\n" +
-                "    <div style='margin: 0; width: 100%; border-top: 1px solid black; border-bottom: 1px solid black; display: grid; grid-template-columns: repeat(3, 1fr); grid-gap: 10px; background-color: #bbb'>" +
+    public String getHtmlBody() {
+        return  "    <div style='margin: 0; width: 100%; border-top: 1px solid black; border-bottom: 1px solid black; display: grid; grid-template-columns: repeat(3, 1fr); grid-gap: 10px; background-color: #bbb'>" +
                 "       <div>" +
                 "           <p>Taille max chaînes : <b>" + this.solution.getInstance().getTailleMaxChaines() + "</b></p>" +
                 "        </div>" +
@@ -112,6 +105,31 @@ public class InterfaceWeb {
                 "    </div>" +
                 "    <div id=\"mynetwork\"></div>\n" +
                 "    <script type=\"text/javascript\">";
+    }
+
+    private ArrayList<String> getFilesNames() {
+        ArrayList<String> res = new ArrayList<>();
+        File folder = new File(INSTANCES_PATHNAME);
+        if(folder.listFiles() != null)
+            for (File file : folder.listFiles())
+                if (!file.isDirectory())
+                    res.add(file.getName());
+        return res;
+    }
+
+    public String getHeadersOfHtml() {
+        this.setAltruistesNonUtilises();
+        this.setBeneficeChaqueSequence();
+        return "<!DOCTYPE html>\n" +
+                "<html lang=\"en\">\n" +
+                "<meta charset='utf-8'>\n" +
+                "  <head>\n" +
+                "    <script src=\"https://visjs.github.io/vis-network/standalone/umd/vis-network.min.js\"></script>\n" +
+                "    <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js\"></script>\n" +
+                "  </head>\n" +
+                "  <body>\n" +
+                "     <h2 id='instanceName'>" + this.solution.getInstance().getNom() + "</h2>" +
+                this.createDropdownInstances();
     }
 
     public String getNodes() {
@@ -193,21 +211,25 @@ public class InterfaceWeb {
             idsPaires += id + " ";
         this.setNbNoeudsNonUtilises();
         String options = "width:'100%', height:'500px',";
-        options += "interaction:{navigationButtons:true, hover:true, hoverConnectedEdges:true},";
-        return "var container = document.getElementById(\"mynetwork\");\n" +
+        options += "interaction:{navigationButtons:true, hover:true, hoverConnectedEdges:true}";
+        /*"   $('#select').change(function(){" +
+                "       location.reload();" +
+                "   });" +*/
+        return
+                "   var container = document.getElementById(\"mynetwork\");\n" +
                 "      var data = {\n" +
                 "        nodes: nodes,\n" +
                 "        edges: edges,\n" +
                 "      };\n" +
-                "      var options = {"+options+"};\n" +
+                "      var options = {" + options + "};\n" +
                 "      var network = new vis.Network(container, data, options);\n" +
                 "      network.setOptions(options);" +
                 "    </script>\n" +
                 "    <hr>" +
                 "    <div style='float: left; width: 50%;'>" +
-                "       <p>Nombre de noeud(s) non-utilisé(s) : <b>" + this.nbNoeudsNonUtilises + "</b></p>\n" +
-                "       <p>Altruiste(s) non-utilisé(s) : <b>[ " + idsAltruistes + "]</b></p>\n" +
-                "       <p>Paire(s) non-utilisée(s) : <b>[ " + idsPaires + "]</b></p>\n" +
+                "       <p>Nombre de paire(s) patient-donneur non-sollicitée(s) : <b>" + this.nbNoeudsNonUtilises + "</b></p>\n" +
+                "       <p>Donneur(s) non-sollicité(s) : <b>[ " + idsAltruistes + "]</b></p>\n" +
+                "       <p>Paire(s) non-sollicitée(s) : <b>[ " + idsPaires + "]</b></p>\n" +
                 "    </div>" +
                 "    <div style='float: right; width: 50%; text-align: right;'>" +
                 "       <p>Bénéfice de chaque séquence : </p>" +
@@ -218,12 +240,26 @@ public class InterfaceWeb {
     }
 
     public void setHtmlCode() {
-        this.html = this.getBeginningOfHtml() + this.getNodes() + this.getEdges() + this.getEndOfHtml();
+        this.html = this.getHeadersOfHtml() + this.getHtmlBody() + this.getNodes() + this.getEdges() + this.getEndOfHtml();
+    }
+
+    public String createDropdownInstances() {
+        String options = "<select id='select' onchange='location = this.value;'><option>Nom de l'instance</option>";
+        String selected = "";
+        for(String path : getFilesNames()){
+            /*if(Objects.equals(path, this.solution.getInstance().getNom())){
+                selected = "selected='selected'";
+            }*/
+            options += "<option value='" + path + ".html' " + selected + ">" + path + "</option>";
+            selected = "";
+        }
+        options += "</select>";
+        return options;
     }
 
     public void createHtmlFile() throws IOException {
         this.setHtmlCode();
-        String pathname = "./results.html";
+        String pathname = "./results/" + this.solution.getInstance().getNom() + ".html";
         File result = new File(pathname);
         result.createNewFile();
         FileWriter myWriter = new FileWriter(pathname);
