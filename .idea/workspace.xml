@@ -4,37 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5dbe1660-c9ae-497e-83b8-a85dacef2117" name="Changes" comment="affichage bénéfice de chaque séquence">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rein/test/AllSolveurs.java" afterDir="false" />
+    <list default="true" id="5dbe1660-c9ae-497e-83b8-a85dacef2117" name="Changes" comment="changer de vue à la sélection de l'instance OK">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/instancesInitiales/KEP_p100_n0_k3_l0.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/instancesInitiales/KEP_p100_n11_k3_l13.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/instancesInitiales/KEP_p100_n11_k3_l4.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/instancesInitiales/KEP_p100_n11_k3_l7.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/instancesInitiales/KEP_p100_n11_k5_l17.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/instancesInitiales/KEP_p100_n5_k3_l13.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/instancesInitiales/KEP_p100_n5_k3_l4.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/instancesInitiales/KEP_p100_n5_k3_l7.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/instancesInitiales/KEP_p100_n5_k5_l17.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/instancesInitiales/KEP_p18_n0_k4_l0.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/instancesInitiales/KEP_p18_n2_k4_l4.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/instancesInitiales/KEP_p50_n0_k3_l0.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/instancesInitiales/KEP_p50_n3_k3_l13.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/instancesInitiales/KEP_p50_n3_k3_l4.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/instancesInitiales/KEP_p50_n3_k3_l7.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/instancesInitiales/KEP_p50_n3_k5_l17.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/instancesInitiales/KEP_p50_n6_k3_l13.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/instancesInitiales/KEP_p50_n6_k3_l4.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/instancesInitiales/KEP_p50_n6_k3_l7.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/instancesInitiales/KEP_p50_n6_k5_l17.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/instancesInitiales/KEP_p9_n0_k3_l0.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/instancesInitiales/KEP_p9_n1_k3_l3.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/interface_web/InterfaceWeb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/interface_web/InterfaceWeb.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/instance/Instance.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/instance/Instance.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/solveur/StrategieBasique.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/solveur/StrategieBasique.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -244,7 +216,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653582553616</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="changer de vue à la sélection de l'instance OK">
+      <created>1654035899268</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1654035899268</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -326,7 +305,8 @@
     <MESSAGE value="affichage flèche directions canva + liste des altruistes non-utilisés" />
     <MESSAGE value="affichage liste des paires non-utilisés" />
     <MESSAGE value="affichage nombre de noeuds non-utilisés" />
-    <option name="LAST_COMMIT_MESSAGE" value="affichage nombre de noeuds non-utilisés" />
+    <MESSAGE value="changer de vue à la sélection de l'instance OK" />
+    <option name="LAST_COMMIT_MESSAGE" value="changer de vue à la sélection de l'instance OK" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

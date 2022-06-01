@@ -126,6 +126,7 @@ public class InterfaceWeb {
                 "  <head>\n" +
                 "    <script src=\"https://visjs.github.io/vis-network/standalone/umd/vis-network.min.js\"></script>\n" +
                 "    <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js\"></script>\n" +
+                "    <script src=\"https://cdn.jsdelivr.net/npm/chart.js\"></script>\n" +
                 "  </head>\n" +
                 "  <body>\n" +
                 "     <h2 id='instanceName'>" + this.solution.getInstance().getNom() + "</h2>" +
@@ -210,13 +211,11 @@ public class InterfaceWeb {
         for(Integer id : this.pairesNonUtilisees)
             idsPaires += id + " ";
         this.setNbNoeudsNonUtilises();
+        float proportionPairePatientDonneurNonSollicitee = ((float) this.pairesNonUtilisees.size() / (float) this.nbNoeudsNonUtilises) * 100;
+        float proportionDonneurNonSollicitee = ((float) this.altruistesNonUtilises.size() / (float) this.nbNoeudsNonUtilises) * 100;
         String options = "width:'100%', height:'500px',";
         options += "interaction:{navigationButtons:true, hover:true, hoverConnectedEdges:true}";
-        /*"   $('#select').change(function(){" +
-                "       location.reload();" +
-                "   });" +*/
-        return
-                "   var container = document.getElementById(\"mynetwork\");\n" +
+        return  "      var container = document.getElementById(\"mynetwork\");\n" +
                 "      var data = {\n" +
                 "        nodes: nodes,\n" +
                 "        edges: edges,\n" +
@@ -224,7 +223,7 @@ public class InterfaceWeb {
                 "      var options = {" + options + "};\n" +
                 "      var network = new vis.Network(container, data, options);\n" +
                 "      network.setOptions(options);" +
-                "    </script>\n" +
+                "</script>"+
                 "    <hr>" +
                 "    <div style='float: left; width: 50%;'>" +
                 "       <p>Nombre de paire(s) patient-donneur non-sollicitée(s) : <b>" + this.nbNoeudsNonUtilises + "</b></p>\n" +
@@ -234,7 +233,30 @@ public class InterfaceWeb {
                 "    <div style='float: right; width: 50%; text-align: right;'>" +
                 "       <p>Bénéfice de chaque séquence : </p>" +
                 this.beneficeChaqueSequence +
+                "       <canvas id='chartNoeuds' width='400' height='400'></canvas>\n" +
                 "   </div>" +
+                "   <script>" +
+                "       const labels = [\n" +
+                "           'Paire(s) patient-donneur non-sollicitée(s)',\n" +
+                "           'Donneur(s) non-sollicitée(s)',\n" +
+                "       ];\n" +
+                "       const dataNoeuds = {\n" +
+                "           labels: labels,\n" +
+                "           datasets: [{\n" +
+                "               label: 'Nombre de noeuds',\n" +
+                "               backgroundColor: 'rgb(255, 99, 132)',\n" +
+                "               borderColor: 'rgb(255, 99, 132)',\n" +
+                "               data: ["+proportionPairePatientDonneurNonSollicitee+", "+proportionDonneurNonSollicitee+"],\n" +
+                "           }]\n" +
+                "       };\n" +
+                "       const config = {\n" +
+                "           type: 'bar',\n" +
+                "           data: dataNoeuds,\n" +
+                "           options: {}\n" +
+                "       };" +
+                "       var ctx = document.getElementById('chartNoeuds').getContext('2d');" +
+                "       const myChart = new Chart(ctx, config);" +
+                "    </script>\n" +
                 "  </body>\n" +
                 "</html>";
     }
@@ -244,15 +266,10 @@ public class InterfaceWeb {
     }
 
     public String createDropdownInstances() {
-        String options = "<select id='select' onchange='location = this.value;'><option>Nom de l'instance</option>";
-        String selected = "";
-        for(String path : getFilesNames()){
-            /*if(Objects.equals(path, this.solution.getInstance().getNom())){
-                selected = "selected='selected'";
-            }*/
-            options += "<option value='" + path + ".html' " + selected + ">" + path + "</option>";
-            selected = "";
-        }
+        String options = "<select id='select' onchange='location = this.value;'>";
+        options += "<option>Nom de l'instance</option>";
+        for(String path : getFilesNames())
+            options += "<option value='" + path + ".html'>" + path + "</option>";
         options += "</select>";
         return options;
     }
