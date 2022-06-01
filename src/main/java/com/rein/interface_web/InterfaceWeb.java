@@ -211,8 +211,9 @@ public class InterfaceWeb {
         for(Integer id : this.pairesNonUtilisees)
             idsPaires += id + " ";
         this.setNbNoeudsNonUtilises();
-        float proportionPairePatientDonneurNonSollicitee = ((float) this.pairesNonUtilisees.size() / (float) this.nbNoeudsNonUtilises) * 100;
+        float proportionPaireNonSollicitee = ((float) this.pairesNonUtilisees.size() / (float) this.nbNoeudsNonUtilises) * 100;
         float proportionDonneurNonSollicitee = ((float) this.altruistesNonUtilises.size() / (float) this.nbNoeudsNonUtilises) * 100;
+        int pourcentageNoeudNonUtilise = (int) (((float) this.nbNoeudsNonUtilises/ (float) this.solution.getInstance().getTabNoeud().length) * 100);
         String options = "width:'100%', height:'500px',";
         options += "interaction:{navigationButtons:true, hover:true, hoverConnectedEdges:true}";
         return  "      var container = document.getElementById(\"mynetwork\");\n" +
@@ -226,27 +227,28 @@ public class InterfaceWeb {
                 "</script>"+
                 "    <hr>" +
                 "    <div style='float: left; width: 50%;'>" +
-                "       <p>Nombre de paire(s) patient-donneur non-sollicitée(s) : <b>" + this.nbNoeudsNonUtilises + "</b></p>\n" +
-                "       <p>Donneur(s) non-sollicité(s) : <b>[ " + idsAltruistes + "]</b></p>\n" +
-                "       <p>Paire(s) non-sollicitée(s) : <b>[ " + idsPaires + "]</b></p>\n" +
+                "       <p>Proportion de paire(s) et altruiste(s) non-sollicité(s) : <b>" + pourcentageNoeudNonUtilise + "%</b></p>\n" +
+                "       <canvas id='chartNoeuds' style='width: 10vh'></canvas>\n " +
                 "    </div>" +
                 "    <div style='float: right; width: 50%; text-align: right;'>" +
-                "       <p>Bénéfice de chaque séquence : </p>" +
-                this.beneficeChaqueSequence +
-                "       <canvas id='chartNoeuds' width='400' height='400'></canvas>\n" +
+                "       <p>Bénéfice de chaque séquence : </p>" + this.beneficeChaqueSequence +
                 "   </div>" +
                 "   <script>" +
                 "       const labels = [\n" +
-                "           'Paire(s) patient-donneur non-sollicitée(s)',\n" +
-                "           'Donneur(s) non-sollicitée(s)',\n" +
+                "           'Type de cas'\n" +
                 "       ];\n" +
                 "       const dataNoeuds = {\n" +
                 "           labels: labels,\n" +
                 "           datasets: [{\n" +
-                "               label: 'Nombre de noeuds',\n" +
-                "               backgroundColor: 'rgb(255, 99, 132)',\n" +
-                "               borderColor: 'rgb(255, 99, 132)',\n" +
-                "               data: ["+proportionPairePatientDonneurNonSollicitee+", "+proportionDonneurNonSollicitee+"],\n" +
+                "               label: 'Pourcentage altruistes non-sollicités',\n" +
+                "               backgroundColor: 'rgb(241, 177, 18)',\n" +
+                "               borderColor: 'rgb(100, 100, 100)',\n" +
+                "               data: ["+proportionDonneurNonSollicitee+"]\n" +
+                "           }, {" +
+                "               label: 'Pourcentage paires non-sollicitées',\n" +
+                "               backgroundColor: 'rgb(18, 214, 241)',\n" +
+                "               borderColor: 'rgb(100, 100, 100)',\n" +
+                "               data: ["+proportionPaireNonSollicitee+"]\n" +
                 "           }]\n" +
                 "       };\n" +
                 "       const config = {\n" +
@@ -255,7 +257,7 @@ public class InterfaceWeb {
                 "           options: {}\n" +
                 "       };" +
                 "       var ctx = document.getElementById('chartNoeuds').getContext('2d');" +
-                "       const myChart = new Chart(ctx, config);" +
+                "       const chartNoeuds = new Chart(ctx, config);" +
                 "    </script>\n" +
                 "  </body>\n" +
                 "</html>";
