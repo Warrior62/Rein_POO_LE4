@@ -172,22 +172,22 @@ public class InterfaceWeb {
     /**
      * Récupére l'ensemble des noeuds de la solution
      * à afficher
+     * @param type 0 si chaine, 1 si cycle
      * @return une chaîne de caractères comportant le code JS
      */
-    public String getNodes() {
+    public String getNodes(int type) {
         String nodes = "var nodes = new vis.DataSet([";
         for (Sequence sequence : this.solution.getListeSequences()) {
             boolean isAltruiste = false;
             for (Noeud noeud : sequence.getListeNoeuds()) {
                 int idNoeud = noeud.getId();
-                String shape = "circle";
-                String color = "orange";
+                String group = "paire";
                 if (sequence instanceof Chaine && !isAltruiste) {
-                    shape = "box";
-                    color = "#97C2FC";
+                    group = "altruiste";
                     isAltruiste = true;
                 }
-                nodes += "{ id: " + idNoeud + ", label: \"" + idNoeud + "\", shape: \"" + shape + "\", color: \"" + color + "\" },";
+                if ((type==0 && sequence instanceof Chaine) || (type==1 && sequence instanceof Cycle))
+                    nodes += "{ id: " + idNoeud + ", label: \"" + idNoeud + "\", group: \"" + group + "\" },";
             }
         }
         nodes = nodes.substring(0, nodes.length() - 1);
@@ -250,24 +250,24 @@ public class InterfaceWeb {
     }
 
     /**
-     * Récupére les statistiques de la solution
-     * à afficher sous forme de graphique
-     * @return une chaîne de caractères comportant le code JS
+     * Récupére l'affichage des grpahiques et des vues
+     * @param type chaine ou cycle
+     * @return chaîne comportant le code JS
      */
-    public String getEndOfHtml() {
-        String idsAltruistes = "", idsPaires = "";
-        for(Integer id : this.altruistesNonUtilises)
-            idsAltruistes += id + " ";
-        this.setPairesNonUtilisees();
-        for(Integer id : this.pairesNonUtilisees)
-            idsPaires += id + " ";
-        this.setNbNoeudsNonUtilises();
-        float proportionPaireNonSollicitee = ((float) this.pairesNonUtilisees.size() / (float) this.nbNoeudsNonUtilises) * 100;
-        float proportionDonneurNonSollicitee = ((float) this.altruistesNonUtilises.size() / (float) this.nbNoeudsNonUtilises) * 100;
-        int pourcentageNoeudNonUtilise = (int) (((float) this.nbNoeudsNonUtilises/ (float) this.solution.getInstance().getTabNoeud().length) * 100);
-        String options = "width:'100%', height:'500px',";
-        options += "interaction:{navigationButtons:true, hover:true, hoverConnectedEdges:true}";
-        return  "      var container = document.getElementById(\"mynetwork\");\n" +
+    public String getEndOfJs(String type){
+        String options;
+        if (type == "Chaines") {
+            options = "width:'100%', height:'200px',";
+        } else {
+            options = "width:'100%', height:'500px',";
+        }
+        options += "interaction:{navigationButtons:true, hover:true, hoverConnectedEdges:true}, physics:{" +
+                "enabled: true, repulsion: { centralGravity: 0.2, nodeDistance: 4 }, hierarchicalRepulsion: { centralGravity: 0.0, nodeDistance: 4, avoidOverlap: 0 }}" +
+                ", groups: { altruiste: {color:{background:'#97C2FC'}, shape: 'box'}, paire: {color:{background:'orange'}, shape : 'circle'}}";
+        if (type == "Chaines")
+            options += ", layout: { hierarchical: { direction: 'UD', levelSeparation: 45, nodeSpacing: 10, treeSpacing: 45 }}";
+
+        return "      var container = document.getElementById(\"mynetwork\");\n" +
                 "      var data = {\n" +
                 "        nodes: nodes,\n" +
                 "        edges: edges,\n" +
@@ -275,16 +275,38 @@ public class InterfaceWeb {
                 "      var options = {" + options + "};\n" +
                 "      var network = new vis.Network(container, data, options);\n" +
                 "      network.setOptions(options);" +
-                "  </script>"+
-                "  <hr>" +
-                "  <div style='float: left; width: 50%;'>" +
-                "   <p>Proportion de paire(s) et altruiste(s) non-sollicité(s) : <b>" + pourcentageNoeudNonUtilise + "%</b></p>\n" +
-                "   <canvas id='chartNoeuds' style='width: 10vh'></canvas>\n " +
-                "  </div>" +
-                "  <div style='float: right; width: 50%; text-align: right;'>" +
-                "   <p>Bénéfice de chaque séquence : </p>" + this.beneficeChaqueSequence +
-                "  </div>" +
-                "  <script>" +
+                "</script>" +
+                "    <hr>" +
+                "    </script>\n";
+    }
+
+    /**
+     * Récupére les statistiques de la solution
+     * à afficher sous forme de graphique
+     * @return une chaîne de caractères comportant le code JS
+     */
+    public String getEndOfHtml()
+    {
+        this.setNbNoeudsNonUtilises();
+        float proportionPaireNonSollicitee = ((float) this.pairesNonUtilisees.size() / (float) this.nbNoeudsNonUtilises) * 100;
+        float proportionDonneurNonSollicitee = ((float) this.altruistesNonUtilises.size() / (float) this.nbNoeudsNonUtilises) * 100;
+        int pourcentageNoeudNonUtilise = (int) (((float) this.nbNoeudsNonUtilises/ (float) this.solution.getInstance().getTabNoeud().length) * 100);
+
+        String idsAltruistes = "", idsPaires = "";
+        for(Integer id : this.altruistesNonUtilises)
+            idsAltruistes += id + " ";
+        this.setPairesNonUtilisees();
+        for(Integer id : this.pairesNonUtilisees)
+            idsPaires += id + " ";
+        return "    <hr>" +
+                "    <div style='float: left; width: 50%;'>" +
+                "       <p>Proportion de paire(s) et altruiste(s) non-sollicité(s) : <b>" + pourcentageNoeudNonUtilise + "%</b></p>\n" +
+                "       <canvas id='chartNoeuds' style='width: 10vh'></canvas>\n " +
+                "    </div>" +
+                "    <div style='float: right; width: 50%; text-align: right;'>" +
+                "       <p>Bénéfice de chaque séquence : </p>" + this.beneficeChaqueSequence +
+                "   </div>" +
+                "   <script>" +
                 "       const labels = [\n" +
                 "           'Type de cas'\n" +
                 "       ];\n" +
@@ -318,7 +340,15 @@ public class InterfaceWeb {
      * Définit l'ensemble du code HTML de l'interface graphique
      */
     public void setHtmlCode() {
-        this.html = this.getHeadersOfHtml() + this.getHtmlBody() + this.getNodes() + this.getEdges() + this.getEndOfHtml();
+        this.html = this.getHeadersOfHtml() + this.getHtmlBody() +
+                this.getBeginningOfJs("Chaines") + this.getNodes(0) + this.getEdges() + this.getEndOfJs("Chaines") +
+                this.getBeginningOfJs("Cycles") + this.getNodes(1) + this.getEdges() + this.getEndOfJs("Cycles") +
+                this.getEndOfHtml();
+    }
+
+    private String getBeginningOfJs(String type) {
+        return "    <div id=\"" + type +"\"></div>" +
+                "    <script type=\"text/javascript\">\n";
     }
 
     /**
