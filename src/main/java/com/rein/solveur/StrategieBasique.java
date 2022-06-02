@@ -20,7 +20,7 @@ public class StrategieBasique implements Solveur{
     private Solveur solveur;
     @Override
     public String getNom() {
-        return this.solveur.getNom()+"StrategieBasique"; }
+        return "StrategieBasique"; }
     @Override
     public Solution solve(Instance instance) {
         Solution s = new Solution(instance);
