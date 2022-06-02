@@ -131,7 +131,10 @@ public class InterfaceWeb {
                 this.createDropdownInstances();
     }
 
-    public String getNodes(String type) {
+    //@type
+        //0 = chaine
+        //1 = cycle
+    public String getNodes(int type) {
         String nodes = "var nodes = new vis.DataSet([";
         for (Sequence sequence : this.solution.getListeSequences()) {
             boolean isAltruiste = false;
@@ -201,11 +204,6 @@ public class InterfaceWeb {
     }
 
     public String getEndOfJs(String type) {
-        this.setNbNoeudsNonUtilises();
-        float proportionPaireNonSollicitee = ((float) this.pairesNonUtilisees.size() / (float) this.nbNoeudsNonUtilises) * 100;
-        float proportionDonneurNonSollicitee = ((float) this.altruistesNonUtilises.size() / (float) this.nbNoeudsNonUtilises) * 100;
-        int pourcentageNoeudNonUtilise = (int) (((float) this.nbNoeudsNonUtilises/ (float) this.solution.getInstance().getTabNoeud().length) * 100);
-
         String options;
         if (type == "Chaines") {
             options = "width:'100%', height:'200px',";
@@ -234,6 +232,11 @@ public class InterfaceWeb {
 
     public String getEndOfHtml()
     {
+        this.setNbNoeudsNonUtilises();
+        float proportionPaireNonSollicitee = ((float) this.pairesNonUtilisees.size() / (float) this.nbNoeudsNonUtilises) * 100;
+        float proportionDonneurNonSollicitee = ((float) this.altruistesNonUtilises.size() / (float) this.nbNoeudsNonUtilises) * 100;
+        int pourcentageNoeudNonUtilise = (int) (((float) this.nbNoeudsNonUtilises/ (float) this.solution.getInstance().getTabNoeud().length) * 100);
+
         String idsAltruistes = "", idsPaires = "";
         for(Integer id : this.altruistesNonUtilises)
             idsAltruistes += id + " ";
@@ -279,7 +282,7 @@ public class InterfaceWeb {
     }
 
     public void setHtmlCode() {
-        this.html = this.getBeginningOfHtml() +
+        this.html = this.getHeadersOfHtml() + this.getHtmlBody() +
                 this.getBeginningOfJs("Chaines") + this.getNodes(0) + this.getEdges() + this.getEndOfJs("Chaines") +
                 this.getBeginningOfJs("Cycles") + this.getNodes(1) + this.getEdges() + this.getEndOfJs("Cycles") +
                 this.getEndOfHtml();
@@ -288,7 +291,6 @@ public class InterfaceWeb {
     private String getBeginningOfJs(String type) {
         return "    <div id=\"" + type +"\"></div>" +
                 "    <script type=\"text/javascript\">\n";
-        this.html = this.getHeadersOfHtml() + this.getHtmlBody() + this.getNodes() + this.getEdges() + this.getEndOfHtml();
     }
 
     public String createDropdownInstances() {
