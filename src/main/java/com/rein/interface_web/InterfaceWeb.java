@@ -127,8 +127,7 @@ public class InterfaceWeb {
                 "           <p>Taille max cycles : <b>" + this.solution.getInstance().getTailleMaxCycles() + "</b></p>" +
                 "       </div>" +
                 "    </div>" +
-                "    <div id=\"mynetwork\"></div>\n" +
-                "    <script type=\"text/javascript\">";
+                "    <div id=\"mynetwork\"></div>\n";
     }
 
     /**
@@ -190,7 +189,6 @@ public class InterfaceWeb {
                     nodes += "{ id: " + idNoeud + ", label: \"" + idNoeud + "\", group: \"" + group + "\" },";
             }
         }
-        nodes = nodes.substring(0, nodes.length() - 1);
         nodes += "]);";
 
         return nodes;
@@ -267,7 +265,7 @@ public class InterfaceWeb {
         if (type == "Chaines")
             options += ", layout: { hierarchical: { direction: 'UD', levelSeparation: 45, nodeSpacing: 10, treeSpacing: 45 }}";
 
-        return "      var container = document.getElementById(\"mynetwork\");\n" +
+        return  "      var container = document.getElementById('"+type+"');\n" +
                 "      var data = {\n" +
                 "        nodes: nodes,\n" +
                 "        edges: edges,\n" +
@@ -276,8 +274,7 @@ public class InterfaceWeb {
                 "      var network = new vis.Network(container, data, options);\n" +
                 "      network.setOptions(options);" +
                 "</script>" +
-                "    <hr>" +
-                "    </script>\n";
+                "    <hr>";
     }
 
     /**
@@ -287,17 +284,16 @@ public class InterfaceWeb {
      */
     public String getEndOfHtml()
     {
-        this.setNbNoeudsNonUtilises();
-        float proportionPaireNonSollicitee = ((float) this.pairesNonUtilisees.size() / (float) this.nbNoeudsNonUtilises) * 100;
-        float proportionDonneurNonSollicitee = ((float) this.altruistesNonUtilises.size() / (float) this.nbNoeudsNonUtilises) * 100;
-        int pourcentageNoeudNonUtilise = (int) (((float) this.nbNoeudsNonUtilises/ (float) this.solution.getInstance().getTabNoeud().length) * 100);
-
         String idsAltruistes = "", idsPaires = "";
         for(Integer id : this.altruistesNonUtilises)
             idsAltruistes += id + " ";
         this.setPairesNonUtilisees();
         for(Integer id : this.pairesNonUtilisees)
             idsPaires += id + " ";
+        this.setNbNoeudsNonUtilises();
+        float proportionPaireNonSollicitee = ((float) this.pairesNonUtilisees.size() / (float) this.nbNoeudsNonUtilises) * 100;
+        float proportionDonneurNonSollicitee = ((float) this.altruistesNonUtilises.size() / (float) this.nbNoeudsNonUtilises) * 100;
+        int pourcentageNoeudNonUtilise = (int) (((float) this.nbNoeudsNonUtilises/ (float) this.solution.getInstance().getTabNoeud().length) * 100);
         return "    <hr>" +
                 "    <div style='float: left; width: 50%;'>" +
                 "       <p>Proportion de paire(s) et altruiste(s) non-sollicité(s) : <b>" + pourcentageNoeudNonUtilise + "%</b></p>\n" +
@@ -346,6 +342,11 @@ public class InterfaceWeb {
                 this.getEndOfHtml();
     }
 
+    /**
+     * Récupére les div cycles et chaînes à afficher
+     * @param type chaîne ou cycle
+     * @return la chaîne comportant le code HTML
+     */
     private String getBeginningOfJs(String type) {
         return "    <div id=\"" + type +"\"></div>" +
                 "    <script type=\"text/javascript\">\n";
