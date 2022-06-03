@@ -24,6 +24,8 @@ public class Instance {
     private final int tailleMaxCycles;
     private final int tailleMaxChaines;
     private Noeud[] tabNoeud;
+    private ArrayList<Altruiste> tabAltruistes;
+    private ArrayList<Paire> tabPaires;
     private ArrayList<Echange> echanges;
 
 
@@ -43,20 +45,30 @@ public class Instance {
             this.tailleMaxChaines = chaines;
             this.echanges = new ArrayList();
             this.tabNoeud = tabNoeud;
-        }
+            this.tabAltruistes = new ArrayList<Altruiste>();
+            this.tabPaires = new ArrayList<Paire>();
+    }
 
-        public int hashCode() {
-            int hash = 7;
-            hash = 37 * hash + Objects.hashCode(this.nom);
-            return hash;
-        }
+    public int hashCode() {
+        int hash = 7;
+        hash = 37 * hash + Objects.hashCode(this.nom);
+        return hash;
+    }
 
-        @Override
-        public String toString() {
-            return "Instance{nom='" + this.nom + "', nbPaires=" + this.nbPaires + ", nbAltruistes=" + this.nbAltruistes + ", tailleMaxCycles=" + this.tailleMaxCycles + ", tailleMaxChaines=" + this.tailleMaxChaines + ", echanges=" + this.echanges + "}";
-        }
+    @Override
+    public String toString() {
+        return "Instance{nom='" + this.nom + "', nbPaires=" + this.nbPaires + ", nbAltruistes=" + this.nbAltruistes + ", tailleMaxCycles=" + this.tailleMaxCycles + ", tailleMaxChaines=" + this.tailleMaxChaines + ", echanges=" + this.echanges + "}";
+    }
 
-        public String getNom() {
+    public ArrayList<Altruiste> getTabAltruistes() {
+        return tabAltruistes;
+    }
+
+    public ArrayList<Paire> getTabPaire() {
+        return tabPaires;
+    }
+
+    public String getNom() {
             return nom;
         }
 
@@ -92,13 +104,23 @@ public class Instance {
             this.tabNoeud = tabNoeud;
         }
 
+        //Methode chargée de renvoyer une copie du noeud d'id 'id'
+        //Prend en paramètre l'id du noeud à récupérer.
+        //Renvoie une copie du noeud correspondant à l'id 'id'.
+        /*public Noeud getCopieNoeud(int id) {
+            Noeud n = new Noeud(this.getTabNoeud()[id-1]);
+            return n;
+        }*/
+
         public Noeud[] addAltruiste(int indice) {
             this.tabNoeud[indice] = new Altruiste(indice + 1);
+            this.tabAltruistes.add((Altruiste) this.tabNoeud[indice]);
             return (Noeud[])this.tabNoeud.clone();
         }
 
         public Noeud[] addPaire(int indice) {
             this.tabNoeud[indice] = new Paire(indice + 1);
+            this.tabPaires.add((Paire) this.tabNoeud[indice]);
             return (Noeud[])this.tabNoeud.clone();
         }
     }

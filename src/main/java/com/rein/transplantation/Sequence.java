@@ -20,6 +20,7 @@ public abstract class Sequence {
     private int benefMedicalSequence = 0;
     private ArrayList<Noeud> listeNoeuds =new ArrayList<>();
     private int tailleMaxSequence;
+
     public void increaseBenefMedicalSequence(int nb){
         this.benefMedicalSequence += nb;
     }
