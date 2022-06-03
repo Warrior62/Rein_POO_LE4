@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="test_extract:jar" />
+    </artifacts-to-build>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="840a05b9-40f7-4051-b1a7-3d1ad82fc004" name="Changes" comment="Ajout import Instance dans Sequence">
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/instance/Altruiste.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/instance/Altruiste.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/instance/Echange.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/instance/Echange.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/instance/Instance.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/instance/Instance.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/instance/Noeud.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/instance/Noeud.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/instance/Paire.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/instance/Paire.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/io/InstanceReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/io/InstanceReader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/io/exception/FileExistException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/io/exception/FileExistException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/io/exception/FormatFileException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/io/exception/FormatFileException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/io/exception/OpenFileException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/io/exception/OpenFileException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/io/exception/ReaderException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/io/exception/ReaderException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/solution/Chaine.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/solution/Chaine.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/solution/Solution.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/solution/Solution.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/solveur/StrategieBasique.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/solveur/StrategieBasique.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/transplantation/Cycle.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/transplantation/Cycle.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/transplantation/Sequence.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/transplantation/Sequence.class" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="checkers2" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/transplantation/Cycle.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/pom.xml" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="279TtpAmIIC1I2mEdH7v87RYARw" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RunManager" selected="Application.Chaine">
+    <configuration name="Chaine" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.rein.solution.Chaine" />
+      <module name="rein-poo-le4" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.rein.solution.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Cycle" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.rein.transplantation.Cycle" />
+      <module name="rein-poo-le4" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.rein.transplantation.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Sequence" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.rein.transplantation.Sequence" />
+      <module name="rein-poo-le4" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.rein.transplantation.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Solution" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.rein.solution.Solution" />
+      <module name="rein-poo-le4" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.rein.solution.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="StrategieBasique" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.rein.solveur.StrategieBasique" />
+      <module name="rein-poo-le4" />
+      <option name="PROGRAM_PARAMETERS" value="-inst KEP_p9_n0_k3_l0.txt -dSol solution_test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.rein.solveur.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Chaine" />
+      <item itemvalue="Application.Cycle" />
+      <item itemvalue="Application.Sequence" />
+      <item itemvalue="Application.Solution" />
+      <item itemvalue="Application.StrategieBasique" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Chaine" />
+        <item itemvalue="Application.Cycle" />
+        <item itemvalue="Application.Sequence" />
+        <item itemvalue="Application.StrategieBasique" />
+        <item itemvalue="Application.Solution" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="840a05b9-40f7-4051-b1a7-3d1ad82fc004" name="Changes" comment="" />
+      <created>1648731524111</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1648731524111</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Ajout des classes Echange, Noeud, Paire et Altruiste (seulement attributs)">
+      <created>1648739325597</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1648739325597</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Ajout des checkers de Sequence (WIP) et Solution">
+      <created>1651072083118</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1651072083118</updated>
+    </task>
+    <task id="LOCAL-00003" summary="commit poubelle">
+      <created>1651244669785</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1651244669785</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Ajout des méthodes : &#10;- check()&#10;    - verifAltruistes()&#10;    - verifBenefMedical()&#10;    - verifTailleMax()&#10;- ajouterNoeud()&#10;    - isNoeudCompatible()&#10;    - isNoeudAjoutable()&#10;&#10;+ Modification de la méthode toString()">
+      <created>1651702656778</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1651702656778</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Ajout dans la classe Cycle des méthodes : &#10;- check()&#10;    - verifNoAltruiste()&#10;    - verifBenefMedical()&#10;    - verifTailleMax()&#10;- ajouterNoeud()&#10;    - isNoeudCompatible()&#10;    - isNoeudAjoutable()&#10;&#10;+ Modification de la méthode toString()">
+      <created>1651757261129</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1651757261130</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Supprimé OUIIIIIIII">
+      <created>1651758494140</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1651758494140</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Résolu le pb de cli">
+      <created>1651760455554</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1651760455554</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Ajout import Instance dans Sequence">
+      <created>1651761007486</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1651761007486</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="dev" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+              <option name="COLUMN_ID_WIDTH">
+                <map>
+                  <entry key="Table.Default.Date.ColumnIdWidth" value="93" />
+                  <entry key="Table.Space.CommitStatus.ColumnIdWidth" value="113" />
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="init-element-package" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Ajout des classes Echange, Noeud, Paire et Altruiste (seulement attributs)" />
+    <MESSAGE value="Ajout des checkers de Sequence (WIP) et Solution" />
+    <MESSAGE value="commit poubelle" />
+    <MESSAGE value="Ajout des méthodes : &#10;- check()&#10;    - verifAltruistes()&#10;    - verifBenefMedical()&#10;    - verifTailleMax()&#10;- ajouterNoeud()&#10;    - isNoeudCompatible()&#10;    - isNoeudAjoutable()&#10;&#10;+ Modification de la méthode toString()" />
+    <MESSAGE value="Ajout dans la classe Cycle des méthodes : &#10;- check()&#10;    - verifNoAltruiste()&#10;    - verifBenefMedical()&#10;    - verifTailleMax()&#10;- ajouterNoeud()&#10;    - isNoeudCompatible()&#10;    - isNoeudAjoutable()&#10;&#10;+ Modification de la méthode toString()" />
+    <MESSAGE value="Supprimé OUIIIIIIII" />
+    <MESSAGE value="Résolu le pb de cli" />
+    <MESSAGE value="Ajoult import Instance dans Sequence" />
+    <MESSAGE value="Ajout import Instance dans Sequence" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ajout import Instance dans Sequence" />
+  </component>
+</project>

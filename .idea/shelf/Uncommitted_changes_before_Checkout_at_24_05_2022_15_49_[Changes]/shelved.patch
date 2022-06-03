@@ -1,0 +1,501 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"5dbe1660-c9ae-497e-83b8-a85dacef2117\" name=\"Changes\" comment=\"Ajout import Instance dans Sequence\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/libraries/Maven__commons_cli_commons_cli_1_5_0.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_lang3_3_2.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_lang3_3_3_2.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/lib/commons-lang3-3.1.jar\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/pom.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/pom.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/rein-poo-le4.iml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/rein-poo-le4.iml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/rein/instance/Altruiste.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/rein/instance/Echange.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/rein/instance/Instance.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/rein/instance/Noeud.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/rein/instance/Paire.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/rein/io/InstanceReader.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/rein/io/exception/FileExistException.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/rein/io/exception/FormatFileException.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/rein/io/exception/OpenFileException.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/rein/io/exception/ReaderException.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/rein/operateur/Operateur.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/rein/operateur/OperateurInterSequence.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/rein/operateur/OperateurIntraSequence.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/rein/solution/Chaine.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/rein/solution/Solution.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/rein/solveur/Solveur.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/rein/solveur/StrategieBasique.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/rein/transplantation/Cycle.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/rein/transplantation/Sequence.class\" beforeDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"Git.Merge.Settings\">\r\n    <option name=\"BRANCH\" value=\"ajout_methode_ajouterSequence()\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"dev\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"HighlightingSettingsPerFile\">\r\n    <setting file=\"file://$PROJECT_DIR$/src/main/java/com/rein/transplantation/Cycle.java\" root0=\"FORCE_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/pom.xml\" root0=\"FORCE_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/src/main/java/com/rein/io/InstanceReader.java\" root0=\"FORCE_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/src/main/java/com/rein/instance/Noeud.java\" root0=\"FORCE_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/src/main/java/com/rein/transplantation/Sequence.java\" root0=\"FORCE_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/src/main/java/com/rein/solution/Solution.java\" root0=\"FORCE_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique.java\" root0=\"FORCE_HIGHLIGHTING\" />\r\n  </component>\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"SHARE_PROJECT_CONFIGURATION_FILES\" value=\"true\" />\r\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$/lib/commons-cli-1.5.0\" />\r\n    <property name=\"project.structure.last.edited\" value=\"Libraries\" />\r\n    <property name=\"project.structure.proportion\" value=\"0.15\" />\r\n    <property name=\"project.structure.side.proportion\" value=\"0.2\" />\r\n  </component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"StrategieBasique\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.rein.solveur.StrategieBasique\" />\r\n      <module name=\"rein-poo-le4\" />\r\n      <option name=\"PROGRAM_PARAMETERS\" value=\"-inst KEP_P100_n11_k5_l17.txt -dSol solution_test\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.rein.solveur.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.StrategieBasique\" />\r\n        <item itemvalue=\"Application.StrategieBasique\" />\r\n        <item itemvalue=\"Application.StrategieBasique\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"TaskManager\">\r\n    <task id=\"LOCAL-00001\" summary=\"Ajout methode ajouterSequence dans la classe Solution\">\r\n      <created>1652256448665</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1652256448665</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"2\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State>\r\n              <option name=\"FILTERS\">\r\n                <map>\r\n                  <entry key=\"branch\">\r\n                    <value>\r\n                      <list>\r\n                        <option value=\"dev\" />\r\n                      </list>\r\n                    </value>\r\n                  </entry>\r\n                </map>\r\n              </option>\r\n            </State>\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Ajout methode ajouterSequence dans la classe Solution\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Ajout methode ajouterSequence dans la classe Solution\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -4,38 +4,37 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="5dbe1660-c9ae-497e-83b8-a85dacef2117" name="Changes" comment="Ajout import Instance dans Sequence">
+-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_cli_commons_cli_1_5_0.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_lang3_3_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_lang3_3_3_2.xml" afterDir="false" />
++    <list default="true" id="5dbe1660-c9ae-497e-83b8-a85dacef2117" name="Changes" comment="Ajout methode ajouterSequence dans la classe Solution (correctif)">
++      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_cli_commons_cli_1_5_0.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_lang3_3_3_2.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/libraries/commons_cli_1_5.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBourrin.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_06_05_2022_18_40_[Changes]/shelved.patch" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_06_05_2022_18_40__Changes_.xml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_03_05_2022_17_29_[Changes]/Instance.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_03_05_2022_17_29_[Changes]/InstanceReader.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_03_05_2022_17_29_[Changes]/Solution.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_03_05_2022_17_29_[Changes]/shelved.patch" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_03_05_2022_17_29__Changes_.xml" beforeDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/lib/commons-lang3-3.1.jar" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/rein-poo-le4.iml" beforeDir="false" afterPath="$PROJECT_DIR$/rein-poo-le4.iml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/instance/Altruiste.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/instance/Echange.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/instance/Instance.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/instance/Noeud.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/instance/Paire.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/io/InstanceReader.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/io/exception/FileExistException.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/io/exception/FormatFileException.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/io/exception/OpenFileException.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/io/exception/ReaderException.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/operateur/Operateur.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/operateur/OperateurInterSequence.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/operateur/OperateurIntraSequence.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/solution/Chaine.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/solution/Solution.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/solveur/Solveur.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/solveur/StrategieBasique.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/transplantation/Cycle.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/transplantation/Sequence.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/results.html" beforeDir="false" afterPath="$PROJECT_DIR$/results.html" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solution/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solution/Solution.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/transplantation/Sequence.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/transplantation/Sequence.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/solution/Solution.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/solution/Solution.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/transplantation/Sequence.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/transplantation/Sequence.class" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+     <option name="LAST_RESOLUTION" value="IGNORE" />
+   </component>
++  <component name="FileTemplateManagerImpl">
++    <option name="RECENT_TEMPLATES">
++      <list>
++        <option value="Class" />
++      </list>
++    </option>
++  </component>
+   <component name="Git.Merge.Settings">
+     <option name="BRANCH" value="ajout_methode_ajouterSequence()" />
+   </component>
+@@ -47,6 +46,14 @@
+     </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
++  <component name="GitSEFilterConfiguration">
++    <file-type-list>
++      <filtered-out-file-type name="LOCAL_BRANCH" />
++      <filtered-out-file-type name="REMOTE_BRANCH" />
++      <filtered-out-file-type name="TAG" />
++      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
++    </file-type-list>
++  </component>
+   <component name="HighlightingSettingsPerFile">
+     <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/transplantation/Cycle.java" root0="FORCE_HIGHLIGHTING" />
+     <setting file="file://$PROJECT_DIR$/pom.xml" root0="FORCE_HIGHLIGHTING" />
+@@ -56,15 +63,25 @@
+     <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/solution/Solution.java" root0="FORCE_HIGHLIGHTING" />
+     <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique.java" root0="FORCE_HIGHLIGHTING" />
+   </component>
++  <component name="MarkdownSettingsMigration">
++    <option name="stateVersion" value="1" />
++  </component>
++  <component name="ProjectId" id="29ElZ519VJwFcPaIFVjDEsRnNhV" />
+   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
++  <component name="ProjectViewState">
++    <option name="hideEmptyMiddlePackages" value="true" />
++    <option name="showLibraryContents" value="true" />
++  </component>
+   <component name="PropertiesComponent">
++    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
++    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+     <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/commons-cli-1.5.0" />
+     <property name="project.structure.last.edited" value="Libraries" />
+     <property name="project.structure.proportion" value="0.15" />
+     <property name="project.structure.side.proportion" value="0.2" />
+   </component>
+-  <component name="RunManager">
++  <component name="RunManager" selected="Application.StrategieBourrin">
+     <configuration name="StrategieBasique" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+       <option name="MAIN_CLASS_NAME" value="com.rein.solveur.StrategieBasique" />
+       <module name="rein-poo-le4" />
+@@ -79,14 +96,49 @@
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
++    <configuration name="StrategieBourrin" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
++      <option name="MAIN_CLASS_NAME" value="com.rein.solveur.StrategieBourrin" />
++      <module name="rein-poo-le4" />
++      <option name="PROGRAM_PARAMETERS" value="-inst KEP_p9_n0_k3_l0.txt -dSol solution_test" />
++      <extension name="coverage">
++        <pattern>
++          <option name="PATTERN" value="com.rein.solveur.*" />
++          <option name="ENABLED" value="true" />
++        </pattern>
++      </extension>
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
++    <configuration name="strategieBourrin" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
++      <option name="MAIN_CLASS_NAME" value="com.rein.solveur.strategieBourrin" />
++      <module name="rein-poo-le4" />
++      <extension name="coverage">
++        <pattern>
++          <option name="PATTERN" value="com.rein.solveur.*" />
++          <option name="ENABLED" value="true" />
++        </pattern>
++      </extension>
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
++    <list>
++      <item itemvalue="Application.StrategieBasique" />
++      <item itemvalue="Application.StrategieBourrin" />
++      <item itemvalue="Application.strategieBourrin" />
++    </list>
+     <recent_temporary>
+       <list>
++        <item itemvalue="Application.StrategieBourrin" />
+         <item itemvalue="Application.StrategieBasique" />
++        <item itemvalue="Application.strategieBourrin" />
+         <item itemvalue="Application.StrategieBasique" />
+         <item itemvalue="Application.StrategieBasique" />
+       </list>
+     </recent_temporary>
+   </component>
++  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+   <component name="TaskManager">
+     <task id="LOCAL-00001" summary="Ajout methode ajouterSequence dans la classe Solution">
+       <created>1652256448665</created>
+@@ -94,6 +146,13 @@
+       <option name="presentableId" value="LOCAL-00001" />
+       <option name="project" value="LOCAL" />
+       <updated>1652256448665</updated>
++    </task>
++    <task active="true" id="Default" summary="Default task">
++      <changelist id="5dbe1660-c9ae-497e-83b8-a85dacef2117" name="Changes" comment="Ajout methode ajouterSequence dans la classe Solution (correctif)" />
++      <created>1652686185349</created>
++      <option name="number" value="Default" />
++      <option name="presentableId" value="Default" />
++      <updated>1652686185349</updated>
+     </task>
+     <option name="localTasksCounter" value="2" />
+     <servers />
+@@ -109,7 +168,7 @@
+                   <entry key="branch">
+                     <value>
+                       <list>
+-                        <option value="dev" />
++                        <option value="solution-bourrin" />
+                       </list>
+                     </value>
+                   </entry>
+@@ -125,4 +184,15 @@
+     <MESSAGE value="Ajout methode ajouterSequence dans la classe Solution" />
+     <option name="LAST_COMMIT_MESSAGE" value="Ajout methode ajouterSequence dans la classe Solution" />
+   </component>
++  <component name="XDebuggerManager">
++    <breakpoint-manager>
++      <breakpoints>
++        <line-breakpoint enabled="true" type="java-line">
++          <url>file://$PROJECT_DIR$/src/main/java/com/rein/solution/Solution.java</url>
++          <line>39</line>
++          <option name="timeStamp" value="1" />
++        </line-breakpoint>
++      </breakpoints>
++    </breakpoint-manager>
++  </component>
+ </project>
+\ No newline at end of file
+Index: src/main/java/com/rein/solution/Solution.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>/*\r\n * To change this license header, choose License Headers in Project Properties.\r\n * To change this template file, choose Tools | Templates\r\n * and open the template in the editor.\r\n */\r\npackage com.rein.solution;\r\nimport com.rein.instance.Instance;\r\nimport com.rein.io.InstanceReader;\r\nimport com.rein.transplantation.Cycle;\r\nimport com.rein.transplantation.Sequence;\r\nimport java.util.ArrayList;\r\nimport java.util.Collection;\r\nimport java.util.logging.Level;\r\nimport java.util.logging.Logger;\r\n/**\r\n *\r\n * @author tryla\r\n */\r\npublic class Solution {\r\n    private int benefMedicalTotal;\r\n    private Collection<Sequence> listeSequences;\r\n    private Instance instance;\r\n    public Solution(Instance instance) {\r\n        this.instance = instance;\r\n        this.listeSequences = new ArrayList<>();\r\n    }\r\n\r\n    public Solution(Solution s) {\r\n        this(s.instance);\r\n        this.benefMedicalTotal = s.benefMedicalTotal;\r\n        for(int i=0; i<s.listeSequences.size(); i++)\r\n            this.listeSequences.add((Sequence) s.listeSequences.toArray()[i]);\r\n    }\r\n\r\n    private boolean ajouterSequence(Sequence s) {\r\n        try {\r\n            this.listeSequences.add(s);\r\n            this.benefMedicalTotal += s.getBenefMedicalSequence();\r\n            return true;\r\n        }catch (Error e) {\r\n            System.out.println(e.getMessage());\r\n            return false;\r\n        }\r\n    }\r\n\r\n    public void calculBenefice(){\r\n        System.out.println(\"calcul de bénéfice total\");\r\n        this.suppressionSequencesVides();\r\n        for (Sequence seq : listeSequences){\r\n            seq.calculBenefice(instance.getEchanges());\r\n                this.benefMedicalTotal += seq.getBenefMedicalSequence();\r\n        }\r\n    }\r\n    public void suppressionSequencesVides(){\r\n        Collection<Sequence> listeSequencesCopy = new ArrayList<>(listeSequences);\r\n        for (Sequence seq: listeSequencesCopy){\r\n            //si la séquence comporte 0 ou 1 noeud on la supprime de la solution finale\r\n            if (seq.getListeNoeuds().size()<=1) {\r\n                this.listeSequences.remove(seq);\r\n            }\r\n        }\r\n    }\r\n    public int getBenefMedicalTotal() {\r\n        return benefMedicalTotal;\r\n    }\r\n    public Collection<Sequence> getListeSequences() {\r\n        return listeSequences;\r\n    }\r\n\r\n    public Instance getInstance() {\r\n        return instance;\r\n    }\r\n\r\n    @Override\r\n    public String toString() {\r\n        String res = \"\";\r\n        return \"Solution{\" +\r\n                \"benefMedicalTotal=\" + benefMedicalTotal +\r\n                \", \\nlisteSequences=[\" + listeSequences +\r\n                \"] }\";\r\n    }\r\n\r\n    /**\r\n     * Checker de Solution :\r\n     * Condition de validité :\r\n     * - Est reliée à une instance\r\n     * - Le Bénéf médical est correctement calculé\r\n     * - Chaque séquence est valide\r\n     * **/\r\n    public boolean check() {\r\n        return (verifInstanceAssociee() && verifSequencesValides() && verifBenefMedicalCorrect());\r\n    }\r\n    /**\r\n     * Return true si la solution découle d'une instance existante, false sinon.\r\n     * **/\r\n    private boolean verifInstanceAssociee() {\r\n        return (this.instance.getNom() != \"\" && this.instance.getNom() != null);\r\n    }\r\n    /**\r\n     * Return true si le benef medical total est bien la somme des benefs medicaux de toutes les séquences, false sinon.\r\n     * **/\r\n    private boolean verifBenefMedicalCorrect() {\r\n        int somme = 0;\r\n        for (Sequence s: this.listeSequences)\r\n            somme += s.getBenefMedicalSequence();\r\n        return (somme == this.benefMedicalTotal);\r\n    }\r\n    /**\r\n     * Return true si l'ENSEMBLE des séquences de la solution sont valides, false sinon.\r\n     * **/\r\n    private boolean verifSequencesValides() {\r\n        boolean ans = false;\r\n        for (Sequence s: this.listeSequences){\r\n            if (s instanceof Chaine)\r\n                ans = ((Chaine) s).check();\r\n            else\r\n                ans = ((Cycle) s).check();\r\n            if (!ans)\r\n                return false;\r\n        }\r\n        return true;\r\n    }\r\n    public String exportSol() {\r\n        StringBuilder stringSol = new StringBuilder(\"// Cout total de la solution\\n\" +\r\n            this.getBenefMedicalTotal() +\r\n            \"\\n\\n// Description de la solution\\n\" +\r\n            \"// Cycles\\n\");\r\n            for(Sequence s : this.getListeSequences()) {\r\n                if (s.getClass().toString().equals(\"class com.rein.transplantation.Cycle\")){\r\n                    stringSol.append(s.getListeIdNoeuds() + \"\\n\");\r\n                }\r\n            }\r\n            stringSol.append(\"\\n// Chaines\\n\");\r\n            for(Sequence s : this.getListeSequences()) {\r\n                if (s.getClass().toString().equals(\"class com.rein.solution.Chaine\")){\r\n                    stringSol.append(s.getListeIdNoeuds() + \"\\n\");\r\n                }\r\n            }\r\n            stringSol.append(\"\\n\");\r\n        return stringSol.toString();\r\n    }\r\n    public static void main(String[] args) {\r\n        InstanceReader reader;\r\n        try {\r\n            reader = new InstanceReader(\"instancesInitiales/KEP_p9_n0_k3_l0.txt\");\r\n            Instance i = reader.readInstance();\r\n            Solution sZeroEchange = new Solution(i);\r\n            System.out.println(\"Solution à 0 échange: \\n\\t\" + sZeroEchange);\r\n        } catch (Exception ex) {\r\n            Logger.getLogger(Instance.class.getName()).log(Level.SEVERE, null, ex);\r\n        }\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/rein/solution/Solution.java b/src/main/java/com/rein/solution/Solution.java
+--- a/src/main/java/com/rein/solution/Solution.java	
++++ b/src/main/java/com/rein/solution/Solution.java	
+@@ -32,7 +32,11 @@
+             this.listeSequences.add((Sequence) s.listeSequences.toArray()[i]);
+     }
+ 
+-    private boolean ajouterSequence(Sequence s) {
++    /**
++     * Méthode chargée d'ajouter une séquence à la solution.
++     * Met également à jour le bénéef médical total.
++     * **/
++    public boolean ajouterSequence(Sequence s) {
+         try {
+             this.listeSequences.add(s);
+             this.benefMedicalTotal += s.getBenefMedicalSequence();
+@@ -150,4 +154,5 @@
+             Logger.getLogger(Instance.class.getName()).log(Level.SEVERE, null, ex);
+         }
+     }
++
+ }
+Index: src/main/java/com/rein/solveur/StrategieBourrin.java
+===================================================================
+diff --git a/src/main/java/com/rein/solveur/StrategieBourrin.java b/src/main/java/com/rein/solveur/StrategieBourrin.java
+new file mode 100644
+--- /dev/null	
++++ b/src/main/java/com/rein/solveur/StrategieBourrin.java	
+@@ -0,0 +1,238 @@
++package com.rein.solveur;
++
++import com.rein.instance.Instance;
++import com.rein.instance.Noeud;
++import com.rein.io.InstanceReader;
++import com.rein.solution.Chaine;
++import com.rein.solution.Solution;
++import com.rein.transplantation.Cycle;
++import com.rein.transplantation.Sequence;
++import org.apache.commons.cli.*;
++
++import java.io.File;
++import java.io.FileWriter;
++import java.io.IOException;
++import java.util.List;
++import java.util.Map;
++
++import static com.rein.solveur.StrategieBasique.displayWebInterface;
++
++public class StrategieBourrin implements Solveur {
++
++    @Override
++    public String getNom() {
++        return "Stratégie Bourrin";
++    }
++
++    public Solution solve(Instance i) {
++        System.out.println("Debut stratégie bourrin");
++        Solution s = new Solution(i);
++
++        System.out.println("###################### INFOS ######################");
++        System.out.println("Nom : " + i.getNom());
++        System.out.println(i.getNbAltruistes() + " altruistes");
++        System.out.println(i.getNbPaires()+" paires");
++        System.out.println("TailleMaxChaines : " + i.getTailleMaxChaines());
++        System.out.println("TailleMaxCycles : " + i.getTailleMaxCycles());
++        System.out.println("Echanges : " + i.getEchanges());
++        System.out.println("Noeuds : " + i.getTabNoeud());
++        System.out.println("###################### INFOS ######################");
++        boolean inserted = false;
++        //On parcourt la liste des noeuds
++        for (Noeud n: i.getTabNoeud()) {
++            inserted = false;
++            List listeSequences = (List) s.getListeSequences();
++            //Pour chacune des séquences de listeSequences...
++            for (int y=0 ; y<listeSequences.size() ; y++) {
++                if (listeSequences.get(y) instanceof Cycle) {
++                    Cycle cy = (Cycle) listeSequences.get(y);
++                    //On tente d'ajouter le noeud dans chacune des positions de la sequence seq
++                    int x = 0;
++                    while (x<cy.getListeNoeuds().size() && inserted == false) {
++                        inserted = cy.ajouterNoeud(n, x);
++                        x++;
++                    }
++                }
++            }
++            if (inserted == false) {
++                Cycle newCy = new Cycle(i.getTailleMaxCycles());
++                newCy.ajouterNoeud(n, 0);
++                s.ajouterSequence(newCy);
++            }
++        }
++        System.out.println("######################################");
++        System.out.println(s.toString());
++        System.out.println("######################################");
++        return s;
++    }
++
++
++
++    public static void displayWebInterface(Solution s) throws IOException {
++        int beneficeMedicalTotal = s.getBenefMedicalTotal();
++        String begin = "<!DOCTYPE html>\n" +
++                "<html lang=\"en\">\n" +
++                "  <head>\n" +
++                "    <script src=\"https://d3js.org/d3.v6.min.js\"></script>\n" +
++                "    <script src=\"https://visjs.github.io/vis-network/standalone/umd/vis-network.min.js\"></script>\n" +
++                "    <style type=\"text/css\">\n" +
++                "      #mynetwork {\n" +
++                "        width: 600px;\n" +
++                "        height: 600px;\n" +
++                "        border: 1px solid lightgray;\n" +
++                "      }\n" +
++                "    </style>\n" +
++                "  </head>\n" +
++                "  <body>\n" +
++                "    <div>" + s.getInstance().getNom() + "</div>\n" +
++                "    <div id=\"results\">Bénéfice médical total : " + beneficeMedicalTotal + "</div>\n" +
++                "    <div id=\"mynetwork\"></div>\n" +
++                "    <script type=\"text/javascript\">";
++
++        String nodes = "var nodes = new vis.DataSet([";
++        for (Sequence sequence : s.getListeSequences()) {
++            boolean isAltruiste = false;
++            for (Noeud noeud : sequence.getListeNoeuds()) {
++                int idNoeud = noeud.getId();
++                String shape = "circle";
++                String color = "orange";
++                if (sequence instanceof Chaine && !isAltruiste) {
++                    shape = "box";
++                    color = "#97C2FC";
++                    isAltruiste = true;
++                }
++                nodes += "{ id: " + idNoeud + ", label: \"" + idNoeud + "\", shape: \"" + shape + "\", color: \"" + color + "\" },";
++            }
++        }
++        nodes = nodes.substring(0, nodes.length() - 1);
++        nodes += "]);";
++
++        String edges = "var edges = [";
++        for (Sequence sequence : s.getListeSequences()) {
++            for (int i = 0; i < sequence.getListeNoeuds().size(); i++) {
++                // if it's not the last node of the sequence
++                if (i + 1 < sequence.getListeNoeuds().size()) {
++                    Noeud donneur = sequence.getListeNoeuds().get(i);
++                    Noeud receveur = sequence.getListeNoeuds().get(i + 1);
++                    int benefMedical = -1;
++                    // CHAINE
++                    if (sequence instanceof Chaine) {
++                        System.out.println("chaine");
++                        for (Map.Entry<Noeud, Integer> entry : sequence.getListeNoeuds().get(i).getListeEchanges().entrySet())
++                            if (entry.getKey().getId() == receveur.getId())
++                                benefMedical = entry.getValue();
++                        edges += "{ from: " + donneur.getId() + ", to: " + receveur.getId() + ", label: \"" + benefMedical + "\", color: { color: \"black\" }, font: { align: \"top\" }, arrows: \"to\" },";
++                    }
++                    // CYCLE
++                    if (sequence instanceof Cycle) {
++                        System.out.println("cycle");
++                        for (Map.Entry<Noeud, Integer> entry : donneur.getListeEchanges().entrySet())
++                            if (entry.getKey().getId() == receveur.getId())
++                                benefMedical = entry.getValue();
++                        edges += "{ from: " + donneur.getId() + ", to: " + receveur.getId() + ", label: \"" + benefMedical + "\", color: { color: \"black\" }, font: { align: \"top\" }, arrows: \"from\" },";
++                    }
++                } else {
++                    // CYCLE
++                    if (sequence instanceof Cycle) {
++                        System.out.println("cycle");
++                        int benefMedical = -1;
++                        Noeud donneur = sequence.getListeNoeuds().get(i);
++                        Noeud receveur = sequence.getListeNoeuds().get(0);
++                        for (Map.Entry<Noeud, Integer> entry : donneur.getListeEchanges().entrySet()) {
++                            if (entry.getKey().getId() == receveur.getId()) {
++                                benefMedical = entry.getValue();
++                                edges += "{ from: " + donneur.getId() + ", to: " + receveur.getId() + ", label: \"" + benefMedical + "\", color: { color: \"black\" }, font: { align: \"top\" }, arrows: \"from\" },";
++                            }
++                        }
++                    }
++                }
++            }
++        }
++        edges = edges.substring(0, edges.length() - 1);
++        edges += "];";
++        System.out.println(edges);
++        String end = "var container = document.getElementById(\"mynetwork\");\n" +
++                "      var data = {\n" +
++                "        nodes: nodes,\n" +
++                "        edges: edges,\n" +
++                "      };\n" +
++                "      var options = {};\n" +
++                "      var network = new vis.Network(container, data, options);\n" +
++                "    </script>\n" +
++                "  </body>\n" +
++                "</html>";
++
++        String html = begin + nodes + edges + end;
++        String pathname = "./results.html";
++        File result = new File(pathname);
++        result.createNewFile();
++        FileWriter myWriter = new FileWriter(pathname);
++        myWriter.write(html);
++        myWriter.close();
++
++    }
++
++    public static void main(String[] args) {
++        CommandLineParser parser = new DefaultParser();
++        // Création des options
++        Options options = new Options();
++        options.addOption(Option.builder("inst")
++                .hasArg(true)
++                .valueSeparator(' ')
++                .desc("Nom du fichier d'instance")
++                .build());
++        options.addOption(Option.builder("dSol")
++                .hasArg(true)
++                .valueSeparator(' ')
++                .desc("Répertoire des fichiers solutions")
++                .build());
++        try {
++            // Lecture des arguments CLI
++            CommandLine line = parser.parse(options, args);
++            System.out.println(line.getOptionValue("inst"));
++            System.out.println(line.getOptionValue("dSol"));
++            InstanceReader reader;
++            try {
++                // Lecture du fichier d'instance
++                System.out.println("-- Lecture du fichier d'instance");
++                System.out.println("11111");
++                System.out.println(line.getOptionValue("inst"));
++                reader = new InstanceReader("instancesInitiales/" + line.getOptionValue("inst"));
++                System.out.println("222");
++                Instance i = reader.readInstance();
++                // generation solution
++                System.out.println("-- generation solution");
++                StrategieBourrin sb = new StrategieBourrin();
++
++                Solution s = sb.solve(i);
++                System.out.println(s);
++
++                try {
++                    // Création du fichier de solution
++                    System.out.println("-- Création du fichier de solution");
++                    String nomFicSol = line.getOptionValue("dSol") + "/" + line.getOptionValue("inst").split("\\.")[0] + "_sol.txt";
++                    File ficSol = new File(nomFicSol);
++                    ficSol.getParentFile().mkdirs();
++                    // Ecriture du fichier de solution
++                    System.out.println("-- Ecriture du fichier de solution");
++                    FileWriter myWriter = new FileWriter(ficSol);
++                    myWriter.write(s.exportSol());
++                    myWriter.close();
++                    System.out.println("Fichier de solution créé : " + nomFicSol);
++                } catch (IOException e) {
++                    System.err.println("ERROR fichier solution");
++                    e.printStackTrace();
++                }
++                //System.out.println("s1 : " + s1.toString() + "\n\tcheck : " + s1.check());
++                System.out.println("Checker : " + s.check());
++                displayWebInterface(s);
++            } catch(Exception e){
++                System.out.println(e.getMessage());
++                System.err.println("ERROR Strategie bourrin");
++            }
++        } catch (ParseException exp) {
++            System.err.println("Unexpected exception:" + exp.getMessage());
++        }
++    }
++
++}
+Index: results.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html>\r\n<html lang=\"en\">\r\n  <head>\r\n    <script src=\"https://d3js.org/d3.v6.min.js\"></script>\r\n    <script src=\"https://visjs.github.io/vis-network/standalone/umd/vis-network.min.js\"></script>\r\n    <style type=\"text/css\">\r\n      #mynetwork {\r\n        width: 600px;\r\n        height: 600px;\r\n        border: 1px solid lightgray;\r\n      }\r\n    </style>\r\n  </head>\r\n  <body>\r\n    <div>KEP_P100_n11_k5_l17.txt</div>\r\n    <div id=\"results\">Bénéfice médical total : 715</div>\r\n    <div id=\"mynetwork\"></div>\r\n    <script type=\"text/javascript\">var nodes = new vis.DataSet([{ id: 2, label: \"2\", shape: \"box\", color: \"#97C2FC\" },{ id: 57, label: \"57\", shape: \"circle\", color: \"orange\" },{ id: 3, label: \"3\", shape: \"box\", color: \"#97C2FC\" },{ id: 48, label: \"48\", shape: \"circle\", color: \"orange\" },{ id: 5, label: \"5\", shape: \"box\", color: \"#97C2FC\" },{ id: 34, label: \"34\", shape: \"circle\", color: \"orange\" },{ id: 6, label: \"6\", shape: \"box\", color: \"#97C2FC\" },{ id: 40, label: \"40\", shape: \"circle\", color: \"orange\" },{ id: 9, label: \"9\", shape: \"box\", color: \"#97C2FC\" },{ id: 17, label: \"17\", shape: \"circle\", color: \"orange\" },{ id: 42, label: \"42\", shape: \"circle\", color: \"orange\" },{ id: 19, label: \"19\", shape: \"circle\", color: \"orange\" },{ id: 71, label: \"71\", shape: \"circle\", color: \"orange\" },{ id: 21, label: \"21\", shape: \"circle\", color: \"orange\" },{ id: 44, label: \"44\", shape: \"circle\", color: \"orange\" },{ id: 22, label: \"22\", shape: \"circle\", color: \"orange\" },{ id: 36, label: \"36\", shape: \"circle\", color: \"orange\" },{ id: 23, label: \"23\", shape: \"circle\", color: \"orange\" },{ id: 26, label: \"26\", shape: \"circle\", color: \"orange\" },{ id: 51, label: \"51\", shape: \"circle\", color: \"orange\" },{ id: 78, label: \"78\", shape: \"circle\", color: \"orange\" },{ id: 54, label: \"54\", shape: \"circle\", color: \"orange\" },{ id: 66, label: \"66\", shape: \"circle\", color: \"orange\" },{ id: 56, label: \"56\", shape: \"circle\", color: \"orange\" },{ id: 65, label: \"65\", shape: \"circle\", color: \"orange\" }]);var edges = [{ from: 2, to: 57, label: \"1\", color: { color: \"black\" }, font: { align: \"top\" }, arrows: \"to\" },{ from: 3, to: 48, label: \"29\", color: { color: \"black\" }, font: { align: \"top\" }, arrows: \"to\" },{ from: 5, to: 34, label: \"19\", color: { color: \"black\" }, font: { align: \"top\" }, arrows: \"to\" },{ from: 6, to: 40, label: \"1\", color: { color: \"black\" }, font: { align: \"top\" }, arrows: \"to\" },{ from: 9, to: 17, label: \"19\", color: { color: \"black\" }, font: { align: \"top\" }, arrows: \"to\" },{ from: 17, to: 42, label: \"5\", color: { color: \"black\" }, font: { align: \"top\" }, arrows: \"to\" },{ from: 19, to: 71, label: \"76\", color: { color: \"black\" }, font: { align: \"top\" }, arrows: \"from\" },{ from: 71, to: 19, label: \"77\", color: { color: \"black\" }, font: { align: \"top\" }, arrows: \"from\" },{ from: 21, to: 44, label: \"2\", color: { color: \"black\" }, font: { align: \"top\" }, arrows: \"from\" },{ from: 44, to: 21, label: \"54\", color: { color: \"black\" }, font: { align: \"top\" }, arrows: \"from\" },{ from: 22, to: 36, label: \"34\", color: { color: \"black\" }, font: { align: \"top\" }, arrows: \"from\" },{ from: 36, to: 22, label: \"13\", color: { color: \"black\" }, font: { align: \"top\" }, arrows: \"from\" },{ from: 23, to: 26, label: \"82\", color: { color: \"black\" }, font: { align: \"top\" }, arrows: \"from\" },{ from: 26, to: 23, label: \"24\", color: { color: \"black\" }, font: { align: \"top\" }, arrows: \"from\" },{ from: 51, to: 78, label: \"83\", color: { color: \"black\" }, font: { align: \"top\" }, arrows: \"from\" },{ from: 78, to: 51, label: \"14\", color: { color: \"black\" }, font: { align: \"top\" }, arrows: \"from\" },{ from: 54, to: 66, label: \"81\", color: { color: \"black\" }, font: { align: \"top\" }, arrows: \"from\" },{ from: 66, to: 54, label: \"59\", color: { color: \"black\" }, font: { align: \"top\" }, arrows: \"from\" },{ from: 56, to: 65, label: \"6\", color: { color: \"black\" }, font: { align: \"top\" }, arrows: \"from\" },{ from: 65, to: 56, label: \"36\", color: { color: \"black\" }, font: { align: \"top\" }, arrows: \"from\" }];var container = document.getElementById(\"mynetwork\");\r\n      var data = {\r\n        nodes: nodes,\r\n        edges: edges,\r\n      };\r\n      var options = {};\r\n      var network = new vis.Network(container, data, options);\r\n    </script>\r\n  </body>\r\n</html>
+===================================================================
+diff --git a/results.html b/results.html
+--- a/results.html	
++++ b/results.html	
+@@ -12,10 +12,10 @@
+     </style>
+   </head>
+   <body>
+-    <div>KEP_P100_n11_k5_l17.txt</div>
+-    <div id="results">Bénéfice médical total : 715</div>
++    <div>KEP_p9_n0_k3_l0.txt</div>
++    <div id="results">Bénéfice médical total : 0</div>
+     <div id="mynetwork"></div>
+-    <script type="text/javascript">var nodes = new vis.DataSet([{ id: 2, label: "2", shape: "box", color: "#97C2FC" },{ id: 57, label: "57", shape: "circle", color: "orange" },{ id: 3, label: "3", shape: "box", color: "#97C2FC" },{ id: 48, label: "48", shape: "circle", color: "orange" },{ id: 5, label: "5", shape: "box", color: "#97C2FC" },{ id: 34, label: "34", shape: "circle", color: "orange" },{ id: 6, label: "6", shape: "box", color: "#97C2FC" },{ id: 40, label: "40", shape: "circle", color: "orange" },{ id: 9, label: "9", shape: "box", color: "#97C2FC" },{ id: 17, label: "17", shape: "circle", color: "orange" },{ id: 42, label: "42", shape: "circle", color: "orange" },{ id: 19, label: "19", shape: "circle", color: "orange" },{ id: 71, label: "71", shape: "circle", color: "orange" },{ id: 21, label: "21", shape: "circle", color: "orange" },{ id: 44, label: "44", shape: "circle", color: "orange" },{ id: 22, label: "22", shape: "circle", color: "orange" },{ id: 36, label: "36", shape: "circle", color: "orange" },{ id: 23, label: "23", shape: "circle", color: "orange" },{ id: 26, label: "26", shape: "circle", color: "orange" },{ id: 51, label: "51", shape: "circle", color: "orange" },{ id: 78, label: "78", shape: "circle", color: "orange" },{ id: 54, label: "54", shape: "circle", color: "orange" },{ id: 66, label: "66", shape: "circle", color: "orange" },{ id: 56, label: "56", shape: "circle", color: "orange" },{ id: 65, label: "65", shape: "circle", color: "orange" }]);var edges = [{ from: 2, to: 57, label: "1", color: { color: "black" }, font: { align: "top" }, arrows: "to" },{ from: 3, to: 48, label: "29", color: { color: "black" }, font: { align: "top" }, arrows: "to" },{ from: 5, to: 34, label: "19", color: { color: "black" }, font: { align: "top" }, arrows: "to" },{ from: 6, to: 40, label: "1", color: { color: "black" }, font: { align: "top" }, arrows: "to" },{ from: 9, to: 17, label: "19", color: { color: "black" }, font: { align: "top" }, arrows: "to" },{ from: 17, to: 42, label: "5", color: { color: "black" }, font: { align: "top" }, arrows: "to" },{ from: 19, to: 71, label: "76", color: { color: "black" }, font: { align: "top" }, arrows: "from" },{ from: 71, to: 19, label: "77", color: { color: "black" }, font: { align: "top" }, arrows: "from" },{ from: 21, to: 44, label: "2", color: { color: "black" }, font: { align: "top" }, arrows: "from" },{ from: 44, to: 21, label: "54", color: { color: "black" }, font: { align: "top" }, arrows: "from" },{ from: 22, to: 36, label: "34", color: { color: "black" }, font: { align: "top" }, arrows: "from" },{ from: 36, to: 22, label: "13", color: { color: "black" }, font: { align: "top" }, arrows: "from" },{ from: 23, to: 26, label: "82", color: { color: "black" }, font: { align: "top" }, arrows: "from" },{ from: 26, to: 23, label: "24", color: { color: "black" }, font: { align: "top" }, arrows: "from" },{ from: 51, to: 78, label: "83", color: { color: "black" }, font: { align: "top" }, arrows: "from" },{ from: 78, to: 51, label: "14", color: { color: "black" }, font: { align: "top" }, arrows: "from" },{ from: 54, to: 66, label: "81", color: { color: "black" }, font: { align: "top" }, arrows: "from" },{ from: 66, to: 54, label: "59", color: { color: "black" }, font: { align: "top" }, arrows: "from" },{ from: 56, to: 65, label: "6", color: { color: "black" }, font: { align: "top" }, arrows: "from" },{ from: 65, to: 56, label: "36", color: { color: "black" }, font: { align: "top" }, arrows: "from" }];var container = document.getElementById("mynetwork");
++    <script type="text/javascript">var nodes = new vis.DataSet([{ id: 3, label: "3", shape: "circle", color: "orange" },{ id: 2, label: "2", shape: "circle", color: "orange" },{ id: 1, label: "1", shape: "circle", color: "orange" },{ id: 6, label: "6", shape: "circle", color: "orange" },{ id: 5, label: "5", shape: "circle", color: "orange" },{ id: 4, label: "4", shape: "circle", color: "orange" },{ id: 9, label: "9", shape: "circle", color: "orange" },{ id: 8, label: "8", shape: "circle", color: "orange" },{ id: 7, label: "7", shape: "circle", color: "orange" }]);var edges = [{ from: 3, to: 2, label: "6", color: { color: "black" }, font: { align: "top" }, arrows: "from" },{ from: 2, to: 1, label: "2", color: { color: "black" }, font: { align: "top" }, arrows: "from" },{ from: 1, to: 3, label: "4", color: { color: "black" }, font: { align: "top" }, arrows: "from" },{ from: 6, to: 5, label: "8", color: { color: "black" }, font: { align: "top" }, arrows: "from" },{ from: 5, to: 4, label: "-1", color: { color: "black" }, font: { align: "top" }, arrows: "from" },{ from: 4, to: 6, label: "8", color: { color: "black" }, font: { align: "top" }, arrows: "from" },{ from: 9, to: 8, label: "-1", color: { color: "black" }, font: { align: "top" }, arrows: "from" },{ from: 8, to: 7, label: "-1", color: { color: "black" }, font: { align: "top" }, arrows: "from" },{ from: 7, to: 9, label: "4", color: { color: "black" }, font: { align: "top" }, arrows: "from" }];var container = document.getElementById("mynetwork");
+       var data = {
+         nodes: nodes,
+         edges: edges,
