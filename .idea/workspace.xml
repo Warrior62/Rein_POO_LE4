@@ -4,18 +4,53 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5dbe1660-c9ae-497e-83b8-a85dacef2117" name="Changes" comment="Patch et mise à jour de la construction d'arbre, qui génère désormais des listes de séquences au lieu de listes d'ids.">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_lang3_3_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_06_05_2022_18_40__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_06_05_2022_18_40__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_03_05_2022_17_29__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_03_05_2022_17_29__Changes_.xml" afterDir="false" />
+    <list default="true" id="5dbe1660-c9ae-497e-83b8-a85dacef2117" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solution/Arbre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solution/Arbre.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solution/Chaine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solution/Chaine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/instance/Altruiste.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/instance/Altruiste.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/instance/Noeud.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/instance/Noeud.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/solution/Chaine.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/solution/Chaine.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/solution/Solution.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/solution/Solution.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/solveur/StrategieBasique.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/solveur/StrategieBasique.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p100_n0_k3_l0.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p100_n0_k3_l0.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p100_n11_k3_l13.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p100_n11_k3_l13.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p100_n11_k3_l4.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p100_n11_k3_l4.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p100_n11_k3_l7.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p100_n11_k3_l7.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p100_n11_k5_l17.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p100_n11_k5_l17.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p100_n33_k3_l13.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p100_n33_k3_l13.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p100_n33_k3_l4.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p100_n33_k3_l4.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p100_n33_k3_l7.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p100_n33_k3_l7.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p100_n33_k5_l17.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p100_n33_k5_l17.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p100_n5_k3_l13.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p100_n5_k3_l13.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p100_n5_k3_l4.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p100_n5_k3_l4.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p100_n5_k3_l7.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p100_n5_k3_l7.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p100_n5_k5_l17.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p100_n5_k5_l17.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p18_n0_k4_l0.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p18_n0_k4_l0.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p18_n2_k4_l4.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p18_n2_k4_l4.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p250_n0_k3_l0.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p250_n0_k3_l0.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p250_n13_k3_l13.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p250_n13_k3_l13.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p250_n13_k3_l4.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p250_n13_k3_l4.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p250_n13_k3_l7.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p250_n13_k3_l7.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p250_n13_k5_l17.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p250_n13_k5_l17.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p250_n28_k3_l13.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p250_n28_k3_l13.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p250_n28_k3_l4.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p250_n28_k3_l4.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p250_n28_k3_l7.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p250_n28_k3_l7.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p250_n28_k5_l17.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p250_n28_k5_l17.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p250_n83_k3_l13.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p250_n83_k3_l13.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p250_n83_k3_l4.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p250_n83_k3_l4.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p250_n83_k3_l7.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p250_n83_k3_l7.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p250_n83_k5_l17.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p250_n83_k5_l17.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p50_n0_k3_l0.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p50_n0_k3_l0.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p50_n17_k3_l13.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p50_n17_k3_l13.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p50_n17_k3_l4.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p50_n17_k3_l4.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p50_n17_k3_l7.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p50_n17_k3_l7.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p50_n17_k5_l17.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p50_n17_k5_l17.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p50_n3_k3_l13.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p50_n3_k3_l13.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p50_n3_k3_l4.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p50_n3_k3_l4.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p50_n3_k3_l7.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p50_n3_k3_l7.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p50_n3_k5_l17.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p50_n3_k5_l17.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p50_n6_k3_l13.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p50_n6_k3_l13.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p50_n6_k3_l4.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p50_n6_k3_l4.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p50_n6_k3_l7.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p50_n6_k3_l7.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p50_n6_k5_l17.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p50_n6_k5_l17.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p9_n0_k3_l0.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p9_n0_k3_l0.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p9_n1_k3_l3.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p9_n1_k3_l3.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/interface_web/InterfaceWeb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/interface_web/InterfaceWeb.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,27 +67,19 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="arbres-fix" />
+        <entry key="$PROJECT_DIR$" value="interface-graphique" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitSEFilterConfiguration">
-    <file-type-list>
-      <filtered-out-file-type name="LOCAL_BRANCH" />
-      <filtered-out-file-type name="REMOTE_BRANCH" />
-      <filtered-out-file-type name="TAG" />
-      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
-    </file-type-list>
-  </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/transplantation/Cycle.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/transplantation/Sequence.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/pom.xml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/io/InstanceReader.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/instance/Noeud.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/transplantation/Sequence.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/solution/Solution.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/solution/Solution.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/transplantation/Cycle.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -70,49 +97,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Libraries" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
-  </component>
-  <component name="RunManager" selected="Application.Arbre">
+  <component name="RunManager" selected="Application.AllSolveurs">
+    <configuration name="AllSolveurs" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.rein.test.AllSolveurs" />
+      <module name="rein-poo-le4" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.rein.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Arbre" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.rein.solution.Arbre" />
       <module name="rein-poo-le4" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.rein.solution.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Chaine" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.rein.solution.Chaine" />
-      <module name="rein-poo-le4" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.rein.solution.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Cycle" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.rein.transplantation.Cycle" />
-      <module name="rein-poo-le4" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.rein.transplantation.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -134,6 +138,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="StrategieBasique2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.rein.solveur.StrategieBasique2" />
+      <module name="rein-poo-le4" />
+      <option name="PROGRAM_PARAMETERS" value="-inst KEP_p250_n83_k5_l17.txt -dSol solutions_test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.rein.solveur.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <method v="2">
         <option name="Make" enabled="true" />
@@ -145,13 +163,18 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.Arbre" />
+      <item itemvalue="Application.StrategieBasique" />
+      <item itemvalue="Application.StrategieBasique2" />
+      <item itemvalue="Application.AllSolveurs" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.AllSolveurs" />
+        <item itemvalue="Application.StrategieBasique2" />
+        <item itemvalue="Application.StrategieBasique" />
         <item itemvalue="Application.Arbre" />
-        <item itemvalue="Application.Chaine" />
-        <item itemvalue="Application.StrategieBasique" />
-        <item itemvalue="Application.Cycle" />
-        <item itemvalue="Application.StrategieBasique" />
       </list>
     </recent_temporary>
   </component>
@@ -199,22 +222,46 @@
       <option name="project" value="LOCAL" />
       <updated>1653210542262</updated>
     </task>
-    <task id="LOCAL-00006" summary="Commit intermédiaire de construction d'arbres">
-      <created>1653604682393</created>
+    <task id="LOCAL-00006" summary="propal°2 arbre">
+      <created>1653399302500</created>
       <option name="number" value="00006" />
       <option name="presentableId" value="LOCAL-00006" />
       <option name="project" value="LOCAL" />
-      <updated>1653604682393</updated>
+      <updated>1653399302500</updated>
     </task>
-    <task id="LOCAL-00007" summary="Commit final de construction d'arbres (à améliorer par la suite).&#10;Intégration de la détection de cycles et chaines au fur et à mesure du parcours de l'arbre">
-      <created>1653658324136</created>
+    <task id="LOCAL-00007" summary="problème d'orientation des flèches pour les cycles de 3 résolu">
+      <created>1653563731687</created>
       <option name="number" value="00007" />
       <option name="presentableId" value="LOCAL-00007" />
       <option name="project" value="LOCAL" />
-      <updated>1653658324136</updated>
+      <updated>1653563731687</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="affichage flèche directions canva + liste des altruistes non-utilisés">
+      <created>1653581429585</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1653581429585</updated>
+    </task>
+    <task id="LOCAL-00009" summary="affichage liste des paires non-utilisés">
+      <created>1653582116200</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1653582116200</updated>
+    </task>
+    <task id="LOCAL-00010" summary="affichage nombre de noeuds non-utilisés">
+      <created>1653582553616</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1653582553616</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -227,7 +274,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="dev" />
+                        <option value="origin/interface-graphique" />
                       </list>
                     </value>
                   </entry>
@@ -267,6 +314,11 @@
             <list>
               <RecentGroup>
                 <option name="FILTER_VALUES">
+                  <option value="origin/interface-graphique" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
                   <option value="origin/strategie-1" />
                 </option>
               </RecentGroup>
@@ -282,9 +334,12 @@
     <MESSAGE value="init operateurs" />
     <MESSAGE value="init operateurs + recherche locale" />
     <MESSAGE value="propal°1 arbre" />
-    <MESSAGE value="Commit intermédiaire de construction d'arbres" />
-    <MESSAGE value="Commit final de construction d'arbres (à améliorer par la suite).&#10;Intégration de la détection de cycles et chaines au fur et à mesure du parcours de l'arbre" />
-    <option name="LAST_COMMIT_MESSAGE" value="Commit final de construction d'arbres (à améliorer par la suite).&#10;Intégration de la détection de cycles et chaines au fur et à mesure du parcours de l'arbre" />
+    <MESSAGE value="propal°2 arbre" />
+    <MESSAGE value="problème d'orientation des flèches pour les cycles de 3 résolu" />
+    <MESSAGE value="affichage flèche directions canva + liste des altruistes non-utilisés" />
+    <MESSAGE value="affichage liste des paires non-utilisés" />
+    <MESSAGE value="affichage nombre de noeuds non-utilisés" />
+    <option name="LAST_COMMIT_MESSAGE" value="affichage nombre de noeuds non-utilisés" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
