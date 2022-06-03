@@ -4,7 +4,83 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5dbe1660-c9ae-497e-83b8-a85dacef2117" name="Changes" comment="" />
+    <list default="true" id="5dbe1660-c9ae-497e-83b8-a85dacef2117" name="Changes" comment="merge conflits interface-graphique vers dev fait">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rein/solution/Selecteur.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.settings/org.eclipse.core.resources.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/.github/workflows/maven.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/.idea/artifacts/test_extract_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/.idea/libraries/Maven__commons_cli_commons_cli_1_5_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/.idea/libraries/Maven__org_apache_commons_commons_lang3_3_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/.idea/libraries/commons_cli_1_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/.settings/org.eclipse.core.resources.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/instancesInitiales/KEP_p100_n0_k3_l0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/instancesInitiales/KEP_p100_n11_k3_l13.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/instancesInitiales/KEP_p100_n11_k3_l4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/instancesInitiales/KEP_p100_n11_k3_l7.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/instancesInitiales/KEP_p100_n11_k5_l17.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/instancesInitiales/KEP_p100_n5_k3_l13.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/instancesInitiales/KEP_p100_n5_k3_l4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/instancesInitiales/KEP_p100_n5_k3_l7.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/instancesInitiales/KEP_p100_n5_k5_l17.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/instancesInitiales/KEP_p18_n0_k4_l0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/instancesInitiales/KEP_p18_n2_k4_l4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/instancesInitiales/KEP_p50_n0_k3_l0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/instancesInitiales/KEP_p50_n3_k3_l13.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/instancesInitiales/KEP_p50_n3_k3_l4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/instancesInitiales/KEP_p50_n3_k3_l7.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/instancesInitiales/KEP_p50_n3_k5_l17.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/instancesInitiales/KEP_p50_n6_k3_l13.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/instancesInitiales/KEP_p50_n6_k3_l4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/instancesInitiales/KEP_p50_n6_k3_l7.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/instancesInitiales/KEP_p50_n6_k5_l17.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/instancesInitiales/KEP_p9_n0_k3_l0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/instancesInitiales/KEP_p9_n1_k3_l3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/lib/commons-cli-1.5.0/META-INF/LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/lib/commons-cli-1.5.0/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/lib/commons-cli-1.5.0/META-INF/NOTICE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/lib/commons-cli-1.5.0/META-INF/maven/commons-cli/commons-cli/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/lib/commons-cli-1.5.0/META-INF/maven/commons-cli/commons-cli/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/out/artifacts/test_extract_jar/rein-poo-le4.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/solution_test/KEP_p9_n0_k3_l0_sol.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/main/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/main/java/com/rein/instance/Altruiste.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/main/java/com/rein/instance/Echange.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/main/java/com/rein/instance/Instance.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/main/java/com/rein/instance/Noeud.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/main/java/com/rein/instance/Paire.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/main/java/com/rein/io/InstanceReader.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/main/java/com/rein/io/exception/FileExistException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/main/java/com/rein/io/exception/FormatFileException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/main/java/com/rein/io/exception/OpenFileException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/main/java/com/rein/io/exception/ReaderException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/main/java/com/rein/solution/Chaine.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/main/java/com/rein/solution/Solution.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/main/java/com/rein/solveur/Solveur.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/main/java/com/rein/solveur/StrategieBasique.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/main/java/com/rein/transplantation/Cycle.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/main/java/com/rein/transplantation/Sequence.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/test_extract_jar/rein-poo-le4.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution_test/KEP_P100_n11_k5_l17_sol.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution_test/KEP_p9_n0_k3_l0_sol.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solution/Arbre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solution/Arbre.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solution/sequencesPossibles.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solution/SequencesPossibles.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/solution/Arbre.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/solution/Arbre.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/solution/sequencesPossibles.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/solution/sequencesPossibles.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,7 +96,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="interface-graphique" />
+        <entry key="$PROJECT_DIR$" value="dev" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -50,7 +126,10 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="RunManager" selected="Application.AllSolveurs">
+  <component name="PropertiesComponent">
+    <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
+  </component>
+  <component name="RunManager" selected="Application.Arbre">
     <configuration name="AllSolveurs" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.rein.test.AllSolveurs" />
       <module name="rein-poo-le4" />
@@ -124,10 +203,10 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.AllSolveurs" />
-        <item itemvalue="Application.StrategieBasique2" />
-        <item itemvalue="Application.StrategieBasique" />
         <item itemvalue="Application.Arbre" />
+        <item itemvalue="Application.StrategieBasique2" />
+        <item itemvalue="Application.AllSolveurs" />
+        <item itemvalue="Application.StrategieBasique" />
       </list>
     </recent_temporary>
   </component>
@@ -210,7 +289,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653582553616</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="merge conflits interface-graphique vers dev fait">
+      <created>1654276345022</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1654276345022</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -292,7 +378,8 @@
     <MESSAGE value="affichage flèche directions canva + liste des altruistes non-utilisés" />
     <MESSAGE value="affichage liste des paires non-utilisés" />
     <MESSAGE value="affichage nombre de noeuds non-utilisés" />
-    <option name="LAST_COMMIT_MESSAGE" value="affichage nombre de noeuds non-utilisés" />
+    <MESSAGE value="merge conflits interface-graphique vers dev fait" />
+    <option name="LAST_COMMIT_MESSAGE" value="merge conflits interface-graphique vers dev fait" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

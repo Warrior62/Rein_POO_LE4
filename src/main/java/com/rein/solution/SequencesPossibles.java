@@ -4,7 +4,7 @@ import com.rein.transplantation.Sequence;
 import java.util.LinkedHashSet;
 
 
-public class sequencesPossibles {
+public class SequencesPossibles {
 
     private LinkedHashSet<Sequence> cycles;
     private LinkedHashSet<Sequence> chaines;
@@ -12,9 +12,9 @@ public class sequencesPossibles {
     /**
      * Constructeur par défaut
      * */
-    public void sequencesPossibles() {
-        this.cycles = new LinkedHashSet<Sequence>();
-        this.chaines = new LinkedHashSet<Sequence>();
+    public SequencesPossibles() {
+        this.cycles = new LinkedHashSet<>();
+        this.chaines = new LinkedHashSet<>();
     }
 
     //////////////////////////////////////////////////////////////

@@ -8,8 +8,6 @@ import com.rein.io.InstanceReader;
 import com.rein.transplantation.Cycle;
 import com.rein.transplantation.Sequence;
 
-import java.net.Inet4Address;
-import java.sql.SQLOutput;
 import java.util.*;
 
 public class Arbre {
@@ -120,11 +118,11 @@ public class Arbre {
         }
     }*/
 
-    public sequencesPossibles detectionChainesCycles() {
+    public SequencesPossibles detectionChainesCycles() {
         LinkedHashSet<Sequence> listeChainesPossibles = new LinkedHashSet<Sequence>();
         LinkedHashSet<Sequence> listeCyclesPossibles = new LinkedHashSet<Sequence>();
         LinkedHashSet<Integer> listeId = new LinkedHashSet<Integer>();
-        sequencesPossibles s = new sequencesPossibles();
+        SequencesPossibles s = new SequencesPossibles();
 
         //Détection des séquences via méthode récursive d'arbre.... Renvoie les cycles et chaines potentielles dans des LinkedHashSet<LinkedHashSet> (listeCyclesPossibles et listeChainesPossibles)
         this.recurrArbre(listeId, 0, listeChainesPossibles, listeCyclesPossibles);
@@ -226,14 +224,18 @@ public class Arbre {
     public static void main(String[] args) {
         try{
             // --> Init <-- //
-            InstanceReader reader = new InstanceReader("instancesInitiales/KEP_p9_n1_k3_l3.txt");
+            InstanceReader reader = new InstanceReader("instances/KEP_p250_n83_k5_l17.txt");
             Instance i = reader.readInstance();
             Arbre racine = new Arbre(i.getTabNoeud()[0], i);
             ArrayList<Altruiste> AltruistesDispo = i.getTabAltruistes();
             // --> Init <-- //
 
             // --> Algorithme <-- //
-            sequencesPossibles sequencesDetectees = racine.detectionChainesCycles();
+            SequencesPossibles sequencesDetectees = racine.detectionChainesCycles();
+            System.out.println("$$");
+            Selecteur selecteur = new Selecteur(sequencesDetectees);
+            LinkedHashSet<Sequence> sequencesChoisies = selecteur.getSequencesParBenefice();
+            System.out.println("$$");
             // --> Algorithme <-- //
 
             System.out.println("Cycles : ");
