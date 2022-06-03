@@ -9,6 +9,7 @@ import com.rein.transplantation.Cycle;
 import com.rein.transplantation.Sequence;
 
 import java.net.Inet4Address;
+import java.sql.SQLOutput;
 import java.util.*;
 
 public class Arbre {
@@ -83,10 +84,12 @@ public class Arbre {
                 }
             }else {
                 //listeChainesPossibles.add(listeIdBis);
+                System.out.println("11111111111");
                 if (listeIdBis.size() <= this.instance.getTailleMaxChaines())
                     listeChainesPossibles.add(new Chaine(listeIdBis, this.instance));
             }
         }else { //Lorsque l'on détecte un cycle, il faut enregistrer le cycle et la chaîne que cela peut aussi former
+            System.out.println("2222222222");
             if (listeIdBis.size() <= this.instance.getTailleMaxChaines())
                 listeChainesPossibles.add(new Chaine(listeIdBis, this.instance));
             Iterator it = listeIdBis.iterator();
@@ -95,6 +98,7 @@ public class Arbre {
                 it.remove();
                 idCourant = (int) it.next();
             }
+            System.out.println("333333333");
             if (listeIdBis.size() <= this.instance.getTailleMaxCycles())
                 listeCyclesPossibles.add(new Cycle(listeIdBis, this.instance));
         }
@@ -224,7 +228,7 @@ public class Arbre {
             // --> Init <-- //
             InstanceReader reader = new InstanceReader("instancesInitiales/KEP_p9_n1_k3_l3.txt");
             Instance i = reader.readInstance();
-            Arbre racine = new Arbre(i.getTabNoeud()[1], i);
+            Arbre racine = new Arbre(i.getTabNoeud()[0], i);
             ArrayList<Altruiste> AltruistesDispo = i.getTabAltruistes();
             // --> Init <-- //
 
