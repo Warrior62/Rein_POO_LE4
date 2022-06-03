@@ -8,5 +8,18 @@ public class Altruiste extends Noeud {
     public Altruiste(int id) {
         super(id);
     }
-    
+
+    public Altruiste(Altruiste a) {
+        super(a.getId());
+        this.setListeEchanges(a.getListeEchanges());
+        this.setChaine(a.getChaine());
+    }
+
+    public void setChaine(Chaine chaine) {
+        this.chaine = chaine;
+    }
+
+    public Chaine getChaine() {
+        return chaine;
+    }
 }

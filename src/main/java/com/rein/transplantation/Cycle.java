@@ -10,11 +10,51 @@ import com.rein.instance.Altruiste;
 import com.rein.instance.Instance;
 import com.rein.instance.Noeud;
 import com.rein.io.InstanceReader;
+
+import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.List;
 public class Cycle extends Sequence {
     public Cycle(int tailleMax){
         this.setTailleMaxSequence(tailleMax);
     }
+
+    //Constructeur chargé de créer un cycle à partir d'un LinkedHashSet d'ids
+    //Prend en paramètres le LinkedHasSet d'ids 'idsDeNoeuds'
+    //Retourne en sortie le nouveau cycle créé
+    public Cycle(LinkedHashSet<Integer> idsDeNoeuds, Instance i) {
+        Iterator it = idsDeNoeuds.iterator();
+        int idPrec, idCour;
+        //Cycle c = new Cycle(i.getTailleMaxCycles());
+        Noeud nPrec, nCour, nPremier;
+        int countBenefMedical = 0;
+
+        idCour = (int) it.next();
+        nPremier = nCour = new Noeud(i.getTabNoeud()[idCour-1]);
+        this.getListeNoeuds().add(nCour);
+
+        while (it.hasNext()) {
+            //On récupère une copie du noeud, on l'ajoute et on calcule le benef medical
+            idPrec = idCour;
+            idCour = (Integer) it.next();
+            nPrec = nCour;
+            nCour = new Noeud(i.getTabNoeud()[idCour-1]);
+            this.getListeNoeuds().add(nCour);
+
+            System.out.println(nPrec.getBenefMedicalVers(nCour));
+            System.out.println("id : " + nPrec.getId() + " - " + nCour.getId());
+            System.out.println(nPrec.getListeEchanges());
+            countBenefMedical += nPrec.getBenefMedicalVers(nCour);
+            //System.out.println("Le benef medical est de  : " + countBenefMedical);
+        }
+        countBenefMedical += nCour.getBenefMedicalVers(nPremier);
+
+
+        //SetUp du cycle
+        this.setTailleMaxSequence(i.getTailleMaxCycles());
+        this.setBenefMedicalTotal(countBenefMedical);
+    }
+
     public String toString() {
         return "Cycle : { \n"
                 + "\tlisteNoeuds : "+this.getListeNoeuds() + "\n"
@@ -157,10 +197,13 @@ public class Cycle extends Sequence {
             return false;
         }
     }
+
+
+
     public static void main(String[] args) {
         InstanceReader reader;
         try {
-            reader = new InstanceReader("instancesInitiales/KEP_p9_n1_k3_l3.txt");
+            /*reader = new InstanceReader("instancesInitiales/KEP_p9_n1_k3_l3.txt");
             Instance i = reader.readInstance();
             //System.out.println(i);
             Noeud[] tab = i.getTabNoeud();
@@ -183,7 +226,40 @@ public class Cycle extends Sequence {
             System.out.println(c1);
             // ===> TEST OK
             // ### Test ajout d'un altruiste ###
-            System.out.println("Checker : "+c1.check());
+            System.out.println("Checker : "+c1.check());*/
+            reader = new InstanceReader("instancesInitiales/KEP_p9_n1_k3_l3.txt");
+            Instance i = reader.readInstance();
+            //System.out.println(i);
+            Noeud[] tab = i.getTabNoeud();
+            /*Altruiste a1 = (Altruiste) tab[0]; //id=1 - compatibilités vers {Paire{id=9}=10, Paire{id=5}=5, Paire{id=2}=4}
+            Noeud p2 = tab[1]; //id=2 - compatibilités vers {Paire{id=9}=4, Paire{id=3}=7, Paire{id=5}=10, Paire{id=8}=9, Paire{id=4}=4}
+            Noeud p3 = tab[2]; //id=3 - compatibilités vers {Paire{id=9}=4, Paire{id=6}=1, Paire{id=8}=10, Paire{id=2}=2, Paire{id=4}=6, Paire{id=10}=2}
+            Noeud p4 = tab[3]; //id=4 - compatibilités vers {Paire{id=9}=3, Paire{id=3}=6, Paire{id=6}=6, Paire{id=5}=8}
+            Noeud p5 = tab[4]; //id=5 - compatibilités vers {Paire{id=6}=6, Paire{id=7}=8}
+            Noeud p6 = tab[5]; //id=6 - compatibilités vers {Paire{id=3}=2, Paire{id=8}=9, Paire{id=7}=8, Paire{id=4}=9}
+            Noeud p7 = tab[6]; //id=7 - compatibilités vers {Paire{id=3}=1, Paire{id=6}=8, Paire{id=8}=8, Paire{id=2}=10}
+            Noeud p8 = tab[7]; //id=8 - compatibilités vers {Paire{id=9}=9, Paire{id=6}=6, Paire{id=5}=8, Paire{id=7}=7, Paire{id=10}=4}
+            Noeud p9 = tab[8]; //id=9 - compatibilités vers {Paire{id=4}=8}*/
+            //System.out.println(i.getEchanges());
+
+            Noeud p4 = tab[3];
+            Noeud p5 = tab[4];
+            Noeud p6 = tab[5];
+            System.out.println(p4.getBenefMedicalVers(p5));
+            System.out.println(p5.getBenefMedicalVers(p6));
+            System.out.println(p6.getBenefMedicalVers(p4));
+
+            LinkedHashSet<Integer> set = new LinkedHashSet<Integer>();
+            set.add(4);
+            set.add(5);
+            set.add(6);
+
+            Cycle c = new Cycle(set, i);
+            System.out.println("Test : ");
+            System.out.println(c.toString());
+
+            System.out.println(c.check());
+
         } catch(Exception e){
             System.out.println("ERROR test ajout");
             System.out.println(e.toString());
