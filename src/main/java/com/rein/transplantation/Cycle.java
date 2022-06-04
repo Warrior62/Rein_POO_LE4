@@ -123,11 +123,7 @@ public class Cycle extends Sequence {
         if (this.getListeNoeuds().size() == 1 && (position == 0 || position == 1) ) {
             int benef1 = n.getBenefMedicalVers(this.getListeNoeuds().get(0));
             int benef2 = this.getListeNoeuds().get(0).getBenefMedicalVers(n);
-            /*System.out.println(this.getBenefMedicalSequence());
-            System.out.println(benef1);
-            System.out.println(benef2);
-            System.out.println(this.getListeNoeuds().get(0));
-            System.out.println(n);*/
+
             this.getListeNoeuds().add(position, n);
             this.setBenefMedicalTotal(benef1 + benef2);
             //System.out.println("Methode rustine 2");

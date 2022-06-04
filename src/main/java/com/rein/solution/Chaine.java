@@ -51,10 +51,6 @@ public class Chaine extends Sequence {
             nCour = new Noeud(i.getTabNoeud()[idCour-1]);
             this.getListeNoeuds().add(nCour);
 
-            /*System.out.println("id : " + nPrec.getId() + " - " + nCour.getId());
-            System.out.println(nPrec.getBenefMedicalVers(nCour));
-            System.out.println(nPrec.getListeEchanges());*/
-            //System.out.println("COUT : " + nPrec.getBenefMedicalVers(nCour));
             countBenefMedical += nPrec.getBenefMedicalVers(nCour);
         }
         //SetUp de la chaine

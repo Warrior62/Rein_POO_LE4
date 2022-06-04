@@ -16,7 +16,7 @@ public class Arbre {
     private Noeud noeudRacine;
     private ArrayList<Arbre> listeFils;
     private int niveauProfondeur;
-    static final int PROFONDEUR_MAX = 4;
+    static final int PROFONDEUR_MAX = 7;
     private Instance instance;
 
     // --------------------------------------------------
@@ -82,12 +82,10 @@ public class Arbre {
                 }
             }else {
                 //listeChainesPossibles.add(listeIdBis);
-                System.out.println("11111111111");
                 if (listeIdBis.size() <= this.instance.getTailleMaxChaines())
                     listeChainesPossibles.add(new Chaine(listeIdBis, this.instance));
             }
         }else { //Lorsque l'on détecte un cycle, il faut enregistrer le cycle et la chaîne que cela peut aussi former
-            System.out.println("2222222222");
             if (listeIdBis.size() <= this.instance.getTailleMaxChaines())
                 listeChainesPossibles.add(new Chaine(listeIdBis, this.instance));
             Iterator it = listeIdBis.iterator();
@@ -96,27 +94,10 @@ public class Arbre {
                 it.remove();
                 idCourant = (int) it.next();
             }
-            System.out.println("333333333");
             if (listeIdBis.size() <= this.instance.getTailleMaxCycles())
                 listeCyclesPossibles.add(new Cycle(listeIdBis, this.instance));
         }
     }
-
-    //Fonction chargée de convertir le LinkedHashSet d'id 'listeIdCycle' en cycle
-    //Retourne le cycle créé
-    //Prend en entrée la liste d'id des noeuds dy cycle à former et
-    /*public static Cycle ajouterCyclePossible(LinkedHashSet<Integer> listeIdCycle, Instance i) {
-        Iterator it = listeIdCycle.iterator();
-        Integer idCourant;
-        Cycle c = new Cycle(i.getTailleMaxCycles());
-        Noeud n;
-
-        while (it.hasNext()) {
-            idCourant = (Integer) it.next();
-            n = i.getCopieNoeud(idCourant);
-            c.ajouterNoeud()
-        }
-    }*/
 
     public SequencesPossibles detectionChainesCycles() {
         LinkedHashSet<Sequence> listeChainesPossibles = new LinkedHashSet<Sequence>();
@@ -166,28 +147,6 @@ public class Arbre {
         }
     }
 
-    public static LinkedHashSet<LinkedHashSet> selectionChainesPremieres(LinkedHashSet<LinkedHashSet> chainesPossibles, LinkedHashSet<Integer> noeudsIndisponibles, ArrayList<Altruiste> listeAltruistes) {
-        Iterator it = chainesPossibles.iterator();
-        LinkedHashSet listeAltruistesDisponibles = new LinkedHashSet(listeAltruistes);
-        LinkedHashSet<LinkedHashSet> chainesChoisies = new LinkedHashSet<LinkedHashSet>();
-
-        while (it.hasNext()) {
-            LinkedHashSet<Integer> chaineCourante = (LinkedHashSet) it.next();
-            System.out.println("Aanalyse chaine : ");
-            System.out.println(chaineCourante);
-            if (areNoeudsDisponibles(chaineCourante, noeudsIndisponibles)) {
-                System.out.println("NOEUDS DISPONIBLES");
-                for (Altruiste a : listeAltruistes)
-                if (isAltruisteCompatible(a, chaineCourante)) {
-                    System.out.println("ALTRUISTE COMPATIBLE");
-                    ajouterChaine(chaineCourante, chainesChoisies, noeudsIndisponibles, a, listeAltruistesDisponibles);
-                }
-            }
-        }
-
-        return chainesChoisies;
-    }
-
     public static void ajouterChaine(LinkedHashSet<Integer> chaineCourante, LinkedHashSet<LinkedHashSet> chainesChoisies, LinkedHashSet<Integer> noeudsIndisponibles, Altruiste a, LinkedHashSet<Altruiste> listeAltruistesDisponibles) {
         chaineCourante.add(a.getId());
         chainesChoisies.add(chaineCourante);
@@ -222,26 +181,33 @@ public class Arbre {
 
 
     public static void main(String[] args) {
+        long startTime = System.nanoTime();
         try{
             // --> Init <-- //
-            InstanceReader reader = new InstanceReader("instances/KEP_p250_n83_k5_l17.txt");
+            InstanceReader reader = new InstanceReader("instances/KEP_p100_n11_k3_l7.txt");
             Instance i = reader.readInstance();
-            Arbre racine = new Arbre(i.getTabNoeud()[0], i);
             ArrayList<Altruiste> AltruistesDispo = i.getTabAltruistes();
+            Arbre racine = new Arbre(AltruistesDispo.get(0), i);
+            //System.out.println(racine.id);
             // --> Init <-- //
+            System.out.println(AltruistesDispo);
 
             // --> Algorithme <-- //
             SequencesPossibles sequencesDetectees = racine.detectionChainesCycles();
-            System.out.println("$$");
-            Selecteur selecteur = new Selecteur(sequencesDetectees);
-            LinkedHashSet<Sequence> sequencesChoisies = selecteur.getSequencesParBenefice();
-            System.out.println("$$");
             // --> Algorithme <-- //
 
-            System.out.println("Cycles : ");
-            System.out.println(sequencesDetectees.getCycles());
-            System.out.println("Chaines : ");
-            System.out.println(sequencesDetectees.getChaines());
+            /*System.out.println("Cycles : ");
+            System.out.println(sequencesDetectees.getCycles());*/
+            /*System.out.println("Chaines : ");
+            System.out.println(sequencesDetectees.getChaines());*/
+
+            Selecteur selecteur = new Selecteur(sequencesDetectees);
+            SequencesPossibles sequencesChoisies = selecteur.selectionRandom_v1();
+            System.out.println(sequencesChoisies);
+
+            long endTime = System.nanoTime();
+            System.out.println("Tps : " + (endTime - startTime)/1000000 + " ms");  //divide by 1000000 to get milliseconds.
+
         } catch(Exception e){
             System.err.println(e);
         }
