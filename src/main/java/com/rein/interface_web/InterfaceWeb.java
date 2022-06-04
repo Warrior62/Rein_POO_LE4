@@ -80,12 +80,11 @@ public class InterfaceWeb {
     public void setBeneficeChaqueSequence() {
         String res = "<ul style=\"list-style-type:none;\">";
         for(Sequence sequence : this.solution.getListeSequences()){
-            res += "<li>";
+            res += "<li class=\"sequence\" data-toggle=\"tooltip\" data-html=\"true\" title=\"Bénefice médical associé : &#10;" + sequence.getBenefMedicalSequence() + "\">";
             for(Noeud n : sequence.getListeNoeuds()){
                 res += n.getId() + "->";
             }
             res = res.substring(0, res.length()-2);
-            res += " : <b>" + sequence.getBenefMedicalSequence() + "</b></li>";
         }
         res += "</ul>";
         this.beneficeChaqueSequence = res;
@@ -121,10 +120,29 @@ public class InterfaceWeb {
         return "<!DOCTYPE html>\n" +
                 "<html lang=\"en\">\n" +
                 "<meta charset='utf-8'>\n" +
-                "  <head>\n" +
-                "    <script src=\"https://visjs.github.io/vis-network/standalone/umd/vis-network.min.js\"></script>\n" +
-                "    <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js\"></script>\n" +
-                "    <script src=\"https://cdn.jsdelivr.net/npm/chart.js\"></script>\n" +
+                "   <head>\n" +
+                "       <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css\"\n>" +
+                "       <script src=\"https://visjs.github.io/vis-network/standalone/umd/vis-network.min.js\"></script>\n" +
+                "       <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js\"></script>" +
+                "       <script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js\" integrity=\"sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2\" crossorigin=\"anonymous\"></script>\n" +
+                "       <script>\n" +
+                "           $(document).ready(function(){\n" +
+                "               $('[data-toggle=\"tooltip\"]').tooltip();   \n" +
+                "        });" +
+                "       </script>\n" +
+                "       <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js\"></script>\n" +
+                "       <script src=\"https://cdn.jsdelivr.net/npm/chart.js\"></script>\n" +
+                "       <style>\n" +
+                "           .tooltip.show{\n" +
+                "               opacity: 1;\n" +
+                "               white-space: pre-line;\n" +
+                "           }\n" +
+                "           .sequence{\n" +
+                "               width: fit-content;\n" +
+                "               margin-left: auto;\n" +
+                "               margin-right: 0;\n" +
+                "           }\n" +
+                "       </style>\n" +
                 "  </head>\n" +
                 "  <body>\n" +
                 "     <h2 id='instanceName'>" + this.solution.getInstance().getNom() + "</h2>" +
@@ -217,7 +235,7 @@ public class InterfaceWeb {
         if (type == "Chaines")
             options += ", layout: { hierarchical: { direction: 'UD', levelSeparation: 45, nodeSpacing: 10, treeSpacing: 45 }}";
 
-        return  "      var container = document.getElementById(\"mynetwork\");\n" +
+        return  "      var container = document.getElementById(\"" + type + "\");\n" +
                 "      var data = {\n" +
                 "        nodes: nodes,\n" +
                 "        edges: edges,\n" +
@@ -248,7 +266,7 @@ public class InterfaceWeb {
                 "       <p>Proportion de paire(s) et altruiste(s) non-sollicité(s) : <b>" + pourcentageNoeudNonUtilise + "%</b></p>\n" +
                 "       <canvas id='chartNoeuds' style='width: 10vh'></canvas>\n " +
                 "    </div>" +
-                "    <div style='float: right; width: 50%; text-align: right;'>" +
+                "    <div style='float: right; width: fit-content; text-align: right; margin-right: 2em;'>" +
                 "       <p>Bénéfice de chaque séquence : </p>" + this.beneficeChaqueSequence +
                 "   </div>" +
                 "   <script>" +
@@ -289,7 +307,7 @@ public class InterfaceWeb {
     }
 
     private String getBeginningOfJs(String type) {
-        return "    <div id=\"" + type +"\"></div>" +
+        return "    <div class=\"tamer\" id=\"" + type +"\"></div>" +
                 "    <script type=\"text/javascript\">\n";
     }
 
