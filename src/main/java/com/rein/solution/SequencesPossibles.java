@@ -19,7 +19,7 @@ public class SequencesPossibles {
     public SequencesPossibles() {
         this.cycles = new LinkedHashSet<>();
         this.chaines = new LinkedHashSet<>();
-        this.noeudsUtilises = new LinkedHashSet<Integer>();
+        this.noeudsUtilises = new LinkedHashSet<>();
     }
 
     //////////////////////////////////////////////////////////////
