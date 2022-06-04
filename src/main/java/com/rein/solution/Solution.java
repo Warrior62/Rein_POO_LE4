@@ -156,6 +156,18 @@ public class Solution {
         return true;
     }
 
+    /**
+     * Retourne true si la solution comporte au moins une séquence de la classe (Chaine/Cycle) passée en argument
+     */
+    public boolean hasSequenceOfClass(Class classe){
+        for(Sequence s : this.getListeSequences()) {
+            if (s.getClass() == classe){
+                return true;
+            }
+        }
+        return false;
+    }
+
     /*private OperateurLocal getMeilleurOperateurIntra(TypeOperateurLocal type){
         return null;
         OperateurLocal best = OperateurLocal.getOperateur(type);

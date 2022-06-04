@@ -354,11 +354,17 @@ public class InterfaceWeb {
     /**
      * Définit l'ensemble du code HTML de l'interface graphique
      */
-    public void setHtmlCode() {
-        this.html = this.getHeadersOfHtml() + this.getHtmlBody() +
-                this.getBeginningOfJs("Chaines") + this.getNodes(0) + this.getEdges() + this.getEndOfJs("Chaines") +
-                this.getBeginningOfJs("Cycles") + this.getNodes(1) + this.getEdges() + this.getEndOfJs("Cycles") +
-                this.getEndOfHtml();
+    public void setHtmlCode(){
+        this.html = this.getHeadersOfHtml() + this.getHtmlBody();
+        //Affichage des chaines si il y en a
+        if (this.solution.hasSequenceOfClass(Chaine.class)){
+            this.html += this.getBeginningOfJs("Chaines") + this.getNodes(0) + this.getEdges() + this.getEndOfJs("Chaines");
+        }
+        //Affichage des cycles si il y en a
+        if (this.solution.hasSequenceOfClass(Cycle.class)) {
+            this.html += this.getBeginningOfJs("Cycles") + this.getNodes(1) + this.getEdges() + this.getEndOfJs("Cycles");
+        }
+        this.html += this.getEndOfHtml();
     }
 
     /**
