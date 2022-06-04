@@ -41,9 +41,9 @@ public class Cycle extends Sequence {
             nCour = new Noeud(i.getTabNoeud()[idCour-1]);
             this.getListeNoeuds().add(nCour);
 
-            System.out.println(nPrec.getBenefMedicalVers(nCour));
+            /*System.out.println(nPrec.getBenefMedicalVers(nCour));
             System.out.println("id : " + nPrec.getId() + " - " + nCour.getId());
-            System.out.println(nPrec.getListeEchanges());
+            System.out.println(nPrec.getListeEchanges());*/
             countBenefMedical += nPrec.getBenefMedicalVers(nCour);
             //System.out.println("Le benef medical est de  : " + countBenefMedical);
         }
@@ -123,25 +123,24 @@ public class Cycle extends Sequence {
         if (this.getListeNoeuds().size() == 1 && (position == 0 || position == 1) ) {
             int benef1 = n.getBenefMedicalVers(this.getListeNoeuds().get(0));
             int benef2 = this.getListeNoeuds().get(0).getBenefMedicalVers(n);
-            System.out.println(this.getBenefMedicalSequence());
+            /*System.out.println(this.getBenefMedicalSequence());
             System.out.println(benef1);
             System.out.println(benef2);
             System.out.println(this.getListeNoeuds().get(0));
-            System.out.println(n);
+            System.out.println(n);*/
             this.getListeNoeuds().add(position, n);
             this.setBenefMedicalTotal(benef1 + benef2);
-            System.out.println("Methode rustine 2");
+            //System.out.println("Methode rustine 2");
             return true;
         }
         if (this.isNoeudAjoutable(position) && this.isNoeudCompatible(n, position)) {
             if (position == 0) { // Ajout en début de cycle
                 noeudPrecedent = this.getListeNoeuds().get(this.getListeNoeuds().size()-1);
                 noeudSuivant = this.getListeNoeuds().get(0);
-                System.out.println("Noeud ajouté avec succes en debut de cycle");
+                //System.out.println("Noeud ajouté avec succes en debut de cycle");
             }else if (position == this.getListeNoeuds().size()) { //Ajout en fin de cycle
                 noeudPrecedent = this.getListeNoeuds().get(this.getListeNoeuds().size()-1);
                 noeudSuivant = this.getListeNoeuds().get(0);
-                System.out.println("Noeud ajouté avec succes en fin de cycle");
             }else { // Ajout en milieu de cycle
                 noeudPrecedent = this.getListeNoeuds().get(position-1);
                 noeudSuivant = this.getListeNoeuds().get(position);

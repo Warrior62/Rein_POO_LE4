@@ -38,14 +38,10 @@ public class Chaine extends Sequence {
         Altruiste nAlt;
         int countBenefMedical = 0;
 
-        System.out.println("EEEEEEEEEEEE");
-
         idCour = (int) it.next();
         nAlt = new Altruiste((Altruiste) i.getTabNoeud()[idCour-1]);
         this.setAltruiste(nAlt);
         nCour = new Noeud(i.getTabNoeud()[idCour-1]);
-
-        System.out.println("BBBBBBBBBBb");
 
         while (it.hasNext()) {
             //On récupère une copie du noeud, on l'ajoute et on calcule le benef medical
