@@ -234,7 +234,8 @@ public class Arbre {
             SequencesPossibles sequencesDetectees = racine.detectionChainesCycles();
             System.out.println("$$");
             Selecteur selecteur = new Selecteur(sequencesDetectees);
-            LinkedHashSet<Sequence> sequencesChoisies = selecteur.getSequencesParBenefice();
+            SequencesPossibles sequencesChoisies = selecteur.selectionPlusGrosBenef();
+            System.out.println(sequencesChoisies);
             System.out.println("$$");
             // --> Algorithme <-- //
 
