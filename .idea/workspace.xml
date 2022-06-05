@@ -4,17 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5dbe1660-c9ae-497e-83b8-a85dacef2117" name="Changes" comment="GENERATION SOLUTION AVEC JEU DE DONNEES">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rein/solveur/RechercheArbre.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_06_2022_11_31__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_06_2022_11_31__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_06_2022_11_40__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_06_2022_11_40__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_24_05_2022_15_49__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_24_05_2022_15_49__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_03_06_2022_11_32__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_03_06_2022_11_32__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_03_06_2022_11_32__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_03_06_2022_11_32__Changes_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" afterDir="false" />
+    <list default="true" id="5dbe1660-c9ae-497e-83b8-a85dacef2117" name="Changes" comment="Commit du merge entre dev et arbre-fix sur dev remote.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rein-poo-le4.iml" beforeDir="false" afterPath="$PROJECT_DIR$/rein-poo-le4.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solution/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solution/Solution.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solution/Arbre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solution/Arbre.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solution/Selecteur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solution/Selecteur.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solution/SequencesPossibles.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solution/SequencesPossibles.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/solution/Arbre.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/solution/Arbre.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,7 +24,6 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="PREVIEW_PUSH_PROTECTED_ONLY" value="true" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="dev" />
@@ -46,12 +40,12 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/io/InstanceReader.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/transplantation/Sequence.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/pom.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/io/InstanceReader.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/instance/Noeud.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/solution/Solution.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/transplantation/Sequence.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/transplantation/Cycle.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -70,7 +64,12 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="RunManager" selected="Application.RechercheArbre">
+  <component name="PropertiesComponent">
+    <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+  </component>
+  <component name="RunManager" selected="Application.Arbre">
     <configuration name="AllSolveurs" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.rein.test.AllSolveurs" />
       <module name="rein-poo-le4" />
@@ -90,19 +89,6 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.rein.solution.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="RechercheArbre" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.rein.solveur.RechercheArbre" />
-      <module name="rein-poo-le4" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.rein.solveur.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -154,14 +140,12 @@
       <item itemvalue="Application.StrategieBasique" />
       <item itemvalue="Application.StrategieBasique2" />
       <item itemvalue="Application.AllSolveurs" />
-      <item itemvalue="Application.RechercheArbre" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.RechercheArbre" />
         <item itemvalue="Application.Arbre" />
-        <item itemvalue="Application.StrategieBasique2" />
         <item itemvalue="Application.AllSolveurs" />
+        <item itemvalue="Application.StrategieBasique2" />
         <item itemvalue="Application.StrategieBasique" />
       </list>
     </recent_temporary>
@@ -174,7 +158,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1649313157800</updated>
-      <workItem from="1654346150494" duration="8722000" />
     </task>
     <task id="LOCAL-00001" summary="sout martrein">
       <created>1649313386845</created>
@@ -246,12 +229,12 @@
       <option name="project" value="LOCAL" />
       <updated>1653582553616</updated>
     </task>
-    <task id="LOCAL-00011" summary="Merge de interface-graphique et interface-fix">
-      <created>1654182800415</created>
+    <task id="LOCAL-00011" summary="merge conflits interface-graphique vers dev fait">
+      <created>1654276345022</created>
       <option name="number" value="00011" />
       <option name="presentableId" value="LOCAL-00011" />
       <option name="project" value="LOCAL" />
-      <updated>1654182800415</updated>
+      <updated>1654276345022</updated>
     </task>
     <option name="localTasksCounter" value="12" />
     <servers />
@@ -335,7 +318,6 @@
     <MESSAGE value="affichage flèche directions canva + liste des altruistes non-utilisés" />
     <MESSAGE value="affichage liste des paires non-utilisés" />
     <MESSAGE value="affichage nombre de noeuds non-utilisés" />
-    <MESSAGE value="Merge de interface-graphique et interface-fix" />
     <MESSAGE value="merge conflits interface-graphique vers dev fait" />
     <option name="LAST_COMMIT_MESSAGE" value="merge conflits interface-graphique vers dev fait" />
   </component>
