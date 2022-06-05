@@ -35,7 +35,7 @@ public class Solution {
             this.listeSequences.add((Sequence) s.listeSequences.toArray()[i]);
     }
 
-    private boolean ajouterSequence(Sequence s) {
+    public boolean ajouterSequence(Sequence s) {
         try {
             this.listeSequences.add(s);
             this.benefMedicalTotal += s.getBenefMedicalSequence();
@@ -154,6 +154,18 @@ public class Solution {
             System.exit(-1);
         }
         return true;
+    }
+
+    /**
+     * Retourne true si la solution comporte au moins une séquence de la classe (Chaine/Cycle) passée en argument
+     */
+    public boolean hasSequenceOfClass(Class classe){
+        for(Sequence s : this.getListeSequences()) {
+            if (s.getClass() == classe){
+                return true;
+            }
+        }
+        return false;
     }
 
     /*private OperateurLocal getMeilleurOperateurIntra(TypeOperateurLocal type){
