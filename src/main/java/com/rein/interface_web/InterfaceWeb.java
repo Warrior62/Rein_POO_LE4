@@ -118,16 +118,18 @@ public class InterfaceWeb {
     public String getHtmlBody() {
         return  "    <div style='margin: 0; width: 100%; border-top: 1px solid black; border-bottom: 1px solid black; display: grid; grid-template-columns: repeat(3, 1fr); grid-gap: 10px; background-color: #bbb'>" +
                 "       <div>" +
-                "           <p>Taille max chaînes : <b>" + this.solution.getInstance().getTailleMaxChaines() + "</b></p>" +
+                "           <div class=\"my-2\">Taille max chaînes : <b>" + this.solution.getInstance().getTailleMaxChaines() + "</b></div>" +
                 "        </div>" +
                 "       <div style='text-align: center;'>" +
-                "           <p>Bénéfice médical total : <b>" + this.solution.getBenefMedicalTotal() + "</b></p>\n" +
+                "           <div class=\"my-2\">Bénéfice médical total : <b>" + this.solution.getBenefMedicalTotal() + "</b></div>\n" +
                 "       </div>" +
                 "       <div style='text-align: right;'>" +
-                "           <p>Taille max cycles : <b>" + this.solution.getInstance().getTailleMaxCycles() + "</b></p>" +
+                "           <div class=\"my-2\">Taille max cycles : <b>" + this.solution.getInstance().getTailleMaxCycles() + "</b></div>" +
                 "       </div>" +
                 "    </div>" +
-                "    <div id=\"mynetwork\"></div>\n";
+                "    <div id=\"mynetwork\"></div>\n" +
+                "    <div class=\"row\">" +
+                "       <div class=\"vis\" style=\"width: 80%\">";
     }
 
     /**
@@ -159,7 +161,7 @@ public class InterfaceWeb {
                 "<html lang=\"en\">\n" +
                 "<meta charset='utf-8'>\n" +
                 "   <head>\n" +
-                "       <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css\"\n>" +
+                "       <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css\">\n" +
                 "       <script src=\"https://visjs.github.io/vis-network/standalone/umd/vis-network.min.js\"></script>\n" +
                 "       <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js\"></script>" +
                 "       <script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js\" integrity=\"sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2\" crossorigin=\"anonymous\"></script>\n" +
@@ -310,42 +312,104 @@ public class InterfaceWeb {
         for(Integer id : this.pairesNonUtilisees)
             idsPaires += id + " ";
         this.setNbNoeudsNonUtilises();
-        float proportionPaireNonSollicitee = ((float) this.pairesNonUtilisees.size() / (float) this.nbNoeudsNonUtilises) * 100;
-        float proportionDonneurNonSollicitee = ((float) this.altruistesNonUtilises.size() / (float) this.nbNoeudsNonUtilises) * 100;
+        float proportionPaireNonSollicitee = ((float) this.pairesNonUtilisees.size() / (float) this.solution.getInstance().getNbPaires()) * 100;
+        float proportionDonneurNonSollicitee = ((float) this.altruistesNonUtilises.size() / (float) this.solution.getInstance().getNbAltruistes()) * 100;
         int pourcentageNoeudNonUtilise = (int) (((float) this.nbNoeudsNonUtilises/ (float) this.solution.getInstance().getTabNoeud().length) * 100);
-        return "    <hr>" +
-                "    <div style='float: left; width: 50%;'>" +
-                "       <p>Proportion de paire(s) et altruiste(s) non-sollicité(s) : <b>" + pourcentageNoeudNonUtilise + "%</b></p>\n" +
-                "       <canvas id='chartNoeuds' style='width: 10vh'></canvas>\n " +
-                "    </div>" +
-                "    <div style='float: right; width: fit-content; text-align: right; margin-right: 2em;'>" +
+        return "</div> " +
+                "    <div class=\"sticky-top btn btn-dark mt-1 mb-auto mx-auto\" style='float: right; width: fit-content; text-align: right; margin-right: 2em; top: 1rem;'>" +
                 "       <p>Bénéfice de chaque séquence : </p>" + this.beneficeChaqueSequence +
+                "   </div></div>" +
+                "   <hr>" +
+                "   <p>Proportion de paire(s) et altruiste(s) non-sollicité(s) : <b>" + pourcentageNoeudNonUtilise + "%</b></p>\n" +
+                "   <div class=\"w-100 mx-auto row\">" +
+                "       <div class=\"col-6 my-auto\">" +
+                "           <canvas class='my-auto' id='chartBar'></canvas>\n" +
+                "       </div>" +
+                "       <div class=\"col-3\">" +
+                "           <canvas id='chartPie1'></canvas>\n " +
+                "       </div>" +
+                "       <div class=\"col-3\">" +
+                "           <canvas id='chartPie2'></canvas>\n " +
+                "       </div>" +
                 "   </div>" +
                 "   <script>" +
                 "       const labels = [\n" +
                 "           'Type de cas'\n" +
                 "       ];\n" +
-                "       const dataNoeuds = {\n" +
+                "       const dataNoeudsBar = {\n" +
                 "           labels: labels,\n" +
                 "           datasets: [{\n" +
-                "               label: 'Pourcentage altruistes non-sollicités',\n" +
-                "               backgroundColor: 'rgb(241, 177, 18)',\n" +
-                "               borderColor: 'rgb(100, 100, 100)',\n" +
-                "               data: ["+proportionDonneurNonSollicitee+"]\n" +
-                "           }, {" +
-                "               label: 'Pourcentage paires non-sollicitées',\n" +
+                "               label: 'Altruistes sollicitées',\n" +
                 "               backgroundColor: 'rgb(18, 214, 241)',\n" +
                 "               borderColor: 'rgb(100, 100, 100)',\n" +
-                "               data: ["+proportionPaireNonSollicitee+"]\n" +
+                "               yAxisID: 'A',\n" +
+                "               data: ["+ (this.solution.getInstance().getNbAltruistes() - this.altruistesNonUtilises.size()) +"]\n" +
+                "           }, {" +
+                "               label: 'Altruistes non-sollicités',\n" +
+                "               backgroundColor: 'rgb(12, 136, 153)',\n" +
+                "               borderColor: 'rgb(100, 100, 100)',\n" +
+                "               yAxisID: 'A',\n" +
+                "               data: ["+this.altruistesNonUtilises.size()+"]\n" +
+                "           }, {" +
+                "               label: 'Paires sollicitées',\n" +
+                "               backgroundColor: 'rgb(241, 177, 18)',\n" +
+                "               borderColor: 'rgb(100, 100, 100)',\n" +
+                "               yAxisID: 'B',\n" +
+                "               data: ["+ (this.solution.getInstance().getNbPaires() - this.pairesNonUtilisees.size()) +"]\n" +
+                "           }, {" +
+                "               label: 'Paires non-sollicitées',\n" +
+                "               backgroundColor: 'rgb(214, 158, 17)',\n" +
+                "               borderColor: 'rgb(100, 100, 100)',\n" +
+                "               yAxisID: 'B',\n" +
+                "               data: ["+this.pairesNonUtilisees.size()+"]\n" +
                 "           }]\n" +
                 "       };\n" +
-                "       const config = {\n" +
+                "       const dataPie1 = {\n" +
+                "           labels: ['Altruistes sollicitées', 'Altruistes non-sollicités'],\n" +
+                "           datasets: [{\n" +
+                "               backgroundColor: ['#12d6f1', '#0c8899'],\n" +
+                "               borderColor: 'rgb(100, 100, 100)',\n" +
+                "               data: ["+ (100 - proportionDonneurNonSollicitee) +", " + proportionDonneurNonSollicitee + "]\n" +
+                "           }]\n" +
+                "       };\n" +
+                "       const dataPie2 = {\n" +
+                "           labels: ['Paires sollicitées', 'Paires non-sollicités'],\n" +
+                "           datasets: [{\n" +
+                "               backgroundColor: ['#f1b112', '#d69e11'],\n" +
+                "               borderColor: 'rgb(100, 100, 100)',\n" +
+                "               data: ["+ (100 - proportionPaireNonSollicitee) +", " + proportionPaireNonSollicitee + "]\n" +
+                "           }]\n" +
+                "       };\n" +
+                "       const configBar = {\n" +
                 "           type: 'bar',\n" +
-                "           data: dataNoeuds,\n" +
-                "           options: {}\n" +
+                "           data: dataNoeudsBar,\n" +
+                "           options: {" +
+                "               scales: {\n" +
+                "                   A: {\n" +
+                "                       type: 'linear',\n" +
+                "                       position: 'left',\n" +
+                "                   },\n" +
+                "                    B: {\n" +
+                "                       type: 'linear',\n" +
+                "                       position: 'right',\n" +
+                "                   }\n" +
+                "               }" +
+                "           }\n" +
                 "       };" +
-                "       var ctx = document.getElementById('chartNoeuds').getContext('2d');" +
-                "       const chartNoeuds = new Chart(ctx, config);" +
+                "       const configPie1 = {\n" +
+                "           type: 'pie',\n" +
+                "           data: dataPie1,\n" +
+                "       };" +
+                "       const configPie2 = {\n" +
+                "           type: 'pie',\n" +
+                "           data: dataPie2,\n" +
+                "       };" +
+                "       var ctx = document.getElementById('chartBar').getContext('2d');" +
+                "       const chartBar = new Chart(ctx, configBar);" +
+                "       var ctx = document.getElementById('chartPie1').getContext('2d');" +
+                "       const chartPie1 = new Chart(ctx, configPie1);" +
+                "       var ctx = document.getElementById('chartPie2').getContext('2d');" +
+                "       const chartPie2 = new Chart(ctx, configPie2);" +
                 "    </script>\n" +
                 "  </body>\n" +
                 "</html>";
@@ -373,8 +437,8 @@ public class InterfaceWeb {
      * @return la chaîne comportant le code HTML
      */
     private String getBeginningOfJs(String type) {
-        return "    <div class=\"tamer\" id=\"" + type +"\"></div>" +
-                "    <script type=\"text/javascript\">\n";
+        return "    <div style=\"width: 100%\" id=\"" + type +"\"></div>" +
+               "    <script type=\"text/javascript\">\n";
     }
 
     /**
