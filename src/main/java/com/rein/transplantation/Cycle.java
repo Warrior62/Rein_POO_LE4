@@ -117,7 +117,7 @@ public class Cycle extends Sequence {
         int benefMedical = this.getBenefMedicalSequence();
         if (this.getListeNoeuds().size() == 0) {
             this.getListeNoeuds().add(n);
-            System.out.println("Methode rustine 1");
+           // System.out.println("Methode rustine 1");
             return true;
         }
         if (this.getListeNoeuds().size() == 1 && (position == 0 || position == 1) ) {
@@ -153,7 +153,7 @@ public class Cycle extends Sequence {
             this.getListeNoeuds().add(position, n);
             return true;
         }else {
-            System.out.println("Peut pas ajouter le noeud");
+           // System.out.println("Peut pas ajouter le noeud");
             return false;
         }
     }

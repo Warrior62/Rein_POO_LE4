@@ -35,6 +35,7 @@ public class RechercheArbre implements Solveur {
 
         Selecteur selecteur = new Selecteur(sequencesUtilisables);
         SequencesPossibles sequencesSolution = selecteur.selectionRandom_v1();
+        SequencesPossibles seqSol2 = selecteur.selectionPlusGrosBenef();
 
         //lancer la fonction de recherche arbre
         LinkedHashSet<Sequence> tabCycle = sequencesSolution.getCycles();

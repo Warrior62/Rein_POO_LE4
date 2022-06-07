@@ -4,12 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5dbe1660-c9ae-497e-83b8-a85dacef2117" name="Changes" comment="Commit du merge entre dev et arbre-fix sur dev remote.">
+    <list default="true" id="5dbe1660-c9ae-497e-83b8-a85dacef2117" name="Changes" comment="GENERATION SOLUTION AVEC JEU DE DONNEES">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_04_06_2022_18_39__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_04_06_2022_18_39__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solution/Arbre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solution/Arbre.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solution/Selecteur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solution/Selecteur.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solution/SequencesPossibles.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solution/SequencesPossibles.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rein-poo-le4.iml" beforeDir="false" afterPath="$PROJECT_DIR$/rein-poo-le4.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solution/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solution/Solution.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solveur/RechercheArbre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solveur/RechercheArbre.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/transplantation/Cycle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/transplantation/Cycle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/rein/solution/Arbre.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/solution/Arbre.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/solution/Solution.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/solution/Solution.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,12 +45,12 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/transplantation/Sequence.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/pom.xml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/io/InstanceReader.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/pom.xml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/instance/Noeud.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/solution/Solution.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/transplantation/Sequence.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/transplantation/Cycle.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -69,7 +74,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
   </component>
-  <component name="RunManager" selected="Application.Arbre">
+  <component name="RunManager" selected="Application.AllSolveurs">
     <configuration name="AllSolveurs" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.rein.test.AllSolveurs" />
       <module name="rein-poo-le4" />
@@ -96,6 +101,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="RechercheArbre" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.rein.solveur.RechercheArbre" />
+      <module name="rein-poo-le4" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.rein.solveur.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="StrategieBasique" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.rein.solveur.StrategieBasique" />
       <module name="rein-poo-le4" />
@@ -113,7 +131,7 @@
     <configuration name="StrategieBasique2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.rein.solveur.StrategieBasique2" />
       <module name="rein-poo-le4" />
-      <option name="PROGRAM_PARAMETERS" value="-inst KEP_p250_n83_k5_l17.txt -dSol solutions_test" />
+      <option name="PROGRAM_PARAMETERS" value="-inst KEP_p9_n0_k3_l0.txt -dSol solutions_test" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.rein.solveur.*" />
@@ -140,12 +158,14 @@
       <item itemvalue="Application.StrategieBasique" />
       <item itemvalue="Application.StrategieBasique2" />
       <item itemvalue="Application.AllSolveurs" />
+      <item itemvalue="Application.RechercheArbre" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Arbre" />
         <item itemvalue="Application.AllSolveurs" />
         <item itemvalue="Application.StrategieBasique2" />
+        <item itemvalue="Application.RechercheArbre" />
+        <item itemvalue="Application.Arbre" />
         <item itemvalue="Application.StrategieBasique" />
       </list>
     </recent_temporary>
