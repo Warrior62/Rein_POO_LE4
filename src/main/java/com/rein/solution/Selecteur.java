@@ -1,18 +1,123 @@
 package com.rein.solution;
 
+import com.rein.instance.Instance;
 import com.rein.instance.Noeud;
 import com.rein.transplantation.Sequence;
 
+import java.security.spec.RSAOtherPrimeInfo;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 public class Selecteur {
 
-
+    private static int BENEFMAX = 0; //arbre
+    private final static int PROFONDEURMAX = 9; //albre
+    private final static int LARGEURMAX = 6; //albre
+    private LinkedHashSet<Sequence> sequencesFinales; //arbre
+    private int benefFinal; //arbre
     private final SequencesPossibles sequencesPossibles;
 
     public Selecteur(SequencesPossibles sequencesPossibles) {
         this.sequencesPossibles = sequencesPossibles;
+        this.sequencesFinales = new LinkedHashSet<>();
+        this.benefFinal = 0;
+    }
+
+    public SequencesPossibles arbreBestSol(Sequence sequenceRacine, Instance i) {
+
+        //System.out.println("Arbre best Sol !!");
+
+        LinkedHashSet<Sequence> sequencesRestantes = new LinkedHashSet<Sequence>();
+        sequencesRestantes.addAll(this.sequencesPossibles.getChaines());
+        sequencesRestantes.addAll(this.sequencesPossibles.getCycles());
+
+        Noeud[] noeudsRestants = i.getTabNoeud();
+
+        //System.out.println(sequencesRestantes);
+
+        SequencesPossibles solutionTrouvee = arbreSequences(sequenceRacine, 0, sequencesRestantes, noeudsRestants);
+
+        return solutionTrouvee;
+    }
+
+    /////////////////////////////////////////////////////////////////////////
+    public SequencesPossibles arbreSequences(Sequence sequenceCourante, int profondeur, LinkedHashSet<Sequence> sequencesRestantes, Noeud[] noeudsRestants) {
+        int limite = 0;
+        int profondeurBis = profondeur + 1;
+        SequencesPossibles bestPossibilites = new SequencesPossibles();
+        Noeud[] noeudsRestantsBis = noeudsRestants.clone();
+
+        //System.out.println("################### Sequence courante : ");
+        //System.out.println(sequenceCourante);
+        LinkedHashSet<Sequence> sequencesFilles = getSequencesFilles(sequenceCourante, sequencesRestantes, noeudsRestantsBis);
+        /*System.out.println("Sequences filles : ");
+        for (Sequence s : sequencesFilles) {
+            System.out.println(s.toStringShort());
+        }*/
+
+        if (profondeurBis < PROFONDEURMAX && !(sequencesFilles.isEmpty()) ) {
+            //System.out.println("APPEL RECURSIF");
+            for (Sequence seq: sequencesFilles) {
+                if (limite < LARGEURMAX) {
+                    limite++;
+                    SequencesPossibles s = arbreSequences(seq, profondeurBis, sequencesFilles, noeudsRestantsBis);
+                    if (s.getBenefTotal() > bestPossibilites.getBenefTotal())
+                        bestPossibilites = new SequencesPossibles(s);
+                }else
+                    break;
+            }
+        }
+
+        bestPossibilites.ajouterSequence(sequenceCourante);
+
+        /*System.out.println("## profondeur : ");
+        System.out.println(profondeur);
+        */
+        /*System.out.println("Best solution : ");
+        System.out.println(sequenceCourante);*/
+
+        return bestPossibilites;
+    }
+    /////////////////////////////////////////////////////////////////////////
+
+    public static LinkedHashSet<Sequence> getSequencesFilles(Sequence sequence, LinkedHashSet<Sequence> sequencesRestantes, Noeud[] noeudsRestants) {
+
+        LinkedHashSet<Sequence> sequencesRestantesBis = new LinkedHashSet<Sequence>(sequencesRestantes);
+        LinkedHashSet<Sequence> sequencesFilles = new LinkedHashSet<Sequence>(); //Pour les sequences filles
+        LinkedHashSet<Noeud> noeudRestants;
+        Sequence s;
+        // Pour chaque séquence potentielle,
+        // si la séquence ne contient aucun noeud des noeuds de la séquence courante,
+        // alors on l'ajoute aux séquences filles
+        Set diffTest = new HashSet();
+
+
+        Iterator it = sequencesRestantesBis.iterator();
+        while (it.hasNext()) {
+            s = (Sequence) it.next(); //sequence restante
+            diffTest.clear();
+            diffTest.addAll(s.getListeNoeuds());
+            diffTest.addAll(sequence.getListeNoeuds());
+            /*System.out.println(sequence.toStringShort() + " / VS / " + s.toStringShort());
+            System.out.println("APRES AJOUT : " + diffTest);
+            System.out.println((s.getListeNoeuds().size() + sequence.getListeNoeuds().size()) == diffTest.size());*/
+
+            if ( (s.getListeNoeuds().size() + sequence.getListeNoeuds().size()) == diffTest.size() ) {
+                //System.out.println("Sequence fille valide ----------------");
+                sequencesFilles.add(s);
+            }
+        }
+
+        //System.out.println(sequencesRestantesBis);
+        return sequencesFilles;
+    }
+
+    /*Set<String> result = list.stream()  .distinct()  .filter(otherList::contains)  .collect(Collectors.toSet());
+    Set<String> commonElements = new HashSet(Arrays.asList("red", "green"));
+    Assert.assertEquals(commonElements, result);*/
+
+    public SequencesPossibles getSequencesPossibles() {
+        return sequencesPossibles;
     }
 
     /**

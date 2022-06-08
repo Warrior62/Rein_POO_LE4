@@ -16,7 +16,7 @@ public class Arbre {
     private Noeud noeudRacine;
     private ArrayList<Arbre> listeFils;
     private int niveauProfondeur;
-    static final int PROFONDEUR_MAX = 7;
+    static final int PROFONDEUR_MAX = 8;
     private Instance instance;
 
     // --------------------------------------------------
@@ -86,8 +86,9 @@ public class Arbre {
                     listeChainesPossibles.add(new Chaine(listeIdBis, this.instance));
             }
         }else { //Lorsque l'on détecte un cycle, il faut enregistrer le cycle et la chaîne que cela peut aussi former
-            if (listeIdBis.size() <= this.instance.getTailleMaxChaines())
+            if (listeIdBis.size() <= this.instance.getTailleMaxChaines()) {
                 listeChainesPossibles.add(new Chaine(listeIdBis, this.instance));
+            }
             Iterator it = listeIdBis.iterator();
             int idCourant = (int) it.next();
             while (idCourant != this.getId()) {
@@ -184,17 +185,27 @@ public class Arbre {
         long startTime = System.nanoTime();
         try{
             // --> Init <-- //
-            InstanceReader reader = new InstanceReader("instances/KEP_p100_n11_k3_l7.txt");
+            InstanceReader reader = new InstanceReader("instances/KEP_p100_n5_k3_l4.txt");
             Instance i = reader.readInstance();
-            ArrayList<Altruiste> AltruistesDispo = i.getTabAltruistes();
-            Arbre racine = new Arbre(AltruistesDispo.get(0), i);
-            //System.out.println(racine.id);
+            ArrayList<Altruiste> altruistesDispo = i.getTabAltruistes();
+            ArrayList<Paire> pairesDispo = i.getTabPaire();
+            Arbre racine = new Arbre(altruistesDispo.get(0), i);
+            //Arbre racine = new Arbre(i.getTabPaire().get(0), i);
+
             // --> Init <-- //
-            System.out.println(AltruistesDispo);
+            System.out.println("---------------------- Altruistes : ");
+            System.out.println(altruistesDispo);
+            System.out.println("---------------------- Paires : ");
+            System.out.println(pairesDispo);
+            System.out.println("---------------------- Echanges");
+            System.out.println(i.getEchanges());
 
             // --> Algorithme <-- //
             SequencesPossibles sequencesDetectees = racine.detectionChainesCycles();
             // --> Algorithme <-- //
+
+            System.out.println("Sequeces Détectées : ");
+            System.out.println(sequencesDetectees);
 
             /*System.out.println("Cycles : ");
             System.out.println(sequencesDetectees.getCycles());*/
@@ -202,8 +213,26 @@ public class Arbre {
             System.out.println(sequencesDetectees.getChaines());*/
 
             Selecteur selecteur = new Selecteur(sequencesDetectees);
-            SequencesPossibles sequencesChoisies = selecteur.selectionRandom_v1();
-            System.out.println(sequencesChoisies);
+            //System.out.println(sequencesDetectees);
+            //SequencesPossibles solution = selecteur.selectionRandom_v1();
+            //System.out.println(sequencesChoisies);
+
+            SequencesPossibles solution, sol;
+            solution = new SequencesPossibles();
+            Iterator it = selecteur.getSequencesPossibles().getCycles().iterator();
+            while (it.hasNext()) {
+                Sequence s = (Sequence) it.next();
+                sol = selecteur.arbreBestSol(s, i);
+                if (sol.getBenefTotal() > solution.getBenefTotal())
+                    solution = sol;
+                //System.out.println("_________________________________________________________________");
+            }
+            //Sequence s = (Sequence) it.next();
+            //solution = selecteur.arbreBestSol(s, i);
+
+            System.out.println("//////////////////");
+            System.out.println(solution);
+            System.out.println("//////////////////");
 
             long endTime = System.nanoTime();
             System.out.println("Tps : " + (endTime - startTime)/1000000 + " ms");  //divide by 1000000 to get milliseconds.

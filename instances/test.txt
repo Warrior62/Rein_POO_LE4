@@ -8,7 +8,7 @@
 3
 
 // L : Taille max chaines
-0
+5
 
 // Matrice des benefices medicaux des echanges
 // Les N premieres lignes correspondent aux donneurs altruistes
