@@ -6,6 +6,7 @@ import com.rein.interface_web.InterfaceWeb;
 import com.rein.io.InstanceReader;
 import com.rein.io.exception.ReaderException;
 import com.rein.solution.Solution;
+import com.rein.solveur.RechercheArbre;
 import com.rein.solveur.Solveur;
 import com.rein.solveur.StrategieBasique;
 import com.rein.solveur.StrategieBasique2;
@@ -87,6 +88,7 @@ public class AllSolveurs {
         solveurs.add(new StrategieBasique());
         // TO ADD : par la suite vous ajouterez ici les autres solveurs a tester
         solveurs.add(new StrategieBasique2());
+        solveurs.add(new RechercheArbre());
     }
 
     /**

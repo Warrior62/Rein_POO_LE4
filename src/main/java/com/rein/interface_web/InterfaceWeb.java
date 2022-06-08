@@ -231,7 +231,6 @@ public class InterfaceWeb {
                     int benefMedical = -1;
                     // CHAINE
                     if (sequence instanceof Chaine) {
-                        System.out.println("chaine");
                         for (Map.Entry<Noeud, Integer> entry : sequence.getListeNoeuds().get(i).getListeEchanges().entrySet())
                             if (entry.getKey().getId() == receveur.getId())
                                 benefMedical = entry.getValue();
@@ -239,7 +238,6 @@ public class InterfaceWeb {
                     }
                     // CYCLE
                     if (sequence instanceof Cycle) {
-                        System.out.println("cycle");
                         for (Map.Entry<Noeud, Integer> entry : donneur.getListeEchanges().entrySet())
                             if (entry.getKey().getId() == receveur.getId())
                                 benefMedical = entry.getValue();
@@ -248,7 +246,6 @@ public class InterfaceWeb {
                 } else {
                     // CYCLE
                     if (sequence instanceof Cycle) {
-                        System.out.println("cycle");
                         int benefMedical = -1;
                         Noeud donneur = sequence.getListeNoeuds().get(i);
                         Noeud receveur = sequence.getListeNoeuds().get(0);

@@ -16,7 +16,7 @@ public class Arbre {
     private Noeud noeudRacine;
     private ArrayList<Arbre> listeFils;
     private int niveauProfondeur;
-    static final int PROFONDEUR_MAX = 4;
+    static final int PROFONDEUR_MAX = 6;
     private Instance instance;
 
     // --------------------------------------------------
@@ -82,12 +82,10 @@ public class Arbre {
                 }
             }else {
                 //listeChainesPossibles.add(listeIdBis);
-                System.out.println("11111111111");
                 if (listeIdBis.size() <= this.instance.getTailleMaxChaines())
                     listeChainesPossibles.add(new Chaine(listeIdBis, this.instance));
             }
-        }else { //Lorsque l'on détecte un cycle, il faut enregistrer le cycle et la chaîne que cela peut aussi former
-            System.out.println("2222222222");
+        } else { //Lorsque l'on détecte un cycle, il faut enregistrer le cycle et la chaîne que cela peut aussi former
             if (listeIdBis.size() <= this.instance.getTailleMaxChaines())
                 listeChainesPossibles.add(new Chaine(listeIdBis, this.instance));
             Iterator it = listeIdBis.iterator();
@@ -96,7 +94,6 @@ public class Arbre {
                 it.remove();
                 idCourant = (int) it.next();
             }
-            System.out.println("333333333");
             if (listeIdBis.size() <= this.instance.getTailleMaxCycles())
                 listeCyclesPossibles.add(new Cycle(listeIdBis, this.instance));
         }
@@ -148,12 +145,8 @@ public class Arbre {
     static boolean isAltruisteCompatible(Altruiste a, LinkedHashSet<Integer> chaine) {
         Paire premierePaire = new Paire(chaine.iterator().next());
         if (a.getBenefMedicalVers(premierePaire) > -1) {
-            System.out.println("COMPATIBLE : " + a.getId() + " --> " + premierePaire.getId());
-            System.out.println(a.getBenefMedicalVers(premierePaire));
             return true;
         }else  {
-            System.out.println("NON COMPATIBLE : " + a.getId() + " --> " + premierePaire.getId());
-            System.out.println(a.getBenefMedicalVers(premierePaire));
             return false;
         }
     }
@@ -173,13 +166,9 @@ public class Arbre {
 
         while (it.hasNext()) {
             LinkedHashSet<Integer> chaineCourante = (LinkedHashSet) it.next();
-            System.out.println("Aanalyse chaine : ");
-            System.out.println(chaineCourante);
             if (areNoeudsDisponibles(chaineCourante, noeudsIndisponibles)) {
-                System.out.println("NOEUDS DISPONIBLES");
                 for (Altruiste a : listeAltruistes)
                 if (isAltruisteCompatible(a, chaineCourante)) {
-                    System.out.println("ALTRUISTE COMPATIBLE");
                     ajouterChaine(chaineCourante, chainesChoisies, noeudsIndisponibles, a, listeAltruistesDisponibles);
                 }
             }
@@ -224,7 +213,7 @@ public class Arbre {
     public static void main(String[] args) {
         try{
             // --> Init <-- //
-            InstanceReader reader = new InstanceReader("instances/KEP_p250_n83_k5_l17.txt");
+            InstanceReader reader = new InstanceReader("instances/KEP_p250_n13_k3_l4.txt");
             Instance i = reader.readInstance();
             Arbre racine = new Arbre(i.getTabNoeud()[0], i);
             ArrayList<Altruiste> AltruistesDispo = i.getTabAltruistes();
@@ -232,17 +221,10 @@ public class Arbre {
 
             // --> Algorithme <-- //
             SequencesPossibles sequencesDetectees = racine.detectionChainesCycles();
-            System.out.println("$$");
             Selecteur selecteur = new Selecteur(sequencesDetectees);
-            SequencesPossibles sequencesChoisies = selecteur.selectionPlusGrosBenef();
-            System.out.println(sequencesChoisies);
-            System.out.println("$$");
+            SequencesPossibles sequencesChoisies = selecteur.selectionParBenef(true);
             // --> Algorithme <-- //
 
-            System.out.println("Cycles : ");
-            System.out.println(sequencesDetectees.getCycles());
-            System.out.println("Chaines : ");
-            System.out.println(sequencesDetectees.getChaines());
         } catch(Exception e){
             System.err.println(e);
         }

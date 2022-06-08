@@ -34,19 +34,17 @@ public class RechercheArbre implements Solveur {
         SequencesPossibles sequencesUtilisables = arbre.detectionChainesCycles();
 
         Selecteur selecteur = new Selecteur(sequencesUtilisables);
-        SequencesPossibles sequencesSolution = selecteur.selectionRandom_v1();
+        SequencesPossibles sequencesSolution = selecteur.selectionParBenef(false);
 
         //lancer la fonction de recherche arbre
         LinkedHashSet<Sequence> tabCycle = sequencesSolution.getCycles();
         LinkedHashSet<Sequence> tabChaine = sequencesSolution.getChaines();
-      for (Sequence seq : tabCycle){
-          s.ajouterSequence(seq);
-      }
-      for (Sequence seq : tabChaine){
-          s.ajouterSequence(seq);
-      }
-
-        System.out.println(s);
+        for (Sequence seq : tabCycle){
+            s.ajouterSequence(seq);
+        }
+        for (Sequence seq : tabChaine){
+            s.ajouterSequence(seq);
+        }
         return s;
     }
 

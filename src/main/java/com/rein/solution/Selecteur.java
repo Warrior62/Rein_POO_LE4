@@ -4,6 +4,7 @@ import com.rein.instance.Noeud;
 import com.rein.transplantation.Sequence;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Selecteur {
 
@@ -91,15 +92,37 @@ public class Selecteur {
     }
 
     /**
-     * Tri dans l'ordre décroissant des bénéfices
+     * Tri les séquences dans l'ordre croissant ou décroissant
+     * des bénéfices
+     * @param unsortedMap ensemble des séquences possibles
+     * @param isAsc true : croissant, false : décroissant
+     * @return les séquences dans l'ordre croissant ou décroissant des bénéfices
+     */
+    private HashMap<Sequence, Integer> sortSequences(HashMap<Sequence, Integer> unsortedMap, boolean isAsc) {
+        LinkedHashMap<Sequence, Integer> sortedMap = new LinkedHashMap<>();
+        if(isAsc){
+            unsortedMap.entrySet()
+                    .stream()
+                    .sorted(Map.Entry.comparingByValue())
+                    .forEachOrdered(x -> sortedMap.put(x.getKey(), x.getValue()));
+        } else {
+            unsortedMap.entrySet()
+                    .stream()
+                    .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                    .forEachOrdered(x -> sortedMap.put(x.getKey(), x.getValue()));
+        }
+        return sortedMap;
+    }
+
+    /**
+     * Tri dans l'ordre croissant ou décroissant des bénéfices
      * les sequences
      * @param type "cycle" ou "chaine"
      * @return les sequences de type type rangées
-     * dans l'ordre décroissant des bénéfices
+     * dans l'ordre croissant ou décroissant des bénéfices
      */
-    public HashMap<Sequence, Integer> sortSequencesByBenef(String type) {
+    public HashMap<Sequence, Integer> sortSequencesByBenef(String type, boolean isAsc) {
         HashMap<Sequence, Integer> unsortedMap = new HashMap<>();
-        LinkedHashMap<Sequence, Integer> reverseSortedMap = new LinkedHashMap<>();
 
         switch (type){
             case "cycle":
@@ -112,12 +135,7 @@ public class Selecteur {
                 break;
         }
 
-        unsortedMap.entrySet()
-                .stream()
-                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
-                .forEachOrdered(x -> reverseSortedMap.put(x.getKey(), x.getValue()));
-
-        return reverseSortedMap;
+        return sortSequences(unsortedMap, isAsc);
     }
 
     /**
@@ -126,10 +144,10 @@ public class Selecteur {
      * @param type "cycle" ou "chaine"
      * @return liste de sequences choisies selon le benefice
      */
-    public LinkedHashSet<Sequence> selectionSequencesBenef(String type) {
+    public LinkedHashSet<Sequence> selectionSequencesBenef(String type, boolean isAsc) {
         LinkedHashSet<Sequence> sequencesChoisies = new LinkedHashSet<>();
-        for(Map.Entry entry : this.sortSequencesByBenef(type).entrySet()){
-            Sequence sequence = (Sequence) entry.getKey();
+        for(Map.Entry<Sequence, Integer> entry : this.sortSequencesByBenef(type, isAsc).entrySet()){
+            Sequence sequence = entry.getKey();
             boolean isPresent = false;
             for(Noeud noeud : sequence.getListeNoeuds())
                 if(isNoeudUtilise(noeud))
@@ -145,14 +163,15 @@ public class Selecteur {
 
     /**
      * Sélectionne les cycles puis les chaines
-     * avec les plus gros bénéfices
+     * avec les plus gros ou petits bénéfices
+     * @param isAsc true : croissant, false : décroissant
      * @return des sequences choisies selon le critère du bénéfice
      */
-    public SequencesPossibles selectionPlusGrosBenef() {
+    public SequencesPossibles selectionParBenef(boolean isAsc) {
         SequencesPossibles sequencesChoisies = new SequencesPossibles();
 
-        sequencesChoisies.getCycles().addAll(this.selectionSequencesBenef("cycle"));
-        sequencesChoisies.getChaines().addAll(this.selectionSequencesBenef("chaine"));
+        sequencesChoisies.getCycles().addAll(this.selectionSequencesBenef("cycle", isAsc));
+        sequencesChoisies.getChaines().addAll(this.selectionSequencesBenef("chaine", isAsc));
 
         return sequencesChoisies;
     }

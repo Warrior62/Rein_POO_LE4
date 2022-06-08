@@ -4,17 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5dbe1660-c9ae-497e-83b8-a85dacef2117" name="Changes" comment="Merge de interface-graphique et interface-fix">
+    <list default="true" id="5dbe1660-c9ae-497e-83b8-a85dacef2117" name="Changes" comment="selection par plus gros benefice faite">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_06_2022_11_31__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_06_2022_11_40__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_24_05_2022_15_49__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_03_06_2022_11_32__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_03_06_2022_11_32__Changes_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/interface_web/InterfaceWeb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/interface_web/InterfaceWeb.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solution/Arbre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solution/Arbre.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solution/Chaine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solution/Chaine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solution/Selecteur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solution/Selecteur.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solution/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solution/Solution.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solveur/RechercheArbre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solveur/RechercheArbre.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/test/AllSolveurs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/test/AllSolveurs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/transplantation/Cycle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/transplantation/Cycle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/rein/instance/Instance.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/instance/Instance.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/rein/interface_web/InterfaceWeb.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/interface_web/InterfaceWeb.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/rein/solution/Arbre.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/solution/Arbre.class" afterDir="false" />
@@ -50,13 +50,13 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/pom.xml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/instance/Noeud.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/io/InstanceReader.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/solution/Solution.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/transplantation/Cycle.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/transplantation/Sequence.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/pom.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/io/InstanceReader.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/instance/Noeud.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/solution/Solution.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/transplantation/Cycle.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -74,14 +74,9 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Git.Branch.Popup.ShowAllRemotes": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "nodejs_package_manager_path": "npm"
-  }
-}]]></component>
+  <component name="PropertiesComponent">
+    <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
+  </component>
   <component name="RunManager" selected="Application.AllSolveurs">
     <configuration name="AllSolveurs" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.rein.test.AllSolveurs" />

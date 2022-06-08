@@ -47,7 +47,6 @@ public class Solution {
     }
 
     public void calculBenefice(){
-        System.out.println("calcul de bénéfice total");
         this.suppressionSequencesVides();
         for (Sequence seq : listeSequences){
             seq.calculBenefice(instance.getEchanges());
