@@ -90,7 +90,7 @@ public class Chaine extends Sequence {
         if ( (this.getListeNoeuds().size() < this.getTailleMaxSequence()) && (position > 0) && (position <= this.getListeNoeuds().size()) ) {
             return true;
         }else {
-            System.out.println("Noeud non ajoutable");
+            //System.out.println("Noeud non ajoutable");
             return false;
         }
     }
@@ -118,22 +118,22 @@ public class Chaine extends Sequence {
     private boolean isNoeudCompatible(Noeud n, int position) {
         Noeud noeudPrecedent = this.getListeNoeuds().get(position-1);
         if (this.getListeNoeuds().size() == position) { // Si le noeud est ajouté en bout de chaine
-            System.out.println("Ajout en bout de chaine");
+            //System.out.println("Ajout en bout de chaine");
             if ( noeudPrecedent.getBenefMedicalVers(n) != -1 ) {
-                System.out.println("Noeud compatible");
+                //System.out.println("Noeud compatible");
                 return true;
             }else {
-                System.out.println("Noeud non compatible");
+                //System.out.println("Noeud non compatible");
                 return false;
             }
         }else {
-            System.out.println("Ajout en milieu de chaine");
+            //System.out.println("Ajout en milieu de chaine");
             Noeud noeudSuivant = this.getListeNoeuds().get(position);
             if ( (noeudPrecedent.getBenefMedicalVers(n) != -1 ) && (n.getBenefMedicalVers(noeudSuivant) > -1) ) {
-                System.out.println("Noeud compatible");
+                //System.out.println("Noeud compatible");
                 return true;
             }else {
-                System.out.println("Noeud non compatible");
+                //System.out.println("Noeud non compatible");
                 return false;
             }
         }
@@ -157,7 +157,6 @@ public class Chaine extends Sequence {
         if ( (position != 0) && this.isNoeudAjoutable(position) && this.isNoeudCompatible(n, position) ) {
             if (this.getListeNoeuds().size() == position) { //Si le noeud est ajouté en bout de chaine, on ne faut qu'ajouter le nouveau benef médical, sans en soustraire
                 //Variables utiles
-                System.out.println("aaaa");
                 Noeud noeudPrecedent = this.getListeNoeuds().get(position-1);
                 int benefMedical = this.getBenefMedicalSequence();
                 //Traitements
@@ -197,7 +196,7 @@ public class Chaine extends Sequence {
      * */
     private boolean verifTailleMax() {
         if (this.getTailleMaxSequence() >= this.getListeNoeuds().size()-1) { //Le '-1' est nécessaire car l'altruiste n'est pas stocké dans la liste de Noeuds
-            System.out.println("verifTailleMax() : OK");
+            //System.out.println("verifTailleMax() : OK");
             return true;
         }else {
             System.out.println("verifTailleMax() : NOT_OK");
@@ -226,7 +225,7 @@ public class Chaine extends Sequence {
                 somme += noeudCourant.getBenefMedicalVers(noeudSuivant);
             }
             if (somme == this.getBenefMedicalSequence()) {
-                System.out.println("verifBenefMedical() : OK");
+                //System.out.println("verifBenefMedical() : OK");
                 return true;
             }else {
                 System.out.println("verifBenefMedical() : NOT_OK ( theor "+somme+" - true "+this.getBenefMedicalSequence()+" )");
@@ -249,7 +248,7 @@ public class Chaine extends Sequence {
                 nbAltruistes++;
         }
         if ((this.getListeNoeuds().get(0) instanceof Altruiste) && nbAltruistes == 1) {
-            System.out.println("verifAltruistes() : OK");
+            //System.out.println("verifAltruistes() : OK");
             return true;
         }else {
             System.out.println("verifAltruistes() : NOT_OK");

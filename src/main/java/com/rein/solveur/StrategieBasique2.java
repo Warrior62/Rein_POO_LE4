@@ -35,7 +35,6 @@ public class StrategieBasique2 implements Solveur{
             int i;
             for(i=1;i<=instance.getNbAltruistes();i++){
                 Altruiste a = (Altruiste) tabTest[0];
-                System.out.println("TAILLE ELEMENT "+instance.getTailleMaxChaines());
                 Chaine ch = new Chaine(instance.getTailleMaxChaines(), a);
                 tabTest= ArrayUtils.remove(tabTest,0);
                 s.getListeSequences().add(ch);

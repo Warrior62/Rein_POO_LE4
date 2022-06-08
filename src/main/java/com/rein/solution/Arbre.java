@@ -16,7 +16,7 @@ public class Arbre {
     private Noeud noeudRacine;
     private ArrayList<Arbre> listeFils;
     private int niveauProfondeur;
-    static final int PROFONDEUR_MAX = 4;
+    private int PROFONDEUR_MAX = 1;
     private Instance instance;
 
     // --------------------------------------------------
@@ -57,10 +57,20 @@ public class Arbre {
             tailleFils += taille(fils);
         return 1 + tailleFils;
     }
+
+    public int getPROFONDEUR_MAX() {
+        return PROFONDEUR_MAX;
+    }
+
+    public void setPROFONDEUR_MAX(int PROFONDEUR_MAX) {
+        this.PROFONDEUR_MAX = PROFONDEUR_MAX;
+    }
+
     public void remplirListeFils(){
         for(Map.Entry echange : this.noeudRacine.getListeEchanges().entrySet()){
             Noeud noeudFils = (Noeud) echange.getKey();
             Arbre a = new Arbre(noeudFils, this.instance);
+            a.setPROFONDEUR_MAX(this.PROFONDEUR_MAX);
             a.niveauProfondeur = this.niveauProfondeur + 1;
             this.listeFils.add(a);
         }
@@ -74,20 +84,17 @@ public class Arbre {
         profondeur++;
         LinkedHashSet<Integer> listeIdBis = new LinkedHashSet<>(listeId);
         if (listeIdBis.add(this.getId())) {
-            if(profondeur < PROFONDEUR_MAX){
+            if(profondeur < this.PROFONDEUR_MAX){
                 this.remplirListeFils();       //Récupération de ses fils
-                //System.out.println(this.getListeFils());
                 for(Arbre fils : this.getListeFils()) {
                     fils.recurrArbre(listeIdBis, profondeur, listeChainesPossibles, listeCyclesPossibles);
                 }
             }else {
-                //listeChainesPossibles.add(listeIdBis);
-                System.out.println("11111111111");
                 if (listeIdBis.size() <= this.instance.getTailleMaxChaines())
                     listeChainesPossibles.add(new Chaine(listeIdBis, this.instance));
+
             }
         }else { //Lorsque l'on détecte un cycle, il faut enregistrer le cycle et la chaîne que cela peut aussi former
-            System.out.println("2222222222");
             if (listeIdBis.size() <= this.instance.getTailleMaxChaines())
                 listeChainesPossibles.add(new Chaine(listeIdBis, this.instance));
             Iterator it = listeIdBis.iterator();
@@ -96,7 +103,6 @@ public class Arbre {
                 it.remove();
                 idCourant = (int) it.next();
             }
-            System.out.println("333333333");
             if (listeIdBis.size() <= this.instance.getTailleMaxCycles())
                 listeCyclesPossibles.add(new Cycle(listeIdBis, this.instance));
         }
@@ -148,12 +154,12 @@ public class Arbre {
     static boolean isAltruisteCompatible(Altruiste a, LinkedHashSet<Integer> chaine) {
         Paire premierePaire = new Paire(chaine.iterator().next());
         if (a.getBenefMedicalVers(premierePaire) > -1) {
-            System.out.println("COMPATIBLE : " + a.getId() + " --> " + premierePaire.getId());
-            System.out.println(a.getBenefMedicalVers(premierePaire));
+            //System.out.println("COMPATIBLE : " + a.getId() + " --> " + premierePaire.getId());
+            //System.out.println(a.getBenefMedicalVers(premierePaire));
             return true;
         }else  {
-            System.out.println("NON COMPATIBLE : " + a.getId() + " --> " + premierePaire.getId());
-            System.out.println(a.getBenefMedicalVers(premierePaire));
+            //System.out.println("NON COMPATIBLE : " + a.getId() + " --> " + premierePaire.getId());
+            //System.out.println(a.getBenefMedicalVers(premierePaire));
             return false;
         }
     }

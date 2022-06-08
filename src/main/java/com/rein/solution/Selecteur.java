@@ -51,6 +51,22 @@ public class Selecteur {
         return sequencesChoisies;
     }
 
+    // méthode trop random
+    public SequencesPossibles selectionRandom_v2() {
+        SequencesPossibles bestsequencesChoisies = new SequencesPossibles();
+        SequencesPossibles sequencesChoisies = new SequencesPossibles();
+
+        for (int i=0;i<=10;i++) {
+            sequencesChoisies = selectionRandom_v1();
+            if (sequencesChoisies.calculBenefTotal() > bestsequencesChoisies.calculBenefTotal()) {
+                bestsequencesChoisies = sequencesChoisies;
+            }
+        }
+
+            return bestsequencesChoisies;
+    }
+
+
     /**
      * Méthode chargée de vérifier si la Séquence passé en paramètre peut être choisies dans la solution, à partir de la liste d'ids de Noeuds déjà selectionnée, dans sequencesChoisies.
      * Si la séquence peut être ajoutée, elle est ajoutée à sequencesChoisies et ses ids de Noeuds sont ajoutés à la liste d'ids de Noeuds utilisés, dans sequencesChoisies.
