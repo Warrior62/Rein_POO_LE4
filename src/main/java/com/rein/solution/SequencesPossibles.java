@@ -67,6 +67,16 @@ public class SequencesPossibles {
 
     //////////////////////////////////////////////////////////////
 
+    public int calculBenefTotal(){
+        int benef = 0;
+        for (Sequence cy: cycles){
+            benef += cy.getBenefMedicalSequence();
+        }
+        for (Sequence ch: chaines){
+            benef += ch.getBenefMedicalSequence();
+        }
+        return benef;
+    }
     // Méthode chargée d'ajouter une séquence dans un objet SequencesPossibles
     public void ajouterSequence(Sequence s) {
         if (s instanceof Chaine)

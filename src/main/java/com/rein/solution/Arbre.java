@@ -57,10 +57,20 @@ public class Arbre {
             tailleFils += taille(fils);
         return 1 + tailleFils;
     }
+
+    public int getPROFONDEUR_MAX() {
+        return PROFONDEUR_MAX;
+    }
+
+    public void setPROFONDEUR_MAX(int PROFONDEUR_MAX) {
+        this.PROFONDEUR_MAX = PROFONDEUR_MAX;
+    }
+
     public void remplirListeFils(){
         for(Map.Entry echange : this.noeudRacine.getListeEchanges().entrySet()){
             Noeud noeudFils = (Noeud) echange.getKey();
             Arbre a = new Arbre(noeudFils, this.instance);
+            a.setPROFONDEUR_MAX(this.PROFONDEUR_MAX);
             a.niveauProfondeur = this.niveauProfondeur + 1;
             this.listeFils.add(a);
         }
@@ -74,9 +84,8 @@ public class Arbre {
         profondeur++;
         LinkedHashSet<Integer> listeIdBis = new LinkedHashSet<>(listeId);
         if (listeIdBis.add(this.getId())) {
-            if(profondeur < PROFONDEUR_MAX){
+            if(profondeur < this.PROFONDEUR_MAX){
                 this.remplirListeFils();       //Récupération de ses fils
-                //System.out.println(this.getListeFils());
                 for(Arbre fils : this.getListeFils()) {
                     fils.recurrArbre(listeIdBis, profondeur, listeChainesPossibles, listeCyclesPossibles);
                 }
@@ -85,10 +94,9 @@ public class Arbre {
                 if (listeIdBis.size() <= this.instance.getTailleMaxChaines())
                     listeChainesPossibles.add(new Chaine(listeIdBis, this.instance));
             }
-        }else { //Lorsque l'on détecte un cycle, il faut enregistrer le cycle et la chaîne que cela peut aussi former
-            if (listeIdBis.size() <= this.instance.getTailleMaxChaines()) {
+        } else { //Lorsque l'on détecte un cycle, il faut enregistrer le cycle et la chaîne que cela peut aussi former
+            if (listeIdBis.size() <= this.instance.getTailleMaxChaines())
                 listeChainesPossibles.add(new Chaine(listeIdBis, this.instance));
-            }
             Iterator it = listeIdBis.iterator();
             int idCourant = (int) it.next();
             while (idCourant != this.getId()) {
@@ -130,12 +138,8 @@ public class Arbre {
     static boolean isAltruisteCompatible(Altruiste a, LinkedHashSet<Integer> chaine) {
         Paire premierePaire = new Paire(chaine.iterator().next());
         if (a.getBenefMedicalVers(premierePaire) > -1) {
-            System.out.println("COMPATIBLE : " + a.getId() + " --> " + premierePaire.getId());
-            System.out.println(a.getBenefMedicalVers(premierePaire));
             return true;
         }else  {
-            System.out.println("NON COMPATIBLE : " + a.getId() + " --> " + premierePaire.getId());
-            System.out.println(a.getBenefMedicalVers(premierePaire));
             return false;
         }
     }
@@ -146,6 +150,24 @@ public class Arbre {
         for (int n : cycle) {
             noeudsIndisponibles.add(n);
         }
+    }
+
+    public static LinkedHashSet<LinkedHashSet> selectionChainesPremieres(LinkedHashSet<LinkedHashSet> chainesPossibles, LinkedHashSet<Integer> noeudsIndisponibles, ArrayList<Altruiste> listeAltruistes) {
+        Iterator it = chainesPossibles.iterator();
+        LinkedHashSet listeAltruistesDisponibles = new LinkedHashSet(listeAltruistes);
+        LinkedHashSet<LinkedHashSet> chainesChoisies = new LinkedHashSet<LinkedHashSet>();
+
+        while (it.hasNext()) {
+            LinkedHashSet<Integer> chaineCourante = (LinkedHashSet) it.next();
+            if (areNoeudsDisponibles(chaineCourante, noeudsIndisponibles)) {
+                for (Altruiste a : listeAltruistes)
+                if (isAltruisteCompatible(a, chaineCourante)) {
+                    ajouterChaine(chaineCourante, chainesChoisies, noeudsIndisponibles, a, listeAltruistesDisponibles);
+                }
+            }
+        }
+
+        return chainesChoisies;
     }
 
     public static void ajouterChaine(LinkedHashSet<Integer> chaineCourante, LinkedHashSet<LinkedHashSet> chainesChoisies, LinkedHashSet<Integer> noeudsIndisponibles, Altruiste a, LinkedHashSet<Altruiste> listeAltruistesDisponibles) {

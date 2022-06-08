@@ -6,7 +6,7 @@ import com.rein.transplantation.Sequence;
 
 import java.security.spec.RSAOtherPrimeInfo;
 import java.util.*;
-import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
 public class Selecteur {
 
@@ -157,6 +157,22 @@ public class Selecteur {
         return sequencesChoisies;
     }
 
+    // méthode trop random
+    public SequencesPossibles selectionRandom_v2() {
+        SequencesPossibles bestsequencesChoisies = new SequencesPossibles();
+        SequencesPossibles sequencesChoisies = new SequencesPossibles();
+
+        for (int i=0;i<=10;i++) {
+            sequencesChoisies = selectionRandom_v1();
+            if (sequencesChoisies.calculBenefTotal() > bestsequencesChoisies.calculBenefTotal()) {
+                bestsequencesChoisies = sequencesChoisies;
+            }
+        }
+
+            return bestsequencesChoisies;
+    }
+
+
     /**
      * Méthode chargée de vérifier si la Séquence passé en paramètre peut être choisies dans la solution, à partir de la liste d'ids de Noeuds déjà selectionnée, dans sequencesChoisies.
      * Si la séquence peut être ajoutée, elle est ajoutée à sequencesChoisies et ses ids de Noeuds sont ajoutés à la liste d'ids de Noeuds utilisés, dans sequencesChoisies.
@@ -186,34 +202,98 @@ public class Selecteur {
         return true;
     }
 
+    /**
+     * Vérifier si un noeud donné est utilisé
+     * dans les sequences possibles du selecteur
+     * @param noeud dont il faut vérifier l'utilisation
+     * @return si le noeud donné est déjà utilisé
+     */
+    public boolean isNoeudUtilise(Noeud noeud) {
+        return (this.sequencesPossibles.getNoeudsUtilises().contains(noeud.getId()));
+    }
 
-    public LinkedHashSet<Sequence> getSequencesParBenefice() {
-        for(Sequence cyclePossible : this.sequencesPossibles.getCycles()){
-
+    /**
+     * Tri les séquences dans l'ordre croissant ou décroissant
+     * des bénéfices
+     * @param unsortedMap ensemble des séquences possibles
+     * @param isAsc true : croissant, false : décroissant
+     * @return les séquences dans l'ordre croissant ou décroissant des bénéfices
+     */
+    private HashMap<Sequence, Integer> sortSequences(HashMap<Sequence, Integer> unsortedMap, boolean isAsc) {
+        LinkedHashMap<Sequence, Integer> sortedMap = new LinkedHashMap<>();
+        if(isAsc){
+            unsortedMap.entrySet()
+                    .stream()
+                    .sorted(Map.Entry.comparingByValue())
+                    .forEachOrdered(x -> sortedMap.put(x.getKey(), x.getValue()));
+        } else {
+            unsortedMap.entrySet()
+                    .stream()
+                    .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                    .forEachOrdered(x -> sortedMap.put(x.getKey(), x.getValue()));
         }
-        for(Sequence chainePossible : this.sequencesPossibles.getChaines()){
-            System.out.println(chainePossible);
+        return sortedMap;
+    }
+
+    /**
+     * Tri dans l'ordre croissant ou décroissant des bénéfices
+     * les sequences
+     * @param type "cycle" ou "chaine"
+     * @return les sequences de type type rangées
+     * dans l'ordre croissant ou décroissant des bénéfices
+     */
+    public HashMap<Sequence, Integer> sortSequencesByBenef(String type, boolean isAsc) {
+        HashMap<Sequence, Integer> unsortedMap = new HashMap<>();
+
+        switch (type){
+            case "cycle":
+                for(Sequence s : this.sequencesPossibles.getCycles())
+                    unsortedMap.put(s, s.getBenefMedicalSequence());
+                break;
+            case "chaine":
+                for(Sequence s : this.sequencesPossibles.getChaines())
+                    unsortedMap.put(s, s.getBenefMedicalSequence());
+                break;
         }
-        return null;
+
+        return sortSequences(unsortedMap, isAsc);
     }
 
-    /*public LinkedHashSet<Sequence> getSequencesParSociabilite() {
-
+    /**
+     * Sélectionne d'abord les cycles puis les chaines
+     * avec les plus gros bénéfices
+     * @param type "cycle" ou "chaine"
+     * @return liste de sequences choisies selon le benefice
+     */
+    public LinkedHashSet<Sequence> selectionSequencesBenef(String type, boolean isAsc) {
+        LinkedHashSet<Sequence> sequencesChoisies = new LinkedHashSet<>();
+        for(Map.Entry<Sequence, Integer> entry : this.sortSequencesByBenef(type, isAsc).entrySet()){
+            Sequence sequence = entry.getKey();
+            boolean isPresent = false;
+            for(Noeud noeud : sequence.getListeNoeuds())
+                if(isNoeudUtilise(noeud))
+                    isPresent = true;
+            if(!isPresent){
+                sequencesChoisies.add(sequence);
+                for(Noeud noeud : sequence.getListeNoeuds())
+                    this.sequencesPossibles.getNoeudsUtilises().add(noeud.getId());
+            }
+        }
+        return sequencesChoisies;
     }
 
-    public LinkedHashSet<Sequence> getSequencesAleatoirement() {
+    /**
+     * Sélectionne les cycles puis les chaines
+     * avec les plus gros ou petits bénéfices
+     * @param isAsc true : croissant, false : décroissant
+     * @return des sequences choisies selon le critère du bénéfice
+     */
+    public SequencesPossibles selectionParBenef(boolean isAsc) {
+        SequencesPossibles sequencesChoisies = new SequencesPossibles();
 
+        sequencesChoisies.getCycles().addAll(this.selectionSequencesBenef("cycle", isAsc));
+        sequencesChoisies.getChaines().addAll(this.selectionSequencesBenef("chaine", isAsc));
+
+        return sequencesChoisies;
     }
-
-    public LinkedHashSet<Sequence> getSequencesParRacineAleatoire() {
-
-    }
-
-    public LinkedHashSet<Sequence> getSequencesParScoreRegret() {
-
-    }
-
-    public LinkedHashSet<Sequence> getSequencesParSimplex() {
-
-    }*/
 }

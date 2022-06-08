@@ -34,8 +34,7 @@ public abstract class Sequence {
         this.benefMedicalSequence -= nb;
     }
     public void calculBenefice(List<Echange> listeEchanges){
-        System.out.println("calcul benef sequence");
-        if(this.listeNoeuds.size()>1){
+               if(this.listeNoeuds.size()>1){
             for(int i=0;i<this.listeNoeuds.size()-1;i++){
                 Noeud donneur = this.listeNoeuds.get(i);
                 Noeud receveur = this.listeNoeuds.get(i+1);
