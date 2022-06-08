@@ -13,6 +13,7 @@ import com.rein.transplantation.Cycle;
 import com.rein.transplantation.Sequence;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.LinkedHashSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 /**
@@ -49,6 +50,7 @@ public class Solution {
     public void calculBenefice(){
         this.suppressionSequencesVides();
         for (Sequence seq : listeSequences){
+            if (seq instanceof Chaine)
             seq.calculBenefice(instance.getEchanges());
                 this.benefMedicalTotal += seq.getBenefMedicalSequence();
         }
@@ -113,10 +115,12 @@ public class Solution {
     private boolean verifSequencesValides() {
         boolean ans = false;
         for (Sequence s: this.listeSequences){
-            if (s instanceof Chaine)
+            if (s instanceof Chaine){
                 ans = ((Chaine) s).check();
+            }
             else
-                ans = ((Cycle) s).check();
+            {ans = ((Cycle) s).check();
+            }
             if (!ans)
                 return false;
         }
@@ -166,6 +170,33 @@ public class Solution {
         }
         return false;
     }
+
+
+   /* public Solution generationSolution(Instance i){
+        Solution sol = new Solution(i);
+
+        Arbre arbre = new Arbre(instance.getTabNoeud()[0], instance);
+        SequencesPossibles sequencesUtilisables = arbre.detectionChainesCycles();
+
+        Selecteur selecteur = new Selecteur(sequencesUtilisables);
+        SequencesPossibles seqSol = selecteur.selectionRandom_v1();
+        SequencesPossibles seqSol2 = selecteur.selectionPlusGrosBenef();
+
+
+        //COMPARER BENEF  DES SEQUENCES ET PRENDRE LA MEILLEURE
+
+
+        LinkedHashSet<Sequence> tabCycle = seqSol.getCycles();
+        LinkedHashSet<Sequence> tabChaine = seqSol.getChaines();
+        for (Sequence seq : tabCycle){
+            sol.ajouterSequence(seq);
+        }
+        for (Sequence seq : tabChaine){
+            sol.ajouterSequence(seq);
+        }
+
+        return sol;
+    }*/
 
     /*private OperateurLocal getMeilleurOperateurIntra(TypeOperateurLocal type){
         return null;

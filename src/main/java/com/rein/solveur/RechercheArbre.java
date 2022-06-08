@@ -31,7 +31,33 @@ public class RechercheArbre implements Solveur {
         Solution s = new Solution(instance);
 
         Arbre arbre = new Arbre(instance.getTabNoeud()[0], instance);
+        arbre.setPROFONDEUR_MAX(6);
+
         SequencesPossibles sequencesUtilisables = arbre.detectionChainesCycles();
+
+        for (int i=0;i<instance.getNbAltruistes()-1;i++) {
+            if (instance.getTabNoeud()[i] instanceof Altruiste) {
+                Arbre arbre1 = new Arbre(instance.getTabNoeud()[i], instance);
+                if (i<2){
+                    arbre1.setPROFONDEUR_MAX(6);
+                }
+                else {
+                    arbre1.setPROFONDEUR_MAX(4);
+                }
+                SequencesPossibles sequencesUtilisables1 = arbre1.detectionChainesCycles();
+                sequencesUtilisables.getCycles().addAll(sequencesUtilisables1.getCycles());
+                sequencesUtilisables.getChaines().addAll(sequencesUtilisables1.getChaines());
+            }
+        }
+
+        if(instance.getNbAltruistes()==0){
+            for (int i=0;i<instance.getTabPaire().size()-1;i++){
+                Arbre arbre1 = new Arbre(instance.getTabNoeud()[i], instance);
+                    arbre1.setPROFONDEUR_MAX(instance.getTailleMaxCycles());
+                SequencesPossibles sequencesUtilisables1 = arbre1.detectionChainesCycles();
+                sequencesUtilisables.getCycles().addAll(sequencesUtilisables1.getCycles());
+            }
+        }
 
         Selecteur selecteur = new Selecteur(sequencesUtilisables);
         SequencesPossibles sequencesSolution = selecteur.selectionParBenef(false);
@@ -51,7 +77,7 @@ public class RechercheArbre implements Solveur {
     public static void main(String[] args) {
         InstanceReader reader = null;
         try {
-            reader = new InstanceReader("instances/KEP_p50_n3_k3_l7.txt");
+            reader = new InstanceReader("instances/KEP_p100_n0_k3_l0.txt");
             Instance i = reader.readInstance();
             RechercheArbre ra = new RechercheArbre();
             Solution sol = new Solution(i);

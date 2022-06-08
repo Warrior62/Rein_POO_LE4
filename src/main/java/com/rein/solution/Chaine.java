@@ -149,7 +149,6 @@ public class Chaine extends Sequence {
         if ( (position != 0) && this.isNoeudAjoutable(position) && this.isNoeudCompatible(n, position) ) {
             if (this.getListeNoeuds().size() == position) { //Si le noeud est ajouté en bout de chaine, on ne faut qu'ajouter le nouveau benef médical, sans en soustraire
                 //Variables utiles
-                System.out.println("aaaa");
                 Noeud noeudPrecedent = this.getListeNoeuds().get(position-1);
                 int benefMedical = this.getBenefMedicalSequence();
                 //Traitements
@@ -182,6 +181,7 @@ public class Chaine extends Sequence {
      * */
     private boolean verifTailleMax() {
         if (this.getTailleMaxSequence() >= this.getListeNoeuds().size()-1) { //Le '-1' est nécessaire car l'altruiste n'est pas stocké dans la liste de Noeuds
+            //System.out.println("verifTailleMax() : OK");
             return true;
         }else {
             return false;
@@ -209,7 +209,7 @@ public class Chaine extends Sequence {
                 somme += noeudCourant.getBenefMedicalVers(noeudSuivant);
             }
             if (somme == this.getBenefMedicalSequence()) {
-
+                //System.out.println("verifBenefMedical() : OK");
                 return true;
             }else {
 
@@ -235,7 +235,7 @@ public class Chaine extends Sequence {
 
             return true;
         }else {
-
+            System.out.println("verifAltruistes() : NOT_OK");
             return false;
         }
     }

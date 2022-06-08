@@ -44,6 +44,16 @@ public class SequencesPossibles {
     }
     //////////////////////////////////////////////////////////////
 
+    public int calculBenefTotal(){
+        int benef = 0;
+        for (Sequence cy: cycles){
+            benef += cy.getBenefMedicalSequence();
+        }
+        for (Sequence ch: chaines){
+            benef += ch.getBenefMedicalSequence();
+        }
+        return benef;
+    }
 
     @Override
     public String toString() {

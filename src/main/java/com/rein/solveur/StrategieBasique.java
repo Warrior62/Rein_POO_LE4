@@ -48,8 +48,8 @@ public class StrategieBasique implements Solveur{
                     if(paireBest.isPossible(pRecherche) && isPresent(tabTest,paireBest)) {
                         System.out.println("Cycle possible entre "+ pRecherche+ "et"+paireBest );
                         Cycle cy = new Cycle(instance.getTailleMaxCycles());
-                        cy.getListeNoeuds().add(pRecherche);
-                        cy.getListeNoeuds().add(paireBest);
+                        cy.ajouterNoeud(pRecherche,0);
+                        cy.ajouterNoeud(paireBest,1);
                         coutEffectue = true;
                         rechercheCycle = false;
                         s.getListeSequences().add(cy);
