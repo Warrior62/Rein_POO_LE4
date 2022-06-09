@@ -1,65 +1,56 @@
 package com.rein.solveur;
 
-import com.rein.instance.Altruiste;
-import com.rein.instance.Echange;
 import com.rein.instance.Instance;
 import com.rein.instance.Noeud;
 import com.rein.io.InstanceReader;
 import com.rein.io.exception.ReaderException;
-import com.rein.solution.*;
-import com.rein.transplantation.Cycle;
+import com.rein.solution.Arbre;
+import com.rein.solution.Selecteur;
+import com.rein.solution.SequencesPossibles;
+import com.rein.solution.Solution;
 import com.rein.transplantation.Sequence;
-import org.apache.commons.cli.*;
-import org.apache.commons.lang3.ArrayUtils;
 
-import java.sql.Array;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
-import java.util.Objects;
 
-public class RechercheArbre implements Solveur {
-
+public class ArbreSequences implements Solveur {
 
     @Override
     public String getNom() {
-        return "Recherche Arbre";
+        return "Arbre Sequences";
     }
 
     @Override
     public Solution solve(Instance instance) {
 
-        Noeud n;
         //Détection des Sequences
-        if (instance.getNbAltruistes() > 0) {
+        Noeud n;
+        if (instance.getNbAltruistes() > 0)
             n = instance.getTabAltruistes().get(0);
-        }else {
+        else
             n = instance.getTabPaire().get(0);
-        }
 
         Arbre racine = new Arbre(n, instance, 6);
         SequencesPossibles sequencesUtilisables = racine.detectionChainesCycles();
-
-        //System.out.println(sequencesUtilisables);
 
         // Sélection des Sequences
         Selecteur selecteur = new Selecteur(sequencesUtilisables);
         Iterator it = sequencesUtilisables.getCycles().iterator();
         Sequence seqRacine = (Sequence) it.next();
-        SequencesPossibles seqSelectionnees = selecteur.arbreBestSol(seqRacine, instance, 7, 2);
+        SequencesPossibles seqSelectionnees = selecteur.arbreBestSol(seqRacine, instance, 8, 3);
 
         //Génération de la Solution
         Solution s = seqSelectionnees.generationSolution(instance);
-        //Solution s = new Solution(instance);
+        System.out.println(s);
         return s;
     }
 
     public static void main(String[] args) {
         InstanceReader reader = null;
         try {
-            reader = new InstanceReader("instances/KEP_p100_n0_k3_l0.txt");
+            reader = new InstanceReader("instances/KEP_p50_n3_k3_l4.txt");
             Instance i = reader.readInstance();
-            RechercheArbre ra = new RechercheArbre();
+            ArbreSequences ra = new ArbreSequences();
             Solution sol = ra.solve(i);
 
             //System.out.println(sol);

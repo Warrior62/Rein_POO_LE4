@@ -1,5 +1,6 @@
 package com.rein.solution;
 
+import com.rein.instance.Instance;
 import com.rein.instance.Noeud;
 import com.rein.transplantation.Cycle;
 import com.rein.transplantation.Sequence;
@@ -88,6 +89,21 @@ public class SequencesPossibles {
             this.getNoeudsUtilises().add(n.getId());
 
         this.setBenefTotal(this.getBenefTotal() + s.getBenefMedicalSequence());
+    }
+
+    /**
+     * Méthode chargée de générer une solution en étant appelée sur un objet SequencesPossibles
+     * */
+    public Solution generationSolution(Instance i) {
+        Solution s = new Solution(i);
+
+        for (Sequence ch : this.chaines)
+            s.ajouterSequence(ch);
+
+        for (Sequence cy : this.cycles)
+            s.ajouterSequence(cy);
+
+        return  s;
     }
 
     @Override

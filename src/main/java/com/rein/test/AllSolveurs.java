@@ -88,8 +88,12 @@ public class AllSolveurs {
         // TO CHECK : constructeur par defaut de la classe InsertionSimple
         solveurs.add(new StrategieBasique());
         // TO ADD : par la suite vous ajouterez ici les autres solveurs a tester
+        //solveurs.add(new StrategieBasique2());
+        //solveurs.add(new RechercheArbre());
+        solveurs.add(new BestSolution());
+        solveurs.add(new ArbreSequences());
         solveurs.add(new StrategieBasique2());
-        solveurs.add(new RechercheArbre());
+        //solveurs.add(new RechercheArbre());
         solveurs.add(new BestSolution());
     }
 

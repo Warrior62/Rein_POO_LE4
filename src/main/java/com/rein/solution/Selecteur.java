@@ -11,11 +11,12 @@ import java.util.stream.Collectors;
 public class Selecteur {
 
     private static int BENEFMAX = 0; //arbre
-    private final static int PROFONDEURMAX = 9; //albre
-    private final static int LARGEURMAX = 6; //albre
+    private int profondeurMax; //arbre
+    private int largeurMax; //arbre
     private LinkedHashSet<Sequence> sequencesFinales; //arbre
     private int benefFinal; //arbre
     private final SequencesPossibles sequencesPossibles;
+
 
     public Selecteur(SequencesPossibles sequencesPossibles) {
         this.sequencesPossibles = sequencesPossibles;
@@ -23,9 +24,12 @@ public class Selecteur {
         this.benefFinal = 0;
     }
 
-    public SequencesPossibles arbreBestSol(Sequence sequenceRacine, Instance i) {
+    public SequencesPossibles arbreBestSol(Sequence sequenceRacine, Instance i, int profondeurArbre, int largeurArbre) {
 
         //System.out.println("Arbre best Sol !!");
+
+        this.profondeurMax = profondeurArbre;
+        this.largeurMax = largeurArbre;
 
         LinkedHashSet<Sequence> sequencesRestantes = new LinkedHashSet<Sequence>();
         sequencesRestantes.addAll(this.sequencesPossibles.getChaines());
@@ -55,10 +59,10 @@ public class Selecteur {
             System.out.println(s.toStringShort());
         }*/
 
-        if (profondeurBis < PROFONDEURMAX && !(sequencesFilles.isEmpty()) ) {
+        if (profondeurBis < this.profondeurMax && !(sequencesFilles.isEmpty()) ) {
             //System.out.println("APPEL RECURSIF");
             for (Sequence seq: sequencesFilles) {
-                if (limite < LARGEURMAX) {
+                if (limite < this.largeurMax) {
                     limite++;
                     SequencesPossibles s = arbreSequences(seq, profondeurBis, sequencesFilles, noeudsRestantsBis);
                     if (s.getBenefTotal() > bestPossibilites.getBenefTotal())
@@ -90,7 +94,6 @@ public class Selecteur {
         // si la séquence ne contient aucun noeud des noeuds de la séquence courante,
         // alors on l'ajoute aux séquences filles
         Set diffTest = new HashSet();
-
 
         Iterator it = sequencesRestantesBis.iterator();
         while (it.hasNext()) {

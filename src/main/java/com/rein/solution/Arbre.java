@@ -16,27 +16,33 @@ public class Arbre {
     private Noeud noeudRacine;
     private ArrayList<Arbre> listeFils;
     private int niveauProfondeur;
-    static final int PROFONDEUR_MAX = 8;
+    private int profondeurMax;
     private Instance instance;
 
     // --------------------------------------------------
     // --------------------------------------------------
 
-    public Arbre(Noeud noeudRacine, Instance i) {
+    public Arbre(Noeud noeudRacine, Instance i, int profondeur) {
         this.id = noeudRacine.getId();
         this.noeudRacine = noeudRacine;
         this.listeFils = new ArrayList<>();
         this.niveauProfondeur = 0;
         this.instance = i;
+        this.profondeurMax = profondeur;
     }
-    public Arbre(Noeud noeudRacine, Instance i, ArrayList<Arbre> listeFils) {
-        this(noeudRacine, i);
+    public Arbre(Noeud noeudRacine, Instance i, ArrayList<Arbre> listeFils, int profondeur) {
+        this(noeudRacine, i, profondeur);
         this.listeFils = listeFils;
     }
 
     public int getId() {
         return id;
     }
+
+    public int getProfondeurMax() {
+        return profondeurMax;
+    }
+
     public Arbre(Arbre arbre) {
         this.noeudRacine = arbre.noeudRacine;
         this.listeFils = arbre.listeFils;
@@ -57,20 +63,10 @@ public class Arbre {
             tailleFils += taille(fils);
         return 1 + tailleFils;
     }
-
-    public int getPROFONDEUR_MAX() {
-        return PROFONDEUR_MAX;
-    }
-
-    public void setPROFONDEUR_MAX(int PROFONDEUR_MAX) {
-        this.PROFONDEUR_MAX = PROFONDEUR_MAX;
-    }
-
     public void remplirListeFils(){
         for(Map.Entry echange : this.noeudRacine.getListeEchanges().entrySet()){
             Noeud noeudFils = (Noeud) echange.getKey();
-            Arbre a = new Arbre(noeudFils, this.instance);
-            a.setPROFONDEUR_MAX(this.PROFONDEUR_MAX);
+            Arbre a = new Arbre(noeudFils, this.instance, this.getProfondeurMax());
             a.niveauProfondeur = this.niveauProfondeur + 1;
             this.listeFils.add(a);
         }
@@ -84,19 +80,24 @@ public class Arbre {
         profondeur++;
         LinkedHashSet<Integer> listeIdBis = new LinkedHashSet<>(listeId);
         if (listeIdBis.add(this.getId())) {
-            if(profondeur < this.PROFONDEUR_MAX){
+            if(profondeur < this.getProfondeurMax()){
                 this.remplirListeFils();       //Récupération de ses fils
                 for(Arbre fils : this.getListeFils()) {
                     fils.recurrArbre(listeIdBis, profondeur, listeChainesPossibles, listeCyclesPossibles);
                 }
             }else {
-                //listeChainesPossibles.add(listeIdBis);
-                if (listeIdBis.size() <= this.instance.getTailleMaxChaines())
+                Iterator it = listeIdBis.iterator();
+                int id = (int) it.next();
+                if ((this.instance.getTabNoeud()[id-1] instanceof Altruiste) && (listeIdBis.size() <= this.instance.getTailleMaxChaines())) {
                     listeChainesPossibles.add(new Chaine(listeIdBis, this.instance));
+                }
             }
         } else { //Lorsque l'on détecte un cycle, il faut enregistrer le cycle et la chaîne que cela peut aussi former
-            if (listeIdBis.size() <= this.instance.getTailleMaxChaines())
+            Iterator it1 = listeIdBis.iterator();
+            int id = (int) it1.next();
+            if ((this.instance.getTabNoeud()[id-1] instanceof Altruiste) && (listeIdBis.size() <= this.instance.getTailleMaxChaines())) {
                 listeChainesPossibles.add(new Chaine(listeIdBis, this.instance));
+            }
             Iterator it = listeIdBis.iterator();
             int idCourant = (int) it.next();
             while (idCourant != this.getId()) {
@@ -207,11 +208,11 @@ public class Arbre {
         long startTime = System.nanoTime();
         try{
             // --> Init <-- //
-            InstanceReader reader = new InstanceReader("instances/KEP_p100_n5_k3_l4.txt");
+            InstanceReader reader = new InstanceReader("instances/KEP_p250_n13_k3_l4.txt");
             Instance i = reader.readInstance();
             ArrayList<Altruiste> altruistesDispo = i.getTabAltruistes();
             ArrayList<Paire> pairesDispo = i.getTabPaire();
-            Arbre racine = new Arbre(altruistesDispo.get(0), i);
+            Arbre racine = new Arbre(altruistesDispo.get(0), i, 4);
             //Arbre racine = new Arbre(i.getTabPaire().get(0), i);
 
             // --> Init <-- //
@@ -244,7 +245,7 @@ public class Arbre {
             Iterator it = selecteur.getSequencesPossibles().getCycles().iterator();
             while (it.hasNext()) {
                 Sequence s = (Sequence) it.next();
-                sol = selecteur.arbreBestSol(s, i);
+                sol = selecteur.arbreBestSol(s, i, 2, 2);
                 if (sol.getBenefTotal() > solution.getBenefTotal())
                     solution = sol;
                 //System.out.println("_________________________________________________________________");
@@ -262,5 +263,8 @@ public class Arbre {
         } catch(Exception e){
             System.err.println(e);
         }
+    }
+
+    public void setPROFONDEUR_MAX(int i) {
     }
 }
