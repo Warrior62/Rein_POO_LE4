@@ -12,6 +12,7 @@ import com.rein.instance.Instance;
 import com.rein.instance.Noeud;
 import com.rein.io.InstanceReader;
 import com.rein.operateur.*;
+import com.rein.solution.Chaine;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -207,6 +208,8 @@ public abstract class Sequence {
         if(position == this.getNbNoeuds()) return this.getListeNoeuds().get(0);
         return this.getListeNoeuds().get(position);
     }
+
+    public abstract boolean equals(Sequence c);
 
     @Override
     public String toString() {

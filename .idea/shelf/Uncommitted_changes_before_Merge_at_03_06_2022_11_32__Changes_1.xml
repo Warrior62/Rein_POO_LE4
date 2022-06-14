@@ -1,9 +1,0 @@
-<changelist name="Uncommitted_changes_before_Merge_at_03_06_2022_11_32_[Changes]1" date="1654249074709" recycled="true" deleted="true">
-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_03_06_2022_11_32_[Changes]1/shelved.patch" />
-  <option name="DESCRIPTION" value="Uncommitted changes before Merge at 03/06/2022 11:32 [Changes]" />
-  <binary>
-    <option name="BEFORE_PATH" value="target/classes/com/rein/instance/Altruiste.class" />
-    <option name="AFTER_PATH" value="target/classes/com/rein/instance/Altruiste.class" />
-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_03_06_2022_11_32_[Changes]1/Altruiste.class" />
-  </binary>
-</changelist>

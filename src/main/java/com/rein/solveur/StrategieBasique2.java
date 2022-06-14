@@ -27,9 +27,10 @@ public class StrategieBasique2 implements Solveur{
 
     @Override
     public Solution solve(Instance instance) {
+        System.out.println("Strategie basique 2 DEBUT");
         Solution s = new Solution(instance);
         Noeud[] tabTest = instance.getTabNoeud();
-        System.out.println(instance.getEchanges());
+        //System.out.println(instance.getEchanges());
         // Insertion des altruistes dans une chaine
         if(instance.getNbAltruistes()>0){
             int i;
@@ -40,7 +41,7 @@ public class StrategieBasique2 implements Solveur{
                 s.getListeSequences().add(ch);
             }
         }
-        System.out.println(s.getListeSequences());
+        //System.out.println(s.getListeSequences());
         for(int i=0;i<tabTest.length;i++) {
             boolean coutEffectue= false; // variable qui indique si la cout a ete effectue
             Paire pRecherche = (Paire) tabTest[0]; // premiere paire du tableau
@@ -87,14 +88,15 @@ public class StrategieBasique2 implements Solveur{
         }
         //calcul du bénéfice total
         s.calculBenefice();
-        System.out.println(" Solution FINALE "+ s);
+        //System.out.println(" Solution FINALE "+ s);
+        System.out.println("Strategie basique FIN");
         return s;
     }
     // Fonction pour savoir si le noeud est présent dans le tableau des paires pas encore insérées dans la solution
     public boolean isPresent(Noeud[] tab, Noeud n){
         for(int i=0;i<tab.length;i++){
             if(tab[i].getId()==n.getId()){
-                System.out.println("Présent => Noeud "+ n.getId());
+                //System.out.println("Présent => Noeud "+ n.getId());
                 return true;
             }
         }
