@@ -65,6 +65,22 @@ public class Solution {
             }
         }
     }
+
+    public Solution generationSolution(SequencesPossibles sequencesSolution, Instance instance){
+        Solution s = new Solution(instance);
+        LinkedHashSet<Sequence> tabCycle = sequencesSolution.getCycles();
+        LinkedHashSet<Sequence> tabChaine = sequencesSolution.getChaines();
+        for (Sequence seq : tabCycle){
+            s.ajouterSequence(seq);
+        }
+        for (Sequence seq : tabChaine){
+            s.ajouterSequence(seq);
+        }
+
+        return s;
+
+    }
+
     public int getBenefMedicalTotal() {
         return benefMedicalTotal;
     }

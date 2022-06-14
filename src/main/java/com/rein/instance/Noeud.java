@@ -80,6 +80,25 @@ public class Noeud {
         return possible;
     }
 
+    // Fonction pour savoir si le noeud est présent dans le tableau des paires pas encore insérées dans la solution
+    public boolean isPresent(Noeud[] tab){
+        for(int i=0;i<tab.length;i++){
+            if(tab[i].getId()==this.getId()){
+                return true;
+            }
+        }
+        return false;
+    }
+    //Fonction qui renvoie la place du noeud dans le tableau de recherche
+    public int recherchePlace(Noeud[] tab){
+        for(int i=0;i<tab.length;i++){
+            if(tab[i].getId()==this.getId()){
+                return i;
+            }
+        }
+        return -1;
+    }
+
     /**
      * Méthode renvoyant le bénéfice médical du Noeud courant vers le Noeud n.
      * Si le noeud est incompatible avec le noeud n, renvoie -1.

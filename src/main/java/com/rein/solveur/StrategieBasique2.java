@@ -29,30 +29,24 @@ public class StrategieBasique2 implements Solveur{
     public Solution solve(Instance instance) {
         Solution s = new Solution(instance);
         Noeud[] tabTest = instance.getTabNoeud();
-        System.out.println(instance.getEchanges());
-        // Insertion des altruistes dans une chaine
         if(instance.getNbAltruistes()>0){
             int i;
             for(i=1;i<=instance.getNbAltruistes();i++){
                 Altruiste a = (Altruiste) tabTest[0];
                 Chaine ch = new Chaine(instance.getTailleMaxChaines(), a);
                 tabTest= ArrayUtils.remove(tabTest,0);
-                s.getListeSequences().add(ch);
+                s.ajouterSequence(ch);
             }
         }
         System.out.println(s.getListeSequences());
         for(int i=0;i<tabTest.length;i++) {
             boolean coutEffectue= false; // variable qui indique si la cout a ete effectue
             Paire pRecherche = (Paire) tabTest[0]; // premiere paire du tableau
-            //System.out.println("PAIRE SELECTIONNEE " + pRecherche);
             Cycle bestCycle = getMeilleurCycle(tabTest,pRecherche,instance.getTailleMaxCycles());
 
-            //System.out.println("TAILLE CYCLE "+bestCycle.getListeNoeuds().size());
             if (bestCycle.getListeNoeuds().size()>0) {
                 for(Noeud nsupp : bestCycle.getListeNoeuds()){
-
                     if(isPresent(tabTest,nsupp)) {
-                        //System.out.println(" ou on le supp "+ recherchePlace(tabTest, nsupp));
                         tabTest=ArrayUtils.remove(tabTest, recherchePlace(tabTest, nsupp));
                     }
                 }
@@ -60,9 +54,7 @@ public class StrategieBasique2 implements Solveur{
                 coutEffectue = true;
             }
 
-            //recherche insertion de la paire dans une chaine si elle n'a pas ete inseree
             if (!coutEffectue && s.getListeSequences().size()>0){
-                //System.out.println("Recherche Insertion Chaîne");
                 boolean rechercheChaine = true;
                 for (Sequence seq : s.getListeSequences()){
                     if (seq instanceof Chaine && rechercheChaine && seq.getListeNoeuds().size()>0){

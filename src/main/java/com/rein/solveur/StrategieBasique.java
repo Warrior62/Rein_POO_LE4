@@ -45,7 +45,7 @@ public class StrategieBasique implements Solveur{
             while(rechercheCycle){
                 Paire paireBest = (Paire) pRecherche.MeilleurNBenefice(meilleurBenef);
                 if(paireBest != null){
-                    if(paireBest.isPossible(pRecherche) && isPresent(tabTest,paireBest)) {
+                    if(paireBest.isPossible(pRecherche) && paireBest.isPresent(tabTest)) {
                         System.out.println("Cycle possible entre "+ pRecherche+ "et"+paireBest );
                         Cycle cy = new Cycle(instance.getTailleMaxCycles());
                         cy.ajouterNoeud(pRecherche,0);
@@ -57,7 +57,7 @@ public class StrategieBasique implements Solveur{
                         // (on ne veut pas qu'elle recherche
                         // vu qu'elle est insérée dans le cycle avec notre paire de recherche)
                         // on supprime a la fin de la boucle for l'autre paire
-                        int index = recherchePlace(tabTest,paireBest);
+                        int index = paireBest.recherchePlace(tabTest);
                         if (index>-1) {
                             tabTest = ArrayUtils.remove(tabTest, index);
                         }
@@ -100,24 +100,7 @@ public class StrategieBasique implements Solveur{
         s.calculBenefice();
         return s;
     }
-    // Fonction pour savoir si le noeud est présent dans le tableau des paires pas encore insérées dans la solution
-    public boolean isPresent(Noeud[] tab, Noeud n){
-        for(int i=0;i<tab.length;i++){
-            if(tab[i].getId()==n.getId()){
-                return true;
-            }
-        }
-        return false;
-    }
-    //Fonction qui renvoie la place du noeud dans le tableau de recherche
-    public int recherchePlace(Noeud[] tab, Noeud n){
-        for(int i=0;i<tab.length;i++){
-            if(tab[i].getId()==n.getId()){
-                return i;
-            }
-        }
-        return -1;
-    }
+
 
 
     public static void main(String[] args) {
