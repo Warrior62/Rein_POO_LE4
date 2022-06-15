@@ -1,5 +1,6 @@
 package com.rein.solution;
 
+import com.rein.instance.Noeud;
 import com.rein.transplantation.Cycle;
 import com.rein.transplantation.Sequence;
 
@@ -12,6 +13,7 @@ public class SequencesPossibles {
     private LinkedHashSet<Sequence> cycles;
     private LinkedHashSet<Sequence> chaines;
     private LinkedHashSet<Integer> noeudsUtilises;
+    private int benefTotal; //arbre
 
     /**
      * Constructeur par défaut
@@ -20,7 +22,19 @@ public class SequencesPossibles {
         this.cycles = new LinkedHashSet<>();
         this.chaines = new LinkedHashSet<>();
         this.noeudsUtilises = new LinkedHashSet<Integer>();
+        this.benefTotal = 0;
     }
+
+    /**
+     * Constructeur par copie
+     * */
+    public SequencesPossibles(SequencesPossibles sp) {
+        this.cycles = sp.getCycles();
+        this.chaines = sp.getChaines();
+        this.noeudsUtilises = sp.getNoeudsUtilises();
+        this.benefTotal = sp.getBenefTotal();
+    }
+
 
     //////////////////////////////////////////////////////////////
     public LinkedHashSet<Sequence> getChaines() {
@@ -35,6 +49,10 @@ public class SequencesPossibles {
         return noeudsUtilises;
     }
 
+    public int getBenefTotal() {
+        return benefTotal;
+    }
+
     public void setChaines(LinkedHashSet<Sequence> chaines) {
         this.chaines = chaines;
     }
@@ -42,8 +60,35 @@ public class SequencesPossibles {
     public void setCycles(LinkedHashSet<Sequence> cycles) {
         this.cycles = cycles;
     }
+
+    public void setBenefTotal(int benefTotal) {
+        this.benefTotal = benefTotal;
+    }
+
     //////////////////////////////////////////////////////////////
 
+    public int calculBenefTotal(){
+        int benef = 0;
+        for (Sequence cy: cycles){
+            benef += cy.getBenefMedicalSequence();
+        }
+        for (Sequence ch: chaines){
+            benef += ch.getBenefMedicalSequence();
+        }
+        return benef;
+    }
+    // Méthode chargée d'ajouter une séquence dans un objet SequencesPossibles
+    public void ajouterSequence(Sequence s) {
+        if (s instanceof Chaine)
+            this.getChaines().add(s);
+        if (s instanceof Cycle)
+            this.getCycles().add(s);
+
+        for (Noeud n : s.getListeNoeuds())
+            this.getNoeudsUtilises().add(n.getId());
+
+        this.setBenefTotal(this.getBenefTotal() + s.getBenefMedicalSequence());
+    }
 
     @Override
     public String toString() {
@@ -56,7 +101,7 @@ public class SequencesPossibles {
         it = this.cycles.iterator();
         while (it.hasNext()) {
             Cycle c = (Cycle) it.next();
-            chaine += "[" + c.getListeIdNoeuds() + "]\n";
+            chaine += "[" + c.getListeIdNoeuds() + "] : ";
             chaine += c.getBenefMedicalSequence() + "\n";
             benefTotal += c.getBenefMedicalSequence();
         }
@@ -66,7 +111,7 @@ public class SequencesPossibles {
         it = this.chaines.iterator();
         while (it.hasNext()) {
             Chaine ch = (Chaine) it.next();
-            chaine += "[" + ch.getListeIdNoeuds() + "]\n";
+            chaine += "[" + ch.getListeIdNoeuds() + "] : ";
             chaine += ch.getBenefMedicalSequence() + "\n";
             benefTotal += ch.getBenefMedicalSequence();
         }

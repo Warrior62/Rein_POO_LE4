@@ -21,6 +21,12 @@ public abstract class Sequence {
     private ArrayList<Noeud> listeNoeuds =new ArrayList<>();
     private int tailleMaxSequence;
 
+    /*public Sequence(Sequence s) {
+        this.setTailleMaxSequence(s.getTailleMaxSequence());
+        this.setBenefMedicalTotal(s.getBenefMedicalSequence());
+        this.getBenefMedicalSequence()
+    }*/
+
     public void increaseBenefMedicalSequence(int nb){
         this.benefMedicalSequence += nb;
     }
@@ -28,8 +34,7 @@ public abstract class Sequence {
         this.benefMedicalSequence -= nb;
     }
     public void calculBenefice(List<Echange> listeEchanges){
-        System.out.println("calcul benef sequence");
-        if(this.listeNoeuds.size()>1){
+               if(this.listeNoeuds.size()>1){
             for(int i=0;i<this.listeNoeuds.size()-1;i++){
                 Noeud donneur = this.listeNoeuds.get(i);
                 Noeud receveur = this.listeNoeuds.get(i+1);
@@ -71,6 +76,11 @@ public abstract class Sequence {
     public void setTailleMaxSequence(int tailleMaxSequence) {
         this.tailleMaxSequence = tailleMaxSequence;
     }
+
+    public void setListeNoeuds(ArrayList<Noeud> listeNoeuds) {
+        this.listeNoeuds = listeNoeuds;
+    }
+
     public int getTailleMaxSequence() {
         return tailleMaxSequence;
     }
@@ -80,8 +90,7 @@ public abstract class Sequence {
     public ArrayList<Noeud> getListeNoeuds() {
         return listeNoeuds;
     }
-    public String getListeIdNoeuds()
-    {
+    public String getListeIdNoeuds() {
         String noeuds = "";
         for(Noeud n : listeNoeuds)
             noeuds += n.getId() + " ";
@@ -205,6 +214,17 @@ public abstract class Sequence {
                 "benefMedicalTotal=" + benefMedicalSequence +
                 ", listeIdNoeuds=[" + this.getListeIdNoeuds() + "]}";
     }
+
+    public String toStringShort() {
+        String s = "";
+        s += "[";
+        for (Noeud n : this.getListeNoeuds()) {
+            s += n.getId() + " ";
+        }
+        s += "] : " + this.getBenefMedicalSequence();
+        return s;
+    }
+
     //--
     public static void main(String[] args) {
         InstanceReader reader;

@@ -117,17 +117,13 @@ public class Cycle extends Sequence {
         int benefMedical = this.getBenefMedicalSequence();
         if (this.getListeNoeuds().size() == 0) {
             this.getListeNoeuds().add(n);
-            System.out.println("Methode rustine 1");
+           // System.out.println("Methode rustine 1");
             return true;
         }
         if (this.getListeNoeuds().size() == 1 && (position == 0 || position == 1) ) {
             int benef1 = n.getBenefMedicalVers(this.getListeNoeuds().get(0));
             int benef2 = this.getListeNoeuds().get(0).getBenefMedicalVers(n);
-            /*System.out.println(this.getBenefMedicalSequence());
-            System.out.println(benef1);
-            System.out.println(benef2);
-            System.out.println(this.getListeNoeuds().get(0));
-            System.out.println(n);*/
+
             this.getListeNoeuds().add(position, n);
             this.setBenefMedicalTotal(benef1 + benef2);
             //System.out.println("Methode rustine 2");
@@ -144,7 +140,7 @@ public class Cycle extends Sequence {
             }else { // Ajout en milieu de cycle
                 noeudPrecedent = this.getListeNoeuds().get(position-1);
                 noeudSuivant = this.getListeNoeuds().get(position);
-                System.out.println("Noeud ajouté avec succes en milieu de cycle");
+                //System.out.println("Noeud ajouté avec succes en milieu de cycle");
             }
             benefMedical -= noeudPrecedent.getBenefMedicalVers(noeudSuivant);
             benefMedical += noeudPrecedent.getBenefMedicalVers(n);
@@ -153,7 +149,7 @@ public class Cycle extends Sequence {
             this.getListeNoeuds().add(position, n);
             return true;
         }else {
-            System.out.println("Peut pas ajouter le noeud");
+           // System.out.println("Peut pas ajouter le noeud");
             return false;
         }
     }
@@ -169,21 +165,21 @@ public class Cycle extends Sequence {
         if (position == 0) { // Ajout en début de cycle
             noeudPrecedent = this.getListeNoeuds().get(this.getListeNoeuds().size()-1);
             noeudSuivant = this.getListeNoeuds().get(0);
-            System.out.println("Ajout en milieu de cycle");
+            //System.out.println("Ajout en milieu de cycle");
         }else if (position == this.getListeNoeuds().size()) { //Ajout en fin de cycle
             noeudPrecedent = this.getListeNoeuds().get(this.getListeNoeuds().size()-1);
             noeudSuivant = this.getListeNoeuds().get(0);
-            System.out.println("Ajout en debut de cycle");
+            //System.out.println("Ajout en debut de cycle");
         }else { // Ajout en milieu de cycle
             noeudPrecedent = this.getListeNoeuds().get(position-1);
             noeudSuivant = this.getListeNoeuds().get(position);
-            System.out.println("Ajout en milieu de cycle");
+            //System.out.println("Ajout en milieu de cycle");
         }
         if (noeudPrecedent.getBenefMedicalVers(n) != -1 && n.getBenefMedicalVers(noeudSuivant) != 1) { //Compatibilité OK
-            System.out.println("Noeud compatible");
+            //System.out.println("Noeud compatible");
             return true;
         }else {
-            System.out.println("Noeud non compatible");
+            //System.out.println("Noeud non compatible");
             return false;
         }
     }
@@ -192,7 +188,7 @@ public class Cycle extends Sequence {
         if ( (this.getListeNoeuds().size() < this.getTailleMaxSequence()) && (position <= this.getListeNoeuds().size()) ) {
             return true;
         }else {
-            System.out.println("Noeud non ajoutable");
+            //System.out.println("Noeud non ajoutable");
             return false;
         }
     }
