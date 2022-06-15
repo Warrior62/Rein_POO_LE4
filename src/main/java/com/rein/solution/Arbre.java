@@ -16,7 +16,7 @@ public class Arbre {
     private Noeud noeudRacine;
     private ArrayList<Arbre> listeFils;
     private int niveauProfondeur;
-    static final int PROFONDEUR_MAX = 8;
+    static int PROFONDEUR_MAX = 8;
     private Instance instance;
 
     // --------------------------------------------------

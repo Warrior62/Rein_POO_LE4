@@ -36,6 +36,11 @@ public class Solution {
             this.listeSequences.add((Sequence) s.listeSequences.toArray()[i]);
     }
 
+    public Solution() {
+        this.listeSequences = null;
+        this.benefMedicalTotal = 0;
+    }
+
     public boolean ajouterSequence(Sequence s) {
         try {
             this.listeSequences.add(s);

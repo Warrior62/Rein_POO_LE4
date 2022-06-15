@@ -27,18 +27,20 @@ public class InterfaceWeb {
     private Integer nbNoeudsNonUtilises;
     private String beneficeChaqueSequence;
     private String html;
+    private String solveur;
 
     /**
      * Constructeur par données d'une solution
      * @param solution dont on veut récupérer les données
      */
-    public InterfaceWeb(Solution solution) {
+    public InterfaceWeb(Solution solution, String solveur) {
         this.solution = solution;
         this.pairesNonUtilisees = new ArrayList<>();
         this.altruistesNonUtilises = new ArrayList<>();
         this.nbNoeudsNonUtilises = 0;
         this.beneficeChaqueSequence = "";
         this.html = "";
+        this.solveur = solveur;
     }
 
     /**
@@ -179,7 +181,7 @@ public class InterfaceWeb {
                 "       </style>\n" +
                 "  </head>\n" +
                 "  <body>\n" +
-                "     <h2 id='instanceName'>" + this.solution.getInstance().getNom() + "</h2>" +
+                "     <h2 id='instanceName'>" + this.solution.getInstance().getNom() + " - </h2><h3>" + this.solveur + "</h3>" +
                 this.createDropdownInstances();
     }
 
