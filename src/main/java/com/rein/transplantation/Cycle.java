@@ -55,6 +55,23 @@ public class Cycle extends Sequence {
         this.setBenefMedicalTotal(countBenefMedical);
     }
 
+    @Override
+    public boolean equals(Sequence c) {
+        LinkedHashSet diffTest = new LinkedHashSet<Integer>();
+        for (Noeud n : c.getListeNoeuds()) {
+            diffTest.add(n.getId());
+        }
+
+        for (Noeud n : this.getListeNoeuds()) {
+            diffTest.add(n.getId());
+        }
+
+        if ((diffTest.size() > this.getListeNoeuds().size()) || (diffTest.size() > c.getListeNoeuds().size()))
+            return false;
+        else
+            return true;
+    }
+
     public String toString() {
         return "Cycle : { \n"
                 + "\tlisteNoeuds : "+this.getListeNoeuds() + "\n"
@@ -123,11 +140,7 @@ public class Cycle extends Sequence {
         if (this.getListeNoeuds().size() == 1 && (position == 0 || position == 1) ) {
             int benef1 = n.getBenefMedicalVers(this.getListeNoeuds().get(0));
             int benef2 = this.getListeNoeuds().get(0).getBenefMedicalVers(n);
-            /*System.out.println(this.getBenefMedicalSequence());
-            System.out.println(benef1);
-            System.out.println(benef2);
-            System.out.println(this.getListeNoeuds().get(0));
-            System.out.println(n);*/
+
             this.getListeNoeuds().add(position, n);
             this.setBenefMedicalTotal(benef1 + benef2);
             //System.out.println("Methode rustine 2");

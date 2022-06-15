@@ -35,10 +35,10 @@ public class StrategieBasique2 implements Solveur{
                 Altruiste a = (Altruiste) tabTest[0];
                 Chaine ch = new Chaine(instance.getTailleMaxChaines(), a);
                 tabTest= ArrayUtils.remove(tabTest,0);
-                s.ajouterSequence(ch);
+                s.getListeSequences().add(ch);
             }
         }
-        System.out.println(s.getListeSequences());
+        //System.out.println(s.getListeSequences());
         for(int i=0;i<tabTest.length;i++) {
             boolean coutEffectue= false; // variable qui indique si la cout a ete effectue
             Paire pRecherche = (Paire) tabTest[0]; // premiere paire du tableau
@@ -86,8 +86,7 @@ public class StrategieBasique2 implements Solveur{
     public boolean isPresent(Noeud[] tab, Noeud n){
         for(int i=0;i<tab.length;i++){
             if(tab[i].getId()==n.getId()){
-                System.out.println("Présent => Noeud "+ n.getId());
-                return true;
+               return true;
             }
         }
         return false;

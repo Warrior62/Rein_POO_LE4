@@ -12,6 +12,7 @@ import com.rein.instance.Instance;
 import com.rein.instance.Noeud;
 import com.rein.io.InstanceReader;
 import com.rein.operateur.*;
+import com.rein.solution.Chaine;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +21,12 @@ public abstract class Sequence {
     private int benefMedicalSequence = 0;
     private ArrayList<Noeud> listeNoeuds =new ArrayList<>();
     private int tailleMaxSequence;
+
+    /*public Sequence(Sequence s) {
+        this.setTailleMaxSequence(s.getTailleMaxSequence());
+        this.setBenefMedicalTotal(s.getBenefMedicalSequence());
+        this.getBenefMedicalSequence()
+    }*/
 
     public void increaseBenefMedicalSequence(int nb){
         this.benefMedicalSequence += nb;
@@ -70,6 +77,11 @@ public abstract class Sequence {
     public void setTailleMaxSequence(int tailleMaxSequence) {
         this.tailleMaxSequence = tailleMaxSequence;
     }
+
+    public void setListeNoeuds(ArrayList<Noeud> listeNoeuds) {
+        this.listeNoeuds = listeNoeuds;
+    }
+
     public int getTailleMaxSequence() {
         return tailleMaxSequence;
     }
@@ -79,8 +91,7 @@ public abstract class Sequence {
     public ArrayList<Noeud> getListeNoeuds() {
         return listeNoeuds;
     }
-    public String getListeIdNoeuds()
-    {
+    public String getListeIdNoeuds() {
         String noeuds = "";
         for(Noeud n : listeNoeuds)
             noeuds += n.getId() + " ";
@@ -198,12 +209,25 @@ public abstract class Sequence {
         return this.getListeNoeuds().get(position);
     }
 
+    public abstract boolean equals(Sequence c);
+
     @Override
     public String toString() {
         return "\nSequence {" +
                 "benefMedicalTotal=" + benefMedicalSequence +
                 ", listeIdNoeuds=[" + this.getListeIdNoeuds() + "]}";
     }
+
+    public String toStringShort() {
+        String s = "";
+        s += "[";
+        for (Noeud n : this.getListeNoeuds()) {
+            s += n.getId() + " ";
+        }
+        s += "] : " + this.getBenefMedicalSequence();
+        return s;
+    }
+
     //--
     public static void main(String[] args) {
         InstanceReader reader;

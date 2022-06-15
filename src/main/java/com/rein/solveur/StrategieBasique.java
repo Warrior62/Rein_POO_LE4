@@ -35,16 +35,17 @@ public class StrategieBasique implements Solveur{
                 s.getListeSequences().add(ch);
             }
         }
-        System.out.println(s.getListeSequences());
+        //System.out.println(s.getListeSequences());
         for(int i=0;i<tabTest.length;i++) {
             boolean coutEffectue= false; // variable qui indique si la cout a ete effectue
             boolean rechercheCycle = true; // recherche d'insertion de la paire dans un cycle
             int meilleurBenef =1; // recherche du N meilleur benefice, par defaut 1 soit le premier meilleur benef
             Paire pRecherche = (Paire) tabTest[0]; // premiere paire du tableau
-            System.out.println("PAIRE SELECTIONNEE " + pRecherche);
+            //System.out.println("PAIRE SELECTIONNEE " + pRecherche);
             while(rechercheCycle){
                 Paire paireBest = (Paire) pRecherche.MeilleurNBenefice(meilleurBenef);
                 if(paireBest != null){
+
                     if(paireBest.isPossible(pRecherche) && paireBest.isPresent(tabTest)) {
                         System.out.println("Cycle possible entre "+ pRecherche+ "et"+paireBest );
                         Cycle cy = new Cycle(instance.getTailleMaxCycles());
@@ -75,7 +76,7 @@ public class StrategieBasique implements Solveur{
             }
             //recherche insertion de la paire dans une chaine si elle n'a pas ete inseree
             if (!coutEffectue && s.getListeSequences().size()>0){
-                System.out.println("Recherche Insertion Chaîne");
+                //System.out.println("Recherche Insertion Chaîne");
                 boolean rechercheChaine = true;
                 for (Sequence seq : s.getListeSequences()){
                     if (seq instanceof Chaine && rechercheChaine && seq.getListeNoeuds().size()>0){
@@ -91,7 +92,7 @@ public class StrategieBasique implements Solveur{
             // on supprime la paire du tableau de recherche (même si elle n'a pas été insérée)
             tabTest= ArrayUtils.remove(tabTest,0);
             if (tabTest.length==0){
-                System.out.println("tabTestVide");
+                //System.out.println("tabTestVide");
                 s.calculBenefice();
                 return s;
             }
@@ -100,7 +101,24 @@ public class StrategieBasique implements Solveur{
         s.calculBenefice();
         return s;
     }
-
+    // Fonction pour savoir si le noeud est présent dans le tableau des paires pas encore insérées dans la solution
+    public boolean isPresent(Noeud[] tab, Noeud n){
+        for(int i=0;i<tab.length;i++){
+            if(tab[i].getId()==n.getId()){
+                return true;
+            }
+        }
+        return false;
+    }
+    //Fonction qui renvoie la place du noeud dans le tableau de recherche
+    public int recherchePlace(Noeud[] tab, Noeud n){
+        for(int i=0;i<tab.length;i++){
+            if(tab[i].getId()==n.getId()){
+                return i;
+            }
+        }
+        return -1;
+    }
 
 
     public static void main(String[] args) {

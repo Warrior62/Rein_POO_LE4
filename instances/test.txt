@@ -5,10 +5,10 @@
 2
 
 // K : Taille max cycles
-3
+4
 
 // L : Taille max chaines
-0
+7
 
 // Matrice des benefices medicaux des echanges
 // Les N premieres lignes correspondent aux donneurs altruistes

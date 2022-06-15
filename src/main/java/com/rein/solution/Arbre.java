@@ -16,27 +16,45 @@ public class Arbre {
     private Noeud noeudRacine;
     private ArrayList<Arbre> listeFils;
     private int niveauProfondeur;
-    private int PROFONDEUR_MAX = 1;
+    private int profondeurMax;
+    private int largeurMax;
     private Instance instance;
 
     // --------------------------------------------------
     // --------------------------------------------------
 
-    public Arbre(Noeud noeudRacine, Instance i) {
+    public Arbre(Noeud noeudRacine, Instance i, int profondeur, int largeur) {
         this.id = noeudRacine.getId();
         this.noeudRacine = noeudRacine;
         this.listeFils = new ArrayList<>();
         this.niveauProfondeur = 0;
         this.instance = i;
+        this.profondeurMax = profondeur;
+        this.largeurMax = largeur;
     }
-    public Arbre(Noeud noeudRacine, Instance i, ArrayList<Arbre> listeFils) {
-        this(noeudRacine, i);
+    public Arbre(Noeud noeudRacine, Instance i, ArrayList<Arbre> listeFils, int profondeur, int largeur) {
+        this(noeudRacine, i, profondeur, largeur);
         this.listeFils = listeFils;
+    }
+
+    public Arbre(Instance i) {
+        this.instance = i;
+
+        this.id = 0;
+        this.noeudRacine = null;
+        this.listeFils = new ArrayList<>();
+        this.niveauProfondeur = 0;
+        this.profondeurMax = 0;
     }
 
     public int getId() {
         return id;
     }
+
+    public int getProfondeurMax() {
+        return profondeurMax;
+    }
+
     public Arbre(Arbre arbre) {
         this.noeudRacine = arbre.noeudRacine;
         this.listeFils = arbre.listeFils;
@@ -58,19 +76,10 @@ public class Arbre {
         return 1 + tailleFils;
     }
 
-    public int getPROFONDEUR_MAX() {
-        return PROFONDEUR_MAX;
-    }
-
-    public void setPROFONDEUR_MAX(int PROFONDEUR_MAX) {
-        this.PROFONDEUR_MAX = PROFONDEUR_MAX;
-    }
-
     public void remplirListeFils(){
         for(Map.Entry echange : this.noeudRacine.getListeEchanges().entrySet()){
             Noeud noeudFils = (Noeud) echange.getKey();
-            Arbre a = new Arbre(noeudFils, this.instance);
-            a.setPROFONDEUR_MAX(this.PROFONDEUR_MAX);
+            Arbre a = new Arbre(noeudFils, this.instance, this.profondeurMax, this.largeurMax);
             a.niveauProfondeur = this.niveauProfondeur + 1;
             this.listeFils.add(a);
         }
@@ -80,11 +89,44 @@ public class Arbre {
     // -- Methode récursive chargée de parcourir l'arbre et en extraire les chaines et cycles possibles
     // Fait ensuite appel de façon récursive à
     // Retourne un objet sequencesPossibles contenant les cycles et séquences possibles en LinkedHAshSet d'ids
+    /*public void recurrArbre(LinkedHashSet<Integer> listeId, int profondeur, LinkedHashSet<Sequence> listeChainesPossibles, LinkedHashSet<Sequence> listeCyclesPossibles){
+        profondeur++;
+        LinkedHashSet<Integer> listeIdBis = new LinkedHashSet<Integer>();
+        listeIdBis.addAll(listeId);
+        if (listeIdBis.add(this.getId())) {
+            if(profondeur < this.getProfondeurMax()){
+                this.remplirListeFils();       //Récupération de ses fils
+                //System.out.println("Current : " + this.getId());
+                //System.out.println("////////////////////////");
+                for(Arbre fils : this.getListeFils()) {
+                    fils.recurrArbre(listeIdBis, profondeur, listeChainesPossibles, listeCyclesPossibles);
+                }
+            }else {
+                if (chaineAjoutable(listeIdBis, listeChainesPossibles, instance)) {
+                    //listeChainesPossibles.add(new Chaine(listeIdBis, this.instance));
+                    ajouterChaine(listeIdBis, listeChainesPossibles, instance);
+                }
+            }
+        } else { //Lorsque l'on détecte un cycle, il faut enregistrer le cycle et la chaîne que cela peut aussi former
+            if (chaineAjoutable(listeIdBis, listeChainesPossibles, instance)) {
+                ajouterChaine(listeIdBis, listeChainesPossibles, instance);
+            }
+            Iterator it = listeIdBis.iterator();
+            int idCourant = (int) it.next();
+            while (idCourant != this.getId()) {
+                it.remove();
+                idCourant = (int) it.next();
+            }
+            if (cycleAjoutable(listeIdBis, listeCyclesPossibles, instance))
+                listeCyclesPossibles.add(new Cycle(listeIdBis, this.instance));
+        }
+    }*/
+
     public void recurrArbre(LinkedHashSet<Integer> listeId, int profondeur, LinkedHashSet<Sequence> listeChainesPossibles, LinkedHashSet<Sequence> listeCyclesPossibles){
         profondeur++;
         LinkedHashSet<Integer> listeIdBis = new LinkedHashSet<>(listeId);
         if (listeIdBis.add(this.getId())) {
-            if(profondeur < this.PROFONDEUR_MAX){
+            if(profondeur < this.profondeurMax){
                 this.remplirListeFils();       //Récupération de ses fils
                 for(Arbre fils : this.getListeFils()) {
                     fils.recurrArbre(listeIdBis, profondeur, listeChainesPossibles, listeCyclesPossibles);
@@ -108,32 +150,116 @@ public class Arbre {
         }
     }
 
-    //Fonction chargée de convertir le LinkedHashSet d'id 'listeIdCycle' en cycle
-    //Retourne le cycle créé
-    //Prend en entrée la liste d'id des noeuds dy cycle à former et
-    /*public static Cycle ajouterCyclePossible(LinkedHashSet<Integer> listeIdCycle, Instance i) {
-        Iterator it = listeIdCycle.iterator();
-        Integer idCourant;
-        Cycle c = new Cycle(i.getTailleMaxCycles());
-        Noeud n;
 
+    public static void ajouterChaine(LinkedHashSet<Integer> listeId, LinkedHashSet<Sequence> listeChainesPossibles, Instance i) {
+        LinkedHashSet<Integer> listeIdTemp = new LinkedHashSet<>();
+        Iterator it = listeId.iterator();
+        int id = (Integer) it.next();
+        listeIdTemp.add(id);
         while (it.hasNext()) {
-            idCourant = (Integer) it.next();
-            n = i.getCopieNoeud(idCourant);
-            c.ajouterNoeud()
+            id = (Integer) it.next();
+            listeIdTemp.add(id);
+            listeChainesPossibles.add(new Chaine(listeIdTemp, i));
         }
-    }*/
+    }
+
+
+    static boolean cycleAjoutable(LinkedHashSet<Integer> listeId, LinkedHashSet<Sequence> listeCyclesPossibles, Instance i) {
+        //System.out.println("Cycle potentiel : " + listeId);
+        //System.out.println("cycles actuels : ");
+        /*for (Sequence ch : listeCyclesPossibles) {
+            System.out.println(ch.toStringShort());
+        }*/
+        /*Iterator it = listeId.iterator();
+        int id = (int) it.next(); //id du 1er noeud de la chaine (Altruiste potentiel)
+        Noeud n = i.getTabNoeud()[id-1];*/
+
+        if ( (listeId.size() <= i.getTailleMaxCycles()) ) {
+            Cycle c = new Cycle(listeId, i);
+            for (Sequence ch1 : listeCyclesPossibles) {
+                if (ch1.equals(c)) {
+                    //System.out.println("------------ refusé : deja ajouté");
+                    return false;
+                }
+            }
+            return true;
+        }else {
+            /*System.out.println(listeId.size());
+            System.out.println("------------ refusé : tailleMAx");*/
+            return false;
+        }
+    }
+
+
+    //Méthode statique chargée de déterminée si une chaine peut être ajoutée aux chaines détectées.
+    //3 critères sont appliqués :
+    // - La chaine commence bien par un altruiste
+    // - la chaine respecte le critère de tailleMAxChaine
+    // - La chaine n'est pas déjà présente dans les chaines détectées
+    // listeIdBis == liste d'ids représentant la chaine
+    // i == Instance associée
+    static boolean chaineAjoutable(LinkedHashSet<Integer> listeId, LinkedHashSet<Sequence> listeChainesPossibles, Instance i) {
+
+        /*System.out.println("Tentative d'ajout de chaine : " + listeId);
+        System.out.println("Chaines actuelles : ");
+        for (Sequence ch : listeChainesPossibles) {
+            System.out.println(ch.toStringShort());
+        }*/
+        Iterator it = listeId.iterator();
+        int id = (int) it.next(); //id du 1er noeud de la chaine (Altruiste potentiel)
+        Noeud n = i.getTabNoeud()[id-1];
+
+        if ( (n instanceof Altruiste) && (listeId.size() <= i.getTailleMaxChaines()) ) {
+            Chaine c = new Chaine(listeId, i);
+            for (Sequence ch1 : listeChainesPossibles) {
+                if (ch1.equals(c)) {
+                    //System.out.println("------------ Ajout refusé");
+                    return false;
+                }
+            }
+            return true;
+        }else {
+            //System.out.println("------------ Ajout refusé");
+            return false;
+        }
+    }
+
+
+    // Méthode "interface" permettant d'appeler les méthodes récursives de parcours de l'arbre de Noeuds afin de détecter toutes les séquences possibles.
+    // Cette méthode n'est appelée qu'à partir d'un objet Arbre, et génère un arbre récursif sur les n premiers Noeuds (altruiste si possibles) de l'instance.
+    // Retourne ensuite un objet SequencesPossibles contenant les sequences détectées.
+    /*public SequencesPossibles detectionChainesCycles(int nbreArbres, int profondeur) {
+
+        LinkedHashSet<Sequence> listeChainesPossibles = new LinkedHashSet<>();
+        LinkedHashSet<Sequence> listeCyclesPossibles = new LinkedHashSet<>();
+        LinkedHashSet<Integer> listeId = new LinkedHashSet<>();
+        SequencesPossibles s = new SequencesPossibles();
+
+        if (this.instance.getNbAltruistes() > 0) { //Si l'instance contient les altruistes
+            for (int i=0; i<this.instance.getTabAltruistes().size()  ; i++) {
+                Arbre racine = new Arbre(this.instance.getTabAltruistes().get(i), this.instance, profondeur, this.largeurMax);
+                racine.recurrArbre(listeId, 0, listeChainesPossibles, listeCyclesPossibles);
+            }
+        }else { //si l'instance ne contient que des paires
+            for (int i=0;i<5 ; i++) {
+                Arbre racine = new Arbre(this.instance.getTabPaire().get(i), this.instance, profondeur, this.largeurMax);
+                racine.recurrArbre(listeId, 0, listeChainesPossibles, listeCyclesPossibles);
+            }
+        }
+
+        s.setCycles(listeCyclesPossibles);
+        s.setChaines(listeChainesPossibles);
+        return s;
+    } */
 
     public SequencesPossibles detectionChainesCycles() {
-        LinkedHashSet<Sequence> listeChainesPossibles = new LinkedHashSet<Sequence>();
-        LinkedHashSet<Sequence> listeCyclesPossibles = new LinkedHashSet<Sequence>();
-        LinkedHashSet<Integer> listeId = new LinkedHashSet<Integer>();
+        LinkedHashSet<Sequence> listeChainesPossibles = new LinkedHashSet<>();
+        LinkedHashSet<Sequence> listeCyclesPossibles = new LinkedHashSet<>();
+        LinkedHashSet<Integer> listeId = new LinkedHashSet<>();
         SequencesPossibles s = new SequencesPossibles();
 
         //Détection des séquences via méthode récursive d'arbre.... Renvoie les cycles et chaines potentielles dans des LinkedHashSet<LinkedHashSet> (listeCyclesPossibles et listeChainesPossibles)
         this.recurrArbre(listeId, 0, listeChainesPossibles, listeCyclesPossibles);
-
-
 
         s.setCycles(listeCyclesPossibles);
         s.setChaines(listeChainesPossibles);
@@ -154,12 +280,8 @@ public class Arbre {
     static boolean isAltruisteCompatible(Altruiste a, LinkedHashSet<Integer> chaine) {
         Paire premierePaire = new Paire(chaine.iterator().next());
         if (a.getBenefMedicalVers(premierePaire) > -1) {
-            //System.out.println("COMPATIBLE : " + a.getId() + " --> " + premierePaire.getId());
-            //System.out.println(a.getBenefMedicalVers(premierePaire));
             return true;
         }else  {
-            //System.out.println("NON COMPATIBLE : " + a.getId() + " --> " + premierePaire.getId());
-            //System.out.println(a.getBenefMedicalVers(premierePaire));
             return false;
         }
     }
@@ -179,13 +301,9 @@ public class Arbre {
 
         while (it.hasNext()) {
             LinkedHashSet<Integer> chaineCourante = (LinkedHashSet) it.next();
-            System.out.println("Aanalyse chaine : ");
-            System.out.println(chaineCourante);
             if (areNoeudsDisponibles(chaineCourante, noeudsIndisponibles)) {
-                System.out.println("NOEUDS DISPONIBLES");
                 for (Altruiste a : listeAltruistes)
                 if (isAltruisteCompatible(a, chaineCourante)) {
-                    System.out.println("ALTRUISTE COMPATIBLE");
                     ajouterChaine(chaineCourante, chainesChoisies, noeudsIndisponibles, a, listeAltruistesDisponibles);
                 }
             }
@@ -228,29 +346,41 @@ public class Arbre {
 
 
     public static void main(String[] args) {
+        long startTime = System.nanoTime();
         try{
             // --> Init <-- //
-            InstanceReader reader = new InstanceReader("instances/KEP_p250_n83_k5_l17.txt");
+            InstanceReader reader = new InstanceReader("instances/KEP_p250_n0_k3_l0.txt");
             Instance i = reader.readInstance();
-            Arbre racine = new Arbre(i.getTabNoeud()[0], i);
-            ArrayList<Altruiste> AltruistesDispo = i.getTabAltruistes();
-            // --> Init <-- //
+            Arbre a = new Arbre(i);
+            // --> Détection chaines et cycles <-- //
+            SequencesPossibles sequencesDetectees = a.detectionChainesCycles();
 
-            // --> Algorithme <-- //
-            SequencesPossibles sequencesDetectees = racine.detectionChainesCycles();
-            System.out.println("$$");
+            System.out.println("Sequeces Détectées : ");
+            System.out.println(sequencesDetectees);
+
             Selecteur selecteur = new Selecteur(sequencesDetectees);
-            SequencesPossibles sequencesChoisies = selecteur.selectionPlusGrosBenef();
-            System.out.println(sequencesChoisies);
-            System.out.println("$$");
-            // --> Algorithme <-- //
+            SequencesPossibles solution, sol;
+            solution = new SequencesPossibles();
+            Iterator it = selecteur.getSequencesPossibles().getCycles().iterator();
+            while (it.hasNext()) {
+                Sequence s = (Sequence) it.next();
+                sol = selecteur.arbreBestSol(s, i, 16, 60);
+                if (sol.getBenefTotal() > solution.getBenefTotal())
+                    solution = sol;
+                System.out.println("_________________________________________________________________");
+            }
+            System.out.println("//////////////////");
+            System.out.println(solution);
+            System.out.println("//////////////////");
 
-            System.out.println("Cycles : ");
-            System.out.println(sequencesDetectees.getCycles());
-            System.out.println("Chaines : ");
-            System.out.println(sequencesDetectees.getChaines());
+            long endTime = System.nanoTime();
+            System.out.println("Tps : " + (endTime - startTime)/1000000 + " ms");  //divide by 1000000 to get milliseconds.
+
         } catch(Exception e){
             System.err.println(e);
         }
+    }
+
+    public void setPROFONDEUR_MAX(int i) {
     }
 }

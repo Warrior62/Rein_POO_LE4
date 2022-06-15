@@ -21,9 +21,12 @@ import java.util.logging.Logger;
  * @author tryla
  */
 public class Solution {
+
     private int benefMedicalTotal;
     private Collection<Sequence> listeSequences;
     private Instance instance;
+
+
     public Solution(Instance instance) {
         this.instance = instance;
         this.listeSequences = new ArrayList<>();
@@ -48,7 +51,6 @@ public class Solution {
     }
 
     public void calculBenefice(){
-        System.out.println("calcul de bénéfice total");
         this.suppressionSequencesVides();
         for (Sequence seq : listeSequences){
             if (seq instanceof Chaine)

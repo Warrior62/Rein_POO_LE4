@@ -1,17 +1,126 @@
 package com.rein.solution;
 
+import com.rein.instance.Instance;
 import com.rein.instance.Noeud;
 import com.rein.transplantation.Sequence;
 
+import java.security.spec.RSAOtherPrimeInfo;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Selecteur {
 
 
     private SequencesPossibles sequencesPossibles;
+    private static int BENEFMAX = 0; //arbre
+    private int profondeurMax; //arbre
+    private int largeurMax; //arbre
+    private LinkedHashSet<Sequence> sequencesFinales; //arbre
+    private int benefFinal; //arbre
 
     public Selecteur(SequencesPossibles sequencesPossibles) {
         this.sequencesPossibles = sequencesPossibles;
+        this.sequencesFinales = new LinkedHashSet<>();
+        this.benefFinal = 0;
+    }
+
+    public SequencesPossibles arbreBestSol(Sequence sequenceRacine, Instance i, int profondeurArbre, int largeurArbre) {
+
+        //System.out.println("Arbre best Sol !!");
+
+        this.profondeurMax = profondeurArbre;
+        this.largeurMax = largeurArbre;
+
+        LinkedHashSet<Sequence> sequencesRestantes = new LinkedHashSet<Sequence>();
+        sequencesRestantes.addAll(this.sequencesPossibles.getChaines());
+        sequencesRestantes.addAll(this.sequencesPossibles.getCycles());
+
+        Noeud[] noeudsRestants = i.getTabNoeud();
+
+        //System.out.println(sequencesRestantes);
+
+        SequencesPossibles solutionTrouvee = arbreSequences(sequenceRacine, 0, sequencesRestantes, noeudsRestants);
+
+        return solutionTrouvee;
+    }
+
+    /////////////////////////////////////////////////////////////////////////
+    public SequencesPossibles arbreSequences(Sequence sequenceCourante, int profondeur, LinkedHashSet<Sequence> sequencesRestantes, Noeud[] noeudsRestants) {
+        int limite = 0;
+        int profondeurBis = profondeur + 1;
+        SequencesPossibles bestPossibilites = new SequencesPossibles();
+        Noeud[] noeudsRestantsBis = noeudsRestants.clone();
+
+        //System.out.println("################### Sequence courante : ");
+        //System.out.println(sequenceCourante);
+        LinkedHashSet<Sequence> sequencesFilles = getSequencesFilles(sequenceCourante, sequencesRestantes, noeudsRestantsBis);
+        /*System.out.println("Sequences filles : ");
+        for (Sequence s : sequencesFilles) {
+            System.out.println(s.toStringShort());
+        }*/
+
+        if (profondeurBis < this.profondeurMax && !(sequencesFilles.isEmpty()) ) {
+            //System.out.println("APPEL RECURSIF");
+            for (Sequence seq: sequencesFilles) {
+                if (limite < this.largeurMax) {
+                    limite++;
+                    SequencesPossibles s = arbreSequences(seq, profondeurBis, sequencesFilles, noeudsRestantsBis);
+                    if (s.getBenefTotal() > bestPossibilites.getBenefTotal())
+                        bestPossibilites = new SequencesPossibles(s);
+                }else
+                    break;
+            }
+        }
+
+        bestPossibilites.ajouterSequence(sequenceCourante);
+
+        /*System.out.println("## profondeur : ");
+        System.out.println(profondeur);
+        */
+        /*System.out.println("Best solution : ");
+        System.out.println(sequenceCourante);*/
+
+        return bestPossibilites;
+    }
+    /////////////////////////////////////////////////////////////////////////
+
+    public static LinkedHashSet<Sequence> getSequencesFilles(Sequence sequence, LinkedHashSet<Sequence> sequencesRestantes, Noeud[] noeudsRestants) {
+
+        LinkedHashSet<Sequence> sequencesRestantesBis = new LinkedHashSet<Sequence>(sequencesRestantes);
+        LinkedHashSet<Sequence> sequencesFilles = new LinkedHashSet<Sequence>(); //Pour les sequences filles
+        LinkedHashSet<Noeud> noeudRestants;
+        Sequence s;
+        // Pour chaque séquence potentielle,
+        // si la séquence ne contient aucun noeud des noeuds de la séquence courante,
+        // alors on l'ajoute aux séquences filles
+        Set diffTest = new HashSet();
+
+        Iterator it = sequencesRestantesBis.iterator();
+        while (it.hasNext()) {
+            s = (Sequence) it.next(); //sequence restante
+            diffTest.clear();
+            diffTest.addAll(s.getListeNoeuds());
+            diffTest.addAll(sequence.getListeNoeuds());
+            /*System.out.println(sequence.toStringShort() + " / VS / " + s.toStringShort());
+            System.out.println("APRES AJOUT : " + diffTest);
+            System.out.println((s.getListeNoeuds().size() + sequence.getListeNoeuds().size()) == diffTest.size());*/
+
+            if ( (s.getListeNoeuds().size() + sequence.getListeNoeuds().size()) == diffTest.size() ) {
+                //System.out.println("Sequence fille valide ----------------");
+                sequencesFilles.add(s);
+            }
+        }
+
+        //System.out.println(sequencesRestantesBis);
+        return sequencesFilles;
+    }
+
+    /*Set<String> result = list.stream()  .distinct()  .filter(otherList::contains)  .collect(Collectors.toSet());
+    Set<String> commonElements = new HashSet(Arrays.asList("red", "green"));
+    Assert.assertEquals(commonElements, result);*/
+
+    public SequencesPossibles getSequencesPossibles() {
+        return sequencesPossibles;
     }
 
     /**
@@ -107,15 +216,37 @@ public class Selecteur {
     }
 
     /**
-     * Tri dans l'ordre décroissant des bénéfices
+     * Tri les séquences dans l'ordre croissant ou décroissant
+     * des bénéfices
+     * @param unsortedMap ensemble des séquences possibles
+     * @param isAsc true : croissant, false : décroissant
+     * @return les séquences dans l'ordre croissant ou décroissant des bénéfices
+     */
+    private HashMap<Sequence, Integer> sortSequences(HashMap<Sequence, Integer> unsortedMap, boolean isAsc) {
+        LinkedHashMap<Sequence, Integer> sortedMap = new LinkedHashMap<>();
+        if(isAsc){
+            unsortedMap.entrySet()
+                    .stream()
+                    .sorted(Map.Entry.comparingByValue())
+                    .forEachOrdered(x -> sortedMap.put(x.getKey(), x.getValue()));
+        } else {
+            unsortedMap.entrySet()
+                    .stream()
+                    .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                    .forEachOrdered(x -> sortedMap.put(x.getKey(), x.getValue()));
+        }
+        return sortedMap;
+    }
+
+    /**
+     * Tri dans l'ordre croissant ou décroissant des bénéfices
      * les sequences
      * @param type "cycle" ou "chaine"
      * @return les sequences de type type rangées
-     * dans l'ordre décroissant des bénéfices
+     * dans l'ordre croissant ou décroissant des bénéfices
      */
-    public HashMap<Sequence, Integer> sortSequencesByBenef(String type) {
+    public HashMap<Sequence, Integer> sortSequencesByBenef(String type, boolean isAsc) {
         HashMap<Sequence, Integer> unsortedMap = new HashMap<>();
-        LinkedHashMap<Sequence, Integer> reverseSortedMap = new LinkedHashMap<>();
 
         switch (type){
             case "cycle":
@@ -128,12 +259,7 @@ public class Selecteur {
                 break;
         }
 
-        unsortedMap.entrySet()
-                .stream()
-                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
-                .forEachOrdered(x -> reverseSortedMap.put(x.getKey(), x.getValue()));
-
-        return reverseSortedMap;
+        return sortSequences(unsortedMap, isAsc);
     }
 
     /**
@@ -142,10 +268,10 @@ public class Selecteur {
      * @param type "cycle" ou "chaine"
      * @return liste de sequences choisies selon le benefice
      */
-    public LinkedHashSet<Sequence> selectionSequencesBenef(String type) {
+    public LinkedHashSet<Sequence> selectionSequencesBenef(String type, boolean isAsc) {
         LinkedHashSet<Sequence> sequencesChoisies = new LinkedHashSet<>();
-        for(Map.Entry entry : this.sortSequencesByBenef(type).entrySet()){
-            Sequence sequence = (Sequence) entry.getKey();
+        for(Map.Entry<Sequence, Integer> entry : this.sortSequencesByBenef(type, isAsc).entrySet()){
+            Sequence sequence = entry.getKey();
             boolean isPresent = false;
             for(Noeud noeud : sequence.getListeNoeuds())
                 if(isNoeudUtilise(noeud))
@@ -159,7 +285,7 @@ public class Selecteur {
         return sequencesChoisies;
     }
 
-    public SequencesPossibles selectionMeilleurPlusGrosBenef(){
+    /*public SequencesPossibles selectionMeilleurPlusGrosBenef(){
         SequencesPossibles bestsequencesChoisies = new SequencesPossibles();
         int taille = 40;
 
@@ -198,22 +324,21 @@ public class Selecteur {
             return false;
         }
         return true;
-    }
+    }*/
     /**
      *
      * Sélectionne les cycles puis les chaines
-     * avec les plus gros bénéfices
+     * avec les plus gros ou petits bénéfices
+     * @param isAsc true : croissant, false : décroissant
      * @return des sequences choisies selon le critère du bénéfice
      */
-    public SequencesPossibles selectionPlusGrosBenef() {
+    public SequencesPossibles selectionParBenef(boolean isAsc) {
         SequencesPossibles sequencesChoisies = new SequencesPossibles();
 
-        sequencesChoisies.getCycles().addAll(this.selectionSequencesBenef("cycle"));
-        sequencesChoisies.getChaines().addAll(this.selectionSequencesBenef("chaine"));
+        sequencesChoisies.getCycles().addAll(this.selectionSequencesBenef("cycle", isAsc));
+        sequencesChoisies.getChaines().addAll(this.selectionSequencesBenef("chaine", isAsc));
 
         return sequencesChoisies;
     }
-    public SequencesPossibles getSequencesPossibles() {
-        return sequencesPossibles;
-    }
+
 }

@@ -30,23 +30,19 @@ public class RechercheArbre implements Solveur {
     @Override
     public Solution solve(Instance instance) {
 
-        Arbre arbre = new Arbre(instance.getTabNoeud()[0], instance);
-        arbre.setPROFONDEUR_MAX(6);
-
-        SequencesPossibles sequencesUtilisables = arbre.detectionChainesCycles();
-
+        Arbre arbre = new Arbre(instance.getTabNoeud()[0], instance,6,0);
+        SequencesPossibles sequencesUtilisables = arbre.detectionChainesCycles(); //6
         // Pour tous les altruistes
-
         if (instance.getNbAltruistes()>0) {
-
             for (int i = 0; i < instance.getNbAltruistes() - 1; i++) {
                 if (instance.getTabNoeud()[i] instanceof Altruiste) {
-                    Arbre arbre1 = new Arbre(instance.getTabNoeud()[i], instance);
+                    int profondeur2 = 0;
                     if (i < 2) {
-                        arbre1.setPROFONDEUR_MAX(6);
+                        profondeur2 =6;
                     } else {
-                        arbre1.setPROFONDEUR_MAX(4);
+                        profondeur2 =4;
                     }
+                    Arbre arbre1 = new Arbre(instance.getTabNoeud()[i], instance,profondeur2,0);
                     SequencesPossibles sequencesUtilisables1 = arbre1.detectionChainesCycles();
                     sequencesUtilisables.getCycles().addAll(sequencesUtilisables1.getCycles());
                     sequencesUtilisables.getChaines().addAll(sequencesUtilisables1.getChaines());
@@ -56,44 +52,39 @@ public class RechercheArbre implements Solveur {
         else{
             if(instance.getTabPaire().size()==250){
                 for (int i=0;i<10;i++){
-                    Arbre arbre1 = new Arbre(instance.getTabNoeud()[i], instance);
-                    arbre1.setPROFONDEUR_MAX(instance.getTailleMaxCycles());
+                    Arbre arbre1 = new Arbre(instance.getTabNoeud()[i], instance,instance.getTailleMaxCycles(),0);
                     SequencesPossibles sequencesUtilisables1 = arbre1.detectionChainesCycles();
                     sequencesUtilisables.getCycles().addAll(sequencesUtilisables1.getCycles());
                 }
             }
             else {
                 for (int i = 0; i < instance.getTabPaire().size() - 1; i++) {
-                    Arbre arbre1 = new Arbre(instance.getTabNoeud()[i], instance);
-                    arbre1.setPROFONDEUR_MAX(instance.getTailleMaxCycles());
+                    Arbre arbre1 = new Arbre(instance.getTabNoeud()[i], instance,instance.getTailleMaxCycles(),0);
                     SequencesPossibles sequencesUtilisables1 = arbre1.detectionChainesCycles();
                     sequencesUtilisables.getCycles().addAll(sequencesUtilisables1.getCycles());
                 }
             }
         }
 
-        // Si la solution n'a pas d'altruiste
-
         Selecteur selecteur = new Selecteur(sequencesUtilisables);
-        SequencesPossibles sequencesSolution = selecteur.selectionPlusGrosBenef();
+        SequencesPossibles sequencesSolution = selecteur.selectionParBenef(false);
 
             Noeud[] noeudsNonUtilises = sequencesSolution.getNoeudsNonUtilises(instance);
+            SequencesPossibles sequencesRestantes = new SequencesPossibles();
             Instance instanceRestante = new Instance("instanceRestante",
                     instance.getNbPaires(), instance.getNbAltruistes(), instance.getTailleMaxCycles(),
                     instance.getTailleMaxChaines(), noeudsNonUtilises);
 
             for (int i = 0; i < instanceRestante.getTabPaire().size() - 1; i++) {
-                Arbre arbre1 = new Arbre(instanceRestante.getTabNoeud()[i], instanceRestante);
-                arbre1.setPROFONDEUR_MAX(instance.getTailleMaxCycles());
+                Arbre arbre1 = new Arbre(instanceRestante.getTabNoeud()[i],instanceRestante,4,0);
                 SequencesPossibles sequencesUtilisables1 = arbre1.detectionChainesCycles();
-                //sequencesUtilisables.getCycles().addAll(sequencesUtilisables1.getCycles());
+                sequencesRestantes.getCycles().addAll(sequencesUtilisables1.getCycles());
             }
 
-            Selecteur selecteur2 = new Selecteur(sequencesUtilisables);
-            SequencesPossibles sequencesSolution2 = selecteur2.selectionPlusGrosBenef();
+            Selecteur selecteur2 = new Selecteur(sequencesRestantes);
+            SequencesPossibles sequencesSolution2 = selecteur2.selectionParBenef(false);
             sequencesSolution.getCycles().addAll(sequencesSolution2.getCycles());
             sequencesSolution.getChaines().addAll(sequencesSolution2.getChaines());
-
 
         //GENERATION SOLUTION
         Solution s = new Solution(instance);
