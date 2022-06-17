@@ -47,6 +47,34 @@ public class Instance {
             this.tabPaires = new ArrayList<Paire>();
     }
 
+    public Instance(Instance i) {
+        this.nom = i.getNom();
+        this.nbPaires = i.getNbPaires();
+        this.nbAltruistes  =i.getNbAltruistes();
+        this.tailleMaxCycles = i.getTailleMaxCycles();
+        this.tailleMaxChaines = i.getTailleMaxChaines();
+        this.echanges = i.getEchanges();
+        this.tabNoeud = i.getTabNoeud();
+        this.tabAltruistes = i.getTabAltruistes();
+        this.tabPaires = i.getTabPaires();
+    }
+
+    /*public Instance(Instance i, ArrayList<Altruiste> altruistesUtilises, ArrayList<Paire> pairesUtilisees) {
+        this.nom = i.getNom();
+        this.nbPaires = i.getNbPaires() - pairesUtilisees.size();
+        this.nbAltruistes = i.getNbAltruistes() - altruistesUtilises.size();
+        this.tailleMaxCycles = i.tailleMaxCycles;
+        this.tailleMaxChaines = i.tailleMaxChaines;
+
+        ArrayList<Paire>
+        this.echanges = i.getEchanges();
+        this.tabNoeud = (Noeud[]) noeudsDispo.toArray();
+        this.tabAltruistes = new ArrayList<Altruiste>(altruistesDispo);
+        //this.tabAltruistes.addAll((Collection<? extends Altruiste>) altruistesDispo);
+        this.tabPaires = new ArrayList<Paire>(pairesDispo);
+        //this.tabPaires.addAll((Collection<? extends Paire>) pairesDispo);
+    }*/
+
     public int hashCode() {
         int hash = 7;
         hash = 37 * hash + Objects.hashCode(this.nom);

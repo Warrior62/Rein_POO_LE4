@@ -16,7 +16,6 @@ import com.rein.solution.Chaine;
 
 import java.util.ArrayList;
 import java.util.List;
-public abstract class Sequence {
 
 public abstract class Sequence implements Comparable {
 
