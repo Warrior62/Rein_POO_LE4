@@ -4,36 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5dbe1660-c9ae-497e-83b8-a85dacef2117" name="Changes" comment="gener-sol après bug 111 847">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results.csv" beforeDir="false" afterPath="$PROJECT_DIR$/results.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/KEP_p50_n6_k3_l4.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p50_n6_k3_l4.txt.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/interface_web/InterfaceWeb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/interface_web/InterfaceWeb.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/io/exception/ReaderException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/io/exception/ReaderException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/operateur/InsertionNoeud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/operateur/InsertionNoeud.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solution/Arbre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solution/Arbre.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solution/Selecteur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solution/Selecteur.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solution/SequencesPossibles.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solution/SequencesPossibles.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solution/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solution/Solution.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solveur/BestSolution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solveur/BestSolution.java" afterDir="false" />
+    <list default="true" id="5dbe1660-c9ae-497e-83b8-a85dacef2117" name="Changes" comment="gener-sol après bug 112 469">
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solveur/RechercheArbre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solveur/RechercheArbre.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/test/AllSolveurs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/test/AllSolveurs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/transplantation/Sequence.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/transplantation/Sequence.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/interface_web/InterfaceWeb.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/interface_web/InterfaceWeb.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/io/exception/FileExistException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/io/exception/FormatFileException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/io/exception/OpenFileException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/io/exception/ReaderException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/operateur/InsertionNoeud.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/operateur/InsertionNoeud.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/operateur/Operateur.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/operateur/Operateur.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/solution/Arbre.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/solution/Arbre.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/solution/Selecteur.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/solution/Selecteur.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/solution/Solution.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/solution/Solution.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/solution/sequencesPossibles.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/solution/sequencesPossibles.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/solveur/RechercheArbre.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/solveur/RechercheArbre.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/test/AllSolveurs.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/test/AllSolveurs.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/transplantation/Sequence.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/transplantation/Sequence.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,13 +37,18 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/transplantation/Sequence.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/pom.xml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/io/InstanceReader.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/instance/Noeud.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/solution/Solution.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/pom.xml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/transplantation/Cycle.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/solution/Solution.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/AppData/Local/Temp/tmp_704_SequencesPossibles.class" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/AppData/Local/Temp/tmp_1321_SequencesPossibles.class" root0="FORCE_HIGHLIGHTING" />
+    <setting file="jar://$PROJECT_DIR$/../../../../Program Files/Java/jdk-14.0.2/lib/src.zip!/java.base/java/lang/Object.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/AppData/Local/Temp/tmp_366_SequencesPossibles.class" root0="FORCE_HIGHLIGHTING" />
+    <setting file="jar://$PROJECT_DIR$/../../../../Program Files/Java/jdk-14.0.2/lib/src.zip!/java.base/java/lang/ClassFormatError.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/io/InstanceReader.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/transplantation/Sequence.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -176,8 +153,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.AllSolveurs" />
-        <item itemvalue="Application.RechercheArbre" />
         <item itemvalue="Application.MeilleureCombiSequence" />
+        <item itemvalue="Application.RechercheArbre" />
         <item itemvalue="Application.StrategieBasique2" />
         <item itemvalue="Application.StrategieBasique" />
       </list>
@@ -276,7 +253,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655458488422</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="gener-sol après bug 112 469">
+      <created>1655485294686</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1655485294686</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -363,7 +347,8 @@
     <MESSAGE value="Refonte méthode solve() de ArbreSequences" />
     <MESSAGE value="Merge test gener-sol" />
     <MESSAGE value="gener-sol après bug 111 847" />
-    <option name="LAST_COMMIT_MESSAGE" value="gener-sol après bug 111 847" />
+    <MESSAGE value="gener-sol après bug 112 469" />
+    <option name="LAST_COMMIT_MESSAGE" value="gener-sol après bug 112 469" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -377,6 +362,11 @@
           <properties class="java.lang.NoSuchMethodError" package="java.lang" />
           <option name="timeStamp" value="4" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/rein/solveur/BestSolution.java</url>
+          <line>11</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

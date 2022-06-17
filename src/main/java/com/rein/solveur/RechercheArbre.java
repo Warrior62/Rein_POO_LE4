@@ -82,6 +82,8 @@ public class RechercheArbre implements Solveur {
         sequencesSolution.getCycles().addAll(sequencesSolution2.getCycles());
         sequencesSolution.getChaines().addAll(sequencesSolution2.getChaines());
 
+       +
+
         //GENERATION SOLUTION
         Solution s = new Solution(instance);
         s = s.generationSolution(sequencesSolution,instance);
