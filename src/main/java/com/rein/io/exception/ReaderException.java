@@ -11,6 +11,7 @@ package com.rein.io.exception;
 public class ReaderException extends Exception {
     private String infos;
     private String conseils;
+
     public ReaderException(String infos, String conseils) {
         this.infos = infos;
         this.conseils = conseils;
@@ -19,8 +20,4 @@ public class ReaderException extends Exception {
     public String getMessage() {
         return "ERREUR : "+infos+"\n\t--> "+conseils;
     }
-    
-    
-    
-    
 }

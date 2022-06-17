@@ -14,29 +14,43 @@ import com.rein.io.InstanceReader;
 import com.rein.operateur.*;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
-
-public abstract class Sequence implements Comparable {
-
+public abstract class Sequence implements Comparable{
+    //private int id = 0;
     private int benefMedicalSequence = 0;
     private ArrayList<Noeud> listeNoeuds =new ArrayList<>();
     private int tailleMaxSequence;
 
+    /*public Sequence(Sequence s) {
+        this.setTailleMaxSequence(s.getTailleMaxSequence());
+        this.setBenefMedicalTotal(s.getBenefMedicalSequence());
+        this.getBenefMedicalSequence()
+    }*/
+
+    public void increaseBenefMedicalSequence(int nb){
+        this.benefMedicalSequence += nb;
+    }
+    public void decreaseBenefMedicalTotal(int nb){
+        this.benefMedicalSequence -= nb;
+    }
+
     public void calculBenefice(List<Echange> listeEchanges){
-       if(this.listeNoeuds.size()>1){
+               if(this.listeNoeuds.size()>1){
             for(int i=0;i<this.listeNoeuds.size()-1;i++){
                 Noeud donneur = this.listeNoeuds.get(i);
                 Noeud receveur = this.listeNoeuds.get(i+1);
                 //calcul du bénéfice (a vers b)
-                for(Echange ech: listeEchanges)
-                    if(donneur.getId() == ech.getDonneur().getId() && receveur.getId() == ech.getReceveur().getId())
+                for(Echange ech: listeEchanges){
+                    if(donneur.getId() ==ech.getDonneur().getId() && receveur.getId()== ech.getReceveur().getId())
                         this.benefMedicalSequence += ech.getBenefMedical();
-
+                }
                 if(this instanceof Cycle){
                     //si c'est un cycle, on calcule le bénéfice retour (b vers a)
-                    for(Echange ech2: listeEchanges)
+                    for(Echange ech2: listeEchanges){
                         if(receveur.getId() ==ech2.getDonneur().getId() && donneur.getId()== ech2.getReceveur().getId())
                             this.benefMedicalSequence += ech2.getBenefMedical();
+                    }
                 }
             }
         }

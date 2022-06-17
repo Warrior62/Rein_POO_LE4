@@ -136,6 +136,34 @@ public class Arbre implements Comparable {
         }
     }
 
+    public void recurrArbre(LinkedHashSet<Integer> listeId, int profondeur, LinkedHashSet<Sequence> listeChainesPossibles, LinkedHashSet<Sequence> listeCyclesPossibles){
+        profondeur++;
+        LinkedHashSet<Integer> listeIdBis = new LinkedHashSet<>(listeId);
+        if (listeIdBis.add(this.getId())) {
+            if(profondeur < this.profondeurMax){
+                this.remplirListeFils();       //Récupération de ses fils
+                for(Arbre fils : this.getListeFils()) {
+                    fils.recurrArbre(listeIdBis, profondeur, listeChainesPossibles, listeCyclesPossibles);
+                }
+            }else {
+                if (listeIdBis.size() <= this.instance.getTailleMaxChaines())
+                    listeChainesPossibles.add(new Chaine(listeIdBis, this.instance));
+
+            }
+        }else { //Lorsque l'on détecte un cycle, il faut enregistrer le cycle et la chaîne que cela peut aussi former
+            if (listeIdBis.size() <= this.instance.getTailleMaxChaines())
+                listeChainesPossibles.add(new Chaine(listeIdBis, this.instance));
+            Iterator it = listeIdBis.iterator();
+            int idCourant = (int) it.next();
+            while (idCourant != this.getId()) {
+                it.remove();
+                idCourant = (int) it.next();
+            }
+            if (listeIdBis.size() <= this.instance.getTailleMaxCycles())
+                listeCyclesPossibles.add(new Cycle(listeIdBis, this.instance));
+        }
+    }
+
     /**
      * Methode récursive chargée de parcourir l'arbre et en extraire les chaines et cycles possibles.
      * Stocke les ids des noeuds parcourus dans listeId, et détecte un cycle si 2 fois le même id y est ajouté.
@@ -145,7 +173,7 @@ public class Arbre implements Comparable {
      * @param listeChainesPossibles LinkedHashSet des chaines détectées.
      * @param listeCyclesPossibles LinkedHashSet des cycles détectés.
      * */
-    public void recurrArbre(LinkedHashSet<Integer> listeId, int profondeurCourante, LinkedHashSet<Sequence> listeChainesPossibles, LinkedHashSet<Sequence> listeCyclesPossibles){;
+    /*public void recurrArbre(LinkedHashSet<Integer> listeId, int profondeurCourante, LinkedHashSet<Sequence> listeChainesPossibles, LinkedHashSet<Sequence> listeCyclesPossibles){;
         profondeurCourante++;
         LinkedHashSet<Integer> listeIdBis = new LinkedHashSet<Integer>();
         listeIdBis.addAll(listeId);
@@ -182,7 +210,7 @@ public class Arbre implements Comparable {
                 listeCyclesPossibles.add(new Cycle(listeIdBis, this.instance));
             }
         }
-    }
+    }*/
 
     /**
      * Méthode fille de recurrArbre(), chargée de déterminer si une chaine est ajoutable aux chaines détectées.
@@ -265,6 +293,20 @@ public class Arbre implements Comparable {
         for (int n : cycle) {
             noeudsIndisponibles.add(n);
         }
+    }
+
+    public SequencesPossibles detectionChainesCycles() {
+        LinkedHashSet<Sequence> listeChainesPossibles = new LinkedHashSet<>();
+        LinkedHashSet<Sequence> listeCyclesPossibles = new LinkedHashSet<>();
+        LinkedHashSet<Integer> listeId = new LinkedHashSet<>();
+        SequencesPossibles s = new SequencesPossibles();
+
+        //Détection des séquences via méthode récursive d'arbre.... Renvoie les cycles et chaines potentielles dans des LinkedHashSet<LinkedHashSet> (listeCyclesPossibles et listeChainesPossibles)
+        this.recurrArbre(listeId, 0, listeChainesPossibles, listeCyclesPossibles);
+
+        s.setCycles(listeCyclesPossibles);
+        s.setChaines(listeChainesPossibles);
+        return s;
     }
 
     /**

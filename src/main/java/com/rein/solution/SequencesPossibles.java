@@ -3,9 +3,9 @@ package com.rein.solution;
 import com.rein.instance.Altruiste;
 import com.rein.instance.Instance;
 import com.rein.instance.Noeud;
-import com.rein.instance.Paire;
 import com.rein.transplantation.Cycle;
 import com.rein.transplantation.Sequence;
+import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.Iterator;
 import java.util.LinkedHashSet;
@@ -95,6 +95,36 @@ public class SequencesPossibles {
 
     //////////////////////////////////////////////////////////////
 
+    public void remplirNoeudsUtilises(){
+        if(this.getNoeudsUtilises().size()==0) {
+            for (Sequence ch : this.chaines) {
+                for (Noeud n : ch.getListeNoeuds()) {
+                    this.noeudsUtilises.add(n.getId());
+                }
+            }
+            for (Sequence cy : this.cycles) {
+                for (Noeud n : cy.getListeNoeuds()) {
+                    this.noeudsUtilises.add(n.getId());
+                }
+            }
+        }
+    }
+
+    public Noeud[] getNoeudsNonUtilises(Instance instance){
+        remplirNoeudsUtilises();
+        Noeud[] nRestant = instance.getTabNoeud();
+
+        for (Integer id : this.getNoeudsUtilises()){
+            for (Noeud n : nRestant){
+                if(n.getId()==id){
+                    int index = n.recherchePlace(nRestant);
+                    nRestant = ArrayUtils.remove(nRestant, index);
+                }
+            }
+        }
+        return nRestant;
+    }
+
     /**
      * Méthode de calcul du bénéfice total de l'objet SequencesPossibles courant.
      * @return int le bénéfice total calculé.
@@ -131,6 +161,7 @@ public class SequencesPossibles {
 
         this.setBenefTotal(this.getBenefTotal() + s.getBenefMedicalSequence());
     }
+
 
     /**
      * Méthode chargée de générer une solution en étant appelée sur un objet SequencesPossibles

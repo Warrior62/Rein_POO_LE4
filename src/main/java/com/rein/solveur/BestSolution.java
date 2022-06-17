@@ -3,7 +3,7 @@ package com.rein.solveur;
 import com.rein.instance.Instance;
 import com.rein.solution.Solution;
 
-public class BestSolution implements Solveur{
+public class BestSolution implements Solveur {
     @Override
     public String getNom() {
         return "Best Solution";

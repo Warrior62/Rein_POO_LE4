@@ -10,6 +10,7 @@ import com.rein.transplantation.Cycle;
 import com.rein.transplantation.Sequence;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.LinkedHashSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 /**
@@ -103,6 +104,22 @@ public class Solution {
                 this.listeSequences.remove(seq);
             }
         }
+    }
+
+    public Solution generationSolution(SequencesPossibles sequencesSolution, Instance instance){
+        Solution s = new Solution(instance);
+        LinkedHashSet<Sequence> tabCycle = sequencesSolution.getCycles();
+        LinkedHashSet<Sequence> tabChaine = sequencesSolution.getChaines();
+        for (Sequence seq : tabCycle){
+            s.ajouterSequence(seq);
+        }
+
+        for (Sequence seq : tabChaine){
+            s.ajouterSequence(seq);
+        }
+
+        return s;
+
     }
 
     /**
@@ -216,7 +233,7 @@ public class Solution {
             stringSol.append("\n");
         return stringSol.toString();
     }
-    
+
     /**
      *
      * Retourne true si la solution comporte au moins une séquence de la classe (Chaine/Cycle) passée en argument

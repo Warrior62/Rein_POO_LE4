@@ -47,6 +47,7 @@ public class InterfaceWeb {
     public void setAltruistesNonUtilises() {
         ArrayList<Integer> allAltruistes = new ArrayList<>();
         ArrayList<Integer> solutionAltruistes = new ArrayList<>();
+        System.out.println(this.solution.getInstance().getTabNoeud().length);
         // Itère sur les noeuds de l'instance
         for(Noeud noeud : this.solution.getInstance().getTabNoeud())
             if(noeud instanceof Altruiste)

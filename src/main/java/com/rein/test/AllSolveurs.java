@@ -90,7 +90,7 @@ public class AllSolveurs {
         // TO ADD : par la suite vous ajouterez ici les autres solveurs a tester
         solveurs.add(new BestSolution());
         //solveurs.add(new StrategieBasique2());
-        solveurs.add(new ArbreSequences());
+        //solveurs.add(new ArbreSequences());
         //solveurs.add(new RechercheArbre());
     }
 

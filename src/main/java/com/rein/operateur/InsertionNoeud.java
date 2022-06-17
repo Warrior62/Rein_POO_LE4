@@ -29,7 +29,8 @@ public class InsertionNoeud extends Operateur {
     @Override
     protected int evalDeltaBenefice() {
         if(sequence == null) return Integer.MAX_VALUE;
-        return this.sequence.deltaCoutInsertion(position, noeud);
+        //return this.sequence.deltaCoutInsertion(position, noeud);
+        return 0;
     }
 
     @Override
