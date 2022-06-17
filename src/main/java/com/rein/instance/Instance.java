@@ -160,6 +160,7 @@ public class Instance {
         public Noeud[] addPaire(int indice) {
             this.tabNoeud[indice] = new Paire(indice + 1);
             this.tabPaires.add((Paire) this.tabNoeud[indice]);
+            this.setNbPaires(this.getNbPaires()+1);
             return (Noeud[])this.tabNoeud.clone();
         }
     }

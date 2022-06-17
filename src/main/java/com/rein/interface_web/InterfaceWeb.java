@@ -24,7 +24,8 @@ public class InterfaceWeb {
     private final Solution solution;
     private final ArrayList<Integer> pairesNonUtilisees;
     private final ArrayList<Integer> altruistesNonUtilises;
-    private Integer nbNoeudsNonUtilises;
+    private Integer nbPaires;
+    private Integer nbAltruistes;
     private String beneficeChaqueSequence;
     private String html;
     private String solveur;
@@ -34,7 +35,8 @@ public class InterfaceWeb {
         this.solution = solution;
         this.pairesNonUtilisees = new ArrayList<>();
         this.altruistesNonUtilises = new ArrayList<>();
-        this.nbNoeudsNonUtilises = 0;
+        this.nbPaires = 0;
+        this.nbAltruistes = 0;
         this.beneficeChaqueSequence = "";
         this.html = "";
         this.solveur = solveur;
@@ -47,15 +49,21 @@ public class InterfaceWeb {
     public void setAltruistesNonUtilises() {
         ArrayList<Integer> allAltruistes = new ArrayList<>();
         ArrayList<Integer> solutionAltruistes = new ArrayList<>();
+
+
         // Itère sur les noeuds de l'instance
-        for(Noeud noeud : this.solution.getInstance().getTabNoeud())
-            if(noeud instanceof Altruiste)
+        for(Noeud noeud : this.solution.getInstance().getTabNoeud()) {
+            if (noeud instanceof Altruiste) {
                 allAltruistes.add(noeud.getId());
+                this.nbAltruistes++;
+            }
+        }
         // Itère sur les noeuds de la solution
         for(Sequence sequence : this.solution.getListeSequences())
             for(Noeud n : sequence.getListeNoeuds())
-                if(n instanceof Altruiste)
+                if(n instanceof Altruiste) {
                     solutionAltruistes.add(n.getId());
+                }
         // si noeud de allAltruistes n'est pas dans solutionAltruistes
         for(Integer id : allAltruistes)
             if(!solutionAltruistes.contains(id))
@@ -71,25 +79,24 @@ public class InterfaceWeb {
         ArrayList<Integer> solutionPaires = new ArrayList<>();
         // Itère sur les noeuds de l'instance
         for(Noeud noeud : this.solution.getInstance().getTabNoeud())
-            if(noeud instanceof Paire)
+            if(noeud instanceof Paire) {
                 allPaires.add(noeud.getId());
+                this.nbPaires++;
+            }
         // Itère sur les noeuds de la solution
-        for(Sequence sequence : this.solution.getListeSequences())
-            for(Noeud n : sequence.getListeNoeuds())
-                if(n instanceof Paire)
+        for(Sequence sequence : this.solution.getListeSequences()) {
+            for (Noeud n : sequence.getListeNoeuds()) {
+                if (!(n instanceof Altruiste)) {
                     solutionPaires.add(n.getId());
+                }
+            }
+        }
         // si noeud de allPaires n'est pas dans solutionPaires
-        for(Integer id : allPaires)
-            if(!solutionPaires.contains(id))
+        for(Integer id : allPaires) {
+            if (!solutionPaires.contains(id)) {
                 this.pairesNonUtilisees.add(id);
-    }
-
-    /**
-     * Définit le nombre total d'altruistes et de paires non-sollicités
-     * dans l'attribut nbNoeudsNonUtilises
-     */
-    public void setNbNoeudsNonUtilises() {
-        this.nbNoeudsNonUtilises = this.altruistesNonUtilises.size() + this.pairesNonUtilisees.size();
+            }
+        }
     }
 
     /**
@@ -309,13 +316,16 @@ public class InterfaceWeb {
         this.setPairesNonUtilisees();
         for(Integer id : this.pairesNonUtilisees)
             idsPaires += id + " ";
-        this.setNbNoeudsNonUtilises();
-        float proportionPaireNonSollicitee = ((float) this.pairesNonUtilisees.size() / (float) this.solution.getInstance().getNbPaires()) * 100;
-        float proportionDonneurNonSollicitee = ((float) this.altruistesNonUtilises.size() / (float) this.solution.getInstance().getNbAltruistes()) * 100;
-        int pourcentageNoeudNonUtilise = (int) (((float) this.nbNoeudsNonUtilises/ (float) this.solution.getInstance().getTabNoeud().length) * 100);
+        float proportionDonneurNonSollicitee = 0;
+        if(this.nbAltruistes != 0) {
+            proportionDonneurNonSollicitee = ((float)(this.altruistesNonUtilises.size() / this.nbAltruistes)) * 100;
+        }
+        float proportionPaireNonSollicitee = (((float)this.pairesNonUtilisees.size() / (float)this.nbPaires)) * 100;
+        float pourcentageNoeudNonUtilise = (((float)( this.altruistesNonUtilises.size() + this.pairesNonUtilisees.size()))/ (float)(this.nbAltruistes + this.nbPaires) * 100);
         proportionPaireNonSollicitee = Math.round(proportionPaireNonSollicitee);
         proportionDonneurNonSollicitee = Math.round(proportionDonneurNonSollicitee);
         pourcentageNoeudNonUtilise = Math.round(pourcentageNoeudNonUtilise);
+
         return "</div> " +
                 "    <div class=\"sticky-top btn btn-dark mt-1 mb-auto mx-auto\" style='float: right; width: fit-content; text-align: right; margin-right: 2em; top: 1rem;'>" +
                 "       <p>Bénéfice de chaque séquence : </p>" + this.beneficeChaqueSequence +
@@ -344,7 +354,7 @@ public class InterfaceWeb {
                 "               backgroundColor: 'rgb(18, 214, 241)',\n" +
                 "               borderColor: 'rgb(100, 100, 100)',\n" +
                 "               yAxisID: 'A',\n" +
-                "               data: ["+ (this.solution.getInstance().getNbAltruistes() - this.altruistesNonUtilises.size()) +"]\n" +
+                "               data: ["+ (this.nbAltruistes - this.altruistesNonUtilises.size()) +"]\n" +
                 "           }, {" +
                 "               label: 'Altruistes non-sollicités',\n" +
                 "               backgroundColor: '#0bacc1',\n" +
@@ -356,7 +366,7 @@ public class InterfaceWeb {
                 "               backgroundColor: 'orange',\n" +
                 "               borderColor: 'rgb(100, 100, 100)',\n" +
                 "               yAxisID: 'B',\n" +
-                "               data: ["+ (this.solution.getInstance().getNbPaires() - this.pairesNonUtilisees.size()) +"]\n" +
+                "               data: ["+ (this.nbPaires - this.pairesNonUtilisees.size()) +"]\n" +
                 "           }, {" +
                 "               label: 'Paires non-sollicitées',\n" +
                 "               backgroundColor: '#cc8500',\n" +
@@ -438,7 +448,7 @@ public class InterfaceWeb {
      * @return la chaîne comportant le code HTML
      */
     private String getBeginningOfJs(String type) {
-        return "    <div style=\"width: 100%\" id=\"" + type +"\"></div>" +
+        return "    <div class=\"w-100\" id=\"" + type + "\"></div>" +
                "    <script type=\"text/javascript\">\n";
     }
 
