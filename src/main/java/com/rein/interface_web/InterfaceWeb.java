@@ -27,18 +27,17 @@ public class InterfaceWeb {
     private Integer nbNoeudsNonUtilises;
     private String beneficeChaqueSequence;
     private String html;
+    private String solveur;
 
-    /**
-     * Constructeur par données d'une solution
-     * @param solution dont on veut récupérer les données
-     */
-    public InterfaceWeb(Solution solution) {
+
+    public InterfaceWeb(Solution solution, String solveur) {
         this.solution = solution;
         this.pairesNonUtilisees = new ArrayList<>();
         this.altruistesNonUtilises = new ArrayList<>();
         this.nbNoeudsNonUtilises = 0;
         this.beneficeChaqueSequence = "";
         this.html = "";
+        this.solveur = solveur;
     }
 
     /**
@@ -116,16 +115,10 @@ public class InterfaceWeb {
      * @return une chaîne de caractères comportant le code HTML
      */
     public String getHtmlBody() {
-        return  "    <div style='margin: 0; width: 100%; border-top: 1px solid black; border-bottom: 1px solid black; display: grid; grid-template-columns: repeat(3, 1fr); grid-gap: 10px; background-color: #bbb'>" +
-                "       <div>" +
-                "           <div class=\"my-2\">Taille max chaînes : <b>" + this.solution.getInstance().getTailleMaxChaines() + "</b></div>" +
-                "        </div>" +
-                "       <div style='text-align: center;'>" +
-                "           <div class=\"my-2\">Bénéfice médical total : <b>" + this.solution.getBenefMedicalTotal() + "</b></div>\n" +
-                "       </div>" +
-                "       <div style='text-align: right;'>" +
-                "           <div class=\"my-2\">Taille max cycles : <b>" + this.solution.getInstance().getTailleMaxCycles() + "</b></div>" +
-                "       </div>" +
+        return  "    <div class='btn btn-dark w-100 border mt-2' style='display: grid; grid-template-columns: repeat(3, 1fr);'>" +
+                "           <div>Taille max chaînes : <b>" + this.solution.getInstance().getTailleMaxChaines() + "</b></div>" +
+                "           <div>Bénéfice médical total : <b>" + this.solution.getBenefMedicalTotal() + "</b></div>\n" +
+                "           <div>Taille max cycles : <b>" + this.solution.getInstance().getTailleMaxCycles() + "</b></div>" +
                 "    </div>" +
                 "    <div id=\"mynetwork\"></div>\n" +
                 "    <div class=\"row\">" +
@@ -185,7 +178,7 @@ public class InterfaceWeb {
                 "       </style>\n" +
                 "  </head>\n" +
                 "  <body>\n" +
-                "     <h2 id='instanceName'>" + this.solution.getInstance().getNom() + "</h2>" +
+                "     <h2 id='instanceName'>" + this.solution.getInstance().getNom() + " - </h2><h3>" + this.solveur + "</h3>" +
                 this.createDropdownInstances();
     }
 
@@ -277,11 +270,19 @@ public class InterfaceWeb {
         } else {
             options = "width:'100%', height:'500px',";
         }
-        options += "interaction:{navigationButtons:true, hover:true, hoverConnectedEdges:true}, physics:{" +
-                "enabled: true, repulsion: { centralGravity: 0.2, nodeDistance: 4 }, hierarchicalRepulsion: { centralGravity: 0.0, nodeDistance: 4, avoidOverlap: 0 }}" +
-                ", groups: { altruiste: {color:{background:'#97C2FC'}, shape: 'box'}, paire: {color:{background:'orange'}, shape : 'circle'}}";
+        options += "interaction:{navigationButtons:true, hover:true, hoverConnectedEdges:true}, " +
+                "groups: { altruiste: {color:{background:'#97C2FC'}, shape: 'box'}, paire: {color:{background:'orange'}, shape : 'circle'}},";
         if (type == "Chaines")
-            options += ", layout: { hierarchical: { direction: 'UD', levelSeparation: 45, nodeSpacing: 10, treeSpacing: 45 }}";
+            options += "layout: { hierarchical: { direction: 'UD', levelSeparation: 45, nodeSpacing: 10, treeSpacing: 45 }}" +
+                    ", physics : {enabled: true, repulsion: { centralGravity: 0.2, nodeDistance: 4 }, hierarchicalRepulsion: { centralGravity: 0.0, nodeDistance: 4, avoidOverlap: 0 }}";
+        else if (type == "Cycles")
+            options += " physics: {\n" +
+                    "       enabled: true, " +
+                    "       repulsion: { centralGravity: 0.2, nodeDistance: 4 }," +
+                    "       hierarchicalRepulsion: { centralGravity: 0, nodeDistance: 4, avoidOverlap: 0 }," +
+                    "       barnesHut: { \"gravitationalConstant\": -80, \"centralGravity\": 0 }," +
+                    "        minVelocity: 1" +
+                    "    }";
 
         return  "      var container = document.getElementById(\"" + type + "\");\n" +
                 "      var data = {\n" +
@@ -312,6 +313,9 @@ public class InterfaceWeb {
         float proportionPaireNonSollicitee = ((float) this.pairesNonUtilisees.size() / (float) this.solution.getInstance().getNbPaires()) * 100;
         float proportionDonneurNonSollicitee = ((float) this.altruistesNonUtilises.size() / (float) this.solution.getInstance().getNbAltruistes()) * 100;
         int pourcentageNoeudNonUtilise = (int) (((float) this.nbNoeudsNonUtilises/ (float) this.solution.getInstance().getTabNoeud().length) * 100);
+        proportionPaireNonSollicitee = Math.round(proportionPaireNonSollicitee);
+        proportionDonneurNonSollicitee = Math.round(proportionDonneurNonSollicitee);
+        pourcentageNoeudNonUtilise = Math.round(pourcentageNoeudNonUtilise);
         return "</div> " +
                 "    <div class=\"sticky-top btn btn-dark mt-1 mb-auto mx-auto\" style='float: right; width: fit-content; text-align: right; margin-right: 2em; top: 1rem;'>" +
                 "       <p>Bénéfice de chaque séquence : </p>" + this.beneficeChaqueSequence +
@@ -343,19 +347,19 @@ public class InterfaceWeb {
                 "               data: ["+ (this.solution.getInstance().getNbAltruistes() - this.altruistesNonUtilises.size()) +"]\n" +
                 "           }, {" +
                 "               label: 'Altruistes non-sollicités',\n" +
-                "               backgroundColor: 'rgb(12, 136, 153)',\n" +
+                "               backgroundColor: '#0bacc1',\n" +
                 "               borderColor: 'rgb(100, 100, 100)',\n" +
                 "               yAxisID: 'A',\n" +
                 "               data: ["+this.altruistesNonUtilises.size()+"]\n" +
                 "           }, {" +
                 "               label: 'Paires sollicitées',\n" +
-                "               backgroundColor: 'rgb(241, 177, 18)',\n" +
+                "               backgroundColor: 'orange',\n" +
                 "               borderColor: 'rgb(100, 100, 100)',\n" +
                 "               yAxisID: 'B',\n" +
                 "               data: ["+ (this.solution.getInstance().getNbPaires() - this.pairesNonUtilisees.size()) +"]\n" +
                 "           }, {" +
                 "               label: 'Paires non-sollicitées',\n" +
-                "               backgroundColor: 'rgb(214, 158, 17)',\n" +
+                "               backgroundColor: '#cc8500',\n" +
                 "               borderColor: 'rgb(100, 100, 100)',\n" +
                 "               yAxisID: 'B',\n" +
                 "               data: ["+this.pairesNonUtilisees.size()+"]\n" +
@@ -364,7 +368,7 @@ public class InterfaceWeb {
                 "       const dataPie1 = {\n" +
                 "           labels: ['Altruistes sollicitées', 'Altruistes non-sollicités'],\n" +
                 "           datasets: [{\n" +
-                "               backgroundColor: ['#12d6f1', '#0c8899'],\n" +
+                "               backgroundColor: ['#12d6f1', '#0bacc1'],\n" +
                 "               borderColor: 'rgb(100, 100, 100)',\n" +
                 "               data: ["+ (100 - proportionDonneurNonSollicitee) +", " + proportionDonneurNonSollicitee + "]\n" +
                 "           }]\n" +
@@ -372,7 +376,7 @@ public class InterfaceWeb {
                 "       const dataPie2 = {\n" +
                 "           labels: ['Paires sollicitées', 'Paires non-sollicités'],\n" +
                 "           datasets: [{\n" +
-                "               backgroundColor: ['#f1b112', '#d69e11'],\n" +
+                "               backgroundColor: ['orange', '#cc8500'],\n" +
                 "               borderColor: 'rgb(100, 100, 100)',\n" +
                 "               data: ["+ (100 - proportionPaireNonSollicitee) +", " + proportionPaireNonSollicitee + "]\n" +
                 "           }]\n" +

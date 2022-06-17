@@ -171,15 +171,13 @@ public class ArbreSequences implements Solveur {
             System.out.println("================= SEQUENCE "+ i.getNom() +" =================");
 
             Solution sol = ra.solve(i);
-            new InterfaceWeb(sol).createHtmlFile();
+            //new InterfaceWeb(sol).createHtmlFile();
             System.out.println(sol);
             System.out.println("Checker : " + sol.check());
 
             long endTime = System.nanoTime();
             System.out.println("Tps : " + (endTime - startTime)/1000000 + " ms");  //divide by 1000000 to get milliseconds.
         } catch (ReaderException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
             e.printStackTrace();
         }
 

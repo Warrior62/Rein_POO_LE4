@@ -201,7 +201,7 @@ public class StrategieBasique2 implements Solveur{
                     e.printStackTrace();
                 }
                 System.out.println("Checker : " + s1.check());
-                new InterfaceWeb(s1).createHtmlFile();
+                new InterfaceWeb(s1, "Strategie basique 2").createHtmlFile();
 
             } catch(Exception e){
                 System.out.println(e.getMessage());

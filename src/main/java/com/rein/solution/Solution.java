@@ -59,6 +59,12 @@ public class Solution {
         this.benefMedicalTotal += s.getBenefTotal();
     }
 
+
+    public Solution() {
+        this.listeSequences = null;
+        this.benefMedicalTotal = 0;
+    }
+
     /**
      * Méthode d'ajout d'une séquence à la solution courante.
      * Met à jour la liste des séquences, et le benef médical total de la solution

@@ -88,13 +88,10 @@ public class AllSolveurs {
         // TO CHECK : constructeur par defaut de la classe InsertionSimple
         //solveurs.add(new StrategieBasique());
         // TO ADD : par la suite vous ajouterez ici les autres solveurs a tester
-        //solveurs.add(new StrategieBasique2());
-        //solveurs.add(new RechercheArbre());
-        //solveurs.add(new BestSolution());
-        //solveurs.add(new StrategieBasique2());
+        solveurs.add(new BestSolution());
+        solveurs.add(new StrategieBasique2());
         solveurs.add(new ArbreSequences());
         //solveurs.add(new RechercheArbre());
-        //solveurs.add(new BestSolution());
     }
 
     /**
@@ -110,6 +107,7 @@ public class AllSolveurs {
                 try {
                     // TO CHECK : constructeur de InstanceReader
                     InstanceReader reader = new InstanceReader(file.getAbsolutePath());
+                    System.out.println("\nInstance : "+file.getAbsolutePath() + "\n");
                     // TO CHECK : lecture d'une instance avec la classe InstanceReader
                     instances.add(reader.readInstance());
                 } catch (ReaderException ex) {
@@ -166,19 +164,25 @@ public class AllSolveurs {
     private void printResultatsInstance(PrintWriter ecriture, Instance inst) throws IOException {
         // TO CHECK : recuperer le nom de l'instance
         ecriture.print(inst.getNom());
+        Solution meilleureSol = new Solution();
+        Solveur meilleurSolveur = solveurs.get(0);
         for(Solveur solveur : solveurs) {
             long start = System.currentTimeMillis();
             // TO CHECK : resolution de l'instance avec le solveur
             Solution sol = solveur.solve(inst);
-            new InterfaceWeb(sol).createHtmlFile();
             long time = System.currentTimeMillis() - start;
             // TO CHECK : recperer le cout total de la solution, et savoir si
             // la solution est valide
             Resultat result = new Resultat(sol.getBenefMedicalTotal(), time, sol.check());
             resultats.put(new InstanceSolveur(inst, solveur), result);
-            ecriture.print(";"+result.formatCsv());
             totalStats.get(solveur).add(result);
+            if(sol.getBenefMedicalTotal() > meilleureSol.getBenefMedicalTotal()){
+                meilleureSol = sol;
+                meilleurSolveur = solveur;
+                ecriture.print(";"+result.formatCsv());
+            }
         }
+        new InterfaceWeb(meilleureSol, meilleurSolveur.getNom()).createHtmlFile();
         ecriture.println();
     }
 
