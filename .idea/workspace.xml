@@ -9,19 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5dbe1660-c9ae-497e-83b8-a85dacef2117" name="Changes" comment="Ajout solution ArbreSequences opérationel + commentaires et nettoyage de code">
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Projet_Fremaux_Robert_Shahpazian_Tryla_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Projet_Fremaux_Robert_Shahpazian_Tryla_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/test_extract_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/KEP_p250_n83_k5_l17.txt.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/interface_web/InterfaceWeb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/interface_web/InterfaceWeb.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/test/AllSolveurs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/test/AllSolveurs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/interface_web/InterfaceWeb.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/interface_web/InterfaceWeb.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/test/AllSolveurs$InstanceSolveur.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/test/AllSolveurs$InstanceSolveur.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/test/AllSolveurs$Resultat.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/test/AllSolveurs$Resultat.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/test/AllSolveurs.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/test/AllSolveurs.class" afterDir="false" />
-    </list>
+    <list default="true" id="5dbe1660-c9ae-497e-83b8-a85dacef2117" name="Changes" comment="Création de l'artifact" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -51,13 +39,13 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/transplantation/Sequence.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/pom.xml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/io/InstanceReader.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/instance/Noeud.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/io/InstanceReader.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/solution/Solution.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/transplantation/Cycle.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/transplantation/Sequence.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -197,7 +185,7 @@
       <option name="presentableId" value="Default" />
       <updated>1649313157800</updated>
       <workItem from="1655481165927" duration="4641000" />
-      <workItem from="1655496345982" duration="809000" />
+      <workItem from="1655496345982" duration="1205000" />
     </task>
     <task id="LOCAL-00001" summary="sout martrein">
       <created>1649313386845</created>
@@ -304,7 +292,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655451273577</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Création de l'artifact">
+      <created>1655497246647</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1655497246647</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -391,7 +386,8 @@
     <MESSAGE value="Refonte méthode solve() de ArbreSequences" />
     <MESSAGE value="Optimisation de la méthode solve d'ArbreSequence" />
     <MESSAGE value="Ajout solution ArbreSequences opérationel + commentaires et nettoyage de code" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ajout solution ArbreSequences opérationel + commentaires et nettoyage de code" />
+    <MESSAGE value="Création de l'artifact" />
+    <option name="LAST_COMMIT_MESSAGE" value="Création de l'artifact" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
   <component name="XDebuggerManager">
