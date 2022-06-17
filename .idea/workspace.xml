@@ -6,16 +6,52 @@
   <component name="ChangeListManager">
     <list default="true" id="5dbe1660-c9ae-497e-83b8-a85dacef2117" name="Changes" comment="Ajout solution ArbreSequences opérationel + commentaires et nettoyage de code">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_04_06_2022_18_39__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rein-poo-le4.iml" beforeDir="false" afterPath="$PROJECT_DIR$/rein-poo-le4.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results.csv" beforeDir="false" afterPath="$PROJECT_DIR$/results.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p100_n0_k3_l0.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p100_n0_k3_l0.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p100_n11_k3_l13.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p100_n11_k3_l13.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p100_n11_k3_l4.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p100_n11_k3_l4.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p100_n11_k3_l7.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p100_n11_k3_l7.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p100_n11_k5_l17.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p100_n11_k5_l17.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p100_n33_k3_l13.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p100_n33_k3_l13.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p100_n33_k3_l4.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p100_n33_k3_l4.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p100_n33_k3_l7.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p100_n33_k3_l7.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p100_n33_k5_l17.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p100_n33_k5_l17.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p100_n5_k3_l13.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p100_n5_k3_l13.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p100_n5_k3_l4.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p100_n5_k3_l4.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p100_n5_k3_l7.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p100_n5_k3_l7.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p100_n5_k5_l17.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p100_n5_k5_l17.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p18_n0_k4_l0.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p18_n0_k4_l0.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p18_n2_k4_l4.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p18_n2_k4_l4.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p250_n0_k3_l0.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p250_n0_k3_l0.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p250_n13_k3_l13.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p250_n13_k3_l13.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p250_n13_k3_l4.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p250_n13_k3_l4.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p250_n13_k3_l7.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p250_n13_k3_l7.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p250_n13_k5_l17.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p250_n13_k5_l17.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p250_n28_k3_l13.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p250_n28_k3_l13.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p250_n28_k3_l4.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p250_n28_k3_l4.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p250_n28_k3_l7.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p250_n28_k3_l7.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p250_n28_k5_l17.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p250_n28_k5_l17.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p250_n83_k3_l13.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p250_n83_k3_l13.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p250_n83_k3_l4.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p250_n83_k3_l4.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p250_n83_k3_l7.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p250_n83_k3_l7.txt.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/results/KEP_p250_n83_k5_l17.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p250_n83_k5_l17.txt.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/instance/Instance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/instance/Instance.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/interface_web/InterfaceWeb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/interface_web/InterfaceWeb.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p50_n0_k3_l0.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p50_n0_k3_l0.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p50_n17_k3_l13.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p50_n17_k3_l13.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p50_n17_k3_l4.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p50_n17_k3_l4.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p50_n17_k3_l7.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p50_n17_k3_l7.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p50_n17_k5_l17.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p50_n17_k5_l17.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p50_n3_k3_l13.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p50_n3_k3_l13.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p50_n3_k3_l4.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p50_n3_k3_l4.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p50_n3_k3_l7.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p50_n3_k3_l7.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p50_n3_k5_l17.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p50_n3_k5_l17.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p50_n6_k3_l13.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p50_n6_k3_l13.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p50_n6_k3_l4.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p50_n6_k3_l4.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p50_n6_k3_l7.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p50_n6_k3_l7.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p50_n6_k5_l17.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p50_n6_k5_l17.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p9_n0_k3_l0.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p9_n0_k3_l0.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p9_n1_k3_l3.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p9_n1_k3_l3.txt.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/rein/instance/Instance.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/instance/Instance.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/interface_web/InterfaceWeb.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/interface_web/InterfaceWeb.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/operateur/TypeOperateurLocal.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/operateur/TypeOperateurLocal.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/solveur/ArbreSequences.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/solveur/ArbreSequences.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/solution/Arbre.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/solution/Arbre.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,13 +82,13 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/pom.xml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/instance/Noeud.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/io/InstanceReader.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/solution/Solution.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/transplantation/Cycle.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/transplantation/Sequence.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/pom.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/io/InstanceReader.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/instance/Noeud.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/solution/Solution.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/transplantation/Cycle.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -70,11 +106,6 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "WebServerToolWindowFactoryState": "false"
-  }
-}]]></component>
   <component name="ReaderModeSettings">
     <option name="enabled" value="false" />
   </component>
