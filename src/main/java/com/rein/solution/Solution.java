@@ -75,6 +75,7 @@ public class Solution {
         for (Sequence seq : tabCycle){
             s.ajouterSequence(seq);
         }
+        
         for (Sequence seq : tabChaine){
             s.ajouterSequence(seq);
         }
