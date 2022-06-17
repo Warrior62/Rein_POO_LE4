@@ -412,6 +412,9 @@ public class Arbre implements Comparable {
     @Override
     public int compareTo(Object o) {
         Arbre a = (Arbre) o;
-        return this.getNoeudRacine().getScorePopularite() - a.getNoeudRacine().getScorePopularite();
+        //return this.getNoeudRacine().getScorePopularite() - a.getNoeudRacine().getScorePopularite();
+        //return a.getNoeudRacine().getScorePopularite() - this.getNoeudRacine().getScorePopularite();
+        return a.getNoeudRacine().getScoreBenefice() - this.getNoeudRacine().getScoreBenefice();
+        //return this.getNoeudRacine().getScoreBenefice() - a.getNoeudRacine().getScoreBenefice();
     }
 }

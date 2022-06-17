@@ -16,7 +16,7 @@ import com.rein.solution.Chaine;
 
 import java.util.ArrayList;
 import java.util.List;
-public abstract class Sequence {
+public abstract class Sequence implements Comparable {
     //private int id = 0;
     private int benefMedicalSequence = 0;
     private ArrayList<Noeud> listeNoeuds =new ArrayList<>();
@@ -210,6 +210,13 @@ public abstract class Sequence {
     }
 
     public abstract boolean equals(Sequence c);
+
+    @Override
+    public int compareTo(Object o) {
+        Sequence s = (Sequence) o;
+        //System.out.println("Comparaison : " + (s.getBenefMedicalSequence() - this.getBenefMedicalSequence()));
+        return s.getBenefMedicalSequence() - this.getBenefMedicalSequence();
+    }
 
     @Override
     public String toString() {
