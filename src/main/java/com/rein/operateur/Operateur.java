@@ -3,6 +3,7 @@ package com.rein.operateur;
 import com.rein.transplantation.Sequence;
 
 public abstract class Operateur {
+
     protected Sequence sequence;
     protected int deltaBeneficeMedical;
 
@@ -30,21 +31,9 @@ public abstract class Operateur {
         return true;
     }
 
-    public boolean isMeilleur(Operateur op){
-        if(op == null) return true;
-        if(this.getDeltaBeneficeMedical() >= op.getDeltaBeneficeMedical())
-            return false;
-        return true;
-    }
-
     public boolean doMouvementIfRealisable(){
         if(isMouvementRealisable())
             return this.doMouvement();
-        return false;
-    }
-
-    public boolean isMouvementAmeliorant(){
-        if(this.getDeltaBeneficeMedical() < 0) return true;
         return false;
     }
 

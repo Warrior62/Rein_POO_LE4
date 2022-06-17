@@ -1,0 +1,618 @@
+Index: .idea/shelf/Uncommitted_changes_before_Checkout_at_03_06_2022_11_31_[Changes]/shelved.patch
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_06_2022_11_31_[Changes]/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_06_2022_11_31_[Changes]/shelved.patch
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_06_2022_11_31_[Changes]/shelved.patch	(revision a834a810a24385e4cac8d47c5e364eb9bfc7be0b)
++++ /dev/null	(revision a834a810a24385e4cac8d47c5e364eb9bfc7be0b)
+@@ -1,69 +0,0 @@
+-Index: .idea/workspace.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"5dbe1660-c9ae-497e-83b8-a85dacef2117\" name=\"Changes\" comment=\"Commit final de construction d'arbres (à améliorer par la suite).&#10;Intégration de la détection de cycles et chaines au fur et à mesure du parcours de l'arbre\">\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/com/rein/solution/sequencesPossibles.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/rein/instance/Altruiste.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/rein/instance/Altruiste.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/rein/instance/Instance.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/rein/instance/Instance.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/rein/instance/Noeud.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/rein/instance/Noeud.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/rein/solution/Arbre.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/rein/solution/Arbre.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/rein/solution/Chaine.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/rein/solution/Chaine.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/rein/transplantation/Cycle.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/rein/transplantation/Cycle.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/rein/transplantation/Sequence.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/rein/transplantation/Sequence.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/rein/instance/Instance.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/rein/instance/Instance.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/rein/instance/Noeud.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/rein/instance/Noeud.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/rein/solution/Chaine.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/rein/solution/Chaine.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/rein/transplantation/Cycle.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/rein/transplantation/Cycle.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/rein/transplantation/Sequence.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/rein/transplantation/Sequence.class\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"dev\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitSEFilterConfiguration\">\r\n    <file-type-list>\r\n      <filtered-out-file-type name=\"LOCAL_BRANCH\" />\r\n      <filtered-out-file-type name=\"REMOTE_BRANCH\" />\r\n      <filtered-out-file-type name=\"TAG\" />\r\n      <filtered-out-file-type name=\"COMMIT_BY_MESSAGE\" />\r\n    </file-type-list>\r\n  </component>\r\n  <component name=\"HighlightingSettingsPerFile\">\r\n    <setting file=\"file://$PROJECT_DIR$/src/main/java/com/rein/transplantation/Cycle.java\" root0=\"FORCE_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/pom.xml\" root0=\"FORCE_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/src/main/java/com/rein/io/InstanceReader.java\" root0=\"FORCE_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/src/main/java/com/rein/instance/Noeud.java\" root0=\"FORCE_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/src/main/java/com/rein/transplantation/Sequence.java\" root0=\"FORCE_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/src/main/java/com/rein/solution/Solution.java\" root0=\"FORCE_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique.java\" root0=\"FORCE_HIGHLIGHTING\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"MavenImportPreferences\">\r\n    <option name=\"generalSettings\">\r\n      <MavenGeneralSettings>\r\n        <option name=\"useMavenConfig\" value=\"true\" />\r\n      </MavenGeneralSettings>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"27SUnC0SlEJiuSSWMXiQmxdrOdb\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"Git.Branch.Popup.ShowAllRemotes\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\r\n    <property name=\"SHARE_PROJECT_CONFIGURATION_FILES\" value=\"true\" />\r\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$\" />\r\n    <property name=\"project.structure.last.edited\" value=\"Libraries\" />\r\n    <property name=\"project.structure.proportion\" value=\"0.15\" />\r\n    <property name=\"project.structure.side.proportion\" value=\"0.2\" />\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Application.Chaine\">\r\n    <configuration name=\"Arbre\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.rein.solution.Arbre\" />\r\n      <module name=\"rein-poo-le4\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.rein.solution.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"Chaine\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.rein.solution.Chaine\" />\r\n      <module name=\"rein-poo-le4\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.rein.solution.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"Cycle\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.rein.transplantation.Cycle\" />\r\n      <module name=\"rein-poo-le4\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.rein.transplantation.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"StrategieBasique\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.rein.solveur.StrategieBasique\" />\r\n      <module name=\"rein-poo-le4\" />\r\n      <option name=\"PROGRAM_PARAMETERS\" value=\"-inst KEP_p100_n11_k5_l17.txt -dSol solutions_test\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.rein.solveur.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration default=\"true\" type=\"JetRunConfigurationType\">\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration default=\"true\" type=\"KotlinStandaloneScriptRunConfigurationType\">\r\n      <option name=\"filePath\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.Chaine\" />\r\n        <item itemvalue=\"Application.Arbre\" />\r\n        <item itemvalue=\"Application.Cycle\" />\r\n        <item itemvalue=\"Application.StrategieBasique\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"5dbe1660-c9ae-497e-83b8-a85dacef2117\" name=\"Changes\" comment=\"init operateurs\" />\r\n      <created>1649313157800</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1649313157800</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"sout martrein\">\r\n      <created>1649313386845</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1649313386845</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"test\">\r\n      <created>1652250070126</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1652250070127</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"init operateurs\">\r\n      <created>1652263593028</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1652263593028</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"init operateurs + recherche locale\">\r\n      <created>1653124103306</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1653124103306</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"propal°1 arbre\">\r\n      <created>1653210542262</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1653210542262</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"Commit intermédiaire de construction d'arbres\">\r\n      <created>1653604682393</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1653604682393</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"Commit final de construction d'arbres (à améliorer par la suite).&#10;Intégration de la détection de cycles et chaines au fur et à mesure du parcours de l'arbre\">\r\n      <created>1653658324136</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1653658324136</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"8\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State>\r\n              <option name=\"FILTERS\">\r\n                <map>\r\n                  <entry key=\"branch\">\r\n                    <value>\r\n                      <list>\r\n                        <option value=\"arbres-fix\" />\r\n                      </list>\r\n                    </value>\r\n                  </entry>\r\n                </map>\r\n              </option>\r\n            </State>\r\n          </value>\r\n        </entry>\r\n        <entry key=\"a52d546c-5c65-49e3-9de2-fc43d76e79bd\">\r\n          <value>\r\n            <State>\r\n              <option name=\"CUSTOM_BOOLEAN_PROPERTIES\">\r\n                <map>\r\n                  <entry key=\"Show.Git.Branches\" value=\"true\" />\r\n                </map>\r\n              </option>\r\n              <option name=\"FILTERS\">\r\n                <map>\r\n                  <entry key=\"branch\">\r\n                    <value>\r\n                      <list>\r\n                        <option value=\"origin/strategie-1\" />\r\n                      </list>\r\n                    </value>\r\n                  </entry>\r\n                </map>\r\n              </option>\r\n            </State>\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_FILTERS\">\r\n      <map>\r\n        <entry key=\"Branch\">\r\n          <value>\r\n            <list>\r\n              <RecentGroup>\r\n                <option name=\"FILTER_VALUES\">\r\n                  <option value=\"origin/strategie-1\" />\r\n                </option>\r\n              </RecentGroup>\r\n            </list>\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"sout martrein\" />\r\n    <MESSAGE value=\"test\" />\r\n    <MESSAGE value=\"init operateurs\" />\r\n    <MESSAGE value=\"init operateurs + recherche locale\" />\r\n    <MESSAGE value=\"propal°1 arbre\" />\r\n    <MESSAGE value=\"Commit intermédiaire de construction d'arbres\" />\r\n    <MESSAGE value=\"Commit final de construction d'arbres (à améliorer par la suite).&#10;Intégration de la détection de cycles et chaines au fur et à mesure du parcours de l'arbre\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Commit final de construction d'arbres (à améliorer par la suite).&#10;Intégration de la détection de cycles et chaines au fur et à mesure du parcours de l'arbre\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <breakpoint enabled=\"true\" type=\"java-exception\">\r\n          <properties class=\"java.lang.StackOverflowError\" package=\"java.lang\" />\r\n          <option name=\"timeStamp\" value=\"1\" />\r\n        </breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n  </component>\r\n</project>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+---- a/.idea/workspace.xml	(revision d08681e58e5cd57450a7f74e910ffe20363c8758)
+-+++ b/.idea/workspace.xml	(date 1654246288593)
+-@@ -4,21 +4,9 @@
+-     <option name="autoReloadType" value="SELECTIVE" />
+-   </component>
+-   <component name="ChangeListManager">
+--    <list default="true" id="5dbe1660-c9ae-497e-83b8-a85dacef2117" name="Changes" comment="Commit final de construction d'arbres (à améliorer par la suite).&#10;Intégration de la détection de cycles et chaines au fur et à mesure du parcours de l'arbre">
+--      <change afterPath="$PROJECT_DIR$/src/main/java/com/rein/solution/sequencesPossibles.java" afterDir="false" />
+-+    <list default="true" id="5dbe1660-c9ae-497e-83b8-a85dacef2117" name="Changes" comment="Patch et mise à jour de la construction d'arbre, qui génère désormais des listes de séquences au lieu de listes d'ids.">
+-       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/instance/Altruiste.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/instance/Altruiste.java" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/instance/Instance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/instance/Instance.java" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/instance/Noeud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/instance/Noeud.java" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solution/Arbre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solution/Arbre.java" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solution/Chaine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solution/Chaine.java" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/transplantation/Cycle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/transplantation/Cycle.java" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/transplantation/Sequence.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/transplantation/Sequence.java" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/instance/Instance.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/instance/Instance.class" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/instance/Noeud.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/instance/Noeud.class" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/solution/Chaine.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/solution/Chaine.class" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/transplantation/Cycle.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/transplantation/Cycle.class" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/transplantation/Sequence.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/transplantation/Sequence.class" afterDir="false" />
+-+      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/instance/Altruiste.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/instance/Altruiste.class" afterDir="false" />
+-     </list>
+-     <option name="SHOW_DIALOG" value="false" />
+-     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+-@@ -215,7 +203,14 @@
+-       <option name="project" value="LOCAL" />
+-       <updated>1653658324136</updated>
+-     </task>
+--    <option name="localTasksCounter" value="8" />
+-+    <task id="LOCAL-00008" summary="Patch et mise à jour de la construction d'arbre, qui génère désormais des listes de séquences au lieu de listes d'ids.">
+-+      <created>1654242892050</created>
+-+      <option name="number" value="00008" />
+-+      <option name="presentableId" value="LOCAL-00008" />
+-+      <option name="project" value="LOCAL" />
+-+      <updated>1654242892050</updated>
+-+    </task>
+-+    <option name="localTasksCounter" value="9" />
+-     <servers />
+-   </component>
+-   <component name="Vcs.Log.Tabs.Properties">
+-@@ -229,7 +224,7 @@
+-                   <entry key="branch">
+-                     <value>
+-                       <list>
+--                        <option value="arbres-fix" />
+-+                        <option value="origin/arbres-fix" />
+-                       </list>
+-                     </value>
+-                   </entry>
+-@@ -286,7 +281,8 @@
+-     <MESSAGE value="propal°1 arbre" />
+-     <MESSAGE value="Commit intermédiaire de construction d'arbres" />
+-     <MESSAGE value="Commit final de construction d'arbres (à améliorer par la suite).&#10;Intégration de la détection de cycles et chaines au fur et à mesure du parcours de l'arbre" />
+--    <option name="LAST_COMMIT_MESSAGE" value="Commit final de construction d'arbres (à améliorer par la suite).&#10;Intégration de la détection de cycles et chaines au fur et à mesure du parcours de l'arbre" />
+-+    <MESSAGE value="Patch et mise à jour de la construction d'arbre, qui génère désormais des listes de séquences au lieu de listes d'ids." />
+-+    <option name="LAST_COMMIT_MESSAGE" value="Patch et mise à jour de la construction d'arbre, qui génère désormais des listes de séquences au lieu de listes d'ids." />
+-   </component>
+-   <component name="XDebuggerManager">
+-     <breakpoint-manager>
+Index: .idea/shelf/Uncommitted_changes_before_Checkout_at_03_06_2022_11_40__Changes_.xml
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_06_2022_11_40__Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_06_2022_11_40__Changes_.xml
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_06_2022_11_40__Changes_.xml	(revision a834a810a24385e4cac8d47c5e364eb9bfc7be0b)
++++ /dev/null	(revision a834a810a24385e4cac8d47c5e364eb9bfc7be0b)
+@@ -1,4 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Checkout_at_03_06_2022_11_40_[Changes]" date="1654249250245" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_06_2022_11_40_[Changes]/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Checkout at 03/06/2022 11:40 [Changes]" />
+-</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Checkout_at_03_06_2022_11_40_[Changes]/shelved.patch
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_06_2022_11_40_[Changes]/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_06_2022_11_40_[Changes]/shelved.patch
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_06_2022_11_40_[Changes]/shelved.patch	(revision a834a810a24385e4cac8d47c5e364eb9bfc7be0b)
++++ /dev/null	(revision a834a810a24385e4cac8d47c5e364eb9bfc7be0b)
+@@ -1,67 +0,0 @@
+-Index: .idea/libraries/Maven__org_apache_commons_commons_lang3_3_3_2.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/.idea/libraries/Maven__org_apache_commons_commons_lang3_3_3_2.xml b/.idea/libraries/Maven__org_apache_commons_commons_lang3_3_3_2.xml
+-new file mode 100644
+---- /dev/null	(date 1654249167254)
+-+++ b/.idea/libraries/Maven__org_apache_commons_commons_lang3_3_3_2.xml	(date 1654249167254)
+-@@ -0,0 +1,13 @@
+-+<component name="libraryTable">
+-+  <library name="Maven: org.apache.commons:commons-lang3:3.3.2">
+-+    <CLASSES>
+-+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/commons/commons-lang3/3.3.2/commons-lang3-3.3.2.jar!/" />
+-+    </CLASSES>
+-+    <JAVADOC>
+-+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/commons/commons-lang3/3.3.2/commons-lang3-3.3.2-javadoc.jar!/" />
+-+    </JAVADOC>
+-+    <SOURCES>
+-+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/commons/commons-lang3/3.3.2/commons-lang3-3.3.2-sources.jar!/" />
+-+    </SOURCES>
+-+  </library>
+-+</component>
+-\ No newline at end of file
+-Index: .idea/workspace.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"5dbe1660-c9ae-497e-83b8-a85dacef2117\" name=\"Changes\" comment=\"Commit final de construction d'arbres (à améliorer par la suite).&#10;Intégration de la détection de cycles et chaines au fur et à mesure du parcours de l'arbre\">\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/com/rein/solution/sequencesPossibles.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/rein/instance/Altruiste.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/rein/instance/Altruiste.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/rein/instance/Instance.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/rein/instance/Instance.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/rein/instance/Noeud.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/rein/instance/Noeud.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/rein/solution/Arbre.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/rein/solution/Arbre.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/rein/solution/Chaine.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/rein/solution/Chaine.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/rein/transplantation/Cycle.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/rein/transplantation/Cycle.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/rein/transplantation/Sequence.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/rein/transplantation/Sequence.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/rein/instance/Instance.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/rein/instance/Instance.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/rein/instance/Noeud.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/rein/instance/Noeud.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/rein/solution/Chaine.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/rein/solution/Chaine.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/rein/transplantation/Cycle.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/rein/transplantation/Cycle.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/rein/transplantation/Sequence.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/rein/transplantation/Sequence.class\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"dev\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitSEFilterConfiguration\">\r\n    <file-type-list>\r\n      <filtered-out-file-type name=\"LOCAL_BRANCH\" />\r\n      <filtered-out-file-type name=\"REMOTE_BRANCH\" />\r\n      <filtered-out-file-type name=\"TAG\" />\r\n      <filtered-out-file-type name=\"COMMIT_BY_MESSAGE\" />\r\n    </file-type-list>\r\n  </component>\r\n  <component name=\"HighlightingSettingsPerFile\">\r\n    <setting file=\"file://$PROJECT_DIR$/src/main/java/com/rein/transplantation/Cycle.java\" root0=\"FORCE_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/pom.xml\" root0=\"FORCE_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/src/main/java/com/rein/io/InstanceReader.java\" root0=\"FORCE_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/src/main/java/com/rein/instance/Noeud.java\" root0=\"FORCE_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/src/main/java/com/rein/transplantation/Sequence.java\" root0=\"FORCE_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/src/main/java/com/rein/solution/Solution.java\" root0=\"FORCE_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique.java\" root0=\"FORCE_HIGHLIGHTING\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"MavenImportPreferences\">\r\n    <option name=\"generalSettings\">\r\n      <MavenGeneralSettings>\r\n        <option name=\"useMavenConfig\" value=\"true\" />\r\n      </MavenGeneralSettings>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"27SUnC0SlEJiuSSWMXiQmxdrOdb\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"Git.Branch.Popup.ShowAllRemotes\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\r\n    <property name=\"SHARE_PROJECT_CONFIGURATION_FILES\" value=\"true\" />\r\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$\" />\r\n    <property name=\"project.structure.last.edited\" value=\"Libraries\" />\r\n    <property name=\"project.structure.proportion\" value=\"0.15\" />\r\n    <property name=\"project.structure.side.proportion\" value=\"0.2\" />\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Application.Chaine\">\r\n    <configuration name=\"Arbre\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.rein.solution.Arbre\" />\r\n      <module name=\"rein-poo-le4\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.rein.solution.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"Chaine\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.rein.solution.Chaine\" />\r\n      <module name=\"rein-poo-le4\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.rein.solution.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"Cycle\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.rein.transplantation.Cycle\" />\r\n      <module name=\"rein-poo-le4\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.rein.transplantation.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"StrategieBasique\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.rein.solveur.StrategieBasique\" />\r\n      <module name=\"rein-poo-le4\" />\r\n      <option name=\"PROGRAM_PARAMETERS\" value=\"-inst KEP_p100_n11_k5_l17.txt -dSol solutions_test\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.rein.solveur.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration default=\"true\" type=\"JetRunConfigurationType\">\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration default=\"true\" type=\"KotlinStandaloneScriptRunConfigurationType\">\r\n      <option name=\"filePath\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.Chaine\" />\r\n        <item itemvalue=\"Application.Arbre\" />\r\n        <item itemvalue=\"Application.Cycle\" />\r\n        <item itemvalue=\"Application.StrategieBasique\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"5dbe1660-c9ae-497e-83b8-a85dacef2117\" name=\"Changes\" comment=\"init operateurs\" />\r\n      <created>1649313157800</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1649313157800</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"sout martrein\">\r\n      <created>1649313386845</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1649313386845</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"test\">\r\n      <created>1652250070126</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1652250070127</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"init operateurs\">\r\n      <created>1652263593028</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1652263593028</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"init operateurs + recherche locale\">\r\n      <created>1653124103306</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1653124103306</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"propal°1 arbre\">\r\n      <created>1653210542262</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1653210542262</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"Commit intermédiaire de construction d'arbres\">\r\n      <created>1653604682393</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1653604682393</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"Commit final de construction d'arbres (à améliorer par la suite).&#10;Intégration de la détection de cycles et chaines au fur et à mesure du parcours de l'arbre\">\r\n      <created>1653658324136</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1653658324136</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"8\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State>\r\n              <option name=\"FILTERS\">\r\n                <map>\r\n                  <entry key=\"branch\">\r\n                    <value>\r\n                      <list>\r\n                        <option value=\"arbres-fix\" />\r\n                      </list>\r\n                    </value>\r\n                  </entry>\r\n                </map>\r\n              </option>\r\n            </State>\r\n          </value>\r\n        </entry>\r\n        <entry key=\"a52d546c-5c65-49e3-9de2-fc43d76e79bd\">\r\n          <value>\r\n            <State>\r\n              <option name=\"CUSTOM_BOOLEAN_PROPERTIES\">\r\n                <map>\r\n                  <entry key=\"Show.Git.Branches\" value=\"true\" />\r\n                </map>\r\n              </option>\r\n              <option name=\"FILTERS\">\r\n                <map>\r\n                  <entry key=\"branch\">\r\n                    <value>\r\n                      <list>\r\n                        <option value=\"origin/strategie-1\" />\r\n                      </list>\r\n                    </value>\r\n                  </entry>\r\n                </map>\r\n              </option>\r\n            </State>\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_FILTERS\">\r\n      <map>\r\n        <entry key=\"Branch\">\r\n          <value>\r\n            <list>\r\n              <RecentGroup>\r\n                <option name=\"FILTER_VALUES\">\r\n                  <option value=\"origin/strategie-1\" />\r\n                </option>\r\n              </RecentGroup>\r\n            </list>\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"sout martrein\" />\r\n    <MESSAGE value=\"test\" />\r\n    <MESSAGE value=\"init operateurs\" />\r\n    <MESSAGE value=\"init operateurs + recherche locale\" />\r\n    <MESSAGE value=\"propal°1 arbre\" />\r\n    <MESSAGE value=\"Commit intermédiaire de construction d'arbres\" />\r\n    <MESSAGE value=\"Commit final de construction d'arbres (à améliorer par la suite).&#10;Intégration de la détection de cycles et chaines au fur et à mesure du parcours de l'arbre\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Commit final de construction d'arbres (à améliorer par la suite).&#10;Intégration de la détection de cycles et chaines au fur et à mesure du parcours de l'arbre\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <breakpoint enabled=\"true\" type=\"java-exception\">\r\n          <properties class=\"java.lang.StackOverflowError\" package=\"java.lang\" />\r\n          <option name=\"timeStamp\" value=\"1\" />\r\n        </breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n  </component>\r\n</project>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+---- a/.idea/workspace.xml	(revision 88f50337358cfc821e90753a7b7dd34ed0ca1c38)
+-+++ b/.idea/workspace.xml	(date 1654249167260)
+-@@ -4,22 +4,7 @@
+-     <option name="autoReloadType" value="SELECTIVE" />
+-   </component>
+-   <component name="ChangeListManager">
+--    <list default="true" id="5dbe1660-c9ae-497e-83b8-a85dacef2117" name="Changes" comment="Commit final de construction d'arbres (à améliorer par la suite).&#10;Intégration de la détection de cycles et chaines au fur et à mesure du parcours de l'arbre">
+--      <change afterPath="$PROJECT_DIR$/src/main/java/com/rein/solution/sequencesPossibles.java" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/instance/Altruiste.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/instance/Altruiste.java" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/instance/Instance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/instance/Instance.java" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/instance/Noeud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/instance/Noeud.java" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solution/Arbre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solution/Arbre.java" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solution/Chaine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solution/Chaine.java" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/transplantation/Cycle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/transplantation/Cycle.java" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/transplantation/Sequence.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/transplantation/Sequence.java" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/instance/Instance.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/instance/Instance.class" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/instance/Noeud.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/instance/Noeud.class" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/solution/Chaine.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/solution/Chaine.class" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/transplantation/Cycle.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/transplantation/Cycle.class" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/transplantation/Sequence.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/transplantation/Sequence.class" afterDir="false" />
+--    </list>
+-+    <list default="true" id="5dbe1660-c9ae-497e-83b8-a85dacef2117" name="Changes" comment="Commit final de construction d'arbres (à améliorer par la suite).&#10;Intégration de la détection de cycles et chaines au fur et à mesure du parcours de l'arbre" />
+-     <option name="SHOW_DIALOG" value="false" />
+-     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+-     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+-@@ -35,7 +20,7 @@
+-   <component name="Git.Settings">
+-     <option name="RECENT_BRANCH_BY_REPOSITORY">
+-       <map>
+--        <entry key="$PROJECT_DIR$" value="dev" />
+-+        <entry key="$PROJECT_DIR$" value="arbres-fix" />
+-       </map>
+-     </option>
+-     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+Index: .idea/shelf/Uncommitted_changes_before_rebase_[Changes]/shelved.patch
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]/shelved.patch b/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]/shelved.patch
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]/shelved.patch	(revision a834a810a24385e4cac8d47c5e364eb9bfc7be0b)
++++ /dev/null	(revision a834a810a24385e4cac8d47c5e364eb9bfc7be0b)
+@@ -1,67 +0,0 @@
+-Index: .idea/libraries/Maven__org_apache_commons_commons_lang3_3_3_2.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/.idea/libraries/Maven__org_apache_commons_commons_lang3_3_3_2.xml b/.idea/libraries/Maven__org_apache_commons_commons_lang3_3_3_2.xml
+-new file mode 100644
+---- /dev/null	(date 1654249249799)
+-+++ b/.idea/libraries/Maven__org_apache_commons_commons_lang3_3_3_2.xml	(date 1654249249799)
+-@@ -0,0 +1,13 @@
+-+<component name="libraryTable">
+-+  <library name="Maven: org.apache.commons:commons-lang3:3.3.2">
+-+    <CLASSES>
+-+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/commons/commons-lang3/3.3.2/commons-lang3-3.3.2.jar!/" />
+-+    </CLASSES>
+-+    <JAVADOC>
+-+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/commons/commons-lang3/3.3.2/commons-lang3-3.3.2-javadoc.jar!/" />
+-+    </JAVADOC>
+-+    <SOURCES>
+-+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/commons/commons-lang3/3.3.2/commons-lang3-3.3.2-sources.jar!/" />
+-+    </SOURCES>
+-+  </library>
+-+</component>
+-\ No newline at end of file
+-Index: .idea/workspace.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"5dbe1660-c9ae-497e-83b8-a85dacef2117\" name=\"Changes\" comment=\"Commit final de construction d'arbres (à améliorer par la suite).&#10;Intégration de la détection de cycles et chaines au fur et à mesure du parcours de l'arbre\">\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/com/rein/solution/sequencesPossibles.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/rein/instance/Altruiste.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/rein/instance/Altruiste.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/rein/instance/Instance.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/rein/instance/Instance.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/rein/instance/Noeud.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/rein/instance/Noeud.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/rein/solution/Arbre.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/rein/solution/Arbre.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/rein/solution/Chaine.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/rein/solution/Chaine.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/rein/transplantation/Cycle.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/rein/transplantation/Cycle.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/rein/transplantation/Sequence.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/rein/transplantation/Sequence.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/rein/instance/Instance.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/rein/instance/Instance.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/rein/instance/Noeud.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/rein/instance/Noeud.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/rein/solution/Chaine.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/rein/solution/Chaine.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/rein/transplantation/Cycle.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/rein/transplantation/Cycle.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/rein/transplantation/Sequence.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/rein/transplantation/Sequence.class\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"dev\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitSEFilterConfiguration\">\r\n    <file-type-list>\r\n      <filtered-out-file-type name=\"LOCAL_BRANCH\" />\r\n      <filtered-out-file-type name=\"REMOTE_BRANCH\" />\r\n      <filtered-out-file-type name=\"TAG\" />\r\n      <filtered-out-file-type name=\"COMMIT_BY_MESSAGE\" />\r\n    </file-type-list>\r\n  </component>\r\n  <component name=\"HighlightingSettingsPerFile\">\r\n    <setting file=\"file://$PROJECT_DIR$/src/main/java/com/rein/transplantation/Cycle.java\" root0=\"FORCE_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/pom.xml\" root0=\"FORCE_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/src/main/java/com/rein/io/InstanceReader.java\" root0=\"FORCE_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/src/main/java/com/rein/instance/Noeud.java\" root0=\"FORCE_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/src/main/java/com/rein/transplantation/Sequence.java\" root0=\"FORCE_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/src/main/java/com/rein/solution/Solution.java\" root0=\"FORCE_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique.java\" root0=\"FORCE_HIGHLIGHTING\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"MavenImportPreferences\">\r\n    <option name=\"generalSettings\">\r\n      <MavenGeneralSettings>\r\n        <option name=\"useMavenConfig\" value=\"true\" />\r\n      </MavenGeneralSettings>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"27SUnC0SlEJiuSSWMXiQmxdrOdb\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"Git.Branch.Popup.ShowAllRemotes\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\r\n    <property name=\"SHARE_PROJECT_CONFIGURATION_FILES\" value=\"true\" />\r\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$\" />\r\n    <property name=\"project.structure.last.edited\" value=\"Libraries\" />\r\n    <property name=\"project.structure.proportion\" value=\"0.15\" />\r\n    <property name=\"project.structure.side.proportion\" value=\"0.2\" />\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Application.Chaine\">\r\n    <configuration name=\"Arbre\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.rein.solution.Arbre\" />\r\n      <module name=\"rein-poo-le4\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.rein.solution.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"Chaine\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.rein.solution.Chaine\" />\r\n      <module name=\"rein-poo-le4\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.rein.solution.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"Cycle\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.rein.transplantation.Cycle\" />\r\n      <module name=\"rein-poo-le4\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.rein.transplantation.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"StrategieBasique\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.rein.solveur.StrategieBasique\" />\r\n      <module name=\"rein-poo-le4\" />\r\n      <option name=\"PROGRAM_PARAMETERS\" value=\"-inst KEP_p100_n11_k5_l17.txt -dSol solutions_test\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.rein.solveur.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration default=\"true\" type=\"JetRunConfigurationType\">\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration default=\"true\" type=\"KotlinStandaloneScriptRunConfigurationType\">\r\n      <option name=\"filePath\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.Chaine\" />\r\n        <item itemvalue=\"Application.Arbre\" />\r\n        <item itemvalue=\"Application.Cycle\" />\r\n        <item itemvalue=\"Application.StrategieBasique\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"5dbe1660-c9ae-497e-83b8-a85dacef2117\" name=\"Changes\" comment=\"init operateurs\" />\r\n      <created>1649313157800</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1649313157800</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"sout martrein\">\r\n      <created>1649313386845</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1649313386845</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"test\">\r\n      <created>1652250070126</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1652250070127</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"init operateurs\">\r\n      <created>1652263593028</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1652263593028</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"init operateurs + recherche locale\">\r\n      <created>1653124103306</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1653124103306</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"propal°1 arbre\">\r\n      <created>1653210542262</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1653210542262</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"Commit intermédiaire de construction d'arbres\">\r\n      <created>1653604682393</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1653604682393</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"Commit final de construction d'arbres (à améliorer par la suite).&#10;Intégration de la détection de cycles et chaines au fur et à mesure du parcours de l'arbre\">\r\n      <created>1653658324136</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1653658324136</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"8\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State>\r\n              <option name=\"FILTERS\">\r\n                <map>\r\n                  <entry key=\"branch\">\r\n                    <value>\r\n                      <list>\r\n                        <option value=\"arbres-fix\" />\r\n                      </list>\r\n                    </value>\r\n                  </entry>\r\n                </map>\r\n              </option>\r\n            </State>\r\n          </value>\r\n        </entry>\r\n        <entry key=\"a52d546c-5c65-49e3-9de2-fc43d76e79bd\">\r\n          <value>\r\n            <State>\r\n              <option name=\"CUSTOM_BOOLEAN_PROPERTIES\">\r\n                <map>\r\n                  <entry key=\"Show.Git.Branches\" value=\"true\" />\r\n                </map>\r\n              </option>\r\n              <option name=\"FILTERS\">\r\n                <map>\r\n                  <entry key=\"branch\">\r\n                    <value>\r\n                      <list>\r\n                        <option value=\"origin/strategie-1\" />\r\n                      </list>\r\n                    </value>\r\n                  </entry>\r\n                </map>\r\n              </option>\r\n            </State>\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_FILTERS\">\r\n      <map>\r\n        <entry key=\"Branch\">\r\n          <value>\r\n            <list>\r\n              <RecentGroup>\r\n                <option name=\"FILTER_VALUES\">\r\n                  <option value=\"origin/strategie-1\" />\r\n                </option>\r\n              </RecentGroup>\r\n            </list>\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"sout martrein\" />\r\n    <MESSAGE value=\"test\" />\r\n    <MESSAGE value=\"init operateurs\" />\r\n    <MESSAGE value=\"init operateurs + recherche locale\" />\r\n    <MESSAGE value=\"propal°1 arbre\" />\r\n    <MESSAGE value=\"Commit intermédiaire de construction d'arbres\" />\r\n    <MESSAGE value=\"Commit final de construction d'arbres (à améliorer par la suite).&#10;Intégration de la détection de cycles et chaines au fur et à mesure du parcours de l'arbre\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Commit final de construction d'arbres (à améliorer par la suite).&#10;Intégration de la détection de cycles et chaines au fur et à mesure du parcours de l'arbre\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <breakpoint enabled=\"true\" type=\"java-exception\">\r\n          <properties class=\"java.lang.StackOverflowError\" package=\"java.lang\" />\r\n          <option name=\"timeStamp\" value=\"1\" />\r\n        </breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n  </component>\r\n</project>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+---- a/.idea/workspace.xml	(revision d08681e58e5cd57450a7f74e910ffe20363c8758)
+-+++ b/.idea/workspace.xml	(date 1654249250091)
+-@@ -4,22 +4,7 @@
+-     <option name="autoReloadType" value="SELECTIVE" />
+-   </component>
+-   <component name="ChangeListManager">
+--    <list default="true" id="5dbe1660-c9ae-497e-83b8-a85dacef2117" name="Changes" comment="Commit final de construction d'arbres (à améliorer par la suite).&#10;Intégration de la détection de cycles et chaines au fur et à mesure du parcours de l'arbre">
+--      <change afterPath="$PROJECT_DIR$/src/main/java/com/rein/solution/sequencesPossibles.java" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/instance/Altruiste.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/instance/Altruiste.java" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/instance/Instance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/instance/Instance.java" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/instance/Noeud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/instance/Noeud.java" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solution/Arbre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solution/Arbre.java" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solution/Chaine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solution/Chaine.java" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/transplantation/Cycle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/transplantation/Cycle.java" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/transplantation/Sequence.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/transplantation/Sequence.java" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/instance/Instance.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/instance/Instance.class" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/instance/Noeud.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/instance/Noeud.class" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/solution/Chaine.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/solution/Chaine.class" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/transplantation/Cycle.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/transplantation/Cycle.class" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/transplantation/Sequence.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/transplantation/Sequence.class" afterDir="false" />
+--    </list>
+-+    <list default="true" id="5dbe1660-c9ae-497e-83b8-a85dacef2117" name="Changes" comment="Commit final de construction d'arbres (à améliorer par la suite).&#10;Intégration de la détection de cycles et chaines au fur et à mesure du parcours de l'arbre" />
+-     <option name="SHOW_DIALOG" value="false" />
+-     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+-     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+-@@ -35,7 +20,7 @@
+-   <component name="Git.Settings">
+-     <option name="RECENT_BRANCH_BY_REPOSITORY">
+-       <map>
+--        <entry key="$PROJECT_DIR$" value="dev" />
+-+        <entry key="$PROJECT_DIR$" value="arbres-fix" />
+-       </map>
+-     </option>
+-     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+Index: .idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml b/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml	(revision a834a810a24385e4cac8d47c5e364eb9bfc7be0b)
++++ /dev/null	(revision a834a810a24385e4cac8d47c5e364eb9bfc7be0b)
+@@ -1,4 +0,0 @@
+-<changelist name="Uncommitted_changes_before_rebase_[Changes]" date="1654249270580" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before rebase [Changes]" />
+-</changelist>
+\ No newline at end of file
+Index: instances/test.txt
+===================================================================
+diff --git a/instances/test.txt b/instances/test.txt
+deleted file mode 100644
+--- a/instances/test.txt	(revision a834a810a24385e4cac8d47c5e364eb9bfc7be0b)
++++ /dev/null	(revision a834a810a24385e4cac8d47c5e364eb9bfc7be0b)
+@@ -1,26 +0,0 @@
+-// P : Nombre de paires patient-donneur
+-6
+-
+-// N : Nombre de donneurs altruistes
+-2
+-
+-// K : Taille max cycles
+-3
+-
+-// L : Taille max chaines
+-0
+-
+-// Matrice des benefices medicaux des echanges
+-// Les N premieres lignes correspondent aux donneurs altruistes
+-// Les P dernieres lignes correspondent aux paires patient-donneur
+-// Sur chaque ligne i, on indique le benefice medical de la transplantation
+-//     du rein du donneur i au patient de la paire patient-donneur j
+-// Une valeur -1 signifie que la transplantation n'est pas realisable
+--1	4	-1	6	-1	-1
+--1	-1	7	-1	9	-1
+--1	7	5	10	-1	-1
+--1	-1	-1	5	-1	-1
+--1	-1	-1	-1	6	4
+-1	-1	-1	-1	5	-1
+--1	-1	-1	-1	-1	8
+-10	-1	7	-1	-1	-1
+Index: .idea/shelf/Uncommitted_changes_before_Checkout_at_03_06_2022_11_31__Changes_.xml
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_06_2022_11_31__Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_06_2022_11_31__Changes_.xml
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_06_2022_11_31__Changes_.xml	(revision a834a810a24385e4cac8d47c5e364eb9bfc7be0b)
++++ /dev/null	(revision a834a810a24385e4cac8d47c5e364eb9bfc7be0b)
+@@ -1,9 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Checkout_at_03_06_2022_11_31_[Changes]" date="1654248711643" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_06_2022_11_31_[Changes]/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Checkout at 03/06/2022 11:31 [Changes]" />
+-  <binary>
+-    <option name="BEFORE_PATH" value="target/classes/com/rein/instance/Altruiste.class" />
+-    <option name="AFTER_PATH" value="target/classes/com/rein/instance/Altruiste.class" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_06_2022_11_31_[Changes]/Altruiste.class" />
+-  </binary>
+-</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Merge_at_03_06_2022_11_32__Changes_1.xml
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Merge_at_03_06_2022_11_32__Changes_1.xml b/.idea/shelf/Uncommitted_changes_before_Merge_at_03_06_2022_11_32__Changes_1.xml
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Merge_at_03_06_2022_11_32__Changes_1.xml	(revision a834a810a24385e4cac8d47c5e364eb9bfc7be0b)
++++ /dev/null	(revision a834a810a24385e4cac8d47c5e364eb9bfc7be0b)
+@@ -1,9 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Merge_at_03_06_2022_11_32_[Changes]1" date="1654249074709" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_03_06_2022_11_32_[Changes]1/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Merge at 03/06/2022 11:32 [Changes]" />
+-  <binary>
+-    <option name="BEFORE_PATH" value="target/classes/com/rein/instance/Altruiste.class" />
+-    <option name="AFTER_PATH" value="target/classes/com/rein/instance/Altruiste.class" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_03_06_2022_11_32_[Changes]1/Altruiste.class" />
+-  </binary>
+-</changelist>
+\ No newline at end of file
+Index: .idea/libraries/cplex1.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/libraries/cplex1.xml b/.idea/libraries/cplex1.xml
+new file mode 100644
+--- /dev/null	(date 1655208105215)
++++ b/.idea/libraries/cplex1.xml	(date 1655208105215)
+@@ -0,0 +1,9 @@
++<component name="libraryTable">
++  <library name="cplex1">
++    <CLASSES>
++      <root url="jar://$USER_HOME$/Downloads/cplex.jar!/" />
++    </CLASSES>
++    <JAVADOC />
++    <SOURCES />
++  </library>
++</component>
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"5dbe1660-c9ae-497e-83b8-a85dacef2117\" name=\"Changes\" comment=\"GENERATION SOLUTION AVEC JEU DE DONNEES\">\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/com/rein/solveur/BestSolution.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/rein/interface_web/InterfaceWeb.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/rein/interface_web/InterfaceWeb.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/rein/solution/Arbre.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/rein/solution/Arbre.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/rein/solution/Chaine.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/rein/solution/Chaine.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/rein/solution/Selecteur.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/rein/solution/Selecteur.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/rein/solution/SequencesPossibles.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/rein/solution/SequencesPossibles.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/rein/solveur/RechercheArbre.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/rein/solveur/RechercheArbre.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique2.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique2.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/rein/test/AllSolveurs.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/rein/test/AllSolveurs.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/rein/transplantation/Cycle.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/rein/transplantation/Cycle.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/rein/transplantation/Sequence.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/rein/transplantation/Sequence.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/rein/interface_web/InterfaceWeb.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/rein/interface_web/InterfaceWeb.class\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/rein/solution/Arbre.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/rein/solution/Arbre.class\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/rein/solution/Chaine.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/rein/solution/Chaine.class\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/rein/solution/Solution.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/rein/solution/Solution.class\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/rein/solution/sequencesPossibles.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/rein/solution/sequencesPossibles.class\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/rein/solveur/StrategieBasique.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/rein/solveur/StrategieBasique.class\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/rein/transplantation/Cycle.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/rein/transplantation/Cycle.class\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/rein/transplantation/Sequence.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/rein/transplantation/Sequence.class\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"Class\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\n      <map>\n        <entry key=\"$PROJECT_DIR$\" value=\"dev\" />\n      </map>\n    </option>\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"GitSEFilterConfiguration\">\n    <file-type-list>\n      <filtered-out-file-type name=\"LOCAL_BRANCH\" />\n      <filtered-out-file-type name=\"REMOTE_BRANCH\" />\n      <filtered-out-file-type name=\"TAG\" />\n      <filtered-out-file-type name=\"COMMIT_BY_MESSAGE\" />\n    </file-type-list>\n  </component>\n  <component name=\"HighlightingSettingsPerFile\">\n    <setting file=\"file://$PROJECT_DIR$/src/main/java/com/rein/io/InstanceReader.java\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/pom.xml\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/src/main/java/com/rein/instance/Noeud.java\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique.java\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/src/main/java/com/rein/solution/Solution.java\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/src/main/java/com/rein/transplantation/Sequence.java\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/src/main/java/com/rein/transplantation/Cycle.java\" root0=\"FORCE_HIGHLIGHTING\" />\n  </component>\n  <component name=\"MarkdownSettingsMigration\">\n    <option name=\"stateVersion\" value=\"1\" />\n  </component>\n  <component name=\"MavenImportPreferences\">\n    <option name=\"generalSettings\">\n      <MavenGeneralSettings>\n        <option name=\"useMavenConfig\" value=\"true\" />\n      </MavenGeneralSettings>\n    </option>\n  </component>\n  <component name=\"ProjectId\" id=\"27SUnC0SlEJiuSSWMXiQmxdrOdb\" />\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">\n    <property name=\"Git.Branch.Popup.ShowAllRemotes\" value=\"true\" />\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\n  </component>\n  <component name=\"RunManager\" selected=\"Application.AllSolveurs\">\n    <configuration name=\"AllSolveurs\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.rein.test.AllSolveurs\" />\n      <module name=\"rein-poo-le4\" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"com.rein.test.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"Arbre\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.rein.solution.Arbre\" />\n      <module name=\"rein-poo-le4\" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"com.rein.solution.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"RechercheArbre\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.rein.solveur.RechercheArbre\" />\n      <module name=\"rein-poo-le4\" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"com.rein.solveur.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"StrategieBasique\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.rein.solveur.StrategieBasique\" />\n      <module name=\"rein-poo-le4\" />\n      <option name=\"PROGRAM_PARAMETERS\" value=\"-inst KEP_p100_n11_k5_l17.txt -dSol solutions_test\" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"com.rein.solveur.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"StrategieBasique2\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.rein.solveur.StrategieBasique2\" />\n      <module name=\"rein-poo-le4\" />\n      <option name=\"PROGRAM_PARAMETERS\" value=\"-inst KEP_p9_n0_k3_l0.txt -dSol solutions_test\" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"com.rein.solveur.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration default=\"true\" type=\"JetRunConfigurationType\">\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration default=\"true\" type=\"KotlinStandaloneScriptRunConfigurationType\">\n      <option name=\"filePath\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <list>\n      <item itemvalue=\"Application.Arbre\" />\n      <item itemvalue=\"Application.StrategieBasique\" />\n      <item itemvalue=\"Application.StrategieBasique2\" />\n      <item itemvalue=\"Application.AllSolveurs\" />\n      <item itemvalue=\"Application.RechercheArbre\" />\n    </list>\n    <recent_temporary>\n      <list>\n        <item itemvalue=\"Application.AllSolveurs\" />\n        <item itemvalue=\"Application.RechercheArbre\" />\n        <item itemvalue=\"Application.StrategieBasique2\" />\n        <item itemvalue=\"Application.Arbre\" />\n        <item itemvalue=\"Application.StrategieBasique\" />\n      </list>\n    </recent_temporary>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"5dbe1660-c9ae-497e-83b8-a85dacef2117\" name=\"Changes\" comment=\"init operateurs\" />\n      <created>1649313157800</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1649313157800</updated>\n    </task>\n    <task id=\"LOCAL-00001\" summary=\"sout martrein\">\n      <created>1649313386845</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1649313386845</updated>\n    </task>\n    <task id=\"LOCAL-00002\" summary=\"test\">\n      <created>1652250070126</created>\n      <option name=\"number\" value=\"00002\" />\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1652250070127</updated>\n    </task>\n    <task id=\"LOCAL-00003\" summary=\"init operateurs\">\n      <created>1652263593028</created>\n      <option name=\"number\" value=\"00003\" />\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1652263593028</updated>\n    </task>\n    <task id=\"LOCAL-00004\" summary=\"init operateurs + recherche locale\">\n      <created>1653124103306</created>\n      <option name=\"number\" value=\"00004\" />\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1653124103306</updated>\n    </task>\n    <task id=\"LOCAL-00005\" summary=\"propal°1 arbre\">\n      <created>1653210542262</created>\n      <option name=\"number\" value=\"00005\" />\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1653210542262</updated>\n    </task>\n    <task id=\"LOCAL-00006\" summary=\"propal°2 arbre\">\n      <created>1653399302500</created>\n      <option name=\"number\" value=\"00006\" />\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1653399302500</updated>\n    </task>\n    <task id=\"LOCAL-00007\" summary=\"problème d'orientation des flèches pour les cycles de 3 résolu\">\n      <created>1653563731687</created>\n      <option name=\"number\" value=\"00007\" />\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1653563731687</updated>\n    </task>\n    <task id=\"LOCAL-00008\" summary=\"affichage flèche directions canva + liste des altruistes non-utilisés\">\n      <created>1653581429585</created>\n      <option name=\"number\" value=\"00008\" />\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1653581429585</updated>\n    </task>\n    <task id=\"LOCAL-00009\" summary=\"affichage liste des paires non-utilisés\">\n      <created>1653582116200</created>\n      <option name=\"number\" value=\"00009\" />\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1653582116200</updated>\n    </task>\n    <task id=\"LOCAL-00010\" summary=\"affichage nombre de noeuds non-utilisés\">\n      <created>1653582553616</created>\n      <option name=\"number\" value=\"00010\" />\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1653582553616</updated>\n    </task>\n    <task id=\"LOCAL-00011\" summary=\"merge conflits interface-graphique vers dev fait\">\n      <created>1654276345022</created>\n      <option name=\"number\" value=\"00011\" />\n      <option name=\"presentableId\" value=\"LOCAL-00011\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1654276345022</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"12\" />\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State>\n              <option name=\"FILTERS\">\n                <map>\n                  <entry key=\"branch\">\n                    <value>\n                      <list>\n                        <option value=\"origin/interface-graphique\" />\n                      </list>\n                    </value>\n                  </entry>\n                </map>\n              </option>\n            </State>\n          </value>\n        </entry>\n        <entry key=\"a52d546c-5c65-49e3-9de2-fc43d76e79bd\">\n          <value>\n            <State>\n              <option name=\"CUSTOM_BOOLEAN_PROPERTIES\">\n                <map>\n                  <entry key=\"Show.Git.Branches\" value=\"true\" />\n                </map>\n              </option>\n              <option name=\"FILTERS\">\n                <map>\n                  <entry key=\"branch\">\n                    <value>\n                      <list>\n                        <option value=\"origin/strategie-1\" />\n                      </list>\n                    </value>\n                  </entry>\n                </map>\n              </option>\n            </State>\n          </value>\n        </entry>\n      </map>\n    </option>\n    <option name=\"RECENT_FILTERS\">\n      <map>\n        <entry key=\"Branch\">\n          <value>\n            <list>\n              <RecentGroup>\n                <option name=\"FILTER_VALUES\">\n                  <option value=\"origin/interface-graphique\" />\n                </option>\n              </RecentGroup>\n              <RecentGroup>\n                <option name=\"FILTER_VALUES\">\n                  <option value=\"origin/strategie-1\" />\n                </option>\n              </RecentGroup>\n            </list>\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"sout martrein\" />\n    <MESSAGE value=\"test\" />\n    <MESSAGE value=\"init operateurs\" />\n    <MESSAGE value=\"init operateurs + recherche locale\" />\n    <MESSAGE value=\"propal°1 arbre\" />\n    <MESSAGE value=\"propal°2 arbre\" />\n    <MESSAGE value=\"problème d'orientation des flèches pour les cycles de 3 résolu\" />\n    <MESSAGE value=\"affichage flèche directions canva + liste des altruistes non-utilisés\" />\n    <MESSAGE value=\"affichage liste des paires non-utilisés\" />\n    <MESSAGE value=\"affichage nombre de noeuds non-utilisés\" />\n    <MESSAGE value=\"merge conflits interface-graphique vers dev fait\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"merge conflits interface-graphique vers dev fait\" />\n  </component>\n  <component name=\"XDebuggerManager\">\n    <breakpoint-manager>\n      <breakpoints>\n        <breakpoint enabled=\"true\" type=\"java-exception\">\n          <properties class=\"java.lang.StackOverflowError\" package=\"java.lang\" />\n          <option name=\"timeStamp\" value=\"1\" />\n        </breakpoint>\n        <line-breakpoint enabled=\"true\" type=\"java-line\">\n          <url>file://$PROJECT_DIR$/src/main/java/com/rein/solveur/BestSolution.java</url>\n          <line>11</line>\n          <option name=\"timeStamp\" value=\"3\" />\n        </line-breakpoint>\n      </breakpoints>\n    </breakpoint-manager>\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision a834a810a24385e4cac8d47c5e364eb9bfc7be0b)
++++ b/.idea/workspace.xml	(date 1655210113203)
+@@ -4,27 +4,27 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="5dbe1660-c9ae-497e-83b8-a85dacef2117" name="Changes" comment="GENERATION SOLUTION AVEC JEU DE DONNEES">
+-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rein/solveur/BestSolution.java" afterDir="false" />
++    <list default="true" id="5dbe1660-c9ae-497e-83b8-a85dacef2117" name="Changes" comment="update fix">
++      <change afterPath="$PROJECT_DIR$/.idea/libraries/cplex.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/libraries/cplex1.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/java/com/rein/solveur/Cplex.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_06_2022_11_31_[Changes]/Altruiste.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_06_2022_11_31_[Changes]/shelved.patch" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_06_2022_11_31__Changes_.xml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_06_2022_11_40_[Changes]/shelved.patch" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_06_2022_11_40__Changes_.xml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_03_06_2022_11_32_[Changes]1/Altruiste.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_03_06_2022_11_32_[Changes]1/shelved.patch" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_03_06_2022_11_32__Changes_1.xml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]/shelved.patch" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" beforeDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/interface_web/InterfaceWeb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/interface_web/InterfaceWeb.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solution/Arbre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solution/Arbre.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solution/Chaine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solution/Chaine.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solution/Selecteur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solution/Selecteur.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solution/SequencesPossibles.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solution/SequencesPossibles.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solveur/RechercheArbre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solveur/RechercheArbre.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique2.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/test/AllSolveurs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/test/AllSolveurs.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/transplantation/Cycle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/transplantation/Cycle.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/transplantation/Sequence.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/transplantation/Sequence.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/instances/test.txt" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/rein-poo-le4.iml" beforeDir="false" afterPath="$PROJECT_DIR$/rein-poo-le4.iml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/target/classes/com/rein/interface_web/InterfaceWeb.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/interface_web/InterfaceWeb.class" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/target/classes/com/rein/solution/Arbre.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/solution/Arbre.class" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/target/classes/com/rein/solution/Chaine.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/solution/Chaine.class" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/target/classes/com/rein/solution/Solution.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/solution/Solution.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/solution/sequencesPossibles.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/solution/sequencesPossibles.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/solveur/StrategieBasique.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/solveur/StrategieBasique.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/transplantation/Cycle.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/transplantation/Cycle.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/transplantation/Sequence.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/transplantation/Sequence.class" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -55,12 +55,12 @@
+     </file-type-list>
+   </component>
+   <component name="HighlightingSettingsPerFile">
+-    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/io/InstanceReader.java" root0="FORCE_HIGHLIGHTING" />
++    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/transplantation/Sequence.java" root0="FORCE_HIGHLIGHTING" />
+     <setting file="file://$PROJECT_DIR$/pom.xml" root0="FORCE_HIGHLIGHTING" />
++    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/io/InstanceReader.java" root0="FORCE_HIGHLIGHTING" />
+     <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/instance/Noeud.java" root0="FORCE_HIGHLIGHTING" />
+     <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique.java" root0="FORCE_HIGHLIGHTING" />
+     <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/solution/Solution.java" root0="FORCE_HIGHLIGHTING" />
+-    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/transplantation/Sequence.java" root0="FORCE_HIGHLIGHTING" />
+     <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/transplantation/Cycle.java" root0="FORCE_HIGHLIGHTING" />
+   </component>
+   <component name="MarkdownSettingsMigration">
+@@ -80,11 +80,19 @@
+     <option name="showLibraryContents" value="true" />
+   </component>
+   <component name="PropertiesComponent">
++    <property name="Downloaded.Files.Path.Enabled" value="false" />
+     <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
++    <property name="Repository.Attach.Annotations" value="false" />
++    <property name="Repository.Attach.JavaDocs" value="false" />
++    <property name="Repository.Attach.Sources" value="false" />
+     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
++    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
++    <property name="project.structure.last.edited" value="Libraries" />
++    <property name="project.structure.proportion" value="0.15" />
++    <property name="project.structure.side.proportion" value="0.2" />
+   </component>
+-  <component name="RunManager" selected="Application.AllSolveurs">
++  <component name="RunManager" selected="Application.Cplex">
+     <configuration name="AllSolveurs" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+       <option name="MAIN_CLASS_NAME" value="com.rein.test.AllSolveurs" />
+       <module name="rein-poo-le4" />
+@@ -111,8 +119,8 @@
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration name="RechercheArbre" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+-      <option name="MAIN_CLASS_NAME" value="com.rein.solveur.RechercheArbre" />
++    <configuration name="Cplex" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
++      <option name="MAIN_CLASS_NAME" value="com.rein.solveur.Cplex" />
+       <module name="rein-poo-le4" />
+       <extension name="coverage">
+         <pattern>
+@@ -124,10 +132,9 @@
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration name="StrategieBasique" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+-      <option name="MAIN_CLASS_NAME" value="com.rein.solveur.StrategieBasique" />
++    <configuration name="RechercheArbre" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
++      <option name="MAIN_CLASS_NAME" value="com.rein.solveur.RechercheArbre" />
+       <module name="rein-poo-le4" />
+-      <option name="PROGRAM_PARAMETERS" value="-inst KEP_p100_n11_k5_l17.txt -dSol solutions_test" />
+       <extension name="coverage">
+         <pattern>
+           <option name="PATTERN" value="com.rein.solveur.*" />
+@@ -165,18 +172,18 @@
+     </configuration>
+     <list>
+       <item itemvalue="Application.Arbre" />
+-      <item itemvalue="Application.StrategieBasique" />
+       <item itemvalue="Application.StrategieBasique2" />
+       <item itemvalue="Application.AllSolveurs" />
+       <item itemvalue="Application.RechercheArbre" />
++      <item itemvalue="Application.Cplex" />
+     </list>
+     <recent_temporary>
+       <list>
++        <item itemvalue="Application.Cplex" />
+         <item itemvalue="Application.AllSolveurs" />
+         <item itemvalue="Application.RechercheArbre" />
+         <item itemvalue="Application.StrategieBasique2" />
+         <item itemvalue="Application.Arbre" />
+-        <item itemvalue="Application.StrategieBasique" />
+       </list>
+     </recent_temporary>
+   </component>
+@@ -358,11 +365,6 @@
+           <properties class="java.lang.StackOverflowError" package="java.lang" />
+           <option name="timeStamp" value="1" />
+         </breakpoint>
+-        <line-breakpoint enabled="true" type="java-line">
+-          <url>file://$PROJECT_DIR$/src/main/java/com/rein/solveur/BestSolution.java</url>
+-          <line>11</line>
+-          <option name="timeStamp" value="3" />
+-        </line-breakpoint>
+       </breakpoints>
+     </breakpoint-manager>
+   </component>
+Index: .idea/libraries/cplex.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/libraries/cplex.xml b/.idea/libraries/cplex.xml
+new file mode 100644
+--- /dev/null	(date 1655138086550)
++++ b/.idea/libraries/cplex.xml	(date 1655138086550)
+@@ -0,0 +1,12 @@
++<component name="libraryTable">
++  <library name="cplex">
++    <CLASSES>
++      <root url="jar:///Applications/CPLEX_Studio201/cplex/lib/cplex.jar!/" />
++    </CLASSES>
++    <JAVADOC />
++    <NATIVE>
++      <root url="file:///Applications/CPLEX_Studio201/cplex/bin/x86-64_osx" />
++    </NATIVE>
++    <SOURCES />
++  </library>
++</component>
+\ No newline at end of file
+Index: rein-poo-le4.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule=\"true\" type=\"JAVA_MODULE\" version=\"4\">\n  <component name=\"NewModuleRootManager\" LANGUAGE_LEVEL=\"JDK_14\">\n    <output url=\"file://$MODULE_DIR$/target/classes\" />\n    <output-test url=\"file://$MODULE_DIR$/target/test-classes\" />\n    <content url=\"file://$MODULE_DIR$\">\n      <sourceFolder url=\"file://$MODULE_DIR$/src/main/java\" isTestSource=\"false\" />\n      <excludeFolder url=\"file://$MODULE_DIR$/target\" />\n    </content>\n    <content url=\"file://$MODULE_DIR$\">\n      <excludeFolder url=\"file://$MODULE_DIR$/target\" />\n    </content>\n    <orderEntry type=\"inheritedJdk\" />\n    <orderEntry type=\"sourceFolder\" forTests=\"false\" />\n    <orderEntry type=\"library\" name=\"commons-lang3-3.10\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"apache.commons.lang3\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"commons-cli-1.5\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"commons-cli-1.5.0\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Maven: org.apache.commons:commons-lang3:3.3.2\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Maven: commons-cli:commons-cli:1.5.0\" level=\"project\" />\n  </component>\n</module>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/rein-poo-le4.iml b/rein-poo-le4.iml
+--- a/rein-poo-le4.iml	(revision a834a810a24385e4cac8d47c5e364eb9bfc7be0b)
++++ b/rein-poo-le4.iml	(date 1655208105128)
+@@ -4,10 +4,10 @@
+     <output url="file://$MODULE_DIR$/target/classes" />
+     <output-test url="file://$MODULE_DIR$/target/test-classes" />
+     <content url="file://$MODULE_DIR$">
+-      <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
+       <excludeFolder url="file://$MODULE_DIR$/target" />
+     </content>
+     <content url="file://$MODULE_DIR$">
++      <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
+       <excludeFolder url="file://$MODULE_DIR$/target" />
+     </content>
+     <orderEntry type="inheritedJdk" />
+@@ -18,5 +18,7 @@
+     <orderEntry type="library" name="commons-cli-1.5.0" level="project" />
+     <orderEntry type="library" name="Maven: org.apache.commons:commons-lang3:3.3.2" level="project" />
+     <orderEntry type="library" name="Maven: commons-cli:commons-cli:1.5.0" level="project" />
++    <orderEntry type="library" name="cplex" level="project" />
++    <orderEntry type="library" name="cplex1" level="project" />
+   </component>
+ </module>
+\ No newline at end of file
+Index: src/main/java/com/rein/solveur/Cplex.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/rein/solveur/Cplex.java b/src/main/java/com/rein/solveur/Cplex.java
+new file mode 100644
+--- /dev/null	(date 1655213651223)
++++ b/src/main/java/com/rein/solveur/Cplex.java	(date 1655213651223)
+@@ -0,0 +1,70 @@
++package com.rein.solveur;
++
++import com.rein.instance.Echange;
++import com.rein.instance.Instance;
++import com.rein.instance.Paire;
++import com.rein.io.InstanceReader;
++import com.rein.io.exception.ReaderException;
++import com.rein.solution.Solution;
++import com.rein.transplantation.Sequence;
++import ilog.concert.*;
++import ilog.cplex.*;
++
++import java.util.ArrayList;
++
++public class Cplex implements Solveur {
++    @Override
++    public String getNom() {
++        return "CPLEX";
++    }
++
++    @Override
++    public Solution solve(Instance instance) {
++
++        return null;
++    }
++
++    public ArrayList<Sequence> getSequencesByPaire(Instance instance, Paire pSearch){
++        for(Echange e : instance.){
++            for(Paire p : e.)
++        }
++    }
++
++    public static void cplex(Instance instance){
++        try{
++            IloCplex cplex = new IloCplex();
++            IloNumVar[] tabNumInt = new IloIntVar[instance.getEchanges().size()];
++            IloNumVar ilo = cplex.
++            for(int i = 0; i < instance.getEchanges().size(); i++){
++                //IloInt r = new IloInt();
++                IloNumVar num = cplex.numVar(i, instance.getEchanges().get(i).getBenefMedical());
++                tabNumInt[i] = num;
++                IloLinearNumExpr objective = cplex.linearNumExpr();
++                objective.addTerm(i, num);
++                //tabIloInt[i] = {instance.getEchanges().get(i), instance.getEchanges().get(i).getBenefMedical()};
++                // r.addEd(instance.getEchanges().get(i), instance.getEchanges().get(i).getBenefMedical());
++                //cplex.add(tabIloInt);
++                //cplex.addMaximize(objective);
++
++            }
++            //cplex.add(tabNumInt);
++            if(cplex.solve()){
++                System.out.println("Modèle résolu");
++                System.out.println("obj = " + cplex.getObjValue());
++            } else {
++                System.out.println("Modèle pas résolu");
++            }
++            /*for(int i = 0; i < instance.getEchanges().size(); i++){
++
++            }*/
++        } catch (Exception e) {
++            e.printStackTrace();
++        }
++    }
++
++    public static void main(String[] args) throws ReaderException {
++        InstanceReader reader = new InstanceReader("instances/KEP_p250_n13_k3_l4.txt");
++        Instance i = reader.readInstance();
++        cplex(i);
++    }
++}
+diff --git a/.idea/shelf/Uncommitted_changes_before_Merge_at_03_06_2022_11_32_[Changes]1/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Merge_at_03_06_2022_11_32_[Changes]1/shelved.patch
+deleted file mode 100644

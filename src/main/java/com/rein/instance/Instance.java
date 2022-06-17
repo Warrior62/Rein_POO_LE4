@@ -27,14 +27,6 @@ public class Instance {
     private ArrayList<Echange> echanges;
 
 
-        /**
-         * Constructeur d'Instances.
-         * @param nom nom du fichier d'instance
-         * @param paires nombre de paires patient-donneur P
-         * @param altruistes  nombre de donneurs altruistes N
-         * @param cycles  taille maximale des cycles K
-         * @param chaines  taille maximale des chaines L
-         */
     public Instance(String nom, int paires, int altruistes, int cycles, int chaines, Noeud tabNoeud[]) {
             this.nom = nom;
             this.nbPaires = paires;
@@ -47,6 +39,7 @@ public class Instance {
             this.tabPaires = new ArrayList<Paire>();
     }
 
+<<<<<<< HEAD
     public Instance(Instance i) {
         this.nom = i.getNom();
         this.nbPaires = i.getNbPaires();
@@ -75,6 +68,8 @@ public class Instance {
         //this.tabPaires.addAll((Collection<? extends Paire>) pairesDispo);
     }*/
 
+=======
+>>>>>>> selecteurs-merge
     public int hashCode() {
         int hash = 7;
         hash = 37 * hash + Objects.hashCode(this.nom);
@@ -95,9 +90,6 @@ public class Instance {
         this.nbAltruistes = nbAltruistes;
     }
 
-    public ArrayList<Altruiste> getTabAltruistes() {
-        return tabAltruistes;
-    }
 
     public ArrayList<Paire> getTabPaires() {
         return tabPaires;
@@ -107,61 +99,59 @@ public class Instance {
             return nom;
         }
 
-        public int getNbPaires() {
-            return nbPaires;
-        }
-
-        public int getNbAltruistes() {
-            return nbAltruistes;
-        }
-
-
-
-        public int getTailleMaxCycles() {
-            return tailleMaxCycles;
-        }
-
-        public int getTailleMaxChaines() {
-            return tailleMaxChaines;
-        }
-
-        public ArrayList<Echange> getEchanges() {
-            return echanges;
-        }
-
-
-
-        private void setEchanges(ArrayList<Echange> echanges) {
-            this.echanges = echanges;
-        }
-
-        public Noeud[] getTabNoeud() {
-            return this.tabNoeud;
-        }
-
-        public void setTabNoeud(Noeud[] tabNoeud) {
-            this.tabNoeud = tabNoeud;
-        }
-
-        //Methode chargée de renvoyer une copie du noeud d'id 'id'
-        //Prend en paramètre l'id du noeud à récupérer.
-        //Renvoie une copie du noeud correspondant à l'id 'id'.
-        /*public Noeud getCopieNoeud(int id) {
-            Noeud n = new Noeud(this.getTabNoeud()[id-1]);
-            return n;
-        }*/
-
-        public Noeud[] addAltruiste(int indice) {
-            this.tabNoeud[indice] = new Altruiste(indice + 1);
-            this.tabAltruistes.add((Altruiste) this.tabNoeud[indice]);
-            return (Noeud[])this.tabNoeud.clone();
-        }
-
-        public Noeud[] addPaire(int indice) {
-            this.tabNoeud[indice] = new Paire(indice + 1);
-            this.tabPaires.add((Paire) this.tabNoeud[indice]);
-            return (Noeud[])this.tabNoeud.clone();
-        }
+    public int getNbPaires() {
+        return nbPaires;
     }
+
+    public int getNbAltruistes() {
+        return nbAltruistes;
+    }
+
+    public ArrayList<Altruiste> getTabAltruistes() {
+        return tabAltruistes;
+    }
+
+    public int getTailleMaxCycles() {
+        return tailleMaxCycles;
+    }
+
+    public int getTailleMaxChaines() {
+        return tailleMaxChaines;
+    }
+
+    public ArrayList<Echange> getEchanges() {
+        return echanges;
+    }
+
+
+
+    public Noeud[] getTabNoeud() {
+        return this.tabNoeud;
+    }
+
+    /**
+     * Ajouter l'altruiste à la position indice
+     * dans tabAltruistes
+     * @param indice de l'altruiste à ajouter
+     * @return le tableau de noeuds mis à jour
+     */
+    public Noeud[] addAltruiste(int indice) {
+        this.tabNoeud[indice] = new Altruiste(indice + 1);
+        this.tabAltruistes.add((Altruiste) this.tabNoeud[indice]);
+        return (Noeud[])this.tabNoeud.clone();
+    }
+
+    /**
+     * Ajouter la paire à la position indice
+     * dans tabPaires
+     * @param indice de la paire à ajouter
+     * @return le tableau de noeuds mis à jour
+     */
+    public Noeud[] addPaire(int indice) {
+        this.tabNoeud[indice] = new Paire(indice + 1);
+        this.tabPaires.add((Paire) this.tabNoeud[indice]);
+        return (Noeud[])this.tabNoeud.clone();
+    }
+}
 
 

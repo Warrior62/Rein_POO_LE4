@@ -1,0 +1,47 @@
+;Recherche Arbre;;;Best Solution;;
+;cout;tps(ms);valide ?;cout;tps(ms);valide ?
+KEP_p50_n6_k3_l4.txt;354;354;false;354;100;false
+KEP_p9_n0_k3_l0.txt;61;16;true;57;7;true
+KEP_p100_n5_k5_l17.txt;1 737;192;false;1 650;325;false
+KEP_p50_n17_k5_l17.txt;1 004;9;false;1 004;25;false
+KEP_p50_n6_k3_l7.txt;354;15;false;352;22;false
+KEP_p250_n28_k3_l13.txt;6 904;11 518;true;6 904;11 316;true
+KEP_p50_n0_k3_l0.txt;313;4;true;313;7;true
+KEP_p250_n13_k3_l4.txt;4 932;372;false;4 879;497;false
+KEP_p250_n83_k5_l17.txt;10 183;27 139;false;10 230;27 511;false
+KEP_p250_n13_k3_l7.txt;4 884;3 752;false;4 884;3 537;false
+KEP_p250_n13_k5_l17.txt;5 772;3 734;false;5 618;3 799;false
+KEP_p18_n0_k4_l0.txt;79;2;false;88;3;true
+KEP_p100_n0_k3_l0.txt;822;2;false;1 170;5;true
+KEP_p100_n33_k3_l13.txt;1 764;7;true;1 764;11;true
+KEP_p50_n6_k3_l13.txt;354;3;false;354;4;false
+KEP_p9_n1_k3_l3.txt;61;2;true;57;3;true
+KEP_p100_n11_k5_l17.txt;1 703;184;false;1 703;155;false
+KEP_p100_n11_k3_l4.txt;1 411;31;true;1 411;57;true
+KEP_p50_n3_k3_l13.txt;313;1;true;313;7;true
+KEP_p50_n17_k3_l4.txt;1 079;5;false;1 117;5;false
+KEP_p100_n11_k3_l7.txt;1 411;121;true;1 411;206;true
+KEP_p50_n17_k3_l7.txt;1 004;3;false;1 042;9;false
+KEP_p250_n28_k5_l17.txt;7 466;9 686;false;7 633;9 940;false
+KEP_p100_n5_k3_l7.txt;1 464;33;false;1 521;31;false
+KEP_p100_n5_k3_l13.txt;1 464;30;false;1 521;24;false
+KEP_p100_n5_k3_l4.txt;1 280;393;false;1 334;11;false
+KEP_p50_n17_k3_l13.txt;1 004;4;false;1 004;6;false
+KEP_p100_n33_k3_l4.txt;1 714;8;true;1 714;18;true
+KEP_p250_n83_k3_l4.txt;9 156;5 402;false;9 156;4 990;false
+KEP_p250_n13_k3_l13.txt;4 884;3 975;false;4 884;3 955;false
+KEP_p100_n33_k3_l7.txt;1 764;10;true;1 764;14;true
+KEP_p250_n83_k3_l13.txt;8 942;38 886;false;8 942;43 418;false
+KEP_p250_n83_k3_l7.txt;8 942;31 516;false;8 942;26 914;false
+KEP_p50_n6_k5_l17.txt;292;2;false;323;5;true
+KEP_p100_n11_k3_l13.txt;1 411;122;true;1 411;168;true
+KEP_p100_n33_k5_l17.txt;2 099;13;false;2 100;18;false
+KEP_p50_n3_k3_l4.txt;313;2;true;313;3;true
+KEP_p250_n28_k3_l7.txt;6 914;11 167;false;6 914;14 037;false
+KEP_p250_n0_k3_l0.txt;3 135;166;false;3 135;217;false
+KEP_p50_n3_k3_l7.txt;313;3;true;313;4;true
+KEP_p250_n28_k3_l4.txt;6 299;1 749;false;6 099;1 656;true
+KEP_p50_n3_k5_l17.txt;457;3;false;457;4;false
+KEP_p18_n2_k4_l4.txt;57;2;true;88;2;true
+
+SOMME;115 869;150 638;false;116 243;153 046;false
