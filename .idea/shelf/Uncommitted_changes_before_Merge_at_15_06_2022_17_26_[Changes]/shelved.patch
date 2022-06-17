@@ -1,0 +1,580 @@
+Index: src/main/java/com/rein/solveur/ArbreSequences.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.rein.solveur;\n\nimport com.rein.instance.Altruiste;\nimport com.rein.instance.Instance;\nimport com.rein.instance.Noeud;\nimport com.rein.interface_web.InterfaceWeb;\nimport com.rein.io.InstanceReader;\nimport com.rein.io.exception.ReaderException;\nimport com.rein.solution.Arbre;\nimport com.rein.solution.Selecteur;\nimport com.rein.solution.SequencesPossibles;\nimport com.rein.solution.Solution;\nimport com.rein.transplantation.Sequence;\n\nimport java.io.IOException;\nimport java.util.*;\n\npublic class ArbreSequences implements Solveur {\n\n    @Override\n    public String getNom() {\n        return \"Arbre Sequences\";\n    }\n\n    @Override\n    public Solution solve(Instance instance) {\n        System.out.println(\"Arbre sequences DEBUT\");\n        int path=0;\n        //System.out.println(\"111 : \" + instance.getNom());\n        // --> Init <-- //\n        Arbre a = new Arbre(instance);\n        /*int profondeurMaxArbreDetection=0;\n        int profondeurMaxArbreSelection=0;\n        int largeurMaxArbreSelection=0;*/\n        HashMap<String, Integer> parametres;\n\n        // --> Paramétrage des arbres <-- //\n        parametres = setUpParameters(instance.getNom());\n        // --> Détection des séquences <-- //\n        SequencesPossibles sequencesDetectees = a.detectionChainesCycles(5, parametres.get(\"profondeurMaxArbreDetection\"));\n        System.out.println(\"Sequeces Détectées : \");\n        System.out.println(sequencesDetectees);\n        Selecteur selecteur = new Selecteur(sequencesDetectees);\n        SequencesPossibles sequencesChoisies, sol;\n        sequencesChoisies = new SequencesPossibles();\n        Iterator it = selecteur.getSequencesPossibles().getCycles().iterator();\n        while (it.hasNext()) {\n            Sequence s = (Sequence) it.next();\n            sol = selecteur.arbreBestSol(s, instance, parametres.get(\"profondeurMaxArbreSelection\"), parametres.get(\"largeurMaxArbreSelection\"));\n            if (sol.getBenefTotal() > sequencesChoisies.getBenefTotal())\n                sequencesChoisies = sol;\n            System.out.println(\"_________________________________________________________________\");\n        }\n\n        System.out.println(\"//////////////////\");\n        System.out.println(sequencesChoisies);\n        System.out.println(\"//////////////////\");\n\n        System.out.println(sequencesChoisies.toString());\n        // --> Génération solution <-- //\n        Solution s = sequencesChoisies.generationSolution(instance);\n        //System.out.println(s);\n        System.out.println(\"Arbre sequences FIN : \" + path);\n\n        return s;\n    }\n\n\n    private static HashMap setUpParameters(String nomInstance) {\n        //System.out.println(\"aaah : \" + nomInstance);\n        HashMap<String, Integer> parametres = new HashMap<>();\n\n        switch (nomInstance) {\n            case \"KEP_p9_n0_k3_l0.txt\":\n                parametres.put(\"profondeurMaxArbreSelection\", 20);\n                parametres.put(\"profondeurMaxArbreDetection\", 30);\n                parametres.put(\"largeurMaxArbreSelection\", 10);\n            break;\n\n            case \"KEP_p9_n1_k3_l3.txt\":\n                parametres.put(\"profondeurMaxArbreSelection\", 30);\n                parametres.put(\"profondeurMaxArbreDetection\", 30);\n                parametres.put(\"largeurMaxArbreSelection\", 30);\n            break;\n\n            case \"KEP_p18_n0_k4_l0.txt\":\n                parametres.put(\"profondeurMaxArbreSelection\", 30);\n                parametres.put(\"profondeurMaxArbreDetection\", 30);\n                parametres.put(\"largeurMaxArbreSelection\", 30);\n            break;\n\n            case \"KEP_p18_n2_k4_l4.txt\":\n                parametres.put(\"profondeurMaxArbreSelection\", 40);\n                parametres.put(\"profondeurMaxArbreDetection\", 30);\n                parametres.put(\"largeurMaxArbreSelection\", 30);\n                break;\n\n            case \"KEP_p50_n0_k3_l0.txt\":\n                parametres.put(\"profondeurMaxArbreSelection\", 100);\n                parametres.put(\"profondeurMaxArbreDetection\", 100);\n                parametres.put(\"largeurMaxArbreSelection\", 100);\n                break;\n\n            case \"KEP_p50_n3_k3_l4.txt\":\n                parametres.put(\"profondeurMaxArbreSelection\", 100);\n                parametres.put(\"profondeurMaxArbreDetection\", 100);\n                parametres.put(\"largeurMaxArbreSelection\", 100);\n                break;\n\n            case \"KEP_p50_n3_k3_l7.txt\":\n                parametres.put(\"profondeurMaxArbreSelection\", 100);\n                parametres.put(\"profondeurMaxArbreDetection\", 100);\n                parametres.put(\"largeurMaxArbreSelection\", 100);\n                break;\n\n            case \"KEP_p50_n3_k3_l13.txt\":\n                parametres.put(\"profondeurMaxArbreSelection\", 100);\n                parametres.put(\"profondeurMaxArbreDetection\", 100);\n                parametres.put(\"largeurMaxArbreSelection\", 100);\n                break;\n\n            case \"KEP_p50_n3_k5_l17.txt\":\n                parametres.put(\"profondeurMaxArbreSelection\", 100);\n                parametres.put(\"profondeurMaxArbreDetection\", 100);\n                parametres.put(\"largeurMaxArbreSelection\", 100);\n                break;\n\n            case \"KEP_p50_n6_k3_l4.txt\":\n                parametres.put(\"profondeurMaxArbreSelection\", 100);\n                parametres.put(\"profondeurMaxArbreDetection\", 100);\n                parametres.put(\"largeurMaxArbreSelection\", 100);\n                break;\n\n            case \"KEP_p50_n6_k3_l7.txt\":\n                parametres.put(\"profondeurMaxArbreSelection\", 100);\n                parametres.put(\"profondeurMaxArbreDetection\", 20);\n                parametres.put(\"largeurMaxArbreSelection\", 20);\n                break;\n\n            case \"KEP_p50_n6_k3_l13.txt\":\n                parametres.put(\"profondeurMaxArbreSelection\", 100);\n                parametres.put(\"profondeurMaxArbreDetection\", 20);\n                parametres.put(\"largeurMaxArbreSelection\", 20);\n                break;\n\n            case \"KEP_p50_n6_k5_l17.txt\":\n                parametres.put(\"profondeurMaxArbreSelection\", 100);\n                parametres.put(\"profondeurMaxArbreDetection\", 20);\n                parametres.put(\"largeurMaxArbreSelection\", 20);\n                break;\n\n            case \"KEP_p50_n17_k3_l7.txt\":\n                parametres.put(\"profondeurMaxArbreSelection\", 100);\n                parametres.put(\"profondeurMaxArbreDetection\", 40);\n                parametres.put(\"largeurMaxArbreSelection\", 40);\n                break;\n\n            case \"KEP_p50_n17_k5_l17.txt\":\n                parametres.put(\"profondeurMaxArbreSelection\", 100);\n                parametres.put(\"profondeurMaxArbreDetection\", 40);\n                parametres.put(\"largeurMaxArbreSelection\", 40);\n                break;\n\n            case \"KEP_p100_n0_k3_l0.txt\":\n                parametres.put(\"profondeurMaxArbreSelection\", 20);\n                parametres.put(\"profondeurMaxArbreDetection\", 10);\n                parametres.put(\"largeurMaxArbreSelection\", 5);\n                break;\n\n            case \"KEP_p100_n5_k3_l4.txt\":\n                parametres.put(\"profondeurMaxArbreSelection\", 20);\n                parametres.put(\"profondeurMaxArbreDetection\", 10);\n                parametres.put(\"largeurMaxArbreSelection\", 5);\n                break;\n\n            case \"KEP_p100_n5_k3_l7.txt\":\n                parametres.put(\"profondeurMaxArbreSelection\", 7);\n                parametres.put(\"profondeurMaxArbreDetection\", 5);\n                parametres.put(\"largeurMaxArbreSelection\", 5);\n                break;\n\n            case \"KEP_p100_n5_k3_l13.txt\":\n                parametres.put(\"profondeurMaxArbreSelection\", 7);\n                parametres.put(\"profondeurMaxArbreDetection\", 5);\n                parametres.put(\"largeurMaxArbreSelection\", 5);\n                break;\n\n            /*case \"\":\n                profondeurMaxArbreDetection=0;\n                profondeurMaxArbreSelection=0;\n                largeurMaxArbreSelection=0;\n            break;*/\n        }\n        return parametres;\n    }\n\n    public static void main(String[] args) {\n        InstanceReader reader = null;\n        try {\n            reader = new InstanceReader(\"instances/KEP_p100_n5_k3_l13.txt\");\n            Instance i = reader.readInstance();\n            ArbreSequences ra = new ArbreSequences();\n            System.out.println(\"================= SEQUENCE \"+ i.getNom() +\" =================\");\n\n            Solution sol = ra.solve(i);\n            new InterfaceWeb(sol).createHtmlFile();\n            //System.out.println(sol);\n            System.out.println(\"Checker : \" + sol.check());\n        } catch (ReaderException e) {\n            e.printStackTrace();\n        } catch (IOException e) {\n            e.printStackTrace();\n        }\n\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/rein/solveur/ArbreSequences.java b/src/main/java/com/rein/solveur/ArbreSequences.java
+--- a/src/main/java/com/rein/solveur/ArbreSequences.java	(revision a421b69d76b10a8ad82417f71742fe7c5d15eb1c)
++++ b/src/main/java/com/rein/solveur/ArbreSequences.java	(date 1655243346306)
+@@ -37,7 +37,8 @@
+         // --> Paramétrage des arbres <-- //
+         parametres = setUpParameters(instance.getNom());
+         // --> Détection des séquences <-- //
+-        SequencesPossibles sequencesDetectees = a.detectionChainesCycles(5, parametres.get("profondeurMaxArbreDetection"));
++        //SequencesPossibles sequencesDetectees = a.detectionChainesCycles(5, parametres.get("profondeurMaxArbreDetection"));
++        SequencesPossibles sequencesDetectees = a.detectionChainesCycles(4, 4);
+         System.out.println("Sequeces Détectées : ");
+         System.out.println(sequencesDetectees);
+         Selecteur selecteur = new Selecteur(sequencesDetectees);
+@@ -46,7 +47,7 @@
+         Iterator it = selecteur.getSequencesPossibles().getCycles().iterator();
+         while (it.hasNext()) {
+             Sequence s = (Sequence) it.next();
+-            sol = selecteur.arbreBestSol(s, instance, parametres.get("profondeurMaxArbreSelection"), parametres.get("largeurMaxArbreSelection"));
++            sol = selecteur.arbreBestSol(s, instance, 4, 4);
+             if (sol.getBenefTotal() > sequencesChoisies.getBenefTotal())
+                 sequencesChoisies = sol;
+             System.out.println("_________________________________________________________________");
+Index: src/main/java/com/rein/solveur/RechercheArbre.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.rein.solveur;\n\nimport com.rein.instance.Altruiste;\nimport com.rein.instance.Echange;\nimport com.rein.instance.Instance;\nimport com.rein.instance.Noeud;\nimport com.rein.io.InstanceReader;\nimport com.rein.io.exception.ReaderException;\nimport com.rein.solution.*;\nimport com.rein.transplantation.Cycle;\nimport com.rein.transplantation.Sequence;\nimport org.apache.commons.cli.*;\nimport org.apache.commons.lang3.ArrayUtils;\n\nimport java.sql.Array;\nimport java.util.HashSet;\nimport java.util.Iterator;\nimport java.util.LinkedHashSet;\nimport java.util.Objects;\n\npublic class RechercheArbre implements Solveur {\n\n\n    @Override\n    public String getNom() {\n        return \"Recherche Arbre\";\n    }\n\n    @Override\n    public Solution solve(Instance instance) {\n\n        Noeud n;\n        //Détection des Sequences\n        if (instance.getNbAltruistes() > 0) {\n            n = instance.getTabAltruistes().get(0);\n        }else {\n            n = instance.getTabPaire().get(0);\n        }\n\n        Arbre racine = new Arbre(n, instance, 6, 5);\n        //SequencesPossibles sequencesUtilisables = racine.detectionChainesCycles();\n\n        //System.out.println(sequencesUtilisables);\n\n        // Sélection des Sequences\n        //Selecteur selecteur = new Selecteur(sequencesUtilisables);\n        //Iterator it = sequencesUtilisables.getCycles().iterator();\n        //Sequence seqRacine = (Sequence) it.next();\n        //SequencesPossibles seqSelectionnees = selecteur.arbreBestSol(seqRacine, instance, 7, 2);\n\n        //Génération de la Solution\n        //Solution s = seqSelectionnees.generationSolution(instance);\n        //Solution s = new Solution(instance);\n        Solution s = new Solution(instance);\n        return s;\n    }\n\n    public static void main(String[] args) {\n        InstanceReader reader = null;\n        try {\n            reader = new InstanceReader(\"instances/KEP_p50_n3_k5_l17.txt\");\n            Instance i = reader.readInstance();\n            RechercheArbre ra = new RechercheArbre();\n            Solution sol = ra.solve(i);\n\n            //System.out.println(sol);\n        } catch (ReaderException e) {\n            e.printStackTrace();\n        }\n\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/rein/solveur/RechercheArbre.java b/src/main/java/com/rein/solveur/RechercheArbre.java
+--- a/src/main/java/com/rein/solveur/RechercheArbre.java	(revision a421b69d76b10a8ad82417f71742fe7c5d15eb1c)
++++ b/src/main/java/com/rein/solveur/RechercheArbre.java	(date 1655279171469)
+@@ -37,21 +37,22 @@
+             n = instance.getTabPaire().get(0);
+         }
+ 
+-        Arbre racine = new Arbre(n, instance, 6, 5);
+-        //SequencesPossibles sequencesUtilisables = racine.detectionChainesCycles();
++        Arbre racine = new Arbre(n, instance, 4, 4);
++        SequencesPossibles sequencesUtilisables = racine.detectionChainesCycles(4, 4);
+ 
+         //System.out.println(sequencesUtilisables);
+ 
+         // Sélection des Sequences
+-        //Selecteur selecteur = new Selecteur(sequencesUtilisables);
++        Selecteur selecteur = new Selecteur(sequencesUtilisables);
++        SequencesPossibles sequencesPossibles = selecteur.selectionParBenef(false);
+         //Iterator it = sequencesUtilisables.getCycles().iterator();
+         //Sequence seqRacine = (Sequence) it.next();
+         //SequencesPossibles seqSelectionnees = selecteur.arbreBestSol(seqRacine, instance, 7, 2);
+ 
+         //Génération de la Solution
+-        //Solution s = seqSelectionnees.generationSolution(instance);
++        Solution s = sequencesPossibles.generationSolution(instance);
+         //Solution s = new Solution(instance);
+-        Solution s = new Solution(instance);
++        //Solution s = new Solution(instance);
+         return s;
+     }
+ 
+Index: src/main/java/com/rein/test/AllSolveurs.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.rein.test;\n\n// TO CHECK : import des classes Instance, InstanceReader et ReaderException\nimport com.rein.instance.Instance;\nimport com.rein.interface_web.InterfaceWeb;\nimport com.rein.io.InstanceReader;\nimport com.rein.io.exception.ReaderException;\nimport com.rein.solution.Solution;\nimport com.rein.solveur.*;\nimport com.rein.solveur.RechercheArbre;\nimport com.rein.solveur.Solveur;\nimport com.rein.solveur.StrategieBasique;\nimport com.rein.solveur.StrategieBasique2;\n\nimport java.io.File;\nimport java.io.IOException;\nimport java.io.PrintWriter;\nimport java.util.ArrayList;\nimport java.util.HashMap;\nimport java.util.List;\nimport java.util.Map;\nimport java.util.Objects;\n// TO CHECK : import des classes Solution, InsertionSimple et Solveur\n\n/**\n * Cette classe permet de tester et comparer les performances de plusieurs\n * methodes de resolution sur un jeu d'instances du CVRP pour les TPs du\n * cours de LE4-SI POO pour l'optimisation.\n *\n * Les instances sont fournies sur moodle au format '.vrp'.\n *\n * Cette classe permet de resoudre un jeu d'instances avec plusieurs solveurs\n * et d'afficher tous les resultats dans un fichier au format '.csv'.\n * Pour ajouter un nouveau solveur, un commentaire annote avec 'TO ADD' vous\n * permet de facilement localiser a quel endroit on ajoute un tel solveur.\n *\n * Pour que cette classe fonctionne correctement, il faut que certains\n * constructeurs et methodes aient les bonnes signatures.\n * Des commentaires annotes avec 'TO CHECK' vous permettent de facilement reperer\n * dans cette classe les lignes que vous devez verifier et modifier si besoin.\n *\n * @author Maxime Ogier\n */\npublic class AllSolveurs {\n    /**\n     * Tous les solveurs a tester et comparer\n     */\n    private final List<Solveur> solveurs;\n    /**\n     * Nom du chemin du repertoire dans lequel se trouvent les instances a tester\n     */\n    private String pathRepertoire;\n    /**\n     * Toutes les instances a tester\n     */\n    private List<Instance> instances;\n    /**\n     * Resultats obtenus pour chaque couple instance/solveur\n     */\n    private Map<InstanceSolveur, Resultat> resultats;\n    /**\n     * Somme (sur les instances) des resultats pour chaque solveur\n     */\n    private Map<Solveur, Resultat> totalStats;\n\n    /**\n     * Constructeur par donnees.\n     * @param pathRepertoire le chemin du repertoire ou se trouvent toutes les\n     * instances a tester\n     */\n    public AllSolveurs(String pathRepertoire) {\n        this.pathRepertoire = pathRepertoire;\n        solveurs = new ArrayList<>();\n        instances = new ArrayList<>();\n        this.resultats = new HashMap<>();\n        this.addSolveurs();\n        this.readNomInstances();\n        this.totalStats = new HashMap<>();\n        for(Solveur solveur : solveurs) {\n            totalStats.put(solveur , new Resultat());\n        }\n    }\n\n    /**\n     * Ajout de tous les solveurs que l'on souhaite comparer\n     */\n    private void addSolveurs() {\n        // TO CHECK : constructeur par defaut de la classe InsertionSimple\n        //solveurs.add(new StrategieBasique());\n        // TO ADD : par la suite vous ajouterez ici les autres solveurs a tester\n        //solveurs.add(new StrategieBasique2());\n        //solveurs.add(new RechercheArbre());\n        //solveurs.add(new BestSolution());\n        //solveurs.add(new StrategieBasique2());\n        solveurs.add(new ArbreSequences());\n        //solveurs.add(new RechercheArbre());\n        //solveurs.add(new BestSolution());\n    }\n\n    /**\n     * Lecture de tous les noms des instances a tester.\n     * Ces instances se trouvent dans le repertoire pathRepertoire.\n     * Les instances sont lues et chargees en memoire.\n     */\n    private void readNomInstances() {\n        File folder = new File(pathRepertoire);\n        File[] listOfFiles = folder.listFiles();\n        for (File file : listOfFiles) {\n            if (file.isFile()) {\n                try {\n                    // TO CHECK : constructeur de InstanceReader\n                    InstanceReader reader = new InstanceReader(file.getAbsolutePath());\n                    // TO CHECK : lecture d'une instance avec la classe InstanceReader\n                    instances.add(reader.readInstance());\n                } catch (ReaderException ex) {\n                    System.out.println(\"L'instance \"+file.getAbsolutePath()\n                            + \" n'a pas pu etre lue correctement\");\n                }\n            }\n        }\n    }\n\n    /**\n     * Affichage de tous les resultats.\n     * Les resultats sont affiches dans un fichier csv avec separateur ';'.\n     * @param nomFichierResultats nom du fichier de resultats\n     */\n    public void printAllResultats(String nomFichierResultats) {\n        PrintWriter ecriture = null;\n        try {\n            ecriture = new PrintWriter(nomFichierResultats+\".csv\");\n            printEnTetes(ecriture);\n            for(Instance inst : instances) {\n                printResultatsInstance(ecriture, inst);\n            }\n            ecriture.println();\n            printSommeResultats(ecriture);\n        } catch (IOException ex) {\n            System.out.println(\"Erreur fichier ecriture\");\n            System.out.println(ex);\n        }\n        if(ecriture != null) {\n            ecriture.close();\n        }\n    }\n\n    /**\n     * Affichage de la somme des resultats par solveur.\n     * Les valeurs sont ecrites sur une seule ligne.\n     * @param ecriture le writer sur lequel on fait l'ecriture\n     */\n    private void printSommeResultats(PrintWriter ecriture) {\n        ecriture.print(\"SOMME\");\n        for(Solveur solveur : solveurs) {\n            ecriture.print(\";\"+totalStats.get(solveur).formatCsv());\n        }\n    }\n\n    /**\n     * Ecriture des resultats d'une instance pour tous les solveurs.\n     * Pour chque solveur, l'instance est resolue par le solveeur avant que\n     * ses resultats ne soient ecrits sur le fichier.\n     * @param ecriture le writer sur lequel on fait l'ecriture\n     * @param inst l'instane pour laquelle on ecrit les resultats\n     */\n    private void printResultatsInstance(PrintWriter ecriture, Instance inst) throws IOException {\n        // TO CHECK : recuperer le nom de l'instance\n        ecriture.print(inst.getNom());\n        for(Solveur solveur : solveurs) {\n            long start = System.currentTimeMillis();\n            // TO CHECK : resolution de l'instance avec le solveur\n            Solution sol = solveur.solve(inst);\n            new InterfaceWeb(sol).createHtmlFile();\n            long time = System.currentTimeMillis() - start;\n            // TO CHECK : recperer le cout total de la solution, et savoir si\n            // la solution est valide\n            Resultat result = new Resultat(sol.getBenefMedicalTotal(), time, sol.check());\n            resultats.put(new InstanceSolveur(inst, solveur), result);\n            ecriture.print(\";\"+result.formatCsv());\n            totalStats.get(solveur).add(result);\n        }\n        ecriture.println();\n    }\n\n    /**\n     * Eriture des en-tetes dans le fichier de resultats.\n     * @param ecriture le writer sur lequel on fait l'ecriture\n     */\n    private void printEnTetes(PrintWriter ecriture) {\n        for(Solveur solveur : solveurs) {\n            // TO CHECK : recuperer le nom du solveur\n            ecriture.print(\";\"+solveur.getNom()+\";;\");\n        }\n        ecriture.println();\n        for(Solveur solveur : solveurs) {\n            ecriture.print(\";cout\");\n            ecriture.print(\";tps(ms)\");\n            ecriture.print(\";valide ?\");\n        }\n        ecriture.println();\n    }\n\n    /**\n     * Cette classe interne represente le couple instance / solveur\n     */\n    class InstanceSolveur {\n        private Instance instance;\n        private Solveur solveur;\n\n        public InstanceSolveur(Instance instance, Solveur solveur) {\n            this.instance = instance;\n            this.solveur = solveur;\n        }\n\n        public Instance getInstance() {\n            return instance;\n        }\n\n        public Solveur getSolveur() {\n            return solveur;\n        }\n\n        @Override\n        public int hashCode() {\n            int hash = 5;\n            hash = 29 * hash + Objects.hashCode(this.instance);\n            hash = 29 * hash + Objects.hashCode(this.solveur.getNom());\n            return hash;\n        }\n\n        @Override\n        public boolean equals(Object obj) {\n            if (this == obj) {\n                return true;\n            }\n            if (obj == null) {\n                return false;\n            }\n            if (getClass() != obj.getClass()) {\n                return false;\n            }\n            final InstanceSolveur other = (InstanceSolveur) obj;\n            if (!Objects.equals(this.instance, other.instance)) {\n                return false;\n            }\n            if (!Objects.equals(this.solveur.getNom(), other.solveur.getNom())) {\n                return false;\n            }\n            return true;\n        }\n    }\n\n    /**\n     * Cette classe interne represente le resultat a ecrire lorsqu'une instance\n     * a ete resolue.\n     */\n    class Resultat {\n        /**\n         * Le cout de la solution\n         */\n        private int cout;\n        /**\n         * Le temps de resolution en millisecondes\n         */\n        private long timeInMs;\n        /**\n         * Indique si la solution est valide (true) ou non (false)\n         */\n        private boolean check;\n\n        /**\n         * Construteur par defaut\n         */\n        public Resultat() {\n            this.cout = 0;\n            this.timeInMs = 0;\n            this.check = true;\n        }\n\n        /**\n         * Construteur par donnes\n         * @param cout le cout de la solution\n         * @param timeInMs le temps de resolution en millisecondes\n         * @param check vrai si la solution est valide, faux sinon\n         */\n        public Resultat(int cout, long timeInMs, boolean check) {\n            this.cout = cout;\n            this.timeInMs = timeInMs;\n            this.check = check;\n        }\n\n        /**\n         * Ajout d'un resultat pour faire la somme\n         * @param resultat le resultat a ajouter\n         */\n        public void add(Resultat resultat) {\n            this.cout += resultat.cout;\n            this.timeInMs += resultat.timeInMs;\n            this.check = this.check && resultat.check;\n        }\n\n        /**\n         * @return le resultat formatte avec separateur ';' pour erire dans un\n         * fichier csv\n         */\n        public String formatCsv() {\n            return formatSepMilliers(this.cout) + \";\"\n                    + formatSepMilliers(this.timeInMs) + \";\"\n                    + check;\n        }\n\n        /**\n         * Formattage d'un entier avec separateur de milliers.\n         * @param val nombre entier a formatter\n         * @return val formatte avec separateur de milliers\n         */\n        private String formatSepMilliers(long val) {\n            String s = \"\";\n            s += val%1000;\n            val = val/1000;\n            while(val > 0) {\n                s = val%1000 + \" \" + formatMilliers(s);\n                val = val/1000;\n            }\n            return s;\n        }\n\n        /**\n         * @param s une chaine de caracteres\n         * @return s avec des '0' au ebut si sa taille initiale etait infeieure\n         * a 3\n         */\n        private String formatMilliers(String s) {\n            while(s.length() < 3) {\n                s = \"0\"+s;\n            }\n            return s;\n        }\n    }\n\n    /**\n     * Test de perforances de tous les solveurs sur les instances du repertoire\n     * 'instances'.\n     * @param args\n     */\n    public static void main(String[] args) {\n\n        AllSolveurs test = new AllSolveurs(\"instances\");\n        test.printAllResultats(\"results\");\n    }\n\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/rein/test/AllSolveurs.java b/src/main/java/com/rein/test/AllSolveurs.java
+--- a/src/main/java/com/rein/test/AllSolveurs.java	(revision a421b69d76b10a8ad82417f71742fe7c5d15eb1c)
++++ b/src/main/java/com/rein/test/AllSolveurs.java	(date 1655278387238)
+@@ -88,13 +88,9 @@
+         // TO CHECK : constructeur par defaut de la classe InsertionSimple
+         //solveurs.add(new StrategieBasique());
+         // TO ADD : par la suite vous ajouterez ici les autres solveurs a tester
+-        //solveurs.add(new StrategieBasique2());
+-        //solveurs.add(new RechercheArbre());
+-        //solveurs.add(new BestSolution());
+-        //solveurs.add(new StrategieBasique2());
+-        solveurs.add(new ArbreSequences());
+-        //solveurs.add(new RechercheArbre());
+-        //solveurs.add(new BestSolution());
++        solveurs.add(new StrategieBasique2());
++        solveurs.add(new RechercheArbre());
++        solveurs.add(new BestSolution());
+     }
+ 
+     /**
+Index: src/main/java/com/rein/solution/Selecteur.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.rein.solution;\n\nimport com.rein.instance.Instance;\nimport com.rein.instance.Noeud;\nimport com.rein.transplantation.Sequence;\n\nimport java.security.spec.RSAOtherPrimeInfo;\nimport java.util.*;\nimport java.util.stream.Collectors;\n\npublic class Selecteur {\n\n    private static int BENEFMAX = 0; //arbre\n    private int profondeurMax; //arbre\n    private int largeurMax; //arbre\n    private LinkedHashSet<Sequence> sequencesFinales; //arbre\n    private int benefFinal; //arbre\n    private final SequencesPossibles sequencesPossibles;\n\n\n    public Selecteur(SequencesPossibles sequencesPossibles) {\n        this.sequencesPossibles = sequencesPossibles;\n        this.sequencesFinales = new LinkedHashSet<>();\n        this.benefFinal = 0;\n    }\n\n    public SequencesPossibles arbreBestSol(Sequence sequenceRacine, Instance i, int profondeurArbre, int largeurArbre) {\n\n        //System.out.println(\"Arbre best Sol !!\");\n\n        this.profondeurMax = profondeurArbre;\n        this.largeurMax = largeurArbre;\n\n        LinkedHashSet<Sequence> sequencesRestantes = new LinkedHashSet<Sequence>();\n        sequencesRestantes.addAll(this.sequencesPossibles.getChaines());\n        sequencesRestantes.addAll(this.sequencesPossibles.getCycles());\n\n        Noeud[] noeudsRestants = i.getTabNoeud();\n\n        //System.out.println(sequencesRestantes);\n\n        SequencesPossibles solutionTrouvee = arbreSequences(sequenceRacine, 0, sequencesRestantes, noeudsRestants);\n\n        return solutionTrouvee;\n    }\n\n    /////////////////////////////////////////////////////////////////////////\n    public SequencesPossibles arbreSequences(Sequence sequenceCourante, int profondeur, LinkedHashSet<Sequence> sequencesRestantes, Noeud[] noeudsRestants) {\n        int limite = 0;\n        int profondeurBis = profondeur + 1;\n        SequencesPossibles bestPossibilites = new SequencesPossibles();\n        Noeud[] noeudsRestantsBis = noeudsRestants.clone();\n\n        //System.out.println(\"################### Sequence courante : \");\n        //System.out.println(sequenceCourante);\n        LinkedHashSet<Sequence> sequencesFilles = getSequencesFilles(sequenceCourante, sequencesRestantes, noeudsRestantsBis);\n        /*System.out.println(\"Sequences filles : \");\n        for (Sequence s : sequencesFilles) {\n            System.out.println(s.toStringShort());\n        }*/\n\n        if (profondeurBis < this.profondeurMax && !(sequencesFilles.isEmpty()) ) {\n            //System.out.println(\"APPEL RECURSIF\");\n            for (Sequence seq: sequencesFilles) {\n                if (limite < this.largeurMax) {\n                    limite++;\n                    SequencesPossibles s = arbreSequences(seq, profondeurBis, sequencesFilles, noeudsRestantsBis);\n                    if (s.getBenefTotal() > bestPossibilites.getBenefTotal())\n                        bestPossibilites = new SequencesPossibles(s);\n                }else\n                    break;\n            }\n        }\n\n        bestPossibilites.ajouterSequence(sequenceCourante);\n\n        /*System.out.println(\"## profondeur : \");\n        System.out.println(profondeur);\n        */\n        /*System.out.println(\"Best solution : \");\n        System.out.println(sequenceCourante);*/\n\n        return bestPossibilites;\n    }\n    /////////////////////////////////////////////////////////////////////////\n\n    public static LinkedHashSet<Sequence> getSequencesFilles(Sequence sequence, LinkedHashSet<Sequence> sequencesRestantes, Noeud[] noeudsRestants) {\n\n        LinkedHashSet<Sequence> sequencesRestantesBis = new LinkedHashSet<Sequence>(sequencesRestantes);\n        LinkedHashSet<Sequence> sequencesFilles = new LinkedHashSet<Sequence>(); //Pour les sequences filles\n        LinkedHashSet<Noeud> noeudRestants;\n        Sequence s;\n        // Pour chaque séquence potentielle,\n        // si la séquence ne contient aucun noeud des noeuds de la séquence courante,\n        // alors on l'ajoute aux séquences filles\n        Set diffTest = new HashSet();\n\n        Iterator it = sequencesRestantesBis.iterator();\n        while (it.hasNext()) {\n            s = (Sequence) it.next(); //sequence restante\n            diffTest.clear();\n            diffTest.addAll(s.getListeNoeuds());\n            diffTest.addAll(sequence.getListeNoeuds());\n            /*System.out.println(sequence.toStringShort() + \" / VS / \" + s.toStringShort());\n            System.out.println(\"APRES AJOUT : \" + diffTest);\n            System.out.println((s.getListeNoeuds().size() + sequence.getListeNoeuds().size()) == diffTest.size());*/\n\n            if ( (s.getListeNoeuds().size() + sequence.getListeNoeuds().size()) == diffTest.size() ) {\n                //System.out.println(\"Sequence fille valide ----------------\");\n                sequencesFilles.add(s);\n            }\n        }\n\n        //System.out.println(sequencesRestantesBis);\n        return sequencesFilles;\n    }\n\n    /*Set<String> result = list.stream()  .distinct()  .filter(otherList::contains)  .collect(Collectors.toSet());\n    Set<String> commonElements = new HashSet(Arrays.asList(\"red\", \"green\"));\n    Assert.assertEquals(commonElements, result);*/\n\n    public SequencesPossibles getSequencesPossibles() {\n        return sequencesPossibles;\n    }\n\n    /**\n     * Méthode permettant de récupérer un objet SequencesPossibles à transformer en objet solution\n     * Critère de sélection des cycles et chaines : aléatoire.\n     * @return Objet SequencesPossibles contenant les cycles et chaines formant la solution.\n     * Contient également la liste des noeuds utilisés.\n     * */\n    public SequencesPossibles selectionRandom_v1() {\n        int i;\n        Sequence seqCourante;\n        Iterator it;\n        //Sequences recevant les séquences sélectionnées\n        SequencesPossibles sequencesChoisies = new SequencesPossibles();\n        //Set permettant de stocker les noeuds utilisés\n        Set<Integer> noeudsUtilises = new HashSet<Integer>();\n        //Tableaux dans lesquels sont transférés les cycles et chaines pour permettre un accès random\n        ArrayList<Sequence> tabCycles = new ArrayList<Sequence>();\n        ArrayList<Sequence> tabChaines = new ArrayList<Sequence>();\n\n        tabCycles.addAll(this.sequencesPossibles.getCycles());\n        tabChaines.addAll(this.sequencesPossibles.getChaines());\n\n\n        //Selection des cycles\n        Collections.shuffle(tabCycles);\n        for (i=0 ; i<tabCycles.size() ; i++ ) {\n            ajouterSequenceSiDispo(tabCycles.get(i), sequencesChoisies);\n        }\n\n        //Selection des chaines\n        Collections.shuffle(tabChaines);\n        for (i=0 ; i<tabChaines.size() ; i++ ) {\n            ajouterSequenceSiDispo(tabChaines.get(i), sequencesChoisies);\n        }\n\n        return sequencesChoisies;\n    }\n\n    // méthode trop random\n    public SequencesPossibles selectionRandom_v2() {\n        SequencesPossibles bestsequencesChoisies = new SequencesPossibles();\n        SequencesPossibles sequencesChoisies = new SequencesPossibles();\n\n        for (int i=0;i<=10;i++) {\n            sequencesChoisies = selectionRandom_v1();\n            if (sequencesChoisies.calculBenefTotal() > bestsequencesChoisies.calculBenefTotal()) {\n                bestsequencesChoisies = sequencesChoisies;\n            }\n        }\n\n            return bestsequencesChoisies;\n    }\n\n\n    /**\n     * Méthode chargée de vérifier si la Séquence passé en paramètre peut être choisies dans la solution, à partir de la liste d'ids de Noeuds déjà selectionnée, dans sequencesChoisies.\n     * Si la séquence peut être ajoutée, elle est ajoutée à sequencesChoisies et ses ids de Noeuds sont ajoutés à la liste d'ids de Noeuds utilisés, dans sequencesChoisies.\n     * @param sequence Sequence à ajouter.\n     * @param sequencesChoisies Objet SequencesPossibles permettant de tester si les noeuds de sequence sont disponibles, et dans laquelle elle est ajoutée si possible.\n     * @return true si sequence est ajoutée à sequencesChoisies.\n     * @return false si sequence n'est pas sequencesChoisies.\n     * */\n    private boolean ajouterSequenceSiDispo (Sequence sequence, SequencesPossibles sequencesChoisies) {\n        Iterator it = sequence.getListeNoeuds().iterator();\n        LinkedHashSet<Integer> noeudsSequenceCourante = new LinkedHashSet<Integer>(); //Permet de stocker les ids de la 'sequence', pour les ajouter aux noeuds utilisés, si elle est Dispo\n        while (it.hasNext()) {\n            Noeud n = (Noeud) it.next();\n            noeudsSequenceCourante.add(n.getId());\n            //si l'un des noeuds de la séquence courante est utilisé, on passe au suivant\n            if (sequencesChoisies.getNoeudsUtilises().contains(n.getId())) {\n                return false;\n            }\n        }\n        sequencesChoisies.getNoeudsUtilises().addAll(noeudsSequenceCourante);\n\n        if (sequence instanceof Chaine)\n            sequencesChoisies.getChaines().add(sequence);\n        else\n            sequencesChoisies.getCycles().add(sequence);\n\n        return true;\n    }\n\n    /**\n     * Vérifier si un noeud donné est utilisé\n     * dans les sequences possibles du selecteur\n     * @param noeud dont il faut vérifier l'utilisation\n     * @return si le noeud donné est déjà utilisé\n     */\n    public boolean isNoeudUtilise(Noeud noeud) {\n        return (this.sequencesPossibles.getNoeudsUtilises().contains(noeud.getId()));\n    }\n\n    /**\n     * Tri les séquences dans l'ordre croissant ou décroissant\n     * des bénéfices\n     * @param unsortedMap ensemble des séquences possibles\n     * @param isAsc true : croissant, false : décroissant\n     * @return les séquences dans l'ordre croissant ou décroissant des bénéfices\n     */\n    private HashMap<Sequence, Integer> sortSequences(HashMap<Sequence, Integer> unsortedMap, boolean isAsc) {\n        LinkedHashMap<Sequence, Integer> sortedMap = new LinkedHashMap<>();\n        if(isAsc){\n            unsortedMap.entrySet()\n                    .stream()\n                    .sorted(Map.Entry.comparingByValue())\n                    .forEachOrdered(x -> sortedMap.put(x.getKey(), x.getValue()));\n        } else {\n            unsortedMap.entrySet()\n                    .stream()\n                    .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))\n                    .forEachOrdered(x -> sortedMap.put(x.getKey(), x.getValue()));\n        }\n        return sortedMap;\n    }\n\n    /**\n     * Tri dans l'ordre croissant ou décroissant des bénéfices\n     * les sequences\n     * @param type \"cycle\" ou \"chaine\"\n     * @return les sequences de type type rangées\n     * dans l'ordre croissant ou décroissant des bénéfices\n     */\n    public HashMap<Sequence, Integer> sortSequencesByBenef(String type, boolean isAsc) {\n        HashMap<Sequence, Integer> unsortedMap = new HashMap<>();\n\n        switch (type){\n            case \"cycle\":\n                for(Sequence s : this.sequencesPossibles.getCycles())\n                    unsortedMap.put(s, s.getBenefMedicalSequence());\n                break;\n            case \"chaine\":\n                for(Sequence s : this.sequencesPossibles.getChaines())\n                    unsortedMap.put(s, s.getBenefMedicalSequence());\n                break;\n        }\n\n        return sortSequences(unsortedMap, isAsc);\n    }\n\n    /**\n     * Sélectionne d'abord les cycles puis les chaines\n     * avec les plus gros bénéfices\n     * @param type \"cycle\" ou \"chaine\"\n     * @return liste de sequences choisies selon le benefice\n     */\n    public LinkedHashSet<Sequence> selectionSequencesBenef(String type, boolean isAsc) {\n        LinkedHashSet<Sequence> sequencesChoisies = new LinkedHashSet<>();\n        for(Map.Entry<Sequence, Integer> entry : this.sortSequencesByBenef(type, isAsc).entrySet()){\n            Sequence sequence = entry.getKey();\n            boolean isPresent = false;\n            for(Noeud noeud : sequence.getListeNoeuds())\n                if(isNoeudUtilise(noeud))\n                    isPresent = true;\n            if(!isPresent){\n                sequencesChoisies.add(sequence);\n                for(Noeud noeud : sequence.getListeNoeuds())\n                    this.sequencesPossibles.getNoeudsUtilises().add(noeud.getId());\n            }\n        }\n        return sequencesChoisies;\n    }\n\n    /**\n     * Sélectionne les cycles puis les chaines\n     * avec les plus gros ou petits bénéfices\n     * @param isAsc true : croissant, false : décroissant\n     * @return des sequences choisies selon le critère du bénéfice\n     */\n    public SequencesPossibles selectionParBenef(boolean isAsc) {\n        SequencesPossibles sequencesChoisies = new SequencesPossibles();\n\n        sequencesChoisies.getCycles().addAll(this.selectionSequencesBenef(\"cycle\", isAsc));\n        sequencesChoisies.getChaines().addAll(this.selectionSequencesBenef(\"chaine\", isAsc));\n\n        return sequencesChoisies;\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/rein/solution/Selecteur.java b/src/main/java/com/rein/solution/Selecteur.java
+--- a/src/main/java/com/rein/solution/Selecteur.java	(revision a421b69d76b10a8ad82417f71742fe7c5d15eb1c)
++++ b/src/main/java/com/rein/solution/Selecteur.java	(date 1655277952252)
+@@ -4,9 +4,7 @@
+ import com.rein.instance.Noeud;
+ import com.rein.transplantation.Sequence;
+ 
+-import java.security.spec.RSAOtherPrimeInfo;
+ import java.util.*;
+-import java.util.stream.Collectors;
+ 
+ public class Selecteur {
+ 
+@@ -31,7 +29,7 @@
+         this.profondeurMax = profondeurArbre;
+         this.largeurMax = largeurArbre;
+ 
+-        LinkedHashSet<Sequence> sequencesRestantes = new LinkedHashSet<Sequence>();
++        LinkedHashSet<Sequence> sequencesRestantes = new LinkedHashSet<>();
+         sequencesRestantes.addAll(this.sequencesPossibles.getChaines());
+         sequencesRestantes.addAll(this.sequencesPossibles.getCycles());
+ 
+Index: instances/test.txt
+===================================================================
+diff --git a/instances/test.txt b/instances/test.txt
+deleted file mode 100644
+--- a/instances/test.txt	(revision a421b69d76b10a8ad82417f71742fe7c5d15eb1c)
++++ /dev/null	(revision a421b69d76b10a8ad82417f71742fe7c5d15eb1c)
+@@ -1,26 +0,0 @@
+-// P : Nombre de paires patient-donneur
+-6
+-
+-// N : Nombre de donneurs altruistes
+-2
+-
+-// K : Taille max cycles
+-4
+-
+-// L : Taille max chaines
+-7
+-
+-// Matrice des benefices medicaux des echanges
+-// Les N premieres lignes correspondent aux donneurs altruistes
+-// Les P dernieres lignes correspondent aux paires patient-donneur
+-// Sur chaque ligne i, on indique le benefice medical de la transplantation
+-//     du rein du donneur i au patient de la paire patient-donneur j
+-// Une valeur -1 signifie que la transplantation n'est pas realisable
+--1	4	-1	6	-1	-1
+--1	-1	7	-1	9	-1
+--1	7	5	10	-1	-1
+--1	-1	-1	5	-1	-1
+--1	-1	-1	-1	6	4
+-1	-1	-1	-1	5	-1
+--1	-1	-1	-1	-1	8
+-10	-1	7	-1	-1	-1
+Index: .idea/libraries/cplex1.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/libraries/cplex1.xml b/.idea/libraries/cplex1.xml
+new file mode 100644
+--- /dev/null	(date 1655215922848)
++++ b/.idea/libraries/cplex1.xml	(date 1655215922848)
+@@ -0,0 +1,9 @@
++<component name="libraryTable">
++  <library name="cplex1">
++    <CLASSES>
++      <root url="jar://$USER_HOME$/Downloads/cplex.jar!/" />
++    </CLASSES>
++    <JAVADOC />
++    <SOURCES />
++  </library>
++</component>
+\ No newline at end of file
+Index: .idea/libraries/cplex.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/libraries/cplex.xml b/.idea/libraries/cplex.xml
+new file mode 100644
+--- /dev/null	(date 1655215968847)
++++ b/.idea/libraries/cplex.xml	(date 1655215968847)
+@@ -0,0 +1,12 @@
++<component name="libraryTable">
++  <library name="cplex">
++    <CLASSES>
++      <root url="jar:///Applications/CPLEX_Studio201/cplex/lib/cplex.jar!/" />
++    </CLASSES>
++    <JAVADOC />
++    <NATIVE>
++      <root url="file:///Applications/CPLEX_Studio201/cplex/bin/x86-64_osx" />
++    </NATIVE>
++    <SOURCES />
++  </library>
++</component>
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"5dbe1660-c9ae-497e-83b8-a85dacef2117\" name=\"Changes\" comment=\"Refonte méthode solve() de ArbreSequences\">\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_06_2022_11_31_[Changes]/Altruiste.class\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_06_2022_11_31_[Changes]/shelved.patch\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_06_2022_11_31__Changes_.xml\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_06_2022_11_40_[Changes]/shelved.patch\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_06_2022_11_40__Changes_.xml\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_03_06_2022_11_32_[Changes]1/Altruiste.class\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_03_06_2022_11_32_[Changes]1/shelved.patch\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_03_06_2022_11_32__Changes_1.xml\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]/shelved.patch\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/instances/KEP_p100_n0_k3_l0.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/instances/KEP_p100_n0_k3_l0.txt\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/instances/KEP_p100_n11_k3_l13.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/instances/KEP_p100_n11_k3_l13.txt\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/instances/KEP_p100_n11_k3_l4.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/instances/KEP_p100_n11_k3_l4.txt\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/instances/KEP_p100_n11_k3_l7.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/instances/KEP_p100_n11_k3_l7.txt\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/instances/KEP_p100_n11_k5_l17.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/instances/KEP_p100_n11_k5_l17.txt\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/instances/KEP_p100_n33_k3_l13.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/instances/KEP_p100_n33_k3_l13.txt\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/instances/KEP_p100_n33_k3_l4.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/instances/KEP_p100_n33_k3_l4.txt\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/instances/KEP_p100_n33_k3_l7.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/instances/KEP_p100_n33_k3_l7.txt\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/instances/KEP_p100_n33_k5_l17.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/instances/KEP_p100_n33_k5_l17.txt\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/instances/KEP_p100_n5_k3_l13.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/instances/KEP_p100_n5_k3_l13.txt\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/instances/KEP_p100_n5_k3_l4.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/instances/KEP_p100_n5_k3_l4.txt\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/instances/KEP_p100_n5_k3_l7.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/instances/KEP_p100_n5_k3_l7.txt\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/instances/KEP_p100_n5_k5_l17.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/instances/KEP_p100_n5_k5_l17.txt\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/instances/KEP_p18_n0_k4_l0.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/instances/KEP_p18_n0_k4_l0.txt\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/instances/KEP_p18_n2_k4_l4.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/instances/KEP_p18_n2_k4_l4.txt\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/instances/KEP_p250_n0_k3_l0.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/instances/KEP_p250_n0_k3_l0.txt\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/instances/KEP_p250_n13_k3_l13.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/instances/KEP_p250_n13_k3_l13.txt\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/instances/KEP_p250_n13_k3_l4.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/instances/KEP_p250_n13_k3_l4.txt\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/instances/KEP_p250_n13_k3_l7.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/instances/KEP_p250_n13_k3_l7.txt\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/instances/KEP_p250_n13_k5_l17.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/instances/KEP_p250_n13_k5_l17.txt\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/instances/KEP_p250_n28_k3_l13.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/instances/KEP_p250_n28_k3_l13.txt\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/instances/KEP_p250_n28_k3_l4.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/instances/KEP_p250_n28_k3_l4.txt\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/instances/KEP_p250_n28_k3_l7.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/instances/KEP_p250_n28_k3_l7.txt\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/instances/KEP_p250_n28_k5_l17.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/instances/KEP_p250_n28_k5_l17.txt\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/instances/KEP_p250_n83_k3_l13.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/instances/KEP_p250_n83_k3_l13.txt\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/instances/KEP_p250_n83_k3_l4.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/instances/KEP_p250_n83_k3_l4.txt\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/instances/KEP_p250_n83_k3_l7.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/instances/KEP_p250_n83_k3_l7.txt\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/instances/KEP_p250_n83_k5_l17.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/instances/KEP_p250_n83_k5_l17.txt\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/instances/KEP_p50_n0_k3_l0.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/instances/KEP_p50_n0_k3_l0.txt\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/instances/KEP_p50_n17_k3_l13.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/instances/KEP_p50_n17_k3_l13.txt\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/instances/KEP_p50_n17_k3_l4.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/instances/KEP_p50_n17_k3_l4.txt\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/instances/KEP_p50_n17_k3_l7.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/instances/KEP_p50_n17_k3_l7.txt\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/instances/KEP_p50_n17_k5_l17.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/instances/KEP_p50_n17_k5_l17.txt\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/instances/KEP_p50_n3_k3_l13.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/instances/KEP_p50_n3_k3_l13.txt\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/instances/KEP_p50_n3_k3_l4.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/instances/KEP_p50_n3_k3_l4.txt\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/instances/KEP_p50_n3_k3_l7.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/instances/KEP_p50_n3_k3_l7.txt\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/instances/KEP_p50_n3_k5_l17.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/instances/KEP_p50_n3_k5_l17.txt\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/instances/KEP_p50_n6_k3_l13.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/instances/KEP_p50_n6_k3_l13.txt\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/instances/KEP_p50_n6_k3_l4.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/instances/KEP_p50_n6_k3_l4.txt\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/instances/KEP_p50_n6_k3_l7.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/instances/KEP_p50_n6_k3_l7.txt\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/instances/KEP_p50_n6_k5_l17.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/instances/KEP_p50_n6_k5_l17.txt\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/instances/KEP_p9_n0_k3_l0.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/instances/KEP_p9_n0_k3_l0.txt\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/instances/KEP_p9_n1_k3_l3.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/instances/KEP_p9_n1_k3_l3.txt\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/instances/test.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/instances/test.txt\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/rein/solution/Arbre.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/rein/solution/Arbre.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/rein/solution/Chaine.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/rein/solution/Chaine.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/rein/solveur/ArbreSequences.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/rein/solveur/ArbreSequences.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/rein/solveur/RechercheArbre.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/rein/solveur/RechercheArbre.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique2.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique2.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/rein/test/AllSolveurs.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/rein/test/AllSolveurs.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/rein/transplantation/Cycle.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/rein/transplantation/Cycle.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/rein/transplantation/Sequence.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/rein/transplantation/Sequence.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/rein/solution/Arbre.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/rein/solution/Arbre.class\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/rein/solution/Chaine.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/rein/solution/Chaine.class\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/rein/solveur/StrategieBasique.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/rein/solveur/StrategieBasique.class\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/rein/transplantation/Cycle.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/rein/transplantation/Cycle.class\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/rein/transplantation/Sequence.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/rein/transplantation/Sequence.class\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"Class\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\n      <map>\n        <entry key=\"$PROJECT_DIR$\" value=\"dev\" />\n      </map>\n    </option>\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"GitSEFilterConfiguration\">\n    <file-type-list>\n      <filtered-out-file-type name=\"LOCAL_BRANCH\" />\n      <filtered-out-file-type name=\"REMOTE_BRANCH\" />\n      <filtered-out-file-type name=\"TAG\" />\n      <filtered-out-file-type name=\"COMMIT_BY_MESSAGE\" />\n    </file-type-list>\n  </component>\n  <component name=\"HighlightingSettingsPerFile\">\n    <setting file=\"file://$PROJECT_DIR$/src/main/java/com/rein/transplantation/Cycle.java\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/pom.xml\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/src/main/java/com/rein/io/InstanceReader.java\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/src/main/java/com/rein/instance/Noeud.java\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/src/main/java/com/rein/transplantation/Sequence.java\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/src/main/java/com/rein/solution/Solution.java\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique.java\" root0=\"FORCE_HIGHLIGHTING\" />\n  </component>\n  <component name=\"MarkdownSettingsMigration\">\n    <option name=\"stateVersion\" value=\"1\" />\n  </component>\n  <component name=\"MavenImportPreferences\">\n    <option name=\"generalSettings\">\n      <MavenGeneralSettings>\n        <option name=\"useMavenConfig\" value=\"true\" />\n      </MavenGeneralSettings>\n    </option>\n  </component>\n  <component name=\"ProjectId\" id=\"27SUnC0SlEJiuSSWMXiQmxdrOdb\" />\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">\n    <property name=\"Git.Branch.Popup.ShowAllRemotes\" value=\"true\" />\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\n  </component>\n  <component name=\"RunManager\" selected=\"Application.ArbreSequences\">\n    <configuration name=\"AllSolveurs\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.rein.test.AllSolveurs\" />\n      <module name=\"rein-poo-le4\" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"com.rein.test.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"Arbre\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.rein.solution.Arbre\" />\n      <module name=\"rein-poo-le4\" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"com.rein.solution.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"ArbreSequences\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.rein.solveur.ArbreSequences\" />\n      <module name=\"rein-poo-le4\" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"com.rein.solveur.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"RechercheArbre\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.rein.solveur.RechercheArbre\" />\n      <module name=\"rein-poo-le4\" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"com.rein.solveur.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"StrategieBasique2\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.rein.solveur.StrategieBasique2\" />\n      <module name=\"rein-poo-le4\" />\n      <option name=\"PROGRAM_PARAMETERS\" value=\"-inst KEP_p250_n83_k5_l17.txt -dSol solutions_test\" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"com.rein.solveur.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration default=\"true\" type=\"JetRunConfigurationType\">\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration default=\"true\" type=\"KotlinStandaloneScriptRunConfigurationType\">\n      <option name=\"filePath\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <list>\n      <item itemvalue=\"Application.Arbre\" />\n      <item itemvalue=\"Application.StrategieBasique2\" />\n      <item itemvalue=\"Application.AllSolveurs\" />\n      <item itemvalue=\"Application.RechercheArbre\" />\n      <item itemvalue=\"Application.ArbreSequences\" />\n    </list>\n    <recent_temporary>\n      <list>\n        <item itemvalue=\"Application.ArbreSequences\" />\n        <item itemvalue=\"Application.AllSolveurs\" />\n        <item itemvalue=\"Application.Arbre\" />\n        <item itemvalue=\"Application.RechercheArbre\" />\n        <item itemvalue=\"Application.StrategieBasique2\" />\n      </list>\n    </recent_temporary>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"5dbe1660-c9ae-497e-83b8-a85dacef2117\" name=\"Changes\" comment=\"init operateurs\" />\n      <created>1649313157800</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1649313157800</updated>\n    </task>\n    <task id=\"LOCAL-00001\" summary=\"sout martrein\">\n      <created>1649313386845</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1649313386845</updated>\n    </task>\n    <task id=\"LOCAL-00002\" summary=\"test\">\n      <created>1652250070126</created>\n      <option name=\"number\" value=\"00002\" />\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1652250070127</updated>\n    </task>\n    <task id=\"LOCAL-00003\" summary=\"init operateurs\">\n      <created>1652263593028</created>\n      <option name=\"number\" value=\"00003\" />\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1652263593028</updated>\n    </task>\n    <task id=\"LOCAL-00004\" summary=\"init operateurs + recherche locale\">\n      <created>1653124103306</created>\n      <option name=\"number\" value=\"00004\" />\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1653124103306</updated>\n    </task>\n    <task id=\"LOCAL-00005\" summary=\"propal°1 arbre\">\n      <created>1653210542262</created>\n      <option name=\"number\" value=\"00005\" />\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1653210542262</updated>\n    </task>\n    <task id=\"LOCAL-00006\" summary=\"propal°2 arbre\">\n      <created>1653399302500</created>\n      <option name=\"number\" value=\"00006\" />\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1653399302500</updated>\n    </task>\n    <task id=\"LOCAL-00007\" summary=\"problème d'orientation des flèches pour les cycles de 3 résolu\">\n      <created>1653563731687</created>\n      <option name=\"number\" value=\"00007\" />\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1653563731687</updated>\n    </task>\n    <task id=\"LOCAL-00008\" summary=\"affichage flèche directions canva + liste des altruistes non-utilisés\">\n      <created>1653581429585</created>\n      <option name=\"number\" value=\"00008\" />\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1653581429585</updated>\n    </task>\n    <task id=\"LOCAL-00009\" summary=\"affichage liste des paires non-utilisés\">\n      <created>1653582116200</created>\n      <option name=\"number\" value=\"00009\" />\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1653582116200</updated>\n    </task>\n    <task id=\"LOCAL-00010\" summary=\"affichage nombre de noeuds non-utilisés\">\n      <created>1653582553616</created>\n      <option name=\"number\" value=\"00010\" />\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1653582553616</updated>\n    </task>\n    <task id=\"LOCAL-00011\" summary=\"merge conflits interface-graphique vers dev fait\">\n      <created>1654276345022</created>\n      <option name=\"number\" value=\"00011\" />\n      <option name=\"presentableId\" value=\"LOCAL-00011\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1654276345022</updated>\n    </task>\n    <task id=\"LOCAL-00012\" summary=\"Légères corrections et nettoyage\">\n      <created>1654360045711</created>\n      <option name=\"number\" value=\"00012\" />\n      <option name=\"presentableId\" value=\"LOCAL-00012\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1654360045711</updated>\n    </task>\n    <task id=\"LOCAL-00013\" summary=\"Refonte méthode solve() de ArbreSequences\">\n      <created>1654767762042</created>\n      <option name=\"number\" value=\"00013\" />\n      <option name=\"presentableId\" value=\"LOCAL-00013\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1654767762042</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"14\" />\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State>\n              <option name=\"FILTERS\">\n                <map>\n                  <entry key=\"branch\">\n                    <value>\n                      <list>\n                        <option value=\"dev\" />\n                      </list>\n                    </value>\n                  </entry>\n                </map>\n              </option>\n            </State>\n          </value>\n        </entry>\n        <entry key=\"a52d546c-5c65-49e3-9de2-fc43d76e79bd\">\n          <value>\n            <State>\n              <option name=\"CUSTOM_BOOLEAN_PROPERTIES\">\n                <map>\n                  <entry key=\"Show.Git.Branches\" value=\"true\" />\n                </map>\n              </option>\n              <option name=\"FILTERS\">\n                <map>\n                  <entry key=\"branch\">\n                    <value>\n                      <list>\n                        <option value=\"origin/strategie-1\" />\n                      </list>\n                    </value>\n                  </entry>\n                </map>\n              </option>\n            </State>\n          </value>\n        </entry>\n      </map>\n    </option>\n    <option name=\"RECENT_FILTERS\">\n      <map>\n        <entry key=\"Branch\">\n          <value>\n            <list>\n              <RecentGroup>\n                <option name=\"FILTER_VALUES\">\n                  <option value=\"origin/interface-graphique\" />\n                </option>\n              </RecentGroup>\n              <RecentGroup>\n                <option name=\"FILTER_VALUES\">\n                  <option value=\"origin/strategie-1\" />\n                </option>\n              </RecentGroup>\n            </list>\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"sout martrein\" />\n    <MESSAGE value=\"test\" />\n    <MESSAGE value=\"init operateurs\" />\n    <MESSAGE value=\"init operateurs + recherche locale\" />\n    <MESSAGE value=\"propal°1 arbre\" />\n    <MESSAGE value=\"propal°2 arbre\" />\n    <MESSAGE value=\"problème d'orientation des flèches pour les cycles de 3 résolu\" />\n    <MESSAGE value=\"affichage flèche directions canva + liste des altruistes non-utilisés\" />\n    <MESSAGE value=\"affichage liste des paires non-utilisés\" />\n    <MESSAGE value=\"affichage nombre de noeuds non-utilisés\" />\n    <MESSAGE value=\"merge conflits interface-graphique vers dev fait\" />\n    <MESSAGE value=\"Légères corrections et nettoyage\" />\n    <MESSAGE value=\"Refonte méthode solve() de ArbreSequences\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Refonte méthode solve() de ArbreSequences\" />\n  </component>\n  <component name=\"XDebuggerManager\">\n    <breakpoint-manager>\n      <breakpoints>\n        <breakpoint enabled=\"true\" type=\"java-exception\">\n          <properties class=\"java.lang.StackOverflowError\" package=\"java.lang\" />\n          <option name=\"timeStamp\" value=\"1\" />\n        </breakpoint>\n      </breakpoints>\n    </breakpoint-manager>\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision a421b69d76b10a8ad82417f71742fe7c5d15eb1c)
++++ b/.idea/workspace.xml	(date 1655277952176)
+@@ -4,76 +4,17 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="5dbe1660-c9ae-497e-83b8-a85dacef2117" name="Changes" comment="Refonte méthode solve() de ArbreSequences">
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_06_2022_11_31_[Changes]/Altruiste.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_06_2022_11_31_[Changes]/shelved.patch" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_06_2022_11_31__Changes_.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_06_2022_11_40_[Changes]/shelved.patch" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_06_2022_11_40__Changes_.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_03_06_2022_11_32_[Changes]1/Altruiste.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_03_06_2022_11_32_[Changes]1/shelved.patch" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_03_06_2022_11_32__Changes_1.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]/shelved.patch" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" beforeDir="false" />
++    <list default="true" id="5dbe1660-c9ae-497e-83b8-a85dacef2117" name="Changes" comment="update fix">
++      <change afterPath="$PROJECT_DIR$/.idea/libraries/cplex.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/libraries/cplex1.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/java/com/rein/solveur/Cplex.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/instances/KEP_p100_n0_k3_l0.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p100_n0_k3_l0.txt" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/instances/KEP_p100_n11_k3_l13.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p100_n11_k3_l13.txt" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/instances/KEP_p100_n11_k3_l4.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p100_n11_k3_l4.txt" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/instances/KEP_p100_n11_k3_l7.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p100_n11_k3_l7.txt" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/instances/KEP_p100_n11_k5_l17.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p100_n11_k5_l17.txt" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/instances/KEP_p100_n33_k3_l13.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p100_n33_k3_l13.txt" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/instances/KEP_p100_n33_k3_l4.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p100_n33_k3_l4.txt" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/instances/KEP_p100_n33_k3_l7.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p100_n33_k3_l7.txt" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/instances/KEP_p100_n33_k5_l17.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p100_n33_k5_l17.txt" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/instances/KEP_p100_n5_k3_l13.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p100_n5_k3_l13.txt" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/instances/KEP_p100_n5_k3_l4.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p100_n5_k3_l4.txt" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/instances/KEP_p100_n5_k3_l7.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p100_n5_k3_l7.txt" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/instances/KEP_p100_n5_k5_l17.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p100_n5_k5_l17.txt" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/instances/KEP_p18_n0_k4_l0.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p18_n0_k4_l0.txt" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/instances/KEP_p18_n2_k4_l4.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p18_n2_k4_l4.txt" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/instances/KEP_p250_n0_k3_l0.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p250_n0_k3_l0.txt" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/instances/KEP_p250_n13_k3_l13.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p250_n13_k3_l13.txt" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/instances/KEP_p250_n13_k3_l4.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p250_n13_k3_l4.txt" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/instances/KEP_p250_n13_k3_l7.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p250_n13_k3_l7.txt" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/instances/KEP_p250_n13_k5_l17.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p250_n13_k5_l17.txt" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/instances/KEP_p250_n28_k3_l13.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p250_n28_k3_l13.txt" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/instances/KEP_p250_n28_k3_l4.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p250_n28_k3_l4.txt" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/instances/KEP_p250_n28_k3_l7.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p250_n28_k3_l7.txt" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/instances/KEP_p250_n28_k5_l17.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p250_n28_k5_l17.txt" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/instances/KEP_p250_n83_k3_l13.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p250_n83_k3_l13.txt" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/instances/KEP_p250_n83_k3_l4.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p250_n83_k3_l4.txt" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/instances/KEP_p250_n83_k3_l7.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p250_n83_k3_l7.txt" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/instances/KEP_p250_n83_k5_l17.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p250_n83_k5_l17.txt" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/instances/KEP_p50_n0_k3_l0.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p50_n0_k3_l0.txt" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/instances/KEP_p50_n17_k3_l13.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p50_n17_k3_l13.txt" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/instances/KEP_p50_n17_k3_l4.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p50_n17_k3_l4.txt" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/instances/KEP_p50_n17_k3_l7.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p50_n17_k3_l7.txt" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/instances/KEP_p50_n17_k5_l17.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p50_n17_k5_l17.txt" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/instances/KEP_p50_n3_k3_l13.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p50_n3_k3_l13.txt" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/instances/KEP_p50_n3_k3_l4.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p50_n3_k3_l4.txt" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/instances/KEP_p50_n3_k3_l7.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p50_n3_k3_l7.txt" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/instances/KEP_p50_n3_k5_l17.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p50_n3_k5_l17.txt" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/instances/KEP_p50_n6_k3_l13.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p50_n6_k3_l13.txt" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/instances/KEP_p50_n6_k3_l4.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p50_n6_k3_l4.txt" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/instances/KEP_p50_n6_k3_l7.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p50_n6_k3_l7.txt" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/instances/KEP_p50_n6_k5_l17.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p50_n6_k5_l17.txt" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/instances/KEP_p9_n0_k3_l0.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p9_n0_k3_l0.txt" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/instances/KEP_p9_n1_k3_l3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p9_n1_k3_l3.txt" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/instances/test.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/test.txt" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solution/Arbre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solution/Arbre.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solution/Chaine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solution/Chaine.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/instances/test.txt" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/rein-poo-le4.iml" beforeDir="false" afterPath="$PROJECT_DIR$/rein-poo-le4.iml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solution/Selecteur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solution/Selecteur.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solveur/ArbreSequences.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solveur/ArbreSequences.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solveur/RechercheArbre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solveur/RechercheArbre.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique2.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/test/AllSolveurs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/test/AllSolveurs.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/transplantation/Cycle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/transplantation/Cycle.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/transplantation/Sequence.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/transplantation/Sequence.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/solution/Arbre.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/solution/Arbre.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/solution/Chaine.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/solution/Chaine.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/solveur/StrategieBasique.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/solveur/StrategieBasique.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/transplantation/Cycle.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/transplantation/Cycle.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/transplantation/Sequence.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/transplantation/Sequence.class" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -104,13 +45,13 @@
+     </file-type-list>
+   </component>
+   <component name="HighlightingSettingsPerFile">
+-    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/transplantation/Cycle.java" root0="FORCE_HIGHLIGHTING" />
++    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/transplantation/Sequence.java" root0="FORCE_HIGHLIGHTING" />
+     <setting file="file://$PROJECT_DIR$/pom.xml" root0="FORCE_HIGHLIGHTING" />
+     <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/io/InstanceReader.java" root0="FORCE_HIGHLIGHTING" />
+     <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/instance/Noeud.java" root0="FORCE_HIGHLIGHTING" />
+-    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/transplantation/Sequence.java" root0="FORCE_HIGHLIGHTING" />
++    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique.java" root0="FORCE_HIGHLIGHTING" />
+     <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/solution/Solution.java" root0="FORCE_HIGHLIGHTING" />
+-    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique.java" root0="FORCE_HIGHLIGHTING" />
++    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/transplantation/Cycle.java" root0="FORCE_HIGHLIGHTING" />
+   </component>
+   <component name="MarkdownSettingsMigration">
+     <option name="stateVersion" value="1" />
+@@ -133,7 +74,7 @@
+     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+   </component>
+-  <component name="RunManager" selected="Application.ArbreSequences">
++  <component name="RunManager" selected="Application.AllSolveurs">
+     <configuration name="AllSolveurs" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+       <option name="MAIN_CLASS_NAME" value="com.rein.test.AllSolveurs" />
+       <module name="rein-poo-le4" />
+@@ -173,8 +114,8 @@
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration name="RechercheArbre" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+-      <option name="MAIN_CLASS_NAME" value="com.rein.solveur.RechercheArbre" />
++    <configuration name="Cplex" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
++      <option name="MAIN_CLASS_NAME" value="com.rein.solveur.Cplex" />
+       <module name="rein-poo-le4" />
+       <extension name="coverage">
+         <pattern>
+@@ -186,10 +127,9 @@
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration name="StrategieBasique2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+-      <option name="MAIN_CLASS_NAME" value="com.rein.solveur.StrategieBasique2" />
++    <configuration name="RechercheArbre" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
++      <option name="MAIN_CLASS_NAME" value="com.rein.solveur.RechercheArbre" />
+       <module name="rein-poo-le4" />
+-      <option name="PROGRAM_PARAMETERS" value="-inst KEP_p250_n83_k5_l17.txt -dSol solutions_test" />
+       <extension name="coverage">
+         <pattern>
+           <option name="PATTERN" value="com.rein.solveur.*" />
+@@ -213,18 +153,18 @@
+     </configuration>
+     <list>
+       <item itemvalue="Application.Arbre" />
+-      <item itemvalue="Application.StrategieBasique2" />
+       <item itemvalue="Application.AllSolveurs" />
+       <item itemvalue="Application.RechercheArbre" />
+       <item itemvalue="Application.ArbreSequences" />
++      <item itemvalue="Application.Cplex" />
+     </list>
+     <recent_temporary>
+       <list>
++        <item itemvalue="Application.AllSolveurs" />
++        <item itemvalue="Application.Cplex" />
+         <item itemvalue="Application.ArbreSequences" />
+-        <item itemvalue="Application.AllSolveurs" />
+         <item itemvalue="Application.Arbre" />
+         <item itemvalue="Application.RechercheArbre" />
+-        <item itemvalue="Application.StrategieBasique2" />
+       </list>
+     </recent_temporary>
+   </component>
+Index: src/main/java/com/rein/solveur/Cplex.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/rein/solveur/Cplex.java b/src/main/java/com/rein/solveur/Cplex.java
+new file mode 100644
+--- /dev/null	(date 1655239044174)
++++ b/src/main/java/com/rein/solveur/Cplex.java	(date 1655239044174)
+@@ -0,0 +1,174 @@
++package com.rein.solveur;
++
++import com.rein.instance.*;
++import com.rein.io.InstanceReader;
++import com.rein.io.exception.ReaderException;
++import com.rein.solution.Arbre;
++import com.rein.solution.SequencesPossibles;
++import com.rein.solution.Solution;
++import com.rein.transplantation.Sequence;
++import ilog.concert.*;
++import ilog.cplex.*;
++
++import java.util.ArrayList;
++
++public class Cplex implements Solveur {
++
++    private IloCplex iloCplex;
++    private IloIntVar[][] x;
++    private IloNumVar[] u;
++    private Instance instance;
++
++    @Override
++    public String getNom() {
++        return "CPLEX";
++    }
++
++    @Override
++    public Solution solve(Instance instance) {
++        this.instance = instance;
++        try{
++            this.buildModel();
++            if(this.iloCplex.solve()){
++                System.out.println("Cplex résolu !");
++                System.out.println(iloCplex.getStatus());
++                System.out.println(iloCplex.getObjValue());
++                System.out.println(iloCplex.getBestObjValue());
++            }
++            Solution s = new Solution(instance);
++            return s;
++        } catch (Exception e) {
++            System.err.println(e);
++        }
++        return null;
++    }
++
++    private void buildModel() throws IloException {
++        int nbNoeuds = instance.getNbAltruistes() + instance.getNbPaires();
++
++        this.iloCplex = new IloCplex();
++        //defXVarDecision();
++        //defUVarDecision();
++        //objective();
++        //contrainte3();
++        //contrainte4();
++        //contrainte5();
++        //contrainte6();
++    }
++
++    /*private void defXVarDecision() throws IloException
++    {
++        // on recupere le nombre de points dans l’instance
++        // 0 : dépot, 1 : premier client donc getNbClients() + 1
++        x = new IloIntVar[nbPoints][nbPoints];
++        for (int i = 0; i < nbPoints; ++i) {
++            for (int j = 0; j < nbPoints; ++j) {
++                if (i != j) {
++                    x[i][j] = iloCplex.intVar(0, 1, "x" + i + "_" + j);
++                }
++            }
++        }
++    }
++
++    private void defUVarDecision() throws IloException {
++        // on recupere le nombre de points dans l’instance
++        // 0 : dépot, 1 : premier client donc getNbClients() + 1
++        u = new IloIntVar[nbPoints];
++
++        for (int i = 1; i < nbPoints; ++i) {
++            int demande = instance.getClients().get(i-1).getDemande();
++            int capacite = instance.getCapacite();
++            u[i] = iloCplex.numVar(demande, capacite, "u_" + i );
++
++        }
++    }
++
++
++    private void objective() throws IloException
++    {
++        // on recupere le nombre de points dans l’instance
++        // 0 : dépot, 1 : premier client donc getNbClients() + 1
++        IloLinearNumExpr expr = iloCplex.linearNumExpr();
++
++        for (int i = 0; i < nbPoints; ++i) {
++            for (int j = 0; j < nbPoints; ++j) {
++                if (i != j) {
++                    Point pointI, pointJ;
++                    if(i == 0){
++                        pointI = instance.getDepot();
++                    }else{
++                        pointI = instance.getClients().get(i-1);
++                    }
++                    if(j == 0){
++                        pointJ = instance.getDepot();
++                    } else {
++                        pointJ = instance.getClients().get(j - 1);
++                    }
++                    int cout = pointI.getCoutVers(pointJ);
++                    expr.addTerm(x[i][j], cout);
++
++                }
++            }
++        }
++
++        this.iloCplex.addMinimize(expr);
++
++    }*/
++
++    public static ArrayList<Sequence> getSequencesByNoeud(Instance instance, Noeud nSearch){
++        ArrayList<Sequence> res = new ArrayList<>();
++        Arbre a = new Arbre(instance);
++        SequencesPossibles sequencesDetectees = a.detectionChainesCycles(12, 6);
++        sequencesDetectees.getCycles().forEach(cycle -> {
++            for(Noeud noeud : cycle.getListeNoeuds())
++                if(noeud.getId() == nSearch.getId())
++                    res.add(cycle);
++        });
++        sequencesDetectees.getChaines().forEach(chaine -> {
++            for(Noeud noeud : chaine.getListeNoeuds())
++                if(noeud.getId() == nSearch.getId())
++                    res.add(chaine);
++        });
++        return res;
++    }
++
++    public static void cplex(Instance instance){
++        try{
++            IloCplex cplex = new IloCplex();
++            IloNumVar[] tabNumInt = new IloIntVar[instance.getEchanges().size()];
++            int sommeBenef = 0;
++            //ArrayList<ArrayList<Sequence>> listeListeSeqByPaires = new ArrayList<>();
++
++            for(Altruiste altruiste : instance.getTabAltruistes()){
++                ArrayList<Sequence> sequences = getSequencesByNoeud(instance, altruiste);
++            }
++
++
++
++                //objective.addTerm();
++                //tabIloInt[i] = {instance.getEchanges().get(i), instance.getEchanges().get(i).getBenefMedical()};
++                // r.addEd(instance.getEchanges().get(i), instance.getEchanges().get(i).getBenefMedical());
++                //cplex.add(tabIloInt);
++                //cplex.addMaximize(objective);
++            //cplex.add(tabNumInt);
++            if(cplex.solve()){
++                System.out.println("Modèle résolu");
++                System.out.println("obj = " + cplex.getObjValue());
++            } else {
++                System.out.println("Modèle pas résolu");
++            }
++            /*for(int i = 0; i < instance.getEchanges().size(); i++){
++
++            }*/
++        } catch (Exception e) {
++            e.printStackTrace();
++        }
++    }
++
++    public static void main(String[] args) throws ReaderException {
++        InstanceReader reader = new InstanceReader("instances/KEP_p250_n13_k3_l4.txt");
++        Instance i = reader.readInstance();
++        Cplex cplex = new Cplex();
++        Solution plne = cplex.solve(i);
++    }
++}
+Index: rein-poo-le4.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule=\"true\" type=\"JAVA_MODULE\" version=\"4\">\n  <component name=\"NewModuleRootManager\" LANGUAGE_LEVEL=\"JDK_14\">\n    <output url=\"file://$MODULE_DIR$/target/classes\" />\n    <output-test url=\"file://$MODULE_DIR$/target/test-classes\" />\n    <content url=\"file://$MODULE_DIR$\">\n      <sourceFolder url=\"file://$MODULE_DIR$/src/main/java\" isTestSource=\"false\" />\n      <excludeFolder url=\"file://$MODULE_DIR$/target\" />\n    </content>\n    <content url=\"file://$MODULE_DIR$\">\n      <excludeFolder url=\"file://$MODULE_DIR$/target\" />\n    </content>\n    <orderEntry type=\"inheritedJdk\" />\n    <orderEntry type=\"sourceFolder\" forTests=\"false\" />\n    <orderEntry type=\"library\" name=\"commons-lang3-3.10\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"apache.commons.lang3\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"commons-cli-1.5\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"commons-cli-1.5.0\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Maven: org.apache.commons:commons-lang3:3.3.2\" level=\"project\" />\n    <orderEntry type=\"library\" name=\"Maven: commons-cli:commons-cli:1.5.0\" level=\"project\" />\n  </component>\n</module>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/rein-poo-le4.iml b/rein-poo-le4.iml
+--- a/rein-poo-le4.iml	(revision a421b69d76b10a8ad82417f71742fe7c5d15eb1c)
++++ b/rein-poo-le4.iml	(date 1655215968860)
+@@ -4,10 +4,10 @@
+     <output url="file://$MODULE_DIR$/target/classes" />
+     <output-test url="file://$MODULE_DIR$/target/test-classes" />
+     <content url="file://$MODULE_DIR$">
+-      <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
+       <excludeFolder url="file://$MODULE_DIR$/target" />
+     </content>
+     <content url="file://$MODULE_DIR$">
++      <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
+       <excludeFolder url="file://$MODULE_DIR$/target" />
+     </content>
+     <orderEntry type="inheritedJdk" />
+@@ -18,5 +18,7 @@
+     <orderEntry type="library" name="commons-cli-1.5.0" level="project" />
+     <orderEntry type="library" name="Maven: org.apache.commons:commons-lang3:3.3.2" level="project" />
+     <orderEntry type="library" name="Maven: commons-cli:commons-cli:1.5.0" level="project" />
++    <orderEntry type="library" name="cplex" level="project" />
++    <orderEntry type="library" name="cplex1" level="project" />
+   </component>
+ </module>
+\ No newline at end of file

@@ -12,11 +12,11 @@ import com.rein.instance.Instance;
 import com.rein.instance.Noeud;
 import com.rein.io.InstanceReader;
 import com.rein.operateur.*;
-import com.rein.solution.Chaine;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
-public abstract class Sequence implements Comparable {
+public abstract class Sequence implements Comparable{
     //private int id = 0;
     private int benefMedicalSequence = 0;
     private ArrayList<Noeud> listeNoeuds =new ArrayList<>();
@@ -34,6 +34,7 @@ public abstract class Sequence implements Comparable {
     public void decreaseBenefMedicalTotal(int nb){
         this.benefMedicalSequence -= nb;
     }
+
     public void calculBenefice(List<Echange> listeEchanges){
                if(this.listeNoeuds.size()>1){
             for(int i=0;i<this.listeNoeuds.size()-1;i++){
@@ -41,7 +42,7 @@ public abstract class Sequence implements Comparable {
                 Noeud receveur = this.listeNoeuds.get(i+1);
                 //calcul du bénéfice (a vers b)
                 for(Echange ech: listeEchanges){
-                    if(donneur.getId() == ech.getDonneur().getId() && receveur.getId() == ech.getReceveur().getId())
+                    if(donneur.getId() ==ech.getDonneur().getId() && receveur.getId()== ech.getReceveur().getId())
                         this.benefMedicalSequence += ech.getBenefMedical();
                 }
                 if(this instanceof Cycle){
@@ -74,20 +75,11 @@ public abstract class Sequence implements Comparable {
     public int getBenefMedicalSequence() {
         return benefMedicalSequence;
     }
-    public void setTailleMaxSequence(int tailleMaxSequence) {
-        this.tailleMaxSequence = tailleMaxSequence;
-    }
-
-    public void setListeNoeuds(ArrayList<Noeud> listeNoeuds) {
-        this.listeNoeuds = listeNoeuds;
-    }
 
     public int getTailleMaxSequence() {
         return tailleMaxSequence;
     }
-    public void setBenefMedicalTotal(int benefMedicalTotal) {
-        this.benefMedicalSequence = benefMedicalTotal;
-    }
+
     public ArrayList<Noeud> getListeNoeuds() {
         return listeNoeuds;
     }
@@ -98,113 +90,87 @@ public abstract class Sequence implements Comparable {
         return noeuds;
     }
 
+    public void setTailleMaxSequence(int tailleMaxSequence) {
+        this.tailleMaxSequence = tailleMaxSequence;
+    }
+
+    public void setBenefMedicalTotal(int benefMedicalSequence) {
+        this.benefMedicalSequence = benefMedicalSequence;
+    }
+
     public boolean doInsertion(InsertionNoeud infos){
-        return false;
-        /*if(infos==null) return false;
+        System.out.println("doInsertion()");
+        if(infos == null) return false;
         if(!infos.isMouvementRealisable()) return false;
 
-        Client client = infos.getClient();
+        Noeud noeud = infos.getNoeud();
 
-        this.coutTotal += infos.getDeltaCout();
-        this.clients.add(infos.getPosition(), client);
-        this.demandeTotale += client.getQuantiteAMeLivrer();
+        this.benefMedicalSequence += infos.getDeltaBeneficeMedical();
+        this.listeNoeuds.add(infos.getPosition(), noeud);
 
-        if(!this.check()){
-            System.out.println("ERROR doInsertion");
-            System.out.println(infos);
-            System.exit(-1);
-        }
-        return true;*/
+        //this.ajouterNoeudNonUtilise(noeud, infos.getPosition());
+
+        System.out.println(noeud.getId() + " : " + noeud.getClass() + " ajouté dans " + infos.getSequence());
+        return true;
     }
 
-    public boolean doDeplacement(IntraDeplacement infos){
-        return false;
-        /*if(infos==null) return false;
-        if(!infos.isMouvementRealisable()) return false;
-
-        Client clientI = infos.getClientI();
-        Client clientJ = infos.getClientJ();
-        int positionI = infos.getPositionI();
-        int positionJ = infos.getPositionJ();
-
-        // déplacement du client I avant le client J
-        //System.out.println("je veux déplacer le client°" + clientI.getId() + " en position " + positionI + ", avant le client°" + clientJ.getId() + " en position " + positionJ);
-        this.clients.remove(positionI);
-        if(positionI < positionJ) this.clients.add(positionJ-1, clientI);
-        if(positionI > positionJ) this.clients.add(positionJ, clientI);
-        //System.out.println("le client en position " + this.clients.indexOf(clientI) + " est le " + this.clients.get(this.clients.indexOf(clientI)).getId());
-
-        for(Client c : this.clients)
-            System.out.print(c.getId() + " ");
-
-        // maj du coût du déplacement
-        //this.coutTotal += this.deltaCoutDeplacement(positionI, positionJ);
-        this.coutTotal += infos.getDeltaCout();
-
-        if(!this.check()){
-            System.out.println("ERROR doDeplacement intra");
-            System.out.println(infos);
-            System.exit(-1);
+    private boolean isNoeudAjoutable(int position) {
+        if ( (this.getListeNoeuds().size() < this.getTailleMaxSequence()) && (position > 0) && (position <= this.getListeNoeuds().size()) ) {
+            return true;
+        }else {
+            return false;
         }
-        return true;*/
     }
 
-    public boolean doDeplacement(InterDeplacement infos){
-        return false;
-        /*if(infos==null) return false;
-        if(!infos.isMouvementAmeliorant()) return false;
-
-        Client clientI = infos.getClientI();
-        int positionI = infos.getPositionI();
-        int positionJ = infos.getPositionJ();
-
-        // déplacement du client I avant le client J
-        this.clients.remove(positionI);
-        infos.getAutreTournee().clients.add(positionJ, clientI);
-
-        // maj du coût du déplacement
-        this.coutTotal += infos.getDeltaCoutTournee();
-        infos.getAutreTournee().coutTotal += infos.getDeltaCoutAutreTournee();
-
-        this.demandeTotale -= clientI.getQuantiteAMeLivrer();
-        infos.getAutreTournee().demandeTotale += clientI.getQuantiteAMeLivrer();
-
-        if(!this.check()){
-            System.out.println("ERROR doDeplacement inter tournee courante");
-            System.out.println(infos);
-            System.exit(-1);
-        }
-        if(!infos.getAutreTournee().check()){
-            System.out.println("ERROR doDeplacement inter autre tournee");
-            System.out.println(infos);
-            System.exit(-1);
-        }
-        return true;*/
-    }
-
-    /*public OperateurLocal getMeilleurOperateurInter(TypeOperateurLocal type, Sequence autreSequence) {
-        OperateurLocal best = OperateurLocal.getOperateur(type);
-        if(this.equals(autreSequence)) return best;
-        for(int i=0; i<this.listeNoeuds.size(); i++) {
-            for(int j=0; j<autreSequence.listeNoeuds.size()+1; j++) {
-                OperateurInterSequence op = OperateurLocal.getOperateurInter(type, this, autreSequence, i, j);
-                if(op.isMeilleur(best) && !ListeTabou.getInstance().isTabou(op)) {
-                    best = op;
-                }
+    private boolean isNoeudCompatible(Noeud n, int position) {
+        Noeud noeudPrecedent = this.getListeNoeuds().get(position-1);
+        if (this.getListeNoeuds().size() == position) { // Si le noeud est ajouté en bout de chaine
+            if ( noeudPrecedent.getBenefMedicalVers(n) != -1 ) {
+                return true;
+            }else {
+                return false;
+            }
+        }else {
+            Noeud noeudSuivant = this.getListeNoeuds().get(position);
+            if ( (noeudPrecedent.getBenefMedicalVers(n) != -1 ) && (n.getBenefMedicalVers(noeudSuivant) > -1) ) {
+                return true;
+            }else {
+                return false;
             }
         }
-        return best;
+    }
+
+    /*private int deltaCoutInsertionFin(Noeud noeudToAdd){
+        return this.deltaCoutInsertion(this.getNbNoeuds(), noeudToAdd);
+    }*/
+
+    /*public int deltaCoutInsertion(int position, Noeud noeudToAdd) {
+        if(!this.isPositionInsertionValide(position) || noeudToAdd == null)
+            return Integer.MAX_VALUE;
+
+        int deltaCout = 0;
+
+        if(!this.listeNoeuds.isEmpty()){
+            Noeud currentNoeud = this.getCurrent(position);
+            Noeud lastNoeud = this.getPrec(position);
+
+            deltaCout -= lastNoeud.getBenefMedicalVers(currentNoeud);
+            deltaCout += lastNoeud.getBenefMedicalVers(noeudToAdd);
+            deltaCout += noeudToAdd.getBenefMedicalVers(currentNoeud);
+        }
+
+        return deltaCout;
     }*/
 
     // renvoie le noeud de la séquence qui précéde la position position
     // position doit être comprise entre 0 et n-1
-    private Noeud getPrec(int position){
+    public Noeud getPrec(int position){
         if(position == 0) return this.getListeNoeuds().get(position);
         return this.getListeNoeuds().get(position-1);
     }
 
     // renvoie le noeud de la séquence qui est actuellemment  la position position
-    private Noeud getCurrent(int position) {
+    public Noeud getCurrent(int position) {
         if(position == this.getNbNoeuds()) return this.getListeNoeuds().get(0);
         return this.getListeNoeuds().get(position);
     }
@@ -225,17 +191,6 @@ public abstract class Sequence implements Comparable {
                 ", listeIdNoeuds=[" + this.getListeIdNoeuds() + "]}";
     }
 
-    public String toStringShort() {
-        String s = "";
-        s += "[";
-        for (Noeud n : this.getListeNoeuds()) {
-            s += n.getId() + " ";
-        }
-        s += "] : " + this.getBenefMedicalSequence();
-        return s;
-    }
-
-    //--
     public static void main(String[] args) {
         InstanceReader reader;
         try {

@@ -14,7 +14,6 @@ import org.apache.commons.lang3.ArrayUtils;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Map;
 
 public class StrategieBasique implements Solveur{
     private Solveur solveur;
@@ -23,7 +22,6 @@ public class StrategieBasique implements Solveur{
         return "StrategieBasique"; }
     @Override
     public Solution solve(Instance instance) {
-        System.out.println("Strategie basique DEBUT");
         Solution s = new Solution(instance);
         Noeud[] tabTest = instance.getTabNoeud();
         // Insertion des altruistes dans une chaine
@@ -44,10 +42,11 @@ public class StrategieBasique implements Solveur{
             Paire pRecherche = (Paire) tabTest[0]; // premiere paire du tableau
             //System.out.println("PAIRE SELECTIONNEE " + pRecherche);
             while(rechercheCycle){
-                Paire paireBest = (Paire) pRecherche.MeilleurNBenefice(meilleurBenef);
+                Paire paireBest = (Paire) pRecherche.getNoeudMeilleurNBenefice(meilleurBenef);
                 if(paireBest != null){
-                    if(paireBest.isPossible(pRecherche) && isPresent(tabTest,paireBest)) {
-                        //System.out.println("Cycle possible entre "+ pRecherche+ "et"+paireBest );
+
+                    if(paireBest.isPossible(pRecherche) && paireBest.isPresent(tabTest)) {
+                        System.out.println("Cycle possible entre "+ pRecherche+ "et"+paireBest );
                         Cycle cy = new Cycle(instance.getTailleMaxCycles());
                         cy.ajouterNoeud(pRecherche,0);
                         cy.ajouterNoeud(paireBest,1);
@@ -58,7 +57,7 @@ public class StrategieBasique implements Solveur{
                         // (on ne veut pas qu'elle recherche
                         // vu qu'elle est insérée dans le cycle avec notre paire de recherche)
                         // on supprime a la fin de la boucle for l'autre paire
-                        int index = recherchePlace(tabTest,paireBest);
+                        int index = paireBest.recherchePlace(tabTest);
                         if (index>-1) {
                             tabTest = ArrayUtils.remove(tabTest, index);
                         }
@@ -99,7 +98,6 @@ public class StrategieBasique implements Solveur{
         }
         //calcul du bénéfice total
         s.calculBenefice();
-        System.out.println("Strategie basique FIN");
         return s;
     }
     // Fonction pour savoir si le noeud est présent dans le tableau des paires pas encore insérées dans la solution
@@ -166,7 +164,7 @@ public class StrategieBasique implements Solveur{
                 }
                 //System.out.println("s1 : " + s1.toString() + "\n\tcheck : " + s1.check());
                 System.out.println("Checker : " + s1.check());
-                InterfaceWeb interfaceWeb = new InterfaceWeb(s1, "Stratégie basique");
+                InterfaceWeb interfaceWeb = new InterfaceWeb(s1, "StrategieBasique");
                 interfaceWeb.createHtmlFile();
             } catch(Exception e){
                 System.out.println(e.getMessage());

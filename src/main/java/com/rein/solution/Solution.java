@@ -6,9 +6,6 @@
 package com.rein.solution;
 import com.rein.instance.Instance;
 import com.rein.io.InstanceReader;
-import com.rein.operateur.OperateurInterSequence;
-import com.rein.operateur.OperateurIntraSequence;
-import com.rein.operateur.OperateurLocal;
 import com.rein.transplantation.Cycle;
 import com.rein.transplantation.Sequence;
 import java.util.ArrayList;
@@ -33,7 +30,6 @@ public class Solution {
     public Solution(Instance instance) {
         this.instance = instance;
         this.listeSequences = new ArrayList<>();
-        this.benefMedicalTotal = 0;
     }
 
     /**
@@ -107,6 +103,20 @@ public class Solution {
                 this.listeSequences.remove(seq);
             }
         }
+    }
+
+    public Solution generationSolution(SequencesPossibles sequencesSolution, Instance instance){
+        Solution s = new Solution(instance);
+        LinkedHashSet<Sequence> tabCycle = sequencesSolution.getCycles();
+        LinkedHashSet<Sequence> tabChaine = sequencesSolution.getChaines();
+        for (Sequence seq : tabCycle){
+            s.ajouterSequence(seq);
+        }
+
+        for (Sequence seq : tabChaine){
+            s.ajouterSequence(seq);
+        }
+        return s;
     }
 
     /**
@@ -219,26 +229,6 @@ public class Solution {
             }
             stringSol.append("\n");
         return stringSol.toString();
-    }
-
-    /**
-     * Méthode fille de la méthode de recherche locale.
-     * Permet d'effectuer un mouvement au sein de séquences manipulées pour générer une solution.
-     * Fait appel à la méthode fille doMouvementIfRealisable().
-     * @param infos operateur local associé à la transaction.
-     * @return un boolean true so l'opération a bien été effectuée, false si elle est impossible.
-     * */
-    public boolean doMouvementRechercheLocale(OperateurLocal infos){
-        if(infos == null) return false;
-        if(!infos.doMouvementIfRealisable()) return false;
-
-        this.benefMedicalTotal += infos.getDeltaBeneficeMedical();
-        if(!this.check()){
-            System.out.println("ERROR doMouvementRechercheLocale");
-            System.out.println(infos);
-            System.exit(-1);
-        }
-        return true;
     }
 
     /**

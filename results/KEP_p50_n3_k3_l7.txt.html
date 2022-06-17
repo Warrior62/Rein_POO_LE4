@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset='utf-8'>
+   <head>
+       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+       <script src="https://visjs.github.io/vis-network/standalone/umd/vis-network.min.js"></script>
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+       <script>
+           $(document).ready(function(){
+               $('[data-toggle="tooltip"]').tooltip();   
+        });       </script>
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+       <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+       <style>
+           .tooltip.show{
+               opacity: 1;
+               white-space: pre-line;
+           }
+           .sequence{
+               width: fit-content;
+               margin-left: auto;
+               margin-right: 0;
+           }
+       </style>
+  </head>
+  <body>
+     <h2 id='instanceName'>KEP_p50_n3_k3_l7.txt - </h2><h3>Recherche Arbre</h3><select id='select' onchange='location = this.value;'><option>Nom de l'instance</option><option value='KEP_p50_n6_k3_l4.txt.html'>KEP_p50_n6_k3_l4.txt</option><option value='KEP_p9_n0_k3_l0.txt.html'>KEP_p9_n0_k3_l0.txt</option><option value='KEP_p100_n5_k5_l17.txt.html'>KEP_p100_n5_k5_l17.txt</option><option value='KEP_p50_n17_k5_l17.txt.html'>KEP_p50_n17_k5_l17.txt</option><option value='KEP_p50_n6_k3_l7.txt.html'>KEP_p50_n6_k3_l7.txt</option><option value='KEP_p250_n28_k3_l13.txt.html'>KEP_p250_n28_k3_l13.txt</option><option value='KEP_p50_n0_k3_l0.txt.html'>KEP_p50_n0_k3_l0.txt</option><option value='KEP_p250_n13_k3_l4.txt.html'>KEP_p250_n13_k3_l4.txt</option><option value='KEP_p250_n83_k5_l17.txt.html'>KEP_p250_n83_k5_l17.txt</option><option value='KEP_p250_n13_k3_l7.txt.html'>KEP_p250_n13_k3_l7.txt</option><option value='KEP_p250_n13_k5_l17.txt.html'>KEP_p250_n13_k5_l17.txt</option><option value='KEP_p18_n0_k4_l0.txt.html'>KEP_p18_n0_k4_l0.txt</option><option value='KEP_p100_n0_k3_l0.txt.html'>KEP_p100_n0_k3_l0.txt</option><option value='KEP_p100_n33_k3_l13.txt.html'>KEP_p100_n33_k3_l13.txt</option><option value='KEP_p50_n6_k3_l13.txt.html'>KEP_p50_n6_k3_l13.txt</option><option value='KEP_p9_n1_k3_l3.txt.html'>KEP_p9_n1_k3_l3.txt</option><option value='KEP_p100_n11_k5_l17.txt.html'>KEP_p100_n11_k5_l17.txt</option><option value='KEP_p100_n11_k3_l4.txt.html'>KEP_p100_n11_k3_l4.txt</option><option value='KEP_p50_n3_k3_l13.txt.html'>KEP_p50_n3_k3_l13.txt</option><option value='KEP_p50_n17_k3_l4.txt.html'>KEP_p50_n17_k3_l4.txt</option><option value='KEP_p100_n11_k3_l7.txt.html'>KEP_p100_n11_k3_l7.txt</option><option value='KEP_p50_n17_k3_l7.txt.html'>KEP_p50_n17_k3_l7.txt</option><option value='KEP_p250_n28_k5_l17.txt.html'>KEP_p250_n28_k5_l17.txt</option><option value='KEP_p100_n5_k3_l7.txt.html'>KEP_p100_n5_k3_l7.txt</option><option value='KEP_p100_n5_k3_l13.txt.html'>KEP_p100_n5_k3_l13.txt</option><option value='KEP_p100_n5_k3_l4.txt.html'>KEP_p100_n5_k3_l4.txt</option><option value='KEP_p50_n17_k3_l13.txt.html'>KEP_p50_n17_k3_l13.txt</option><option value='KEP_p100_n33_k3_l4.txt.html'>KEP_p100_n33_k3_l4.txt</option><option value='KEP_p250_n83_k3_l4.txt.html'>KEP_p250_n83_k3_l4.txt</option><option value='KEP_p250_n13_k3_l13.txt.html'>KEP_p250_n13_k3_l13.txt</option><option value='KEP_p100_n33_k3_l7.txt.html'>KEP_p100_n33_k3_l7.txt</option><option value='KEP_p250_n83_k3_l13.txt.html'>KEP_p250_n83_k3_l13.txt</option><option value='KEP_p250_n83_k3_l7.txt.html'>KEP_p250_n83_k3_l7.txt</option><option value='KEP_p50_n6_k5_l17.txt.html'>KEP_p50_n6_k5_l17.txt</option><option value='KEP_p100_n11_k3_l13.txt.html'>KEP_p100_n11_k3_l13.txt</option><option value='KEP_p100_n33_k5_l17.txt.html'>KEP_p100_n33_k5_l17.txt</option><option value='KEP_p50_n3_k3_l4.txt.html'>KEP_p50_n3_k3_l4.txt</option><option value='KEP_p250_n28_k3_l7.txt.html'>KEP_p250_n28_k3_l7.txt</option><option value='KEP_p250_n0_k3_l0.txt.html'>KEP_p250_n0_k3_l0.txt</option><option value='KEP_p50_n3_k3_l7.txt.html'>KEP_p50_n3_k3_l7.txt</option><option value='KEP_p250_n28_k3_l4.txt.html'>KEP_p250_n28_k3_l4.txt</option><option value='KEP_p50_n3_k5_l17.txt.html'>KEP_p50_n3_k5_l17.txt</option><option value='KEP_p18_n2_k4_l4.txt.html'>KEP_p18_n2_k4_l4.txt</option></select>    <div class='btn btn-dark w-100 border mt-2' style='display: grid; grid-template-columns: repeat(3, 1fr);'>           <div>Taille max chaînes : <b>7</b></div>           <div>Bénéfice médical total : <b>313</b></div>
+           <div>Taille max cycles : <b>3</b></div>    </div>    <div id="mynetwork"></div>
+    <div class="row">       <div class="vis" style="width: 80%">    <div class="w-100" id="Cycles"></div>    <script type="text/javascript">
+var nodes = new vis.DataSet([{ id: 17, label: "17", group: "paire" },{ id: 33, label: "33", group: "paire" },{ id: 45, label: "45", group: "paire" },{ id: 43, label: "43", group: "paire" },{ id: 31, label: "31", group: "paire" },{ id: 41, label: "41", group: "paire" },]);var edges = [{ from: 17, to: 33, label: "76", color: { color: "black" }, font: { align: "top" }, arrows: "to" },{ from: 33, to: 45, label: "73", color: { color: "black" }, font: { align: "top" }, arrows: "to" },{ from: 45, to: 17, label: "39", color: { color: "black" }, font: { align: "top" }, arrows: "to" },{ from: 43, to: 31, label: "80", color: { color: "black" }, font: { align: "top" }, arrows: "to" },{ from: 31, to: 41, label: "18", color: { color: "black" }, font: { align: "top" }, arrows: "to" },{ from: 41, to: 43, label: "27", color: { color: "black" }, font: { align: "top" }, arrows: "to" }];      var container = document.getElementById("Cycles");
+      var data = {
+        nodes: nodes,
+        edges: edges,
+      };
+      var options = {width:'100%', height:'500px',interaction:{navigationButtons:true, hover:true, hoverConnectedEdges:true}, groups: { altruiste: {color:{background:'#97C2FC'}, shape: 'box'}, paire: {color:{background:'orange'}, shape : 'circle'}}, physics: {
+       enabled: true,        repulsion: { centralGravity: 0.2, nodeDistance: 4 },       hierarchicalRepulsion: { centralGravity: 0, nodeDistance: 4, avoidOverlap: 0 },       barnesHut: { "gravitationalConstant": -80, "centralGravity": 0 },        minVelocity: 1    }};
+      var network = new vis.Network(container, data, options);
+      network.setOptions(options);</script>    <hr></div>     <div class="sticky-top btn btn-dark mt-1 mb-auto mx-auto" style='float: right; width: fit-content; text-align: right; margin-right: 2em; top: 1rem;'>       <p>Bénéfice de chaque séquence : </p><ul style="list-style-type:none;"><li class="sequence" data-toggle="tooltip" data-html="true" title="Bénefice médical associé : &#10;188">17->33->45<li class="sequence" data-toggle="tooltip" data-html="true" title="Bénefice médical associé : &#10;125">43->31->41</ul>   </div></div>   <hr>   <p>Proportion de paire(s) et altruiste(s) non-sollicité(s) : <b>89.0%</b></p>
+   <div class="w-100 mx-auto row">       <div class="col-6 my-auto">           <canvas class='my-auto' id='chartBar'></canvas>
+       </div>       <div class="col-3">           <canvas id='chartPie1'></canvas>
+        </div>       <div class="col-3">           <canvas id='chartPie2'></canvas>
+        </div>   </div>   <script>       const labels = [
+           'Type de cas'
+       ];
+       const dataNoeudsBar = {
+           labels: labels,
+           datasets: [{
+               label: 'Altruistes sollicitées',
+               backgroundColor: 'rgb(18, 214, 241)',
+               borderColor: 'rgb(100, 100, 100)',
+               yAxisID: 'A',
+               data: [0]
+           }, {               label: 'Altruistes non-sollicités',
+               backgroundColor: '#0bacc1',
+               borderColor: 'rgb(100, 100, 100)',
+               yAxisID: 'A',
+               data: [3]
+           }, {               label: 'Paires sollicitées',
+               backgroundColor: 'orange',
+               borderColor: 'rgb(100, 100, 100)',
+               yAxisID: 'B',
+               data: [6]
+           }, {               label: 'Paires non-sollicitées',
+               backgroundColor: '#cc8500',
+               borderColor: 'rgb(100, 100, 100)',
+               yAxisID: 'B',
+               data: [44]
+           }]
+       };
+       const dataPie1 = {
+           labels: ['Altruistes sollicitées', 'Altruistes non-sollicités'],
+           datasets: [{
+               backgroundColor: ['#12d6f1', '#0bacc1'],
+               borderColor: 'rgb(100, 100, 100)',
+               data: [0.0, 100.0]
+           }]
+       };
+       const dataPie2 = {
+           labels: ['Paires sollicitées', 'Paires non-sollicités'],
+           datasets: [{
+               backgroundColor: ['orange', '#cc8500'],
+               borderColor: 'rgb(100, 100, 100)',
+               data: [12.0, 88.0]
+           }]
+       };
+       const configBar = {
+           type: 'bar',
+           data: dataNoeudsBar,
+           options: {               scales: {
+                   A: {
+                       type: 'linear',
+                       position: 'left',
+                   },
+                    B: {
+                       type: 'linear',
+                       position: 'right',
+                   }
+               }           }
+       };       const configPie1 = {
+           type: 'pie',
+           data: dataPie1,
+       };       const configPie2 = {
+           type: 'pie',
+           data: dataPie2,
+       };       var ctx = document.getElementById('chartBar').getContext('2d');       const chartBar = new Chart(ctx, configBar);       var ctx = document.getElementById('chartPie1').getContext('2d');       const chartPie1 = new Chart(ctx, configPie1);       var ctx = document.getElementById('chartPie2').getContext('2d');       const chartPie2 = new Chart(ctx, configPie2);    </script>
+  </body>
+</html>

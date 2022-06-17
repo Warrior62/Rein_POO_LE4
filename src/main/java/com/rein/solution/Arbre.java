@@ -123,16 +123,37 @@ public class Arbre implements Comparable {
     public void remplirListeFils(){
         for(Map.Entry echange : this.noeudRacine.getListeEchanges().entrySet()){
             Noeud noeudFils = (Noeud) echange.getKey();
-            if ((this.instance.getTabPaires().contains(noeudFils)) || this.instance.getTabAltruistes().contains(noeudFils) ) {
-                Arbre a = new Arbre(noeudFils, this.instance, this.profondeurMax, this.largeurMax);
-                a.niveauProfondeur = this.niveauProfondeur + 1;
+            Arbre a = new Arbre(noeudFils, this.instance, this.profondeurMax, this.largeurMax);
+            a.niveauProfondeur = this.niveauProfondeur + 1;
+            this.listeFils.add(a);
+        }
+    }
 
-                this.listeFils.add(a);
-                Collections.sort(this.listeFils);
-                if (this.listeFils.size() >= this.largeurMax) {
-                    break;
+    public void recurrArbre(LinkedHashSet<Integer> listeId, int profondeur, LinkedHashSet<Sequence> listeChainesPossibles, LinkedHashSet<Sequence> listeCyclesPossibles){
+        profondeur++;
+        LinkedHashSet<Integer> listeIdBis = new LinkedHashSet<>(listeId);
+        if (listeIdBis.add(this.getId())) {
+            if(profondeur < this.profondeurMax){
+                this.remplirListeFils();       //Récupération de ses fils
+                for(Arbre fils : this.getListeFils()) {
+                    fils.recurrArbre(listeIdBis, profondeur, listeChainesPossibles, listeCyclesPossibles);
                 }
+            }else {
+                if (listeIdBis.size() <= this.instance.getTailleMaxChaines())
+                    listeChainesPossibles.add(new Chaine(listeIdBis, this.instance));
+
             }
+        }else { //Lorsque l'on détecte un cycle, il faut enregistrer le cycle et la chaîne que cela peut aussi former
+            if (listeIdBis.size() <= this.instance.getTailleMaxChaines())
+                listeChainesPossibles.add(new Chaine(listeIdBis, this.instance));
+            Iterator it = listeIdBis.iterator();
+            int idCourant = (int) it.next();
+            while (idCourant != this.getId()) {
+                it.remove();
+                idCourant = (int) it.next();
+            }
+            if (listeIdBis.size() <= this.instance.getTailleMaxCycles())
+                listeCyclesPossibles.add(new Cycle(listeIdBis, this.instance));
         }
     }
 
@@ -145,7 +166,7 @@ public class Arbre implements Comparable {
      * @param listeChainesPossibles LinkedHashSet des chaines détectées.
      * @param listeCyclesPossibles LinkedHashSet des cycles détectés.
      * */
-    public void recurrArbre(LinkedHashSet<Integer> listeId, int profondeurCourante, LinkedHashSet<Sequence> listeChainesPossibles, LinkedHashSet<Sequence> listeCyclesPossibles){;
+    /*public void recurrArbre(LinkedHashSet<Integer> listeId, int profondeurCourante, LinkedHashSet<Sequence> listeChainesPossibles, LinkedHashSet<Sequence> listeCyclesPossibles){;
         profondeurCourante++;
         LinkedHashSet<Integer> listeIdBis = new LinkedHashSet<Integer>();
         listeIdBis.addAll(listeId);
@@ -182,7 +203,7 @@ public class Arbre implements Comparable {
                 listeCyclesPossibles.add(new Cycle(listeIdBis, this.instance));
             }
         }
-    }
+    }*/
 
     /**
      * Méthode fille de recurrArbre(), chargée de déterminer si une chaine est ajoutable aux chaines détectées.
@@ -265,6 +286,20 @@ public class Arbre implements Comparable {
         for (int n : cycle) {
             noeudsIndisponibles.add(n);
         }
+    }
+
+    public SequencesPossibles detectionChainesCycles() {
+        LinkedHashSet<Sequence> listeChainesPossibles = new LinkedHashSet<>();
+        LinkedHashSet<Sequence> listeCyclesPossibles = new LinkedHashSet<>();
+        LinkedHashSet<Integer> listeId = new LinkedHashSet<>();
+        SequencesPossibles s = new SequencesPossibles();
+
+        //Détection des séquences via méthode récursive d'arbre.... Renvoie les cycles et chaines potentielles dans des LinkedHashSet<LinkedHashSet> (listeCyclesPossibles et listeChainesPossibles)
+        this.recurrArbre(listeId, 0, listeChainesPossibles, listeCyclesPossibles);
+
+        s.setCycles(listeCyclesPossibles);
+        s.setChaines(listeChainesPossibles);
+        return s;
     }
 
     /**
