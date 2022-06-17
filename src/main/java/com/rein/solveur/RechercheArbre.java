@@ -7,16 +7,6 @@ import com.rein.instance.Noeud;
 import com.rein.io.InstanceReader;
 import com.rein.io.exception.ReaderException;
 import com.rein.solution.*;
-import com.rein.transplantation.Cycle;
-import com.rein.transplantation.Sequence;
-import org.apache.commons.cli.*;
-import org.apache.commons.lang3.ArrayUtils;
-
-import java.sql.Array;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.LinkedHashSet;
-import java.util.Objects;
 
 public class RechercheArbre implements Solveur {
 
@@ -34,7 +24,7 @@ public class RechercheArbre implements Solveur {
         if (instance.getNbAltruistes() > 0) {
             n = instance.getTabAltruistes().get(0);
         }else {
-            n = instance.getTabPaire().get(0);
+            n = instance.getTabPaires().get(0);
         }
 
         Arbre racine = new Arbre(n, instance, 6, 5);

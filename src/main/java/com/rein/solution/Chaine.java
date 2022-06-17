@@ -13,12 +13,17 @@ import com.rein.instance.Noeud;
 import com.rein.io.InstanceReader;
 import com.rein.transplantation.Sequence;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 public class Chaine extends Sequence {
 
-
+    /**
+     * Constructeur par valeur de Chaine
+     * @param a Altruiste à placer en tête de chaine
+     * @param tailleMax taille max de la chaine
+     * */
     public Chaine(int tailleMax,Altruiste a){
         super();
         this.setTailleMaxSequence(tailleMax);
@@ -58,6 +63,23 @@ public class Chaine extends Sequence {
         this.setBenefMedicalTotal(countBenefMedical);
     }
 
+    /**
+     * Constructeur par copie de Chaine.
+     * @param ch La chaine à copier
+     * */
+    public Chaine(Chaine ch) {
+        this.getListeNoeuds().addAll(ch.getListeNoeuds());
+        this.setBenefMedicalTotal(ch.getBenefMedicalSequence());
+        this.setTailleMaxSequence(ch.getTailleMaxSequence());
+    }
+
+
+    /**
+     * Methode equals de la classe chaine pour comparer 2 chaines.
+     * Condition d'égalité : Si chaque noeud de la chaine courante et la chaine c sont identiques
+     * @param c Chaine c avec laquelle comparer la chaine courante.
+     * @return  un boolean true si les 2 chaines sont courantes, false sinon.
+     * */
     @Override
     public boolean equals(Sequence c) {
         LinkedHashSet diffTest = new LinkedHashSet<Integer>();
@@ -193,7 +215,6 @@ public class Chaine extends Sequence {
      * */
     private boolean verifTailleMax() {
         if (this.getTailleMaxSequence() >= this.getListeNoeuds().size()-1) { //Le '-1' est nécessaire car l'altruiste n'est pas stocké dans la liste de Noeuds
-            //System.out.println("verifTailleMax() : OK");
             return true;
         }else {
             return false;
@@ -253,6 +274,10 @@ public class Chaine extends Sequence {
     }
 
 
+    /**
+     * Méthode toString de la classe Chaine.
+     * @return la chaine descriptive de la Chaine courante.
+     * */
     @Override
     public String toString() {
         return "Chaine : { \n"

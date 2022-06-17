@@ -1,17 +1,23 @@
 package com.rein.instance;
 
+import com.rein.solution.Arbre;
+
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Objects;
 
-public class Noeud {
+public class Noeud implements Comparable {
     private final int id;
     private Map<Noeud, Integer> listeEchanges;
+    private int scorePopularite;
+    private int scoreBenefice;
 
     public Noeud(int id) {
         this.id = id;
         this.listeEchanges = new HashMap<>();
+        this.scorePopularite = 0;
+        this.scoreBenefice = 0;
     }
 
     /**
@@ -22,6 +28,8 @@ public class Noeud {
     public Noeud(Noeud n) {
         this.id = n.getId();
         this.listeEchanges = n.getListeEchanges();
+        this.scorePopularite = n.getScorePopularite();
+        this.scoreBenefice = n.getScoreBenefice();
     }
 
     public int getId() {
@@ -30,8 +38,24 @@ public class Noeud {
 
     public Map<Noeud, Integer> getListeEchanges() { return listeEchanges; }
 
+    public int getScoreBenefice() {
+        return scoreBenefice;
+    }
+
+    public int getScorePopularite() {
+        return scorePopularite;
+    }
+
     public void setListeEchanges(Map<Noeud, Integer> listeEchanges) {
         this.listeEchanges = listeEchanges;
+    }
+
+    public void setScoreBenefice(int scoreBenefice) {
+        this.scoreBenefice = scoreBenefice;
+    }
+
+    public void setScorePopularite(int scorePopularite) {
+        this.scorePopularite = scorePopularite;
     }
 
     //FONCTION POUR CLONER UN TABLEAU MAP
@@ -117,4 +141,9 @@ public class Noeud {
         return s;
     }
 
+    @Override
+    public int compareTo(Object o) {
+        Noeud n = (Noeud) o;
+        return n.getScoreBenefice() - this.getScoreBenefice();
+    }
 }

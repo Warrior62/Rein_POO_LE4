@@ -26,12 +26,20 @@ public class Solution {
     private Collection<Sequence> listeSequences;
     private Instance instance;
 
-
+    /**
+     * Constructeur de Solution par valeur.
+     * @param instance Instance pour laquelle la solution est créée.
+     * */
     public Solution(Instance instance) {
         this.instance = instance;
         this.listeSequences = new ArrayList<>();
+        this.benefMedicalTotal = 0;
     }
 
+    /**
+     * Constructeur par copie de Solution.
+     * @param s Solution à copier.
+     * */
     public Solution(Solution s) {
         this(s.instance);
         this.benefMedicalTotal = s.benefMedicalTotal;
@@ -39,6 +47,23 @@ public class Solution {
             this.listeSequences.add((Sequence) s.listeSequences.toArray()[i]);
     }
 
+    /**
+     * Méthode permettant d'ajouter le contenu d'un objet SequencesPossibles dans la solution courante.
+     * Les chaines et cycles contenus sont ajoutés à la solution, et la somme des benefs médicaux totaux est affectée à la solution.
+     * @param s SequencesPossibles à ajouter à la solution, objet retourné par la méthode de détection des séquences.
+     * */
+    public void ajouterSequencesSelectionnees(SequencesPossibles s) {
+        this.listeSequences.addAll(s.getChaines());
+        this.listeSequences.addAll(s.getCycles());
+
+        this.benefMedicalTotal += s.getBenefTotal();
+    }
+
+    /**
+     * Méthode d'ajout d'une séquence à la solution courante.
+     * Met à jour la liste des séquences, et le benef médical total de la solution
+     * @param s Sequence à ajouter à la solution.
+     * */
     public boolean ajouterSequence(Sequence s) {
         try {
             this.listeSequences.add(s);
@@ -50,6 +75,11 @@ public class Solution {
         }
     }
 
+    /**
+     * Méthode de calcul du bénéfice
+     * Vide les séquences vides et calcule les bénéfices de chaque séquence.
+     * Fait appel à la méthode suppressionSequencesVides().
+     * */
     public void calculBenefice(){
         this.suppressionSequencesVides();
         for (Sequence seq : listeSequences){
@@ -58,6 +88,11 @@ public class Solution {
                 this.benefMedicalTotal += seq.getBenefMedicalSequence();
         }
     }
+
+    /**
+     * Méthode de suppression des chaines vides. Pour chaque sequence de la solution courante,
+     * retire la séquence si cette dernière est vide.
+     * */
     public void suppressionSequencesVides(){
         Collection<Sequence> listeSequencesCopy = new ArrayList<>(listeSequences);
         for (Sequence seq: listeSequencesCopy){
@@ -67,17 +102,35 @@ public class Solution {
             }
         }
     }
+
+    /**
+     * Méthode de récupération du bénéfice médical de la solution courante.
+     * @return le bénéfice médical de la solution courante.
+     * */
     public int getBenefMedicalTotal() {
         return benefMedicalTotal;
     }
+
+    /**
+     * Méthode de récupération de la liste de séquences de la solution courante.
+     * @return la liste de séquences de la solution courante.
+     * */
     public Collection<Sequence> getListeSequences() {
         return listeSequences;
     }
 
+    /**
+     * Méthode de récupération de l'instance associée à la solution courante.
+     * @return l'instance associée à la solution courante.
+     * */
     public Instance getInstance() {
         return instance;
     }
 
+    /**
+     * Méthode toString de la classe Solution.
+     * @return la chaine descriptive de la solution courante.
+     * */
     @Override
     public String toString() {
         String res = "";
@@ -93,18 +146,24 @@ public class Solution {
      * - Est reliée à une instance
      * - Le Bénéf médical est correctement calculé
      * - Chaque séquence est valide
+     * Fait appel aux méthodes filles verifInstanceAssociee(), verifSequencesValides() et verifBenefMedicalCorrect().
+     * @return un boolean true si la solution est valide, false sinon.
      * **/
     public boolean check() {
         return (verifInstanceAssociee() && verifSequencesValides() && verifBenefMedicalCorrect());
     }
+
     /**
-     * Return true si la solution découle d'une instance existante, false sinon.
+     * Méthode de vérification de l'instance Associée à la solution courante.
+     * @return un boolean true si la solution découle d'une instance existante, false sinon.
      * **/
     private boolean verifInstanceAssociee() {
         return (this.instance.getNom() != "" && this.instance.getNom() != null);
     }
+
     /**
-     * Return true si le benef medical total est bien la somme des benefs medicaux de toutes les séquences, false sinon.
+     * Méthode de vérification du benef médical de la solution courante.
+     * @return un boolean true si le benef medical total est bien la somme des benefs medicaux de toutes les séquences, false sinon.
      * **/
     private boolean verifBenefMedicalCorrect() {
         int somme = 0;
@@ -112,8 +171,10 @@ public class Solution {
             somme += s.getBenefMedicalSequence();
         return (somme == this.benefMedicalTotal);
     }
+
     /**
-     * Return true si l'ENSEMBLE des séquences de la solution sont valides, false sinon.
+     * Méthode de vérification de la validité des séquences de la solution courante.
+     * @return un boolean true si l'ENSEMBLE des séquences de la solution sont valides, false sinon.
      * **/
     private boolean verifSequencesValides() {
         boolean ans = false;
@@ -129,6 +190,11 @@ public class Solution {
         }
         return true;
     }
+
+    /**
+     * Méthode d'export de la solution courante.
+     * @return une chaine contenant l'export de la solution courante.
+     * */
     public String exportSol() {
         StringBuilder stringSol = new StringBuilder("// Cout total de la solution\n" +
             this.getBenefMedicalTotal() +
@@ -149,6 +215,13 @@ public class Solution {
         return stringSol.toString();
     }
 
+    /**
+     * Méthode fille de la méthode de recherche locale.
+     * Permet d'effectuer un mouvement au sein de séquences manipulées pour générer une solution.
+     * Fait appel à la méthode fille doMouvementIfRealisable().
+     * @param infos operateur local associé à la transaction.
+     * @return un boolean true so l'opération a bien été effectuée, false si elle est impossible.
+     * */
     public boolean doMouvementRechercheLocale(OperateurLocal infos){
         if(infos == null) return false;
         if(!infos.doMouvementIfRealisable()) return false;
@@ -163,6 +236,7 @@ public class Solution {
     }
 
     /**
+     *
      * Retourne true si la solution comporte au moins une séquence de la classe (Chaine/Cycle) passée en argument
      */
     public boolean hasSequenceOfClass(Class classe){
@@ -173,72 +247,6 @@ public class Solution {
         }
         return false;
     }
-
-
-   /* public Solution generationSolution(Instance i){
-        Solution sol = new Solution(i);
-
-        Arbre arbre = new Arbre(instance.getTabNoeud()[0], instance);
-        SequencesPossibles sequencesUtilisables = arbre.detectionChainesCycles();
-
-        Selecteur selecteur = new Selecteur(sequencesUtilisables);
-        SequencesPossibles seqSol = selecteur.selectionRandom_v1();
-        SequencesPossibles seqSol2 = selecteur.selectionPlusGrosBenef();
-
-
-        //COMPARER BENEF  DES SEQUENCES ET PRENDRE LA MEILLEURE
-
-
-        LinkedHashSet<Sequence> tabCycle = seqSol.getCycles();
-        LinkedHashSet<Sequence> tabChaine = seqSol.getChaines();
-        for (Sequence seq : tabCycle){
-            sol.ajouterSequence(seq);
-        }
-        for (Sequence seq : tabChaine){
-            sol.ajouterSequence(seq);
-        }
-
-        return sol;
-    }*/
-
-    /*private OperateurLocal getMeilleurOperateurIntra(TypeOperateurLocal type){
-        return null;
-        OperateurLocal best = OperateurLocal.getOperateur(type);
-        for(Tournee t : this.listeTournees){
-            for(int i=0; i<t.getClients().size(); i++) {
-                for(int j=0; j<t.getClients().size()+1; j++) {
-                    if(j < t.getClients().size()){
-                        OperateurIntraTournee op = OperateurLocal.getOperateurIntra(type, t, i, j);
-                        if(op.isMeilleur(best)) {
-                            best = op;
-                        }
-                    }
-                }
-            }
-        }
-        return best;
-    }*/
-
-    /*private OperateurLocal getMeilleurOperateurInter(TypeOperateurLocal type){
-        OperateurLocal best = OperateurLocal.getOperateur(type), op;
-        for(Sequence s : this.listeSequences){
-            for(Sequence s1 : this.listeSequences) {
-                op = s.getMeilleurOperateurInter(type, s1);
-                if(op.isMeilleur(best))
-                    best = op;
-            }
-        }
-        return best;
-    }*/
-
-   /* public OperateurLocal getMeilleurOperateurLocal(TypeOperateurLocal type){
-        if(OperateurLocal.getOperateur(type) instanceof OperateurIntraSequence)
-            return this.getMeilleurOperateurIntra(type);
-        else if(OperateurLocal.getOperateur(type) instanceof OperateurInterSequence)
-            return this.getMeilleurOperateurInter(type);
-        //this.getMeilleurOperateurInter(type);
-        return null;
-    }*/
 
     public static void main(String[] args) {
         InstanceReader reader;
