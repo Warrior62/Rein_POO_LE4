@@ -4,16 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5dbe1660-c9ae-497e-83b8-a85dacef2117" name="Changes" comment="gener-sol après bug 111 847">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rein/solveur/MeilleureCombiSequence.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solution/Selecteur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solution/Selecteur.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solution/SequencesPossibles.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solution/SequencesPossibles.java" afterDir="false" />
+    <list default="true" id="5dbe1660-c9ae-497e-83b8-a85dacef2117" name="Changes" comment="gener-sol après bug 112 469">
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solveur/RechercheArbre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solveur/RechercheArbre.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/test/AllSolveurs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/test/AllSolveurs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/transplantation/Sequence.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/transplantation/Sequence.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/solution/sequencesPossibles.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/solution/sequencesPossibles.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/transplantation/Sequence.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/transplantation/Sequence.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -261,7 +253,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655458488422</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="gener-sol après bug 112 469">
+      <created>1655485294686</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1655485294686</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -348,7 +347,8 @@
     <MESSAGE value="Refonte méthode solve() de ArbreSequences" />
     <MESSAGE value="Merge test gener-sol" />
     <MESSAGE value="gener-sol après bug 111 847" />
-    <option name="LAST_COMMIT_MESSAGE" value="gener-sol après bug 111 847" />
+    <MESSAGE value="gener-sol après bug 112 469" />
+    <option name="LAST_COMMIT_MESSAGE" value="gener-sol après bug 112 469" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
   <component name="XDebuggerManager">
