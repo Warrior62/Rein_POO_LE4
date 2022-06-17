@@ -143,7 +143,7 @@ public class StrategieBasique implements Solveur{
             InstanceReader reader;
             try {
                 // Lecture du fichier d'instance
-                reader = new InstanceReader("instancesInitiales/" + line.getOptionValue("inst"));
+                reader = new InstanceReader("instances/" + line.getOptionValue("inst"));
                 Instance i = reader.readInstance();
                 // Résolution de l'instance
                 StrategieBasique sb = new StrategieBasique();

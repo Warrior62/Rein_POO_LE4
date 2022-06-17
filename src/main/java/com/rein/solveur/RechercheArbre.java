@@ -19,6 +19,7 @@ import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.Objects;
 
+
 public class RechercheArbre implements Solveur {
 
 
@@ -93,7 +94,7 @@ public class RechercheArbre implements Solveur {
             sequencesSolution.getCycles().addAll(sequencesSolution2.getCycles());
             sequencesSolution.getChaines().addAll(sequencesSolution2.getChaines());
 
-       +
+
 
         //GENERATION SOLUTION
         Solution s = new Solution(instance);
