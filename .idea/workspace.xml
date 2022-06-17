@@ -4,61 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5dbe1660-c9ae-497e-83b8-a85dacef2117" name="Changes" comment="gener-sol après bug 112 469">
+    <list default="true" id="5dbe1660-c9ae-497e-83b8-a85dacef2117" name="Changes" comment="Ajout solution ArbreSequences opérationel + commentaires et nettoyage de code">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_04_06_2022_18_39__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results.csv" beforeDir="false" afterPath="$PROJECT_DIR$/results.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/KEP_p100_n0_k3_l0.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p100_n0_k3_l0.txt.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/KEP_p100_n11_k3_l13.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p100_n11_k3_l13.txt.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/KEP_p100_n11_k3_l4.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p100_n11_k3_l4.txt.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/KEP_p100_n11_k3_l7.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p100_n11_k3_l7.txt.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/KEP_p100_n11_k5_l17.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p100_n11_k5_l17.txt.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/KEP_p100_n33_k3_l13.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p100_n33_k3_l13.txt.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/KEP_p100_n33_k3_l4.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p100_n33_k3_l4.txt.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/KEP_p100_n33_k3_l7.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p100_n33_k3_l7.txt.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/KEP_p100_n33_k5_l17.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p100_n33_k5_l17.txt.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/KEP_p100_n5_k3_l13.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p100_n5_k3_l13.txt.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/KEP_p100_n5_k3_l4.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p100_n5_k3_l4.txt.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/KEP_p100_n5_k3_l7.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p100_n5_k3_l7.txt.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/KEP_p100_n5_k5_l17.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p100_n5_k5_l17.txt.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/KEP_p18_n0_k4_l0.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p18_n0_k4_l0.txt.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/KEP_p18_n2_k4_l4.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p18_n2_k4_l4.txt.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/KEP_p250_n0_k3_l0.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p250_n0_k3_l0.txt.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/KEP_p250_n13_k3_l13.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p250_n13_k3_l13.txt.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/KEP_p250_n13_k3_l4.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p250_n13_k3_l4.txt.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/KEP_p250_n13_k3_l7.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p250_n13_k3_l7.txt.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/KEP_p250_n13_k5_l17.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p250_n13_k5_l17.txt.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/KEP_p250_n28_k3_l13.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p250_n28_k3_l13.txt.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/KEP_p250_n28_k3_l4.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p250_n28_k3_l4.txt.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/KEP_p250_n28_k3_l7.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p250_n28_k3_l7.txt.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/KEP_p250_n28_k5_l17.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p250_n28_k5_l17.txt.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/KEP_p250_n83_k3_l13.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p250_n83_k3_l13.txt.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/KEP_p250_n83_k3_l4.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p250_n83_k3_l4.txt.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/KEP_p250_n83_k3_l7.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p250_n83_k3_l7.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rein-poo-le4.iml" beforeDir="false" afterPath="$PROJECT_DIR$/rein-poo-le4.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/results/KEP_p250_n83_k5_l17.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p250_n83_k5_l17.txt.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/KEP_p50_n0_k3_l0.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p50_n0_k3_l0.txt.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/KEP_p50_n17_k3_l13.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p50_n17_k3_l13.txt.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/KEP_p50_n17_k3_l4.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p50_n17_k3_l4.txt.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/KEP_p50_n17_k3_l7.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p50_n17_k3_l7.txt.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/KEP_p50_n17_k5_l17.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p50_n17_k5_l17.txt.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/KEP_p50_n3_k3_l13.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p50_n3_k3_l13.txt.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/KEP_p50_n3_k3_l4.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p50_n3_k3_l4.txt.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/KEP_p50_n3_k3_l7.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p50_n3_k3_l7.txt.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/KEP_p50_n3_k5_l17.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p50_n3_k5_l17.txt.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/KEP_p50_n6_k3_l13.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p50_n6_k3_l13.txt.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/KEP_p50_n6_k3_l4.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p50_n6_k3_l4.txt.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/KEP_p50_n6_k3_l7.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p50_n6_k3_l7.txt.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/KEP_p50_n6_k5_l17.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p50_n6_k5_l17.txt.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/KEP_p9_n0_k3_l0.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p9_n0_k3_l0.txt.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/KEP_p9_n1_k3_l3.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p9_n1_k3_l3.txt.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solution/Arbre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solution/Arbre.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solution/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solution/Solution.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solveur/RechercheArbre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solveur/RechercheArbre.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/test/AllSolveurs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/test/AllSolveurs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/solution/Arbre.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/solution/Arbre.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/solution/Solution.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/solution/Solution.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/solution/sequencesPossibles.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/solution/sequencesPossibles.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/solveur/RechercheArbre.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/solveur/RechercheArbre.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/test/AllSolveurs.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/test/AllSolveurs.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/instance/Instance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/instance/Instance.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/interface_web/InterfaceWeb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/interface_web/InterfaceWeb.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/instance/Instance.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/instance/Instance.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/interface_web/InterfaceWeb.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/interface_web/InterfaceWeb.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/operateur/TypeOperateurLocal.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/operateur/TypeOperateurLocal.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/solveur/ArbreSequences.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/solveur/ArbreSequences.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,11 +32,10 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="gener_sol" />
+        <entry key="$PROJECT_DIR$" value="dev" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="RESET_MODE" value="MIXED" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -90,13 +46,13 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/transplantation/Sequence.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/pom.xml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/io/InstanceReader.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/instance/Noeud.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/io/InstanceReader.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/solution/Solution.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/transplantation/Cycle.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/transplantation/Sequence.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -114,14 +70,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.DirectoryMappings" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "WebServerToolWindowFactoryState": "false"
+  }
+}]]></component>
   <component name="ReaderModeSettings">
     <option name="enabled" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="com.rein.solution" />
+    </key>
   </component>
   <component name="RunManager" selected="Application.AllSolveurs">
     <configuration name="AllSolveurs" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -137,12 +97,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MeilleureCombiSequence" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.rein.solveur.MeilleureCombiSequence" />
+    <configuration name="Arbre" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.rein.solution.Arbre" />
       <module name="rein-poo-le4" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.rein.solveur.*" />
+          <option name="PATTERN" value="com.rein.solution.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -150,8 +110,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RechercheArbre" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.rein.solveur.RechercheArbre" />
+    <configuration name="ArbreSequences" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.rein.solveur.ArbreSequences" />
       <module name="rein-poo-le4" />
       <extension name="coverage">
         <pattern>
@@ -180,7 +140,7 @@
     <configuration name="StrategieBasique2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.rein.solveur.StrategieBasique2" />
       <module name="rein-poo-le4" />
-      <option name="PROGRAM_PARAMETERS" value="-inst KEP_p9_n0_k3_l0.txt -dSol solutions_test" />
+      <option name="PROGRAM_PARAMETERS" value="-inst KEP_p250_n83_k5_l17.txt -dSol solutions_test" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.rein.solveur.*" />
@@ -191,20 +151,31 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.StrategieBasique" />
+      <item itemvalue="Application.Arbre" />
       <item itemvalue="Application.StrategieBasique2" />
       <item itemvalue="Application.AllSolveurs" />
-      <item itemvalue="Application.RechercheArbre" />
-      <item itemvalue="Application.MeilleureCombiSequence" />
+      <item itemvalue="Application.ArbreSequences" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.AllSolveurs" />
-        <item itemvalue="Application.RechercheArbre" />
-        <item itemvalue="Application.MeilleureCombiSequence" />
         <item itemvalue="Application.StrategieBasique2" />
         <item itemvalue="Application.StrategieBasique" />
+        <item itemvalue="Application.Arbre" />
+        <item itemvalue="Application.AllSolveurs" />
       </list>
     </recent_temporary>
   </component>
@@ -216,6 +187,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1649313157800</updated>
+      <workItem from="1655481165927" duration="4641000" />
     </task>
     <task id="LOCAL-00001" summary="sout martrein">
       <created>1649313386845</created>
@@ -294,21 +266,35 @@
       <option name="project" value="LOCAL" />
       <updated>1654276345022</updated>
     </task>
-    <task id="LOCAL-00012" summary="gener-sol après bug 111 847">
-      <created>1655458488422</created>
+    <task id="LOCAL-00012" summary="Légères corrections et nettoyage">
+      <created>1654360045711</created>
       <option name="number" value="00012" />
       <option name="presentableId" value="LOCAL-00012" />
       <option name="project" value="LOCAL" />
-      <updated>1655458488422</updated>
+      <updated>1654360045711</updated>
     </task>
-    <task id="LOCAL-00013" summary="gener-sol après bug 112 469">
-      <created>1655485294686</created>
+    <task id="LOCAL-00013" summary="Refonte méthode solve() de ArbreSequences">
+      <created>1654767762042</created>
       <option name="number" value="00013" />
       <option name="presentableId" value="LOCAL-00013" />
       <option name="project" value="LOCAL" />
-      <updated>1655485294686</updated>
+      <updated>1654767762042</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Optimisation de la méthode solve d'ArbreSequence">
+      <created>1655215714542</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1655215714542</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Ajout solution ArbreSequences opérationel + commentaires et nettoyage de code">
+      <created>1655451273577</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1655451273577</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -325,7 +311,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="gener_sol_2" />
+                        <option value="tentative-optimisation-sequences" />
                       </list>
                     </value>
                   </entry>
@@ -393,10 +379,9 @@
     <MESSAGE value="merge conflits interface-graphique vers dev fait" />
     <MESSAGE value="Légères corrections et nettoyage" />
     <MESSAGE value="Refonte méthode solve() de ArbreSequences" />
-    <MESSAGE value="Merge test gener-sol" />
-    <MESSAGE value="gener-sol après bug 111 847" />
-    <MESSAGE value="gener-sol après bug 112 469" />
-    <option name="LAST_COMMIT_MESSAGE" value="gener-sol après bug 112 469" />
+    <MESSAGE value="Optimisation de la méthode solve d'ArbreSequence" />
+    <MESSAGE value="Ajout solution ArbreSequences opérationel + commentaires et nettoyage de code" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ajout solution ArbreSequences opérationel + commentaires et nettoyage de code" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -405,10 +390,6 @@
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.StackOverflowError" package="java.lang" />
           <option name="timeStamp" value="1" />
-        </breakpoint>
-        <breakpoint enabled="true" type="java-exception">
-          <properties class="java.lang.NoSuchMethodError" package="java.lang" />
-          <option name="timeStamp" value="4" />
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
