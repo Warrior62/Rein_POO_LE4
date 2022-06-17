@@ -11,8 +11,10 @@ import com.rein.solveur.RechercheArbre;
 import com.rein.solveur.Solveur;
 import com.rein.solveur.StrategieBasique;
 import com.rein.solveur.StrategieBasique2;
+import org.apache.commons.cli.*;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -49,7 +51,7 @@ public class AllSolveurs {
     /**
      * Nom du chemin du repertoire dans lequel se trouvent les instances a tester
      */
-    private String pathRepertoire;
+    private String pathFic;
     /**
      * Toutes les instances a tester
      */
@@ -65,11 +67,11 @@ public class AllSolveurs {
 
     /**
      * Constructeur par donnees.
-     * @param pathRepertoire le chemin du repertoire ou se trouvent toutes les
+     * @param pathFic le chemin du repertoire ou se trouvent toutes les
      * instances a tester
      */
-    public AllSolveurs(String pathRepertoire) {
-        this.pathRepertoire = pathRepertoire;
+    public AllSolveurs(String pathFic) {
+        this.pathFic = pathFic;
         solveurs = new ArrayList<>();
         instances = new ArrayList<>();
         this.resultats = new HashMap<>();
@@ -85,13 +87,11 @@ public class AllSolveurs {
      * Ajout de tous les solveurs que l'on souhaite comparer
      */
     private void addSolveurs() {
-        // TO CHECK : constructeur par defaut de la classe InsertionSimple
-        //solveurs.add(new StrategieBasique());
-        // TO ADD : par la suite vous ajouterez ici les autres solveurs a tester
-        //solveurs.add(new BestSolution());
-        //solveurs.add(new StrategieBasique2());
+        solveurs.add(new StrategieBasique());
+        solveurs.add(new BestSolution());
+        solveurs.add(new StrategieBasique2());
         solveurs.add(new ArbreSequences());
-        //solveurs.add(new RechercheArbre());
+        solveurs.add(new RechercheArbre());
     }
 
     /**
@@ -100,20 +100,19 @@ public class AllSolveurs {
      * Les instances sont lues et chargees en memoire.
      */
     private void readNomInstances() {
-        File folder = new File(pathRepertoire);
-        File[] listOfFiles = folder.listFiles();
-        for (File file : listOfFiles) {
-            if (file.isFile()) {
-                try {
-                    // TO CHECK : constructeur de InstanceReader
-                    InstanceReader reader = new InstanceReader(file.getAbsolutePath());
-                    System.out.println("\nInstance : "+file.getAbsolutePath() + "\n");
-                    // TO CHECK : lecture d'une instance avec la classe InstanceReader
-                    instances.add(reader.readInstance());
-                } catch (ReaderException ex) {
-                    System.out.println("L'instance "+file.getAbsolutePath()
-                            + " n'a pas pu etre lue correctement");
-                }
+        File file = new File("instances/" + pathFic);
+        System.out.println(file);
+        if (file.isFile()) {
+            try {
+                System.out.println("TEST2");
+                // TO CHECK : constructeur de InstanceReader
+                InstanceReader reader = new InstanceReader(file.getAbsolutePath());
+                System.out.println("\nInstance : "+file.getAbsolutePath() + "\n");
+                // TO CHECK : lecture d'une instance avec la classe InstanceReader
+                instances.add(reader.readInstance());
+            } catch (ReaderException ex) {
+                System.out.println("L'instance "+file.getAbsolutePath()
+                        + " n'a pas pu etre lue correctement");
             }
         }
     }
@@ -348,9 +347,35 @@ public class AllSolveurs {
      * @param args
      */
     public static void main(String[] args) {
-
-        AllSolveurs test = new AllSolveurs("instances");
-        test.printAllResultats("results");
+        CommandLineParser parser = new DefaultParser();
+        // Création des options
+        Options options = new Options();
+        options.addOption(Option.builder("inst")
+                .hasArg(true)
+                .valueSeparator(' ')
+                .desc("Nom du fichier d'instance")
+                .build());
+        options.addOption(Option.builder("dSol")
+                .hasArg(true)
+                .valueSeparator(' ')
+                .desc("Répertoire des fichiers solutions")
+                .build());
+        try {
+            // Lecture des arguments CLI
+            CommandLine line = parser.parse(options, args);
+            System.out.println(line.getOptionValue("inst"));
+            System.out.println(line.getOptionValue("dSol"));
+            InstanceReader reader;
+            try {
+                AllSolveurs test = new AllSolveurs(line.getOptionValue("inst"));
+                // Création du fichier de solution
+                test.printAllResultats(line.getOptionValue("dSol"));
+            } catch(Exception e){
+                System.out.println(e.getMessage());
+                System.err.println("ERROR All Solveurs");
+            }
+        } catch (ParseException exp) {
+            System.err.println("Unexpected exception:" + exp.getMessage());
+        }
     }
-
 }

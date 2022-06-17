@@ -318,7 +318,7 @@ public class InterfaceWeb {
             idsPaires += id + " ";
         float proportionDonneurNonSollicitee = 0;
         if(this.nbAltruistes != 0) {
-            proportionDonneurNonSollicitee = ((float)(this.altruistesNonUtilises.size() / this.nbAltruistes)) * 100;
+            proportionDonneurNonSollicitee = ((float)(this.altruistesNonUtilises.size() / (float)this.nbAltruistes)) * 100;
         }
         float proportionPaireNonSollicitee = (((float)this.pairesNonUtilisees.size() / (float)this.nbPaires)) * 100;
         float pourcentageNoeudNonUtilise = (((float)( this.altruistesNonUtilises.size() + this.pairesNonUtilisees.size()))/ (float)(this.nbAltruistes + this.nbPaires) * 100);
