@@ -75,11 +75,13 @@ public class Selecteur {
         return bestPossibilites;
     }
 
+
     public static LinkedHashSet<Sequence> getSequencesFilles(Sequence sequence, LinkedHashSet<Sequence> sequencesRestantes, Noeud[] noeudsRestants) {
 
         LinkedHashSet<Sequence> sequencesRestantesBis = new LinkedHashSet<Sequence>(sequencesRestantes);
         LinkedHashSet<Sequence> sequencesFilles = new LinkedHashSet<Sequence>(); //Pour les sequences filles
         LinkedHashSet<Noeud> noeudRestants;
+        ArrayList<Sequence> sortTab = new ArrayList<Sequence>();
         Sequence s;
         // Pour chaque séquence potentielle,
         // si la séquence ne contient aucun noeud des noeuds de la séquence courante,
@@ -94,9 +96,12 @@ public class Selecteur {
             diffTest.addAll(sequence.getListeNoeuds());
 
             if ( (s.getListeNoeuds().size() + sequence.getListeNoeuds().size()) == diffTest.size() ) {
-                sequencesFilles.add(s);
+                sortTab.add(s);
             }
         }
+
+        Collections.sort(sortTab);
+        sequencesFilles.addAll(sortTab);
 
         return sequencesFilles;
     }

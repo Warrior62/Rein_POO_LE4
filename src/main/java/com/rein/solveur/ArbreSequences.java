@@ -29,11 +29,12 @@ public class ArbreSequences implements Solveur {
      * Méthode de résolution d'instances de la classe ArbreSequences.
      * Fait appel aux méthodes métier detectionChainesCycles() de la classe Arbre et arbreBestSol() de la classe Selecteur,
      * respectivement pour détecter et selectionner les séquences.
-     * @param instance Instance à résoudre.
+     * @param instanceInitiale Instance à résoudre.
      * @return un objet Solution, contenant les cycles et chaines qui constituent la solution.
      * */
     @Override
-    public Solution solve(Instance instance) {
+    public Solution solve(Instance instanceInitiale) {
+        Instance instance = new Instance(instanceInitiale); //Copie de l'instance, car elle est dégradée au fil de l'exécution du solveur
         System.out.println("Arbre sequences  : " + instance.getNom());
 
         HashMap<String, Integer> parametres; // Paramètres des dimensions des arbres (détection + selection)
@@ -45,6 +46,7 @@ public class ArbreSequences implements Solveur {
         Arbre a;
         Iterator it;
         Solution s = new Solution(instance);
+
 
         // --> 1er passage <-- //
         // -- Init

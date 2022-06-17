@@ -18,6 +18,8 @@ import java.util.ArrayList;
 import java.util.List;
 public abstract class Sequence {
 
+public abstract class Sequence implements Comparable {
+
     private int benefMedicalSequence = 0;
     private ArrayList<Noeud> listeNoeuds =new ArrayList<>();
     private int tailleMaxSequence;
@@ -123,89 +125,6 @@ public abstract class Sequence {
         }
     }
 
-    public boolean ajouterNoeudNonUtilise(Noeud n, int position){
-        if(this instanceof Chaine){
-            //NB : La position 0 est réservée à l'altruiste... On ne peut donc pas y ajouter un noeud
-            if ( (position != 0) && this.isNoeudAjoutable(position) && this.isNoeudCompatible(n, position) ) {
-                if (this.getListeNoeuds().size() == position) { //Si le noeud est ajouté en bout de chaine, on ne faut qu'ajouter le nouveau benef médical, sans en soustraire
-                    //Variables utiles
-                    Noeud noeudPrecedent = this.getListeNoeuds().get(position-1);
-                    int benefMedical = this.getBenefMedicalSequence();
-                    //Traitements
-                    benefMedical += noeudPrecedent.getBenefMedicalVers(n);
-                    this.setBenefMedicalTotal(benefMedical);
-                    this.getListeNoeuds().add(n);
-                    //this.listeNoeuds.add(position, n);
-                    return true;
-                }else {
-                    //Variables utiles
-                    Noeud noeudPrecedent = this.getListeNoeuds().get(position-1);
-                    Noeud noeudSuivant = this.getListeNoeuds().get(position);
-                    int benefMedical = this.getBenefMedicalSequence();
-                    //Traitements
-                    benefMedical -= noeudPrecedent.getBenefMedicalVers(noeudSuivant);
-                    benefMedical += noeudPrecedent.getBenefMedicalVers(n);
-                    benefMedical += n.getBenefMedicalVers(noeudSuivant);
-                    this.setBenefMedicalTotal(benefMedical);
-                    this.listeNoeuds.add(position, n);
-                    return true;
-                }
-            }else {
-                return false;
-            }
-        }
-        if(this instanceof Cycle){
-            Noeud noeudPrecedent;
-            Noeud noeudSuivant;
-            int benefMedical = this.getBenefMedicalSequence();
-            if (this.getListeNoeuds().size() == 0) {
-                this.listeNoeuds.add(n);
-                // System.out.println("Methode rustine 1");
-                return true;
-            }
-            if (this.getListeNoeuds().size() == 1 && (position == 0 || position == 1) ) {
-                int benef1 = n.getBenefMedicalVers(this.getListeNoeuds().get(0));
-                int benef2 = this.getListeNoeuds().get(0).getBenefMedicalVers(n);
-
-                this.listeNoeuds.add(position, n);
-                this.setBenefMedicalTotal(benef1 + benef2);
-                //System.out.println("Methode rustine 2");
-                return true;
-            }
-            if (this.isNoeudAjoutable(position) && this.isNoeudCompatible(n, position)) {
-                if (position == 0) { // Ajout en début de cycle
-                    noeudPrecedent = this.getListeNoeuds().get(this.getListeNoeuds().size()-1);
-                    noeudSuivant = this.getListeNoeuds().get(0);
-                    //System.out.println("Noeud ajouté avec succes en debut de cycle");
-                }else if (position == this.getListeNoeuds().size()) { //Ajout en fin de cycle
-                    noeudPrecedent = this.getListeNoeuds().get(this.getListeNoeuds().size()-1);
-                    noeudSuivant = this.getListeNoeuds().get(0);
-                }else { // Ajout en milieu de cycle
-                    noeudPrecedent = this.getListeNoeuds().get(position-1);
-                    noeudSuivant = this.getListeNoeuds().get(position);
-                    //System.out.println("Noeud ajouté avec succes en milieu de cycle");
-                }
-                benefMedical -= noeudPrecedent.getBenefMedicalVers(noeudSuivant);
-                benefMedical += noeudPrecedent.getBenefMedicalVers(n);
-                benefMedical += n.getBenefMedicalVers(noeudSuivant);
-                this.setBenefMedicalTotal(benefMedical);
-                this.listeNoeuds.add(position, n);
-                return true;
-            }else {
-                // System.out.println("Peut pas ajouter le noeud");
-                return false;
-            }
-        }
-        return true;
-    }
-
-    // indique s'il est possible d'insérer un client en position position
-    public boolean isPositionInsertionValide(int position) {
-        if(position < 0 || position > this.getNbNoeuds())
-            return false;
-        return true;
-    }
-
     private int deltaCoutInsertionFin(Noeud noeudToAdd){
         return this.deltaCoutInsertion(this.getNbNoeuds(), noeudToAdd);
     }
@@ -242,6 +161,13 @@ public abstract class Sequence {
     }
 
     public abstract boolean equals(Sequence c);
+
+    @Override
+    public int compareTo(Object o) {
+        Sequence s = (Sequence) o;
+        //System.out.println("Comparaison : " + (s.getBenefMedicalSequence() - this.getBenefMedicalSequence()));
+        return s.getBenefMedicalSequence() - this.getBenefMedicalSequence();
+    }
 
     @Override
     public String toString() {

@@ -27,6 +27,14 @@ public class Instance {
     private ArrayList<Echange> echanges;
 
 
+        /**
+         * Constructeur d'Instances.
+         * @param nom nom du fichier d'instance
+         * @param paires nombre de paires patient-donneur P
+         * @param altruistes  nombre de donneurs altruistes N
+         * @param cycles  taille maximale des cycles K
+         * @param chaines  taille maximale des chaines L
+         */
     public Instance(String nom, int paires, int altruistes, int cycles, int chaines, Noeud tabNoeud[]) {
             this.nom = nom;
             this.nbPaires = paires;
@@ -59,6 +67,9 @@ public class Instance {
         this.nbAltruistes = nbAltruistes;
     }
 
+    public ArrayList<Altruiste> getTabAltruistes() {
+        return tabAltruistes;
+    }
 
     public ArrayList<Paire> getTabPaires() {
         return tabPaires;
@@ -74,10 +85,6 @@ public class Instance {
 
     public int getNbAltruistes() {
         return nbAltruistes;
-    }
-
-    public ArrayList<Altruiste> getTabAltruistes() {
-        return tabAltruistes;
     }
 
     public int getTailleMaxCycles() {
