@@ -4,73 +4,50 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5dbe1660-c9ae-497e-83b8-a85dacef2117" name="Changes" comment="Refonte méthode solve() de ArbreSequences">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_06_2022_11_31_[Changes]/Altruiste.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_06_2022_11_31_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_06_2022_11_31__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_06_2022_11_40_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_06_2022_11_40__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_03_06_2022_11_32_[Changes]1/Altruiste.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_03_06_2022_11_32_[Changes]1/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_03_06_2022_11_32__Changes_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" beforeDir="false" />
+    <list default="true" id="5dbe1660-c9ae-497e-83b8-a85dacef2117" name="Changes" comment="creation operateur InsertionNoeud">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/instances/KEP_p100_n0_k3_l0.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p100_n0_k3_l0.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/instances/KEP_p100_n11_k3_l13.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p100_n11_k3_l13.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/instances/KEP_p100_n11_k3_l4.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p100_n11_k3_l4.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/instances/KEP_p100_n11_k3_l7.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p100_n11_k3_l7.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/instances/KEP_p100_n11_k5_l17.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p100_n11_k5_l17.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/instances/KEP_p100_n33_k3_l13.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p100_n33_k3_l13.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/instances/KEP_p100_n33_k3_l4.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p100_n33_k3_l4.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/instances/KEP_p100_n33_k3_l7.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p100_n33_k3_l7.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/instances/KEP_p100_n33_k5_l17.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p100_n33_k5_l17.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/instances/KEP_p100_n5_k3_l13.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p100_n5_k3_l13.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/instances/KEP_p100_n5_k3_l4.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p100_n5_k3_l4.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/instances/KEP_p100_n5_k3_l7.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p100_n5_k3_l7.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/instances/KEP_p100_n5_k5_l17.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p100_n5_k5_l17.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/instances/KEP_p18_n0_k4_l0.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p18_n0_k4_l0.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/instances/KEP_p18_n2_k4_l4.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p18_n2_k4_l4.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/instances/KEP_p250_n0_k3_l0.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p250_n0_k3_l0.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/instances/KEP_p250_n13_k3_l13.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p250_n13_k3_l13.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/instances/KEP_p250_n13_k3_l4.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p250_n13_k3_l4.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/instances/KEP_p250_n13_k3_l7.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p250_n13_k3_l7.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/instances/KEP_p250_n13_k5_l17.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p250_n13_k5_l17.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/instances/KEP_p250_n28_k3_l13.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p250_n28_k3_l13.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/instances/KEP_p250_n28_k3_l4.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p250_n28_k3_l4.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/instances/KEP_p250_n28_k3_l7.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p250_n28_k3_l7.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/instances/KEP_p250_n28_k5_l17.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p250_n28_k5_l17.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/instances/KEP_p250_n83_k3_l13.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p250_n83_k3_l13.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/instances/KEP_p250_n83_k3_l4.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p250_n83_k3_l4.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/instances/KEP_p250_n83_k3_l7.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p250_n83_k3_l7.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/instances/KEP_p250_n83_k5_l17.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p250_n83_k5_l17.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/instances/KEP_p50_n0_k3_l0.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p50_n0_k3_l0.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/instances/KEP_p50_n17_k3_l13.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p50_n17_k3_l13.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/instances/KEP_p50_n17_k3_l4.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p50_n17_k3_l4.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/instances/KEP_p50_n17_k3_l7.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p50_n17_k3_l7.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/instances/KEP_p50_n17_k5_l17.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p50_n17_k5_l17.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/instances/KEP_p50_n3_k3_l13.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p50_n3_k3_l13.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/instances/KEP_p50_n3_k3_l4.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p50_n3_k3_l4.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/instances/KEP_p50_n3_k3_l7.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p50_n3_k3_l7.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/instances/KEP_p50_n3_k5_l17.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p50_n3_k5_l17.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/instances/KEP_p50_n6_k3_l13.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p50_n6_k3_l13.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/instances/KEP_p50_n6_k3_l4.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p50_n6_k3_l4.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/instances/KEP_p50_n6_k3_l7.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p50_n6_k3_l7.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/instances/KEP_p50_n6_k5_l17.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p50_n6_k5_l17.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/instances/KEP_p9_n0_k3_l0.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p9_n0_k3_l0.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/instances/KEP_p9_n1_k3_l3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/KEP_p9_n1_k3_l3.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/instances/test.txt" beforeDir="false" afterPath="$PROJECT_DIR$/instances/test.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/instances/test.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/rein-poo-le4.iml" beforeDir="false" afterPath="$PROJECT_DIR$/rein-poo-le4.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/instance/Echange.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/instance/Echange.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/instance/Noeud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/instance/Noeud.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/operateur/InsertionNoeud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/operateur/InsertionNoeud.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/operateur/InterDeplacement.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/operateur/IntraDeplacement.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/operateur/Operateur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/operateur/Operateur.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/operateur/OperateurInterSequence.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/operateur/OperateurIntraSequence.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/operateur/OperateurLocal.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/operateur/TypeOperateurLocal.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solution/Arbre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solution/Arbre.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solution/Chaine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solution/Chaine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solution/Selecteur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solution/Selecteur.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solution/SequencesPossibles.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solution/SequencesPossibles.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solution/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solution/Solution.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solveur/ArbreSequences.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solveur/ArbreSequences.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solveur/RechercheArbre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solveur/RechercheArbre.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solveur/RechercheLocale.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solveur/Solveur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solveur/Solveur.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique2.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/test/AllSolveurs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/test/AllSolveurs.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/transplantation/Cycle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/transplantation/Cycle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/transplantation/Sequence.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/transplantation/Sequence.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/instance/Echange.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/instance/Echange.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/instance/Noeud.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/instance/Noeud.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/operateur/InsertionNoeud.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/operateur/InsertionNoeud.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/operateur/InterDeplacement.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/operateur/IntraDeplacement.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/operateur/Operateur.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/operateur/Operateur.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/operateur/OperateurInterSequence.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/operateur/OperateurIntraSequence.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/operateur/OperateurLocal.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/operateur/TypeOperateurLocal.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/rein/solution/Arbre.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/solution/Arbre.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/rein/solution/Chaine.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/solution/Chaine.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/solution/Solution.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/solution/Solution.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/solution/sequencesPossibles.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/solution/sequencesPossibles.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/solveur/RechercheLocale.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/solveur/Solveur.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/solveur/Solveur.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/rein/solveur/StrategieBasique.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/solveur/StrategieBasique.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/rein/transplantation/Cycle.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/transplantation/Cycle.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/rein/transplantation/Sequence.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/transplantation/Sequence.class" afterDir="false" />
@@ -90,10 +67,11 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="dev" />
+        <entry key="$PROJECT_DIR$" value="gener_sol_2" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="MIXED" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -104,13 +82,13 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/transplantation/Cycle.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/transplantation/Sequence.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/pom.xml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/io/InstanceReader.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/instance/Noeud.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/transplantation/Sequence.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/solution/Solution.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/solution/Solution.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/transplantation/Cycle.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -132,8 +110,14 @@
     <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.42528737" />
   </component>
-  <component name="RunManager" selected="Application.ArbreSequences">
+  <component name="ReaderModeSettings">
+    <option name="enabled" value="false" />
+  </component>
+  <component name="RunManager" selected="Application.RechercheArbre">
     <configuration name="AllSolveurs" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.rein.test.AllSolveurs" />
       <module name="rein-poo-le4" />
@@ -160,19 +144,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ArbreSequences" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.rein.solveur.ArbreSequences" />
-      <module name="rein-poo-le4" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.rein.solveur.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="RechercheArbre" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.rein.solveur.RechercheArbre" />
       <module name="rein-poo-le4" />
@@ -186,10 +157,24 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="StrategieBasique" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.rein.solveur.StrategieBasique" />
+      <module name="rein-poo-le4" />
+      <option name="PROGRAM_PARAMETERS" value="-inst KEP_p100_n11_k5_l17.txt -dSol solutions_test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.rein.solveur.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="StrategieBasique2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.rein.solveur.StrategieBasique2" />
       <module name="rein-poo-le4" />
-      <option name="PROGRAM_PARAMETERS" value="-inst KEP_p250_n83_k5_l17.txt -dSol solutions_test" />
+      <option name="PROGRAM_PARAMETERS" value="-inst KEP_p9_n0_k3_l0.txt -dSol solutions_test" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.rein.solveur.*" />
@@ -213,18 +198,18 @@
     </configuration>
     <list>
       <item itemvalue="Application.Arbre" />
+      <item itemvalue="Application.StrategieBasique" />
       <item itemvalue="Application.StrategieBasique2" />
       <item itemvalue="Application.AllSolveurs" />
       <item itemvalue="Application.RechercheArbre" />
-      <item itemvalue="Application.ArbreSequences" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ArbreSequences" />
-        <item itemvalue="Application.AllSolveurs" />
-        <item itemvalue="Application.Arbre" />
         <item itemvalue="Application.RechercheArbre" />
+        <item itemvalue="Application.AllSolveurs" />
         <item itemvalue="Application.StrategieBasique2" />
+        <item itemvalue="Application.StrategieBasique" />
+        <item itemvalue="Application.Arbre" />
       </list>
     </recent_temporary>
   </component>
@@ -314,21 +299,7 @@
       <option name="project" value="LOCAL" />
       <updated>1654276345022</updated>
     </task>
-    <task id="LOCAL-00012" summary="Légères corrections et nettoyage">
-      <created>1654360045711</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1654360045711</updated>
-    </task>
-    <task id="LOCAL-00013" summary="Refonte méthode solve() de ArbreSequences">
-      <created>1654767762042</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1654767762042</updated>
-    </task>
-    <option name="localTasksCounter" value="14" />
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -345,7 +316,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="dev" />
+                        <option value="gener_sol_2" />
                       </list>
                     </value>
                   </entry>
@@ -413,7 +384,10 @@
     <MESSAGE value="merge conflits interface-graphique vers dev fait" />
     <MESSAGE value="Légères corrections et nettoyage" />
     <MESSAGE value="Refonte méthode solve() de ArbreSequences" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refonte méthode solve() de ArbreSequences" />
+    <MESSAGE value="Merge test gener-sol" />
+    <MESSAGE value="creation operateur InsertionNoeud" />
+    <option name="LAST_COMMIT_MESSAGE" value="creation operateur InsertionNoeud" />
+    <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -422,6 +396,15 @@
           <properties class="java.lang.StackOverflowError" package="java.lang" />
           <option name="timeStamp" value="1" />
         </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NoSuchMethodError" package="java.lang" />
+          <option name="timeStamp" value="4" />
+        </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/rein/solveur/BestSolution.java</url>
+          <line>11</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

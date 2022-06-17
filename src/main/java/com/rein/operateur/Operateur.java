@@ -3,6 +3,7 @@ package com.rein.operateur;
 import com.rein.transplantation.Sequence;
 
 public abstract class Operateur {
+
     protected Sequence sequence;
     protected int deltaBeneficeMedical;
 
@@ -38,6 +39,7 @@ public abstract class Operateur {
     }
 
     public boolean doMouvementIfRealisable(){
+        System.out.println("doMouvementIfRealisable()");
         if(isMouvementRealisable())
             return this.doMouvement();
         return false;

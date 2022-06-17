@@ -4,6 +4,8 @@ import com.rein.instance.Instance;
 import com.rein.instance.Noeud;
 import com.rein.transplantation.Cycle;
 import com.rein.transplantation.Sequence;
+import com.sun.net.httpserver.Filter;
+import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.Iterator;
 import java.util.LinkedHashSet;
@@ -105,6 +107,38 @@ public class SequencesPossibles {
 
         return  s;
     }
+
+
+    public void remplirNoeudsUtilises(){
+        if(this.getNoeudsUtilises().size()==0) {
+            for (Sequence ch : this.chaines) {
+                for (Noeud n : ch.getListeNoeuds()) {
+                    this.noeudsUtilises.add(n.getId());
+                }
+            }
+            for (Sequence cy : this.cycles) {
+                for (Noeud n : cy.getListeNoeuds()) {
+                    this.noeudsUtilises.add(n.getId());
+                }
+            }
+        }
+    }
+
+    public Noeud[] getNoeudsNonUtilises(Instance instance){
+        remplirNoeudsUtilises();
+        Noeud[] nRestant = instance.getTabNoeud();
+
+        for (Integer id : this.getNoeudsUtilises()){
+            for (Noeud n : nRestant){
+                if(n.getId()==id){
+                    int index = n.recherchePlace(nRestant);
+                    nRestant = ArrayUtils.remove(nRestant, index);
+                }
+            }
+        }
+        return nRestant;
+    }
+
 
     @Override
     public String toString() {

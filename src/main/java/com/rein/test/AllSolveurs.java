@@ -92,9 +92,9 @@ public class AllSolveurs {
         //solveurs.add(new RechercheArbre());
         //solveurs.add(new BestSolution());
         //solveurs.add(new StrategieBasique2());
-        solveurs.add(new ArbreSequences());
-        //solveurs.add(new RechercheArbre());
-        //solveurs.add(new BestSolution());
+        //solveurs.add(new ArbreSequences());
+        solveurs.add(new RechercheArbre());
+        solveurs.add(new BestSolution());
     }
 
     /**

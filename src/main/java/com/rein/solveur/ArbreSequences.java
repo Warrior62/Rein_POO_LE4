@@ -37,7 +37,8 @@ public class ArbreSequences implements Solveur {
         // --> Paramétrage des arbres <-- //
         parametres = setUpParameters(instance.getNom());
         // --> Détection des séquences <-- //
-        SequencesPossibles sequencesDetectees = a.detectionChainesCycles(5, parametres.get("profondeurMaxArbreDetection"));
+        //SequencesPossibles sequencesDetectees = a.detectionChainesCycles(5, parametres.get("profondeurMaxArbreDetection"));
+        SequencesPossibles sequencesDetectees = a.detectionChainesCycles();
         System.out.println("Sequeces Détectées : ");
         System.out.println(sequencesDetectees);
         Selecteur selecteur = new Selecteur(sequencesDetectees);
@@ -46,7 +47,7 @@ public class ArbreSequences implements Solveur {
         Iterator it = selecteur.getSequencesPossibles().getCycles().iterator();
         while (it.hasNext()) {
             Sequence s = (Sequence) it.next();
-            sol = selecteur.arbreBestSol(s, instance, parametres.get("profondeurMaxArbreSelection"), parametres.get("largeurMaxArbreSelection"));
+            sol = selecteur.arbreBestSol(s, instance, 4, 4);
             if (sol.getBenefTotal() > sequencesChoisies.getBenefTotal())
                 sequencesChoisies = sol;
             System.out.println("_________________________________________________________________");

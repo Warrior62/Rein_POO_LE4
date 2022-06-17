@@ -4,19 +4,17 @@ import com.rein.instance.Instance;
 import com.rein.instance.Noeud;
 import com.rein.transplantation.Sequence;
 
-import java.security.spec.RSAOtherPrimeInfo;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Selecteur {
 
+
+    private SequencesPossibles sequencesPossibles;
     private static int BENEFMAX = 0; //arbre
     private int profondeurMax; //arbre
     private int largeurMax; //arbre
     private LinkedHashSet<Sequence> sequencesFinales; //arbre
     private int benefFinal; //arbre
-    private final SequencesPossibles sequencesPossibles;
-
 
     public Selecteur(SequencesPossibles sequencesPossibles) {
         this.sequencesPossibles = sequencesPossibles;
@@ -31,7 +29,7 @@ public class Selecteur {
         this.profondeurMax = profondeurArbre;
         this.largeurMax = largeurArbre;
 
-        LinkedHashSet<Sequence> sequencesRestantes = new LinkedHashSet<Sequence>();
+        LinkedHashSet<Sequence> sequencesRestantes = new LinkedHashSet<>();
         sequencesRestantes.addAll(this.sequencesPossibles.getChaines());
         sequencesRestantes.addAll(this.sequencesPossibles.getCycles());
 
@@ -285,6 +283,46 @@ public class Selecteur {
         return sequencesChoisies;
     }
 
+    /*public SequencesPossibles selectionMeilleurPlusGrosBenef(){
+        SequencesPossibles bestsequencesChoisies = new SequencesPossibles();
+        int taille = 40;
+
+        for (int i=0;i<taille;i++) {
+            SequencesPossibles sequencesChoisies = selectionPlusGrosBenef();
+            if (sequencesChoisies.calculBenefTotal() > bestsequencesChoisies.calculBenefTotal()) {
+                bestsequencesChoisies = sequencesChoisies;
+            }
+            removeBestSequence();
+        }
+        return bestsequencesChoisies;
+    }
+
+    public boolean removeBestSequence(){
+        if (sequencesPossibles.getCycles().size()>0 && sequencesPossibles.getChaines().size()==0) {
+            Sequence cycleBest = this.sequencesPossibles.getCycles().stream().findFirst().get();
+            this.sequencesPossibles.getCycles().remove(cycleBest);
+       }
+
+        else if (sequencesPossibles.getCycles().size()==0 && sequencesPossibles.getChaines().size()>0) {
+            Sequence chaineBest = this.sequencesPossibles.getChaines().stream().findFirst().get();
+            this.sequencesPossibles.getChaines().remove(chaineBest);
+        }
+
+        else if (sequencesPossibles.getCycles().size()>0 && sequencesPossibles.getChaines().size()>0) {
+            Sequence cycleBest = this.sequencesPossibles.getCycles().stream().findFirst().get();
+            Sequence chaineBest = this.sequencesPossibles.getChaines().stream().findFirst().get();
+            if (cycleBest.getTailleMaxSequence() > chaineBest.getTailleMaxSequence()) {
+                this.sequencesPossibles.getCycles().remove(cycleBest);
+            } else {
+                this.sequencesPossibles.getChaines().remove(chaineBest);
+            }
+        }
+        else
+        {
+            return false;
+        }
+        return true;
+    }*/
     /**
      * Sélectionne les cycles puis les chaines
      * avec les plus gros ou petits bénéfices

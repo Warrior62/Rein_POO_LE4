@@ -31,6 +31,7 @@ public class Chaine extends Sequence {
      * @param idsDeNoeuds LinkedHasSet d'ids int.
      * @param i Instance à laquelle appartient la chaine créée. Sert à retrouver la taille max de la chaine, et accéder aux noeuds de cette instance.
      * */
+
     public Chaine(LinkedHashSet<Integer> idsDeNoeuds, Instance i) {
         Iterator it = idsDeNoeuds.iterator();
         int idPrec, idCour;
@@ -116,6 +117,10 @@ public class Chaine extends Sequence {
      * @return false si les conditions ne sont pas respectées.
      * */
     public boolean check() {
+        System.out.println("CHECK chaine");
+        System.out.println("verifTailleMax : " + verifTailleMax());
+        System.out.println("verifNoAltruiste : " + verifAltruistes());
+        System.out.println("verifBenefMedical : " + verifBenefMedical());
         return (verifTailleMax() && verifAltruistes() && verifBenefMedical());
     }
 
@@ -192,12 +197,13 @@ public class Chaine extends Sequence {
      * @return false Si la condition n'est pas vérifiée (taille chaine + noeud > taille max).
      * */
     private boolean verifTailleMax() {
+        System.out.println("verifTailleMax()");
         if (this.getTailleMaxSequence() >= this.getListeNoeuds().size()-1) { //Le '-1' est nécessaire car l'altruiste n'est pas stocké dans la liste de Noeuds
-            //System.out.println("verifTailleMax() : OK");
+            System.out.println("verifTailleMax() : OK");
             return true;
-        }else {
-            return false;
         }
+        System.out.println("verifTailleMax() : PAS OK");
+        return false;
     }
 
 
@@ -221,10 +227,10 @@ public class Chaine extends Sequence {
                 somme += noeudCourant.getBenefMedicalVers(noeudSuivant);
             }
             if (somme == this.getBenefMedicalSequence()) {
-                //System.out.println("verifBenefMedical() : OK");
+                System.out.println("verifBenefMedical() : OK");
                 return true;
             }else {
-
+                System.out.println("verifBenefMedical() : PAS OK");
                 return false;
             }
         }else {
@@ -244,7 +250,7 @@ public class Chaine extends Sequence {
                 nbAltruistes++;
         }
         if ((this.getListeNoeuds().get(0) instanceof Altruiste) && nbAltruistes == 1) {
-
+            System.out.println("verifAltruistes : OK");
             return true;
         }else {
             System.out.println("verifAltruistes() : NOT_OK");

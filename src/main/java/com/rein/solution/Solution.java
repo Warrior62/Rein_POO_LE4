@@ -6,9 +6,7 @@
 package com.rein.solution;
 import com.rein.instance.Instance;
 import com.rein.io.InstanceReader;
-import com.rein.operateur.OperateurInterSequence;
-import com.rein.operateur.OperateurIntraSequence;
-import com.rein.operateur.OperateurLocal;
+import com.rein.operateur.InsertionNoeud;
 import com.rein.transplantation.Cycle;
 import com.rein.transplantation.Sequence;
 import java.util.ArrayList;
@@ -51,11 +49,12 @@ public class Solution {
     }
 
     public void calculBenefice(){
+        System.out.println("calculBenefice()");
         this.suppressionSequencesVides();
         for (Sequence seq : listeSequences){
-            if (seq instanceof Chaine)
+            //if (seq instanceof Chaine)
             seq.calculBenefice(instance.getEchanges());
-                this.benefMedicalTotal += seq.getBenefMedicalSequence();
+            this.benefMedicalTotal += seq.getBenefMedicalSequence();
         }
     }
     public void suppressionSequencesVides(){
@@ -67,6 +66,22 @@ public class Solution {
             }
         }
     }
+
+    public Solution generationSolution(SequencesPossibles sequencesSolution, Instance instance){
+        Solution s = new Solution(instance);
+        LinkedHashSet<Sequence> tabCycle = sequencesSolution.getCycles();
+        LinkedHashSet<Sequence> tabChaine = sequencesSolution.getChaines();
+        for (Sequence seq : tabCycle){
+            s.ajouterSequence(seq);
+        }
+        for (Sequence seq : tabChaine){
+            s.ajouterSequence(seq);
+        }
+
+        return s;
+
+    }
+
     public int getBenefMedicalTotal() {
         return benefMedicalTotal;
     }
@@ -76,6 +91,10 @@ public class Solution {
 
     public Instance getInstance() {
         return instance;
+    }
+
+    public void setBenefMedicalTotal(int benefMedicalTotal) {
+        this.benefMedicalTotal = benefMedicalTotal;
     }
 
     @Override
@@ -101,6 +120,7 @@ public class Solution {
      * Return true si la solution découle d'une instance existante, false sinon.
      * **/
     private boolean verifInstanceAssociee() {
+        System.out.println("verifInstance : " + (this.instance.getNom() != "" && this.instance.getNom() != null));
         return (this.instance.getNom() != "" && this.instance.getNom() != null);
     }
     /**
@@ -110,6 +130,7 @@ public class Solution {
         int somme = 0;
         for (Sequence s: this.listeSequences)
             somme += s.getBenefMedicalSequence();
+        System.out.println("verifBenefMedicalCorrect : " + (somme == this.benefMedicalTotal));
         return (somme == this.benefMedicalTotal);
     }
     /**
@@ -121,14 +142,16 @@ public class Solution {
             if (s instanceof Chaine){
                 ans = ((Chaine) s).check();
             }
-            else
-            {ans = ((Cycle) s).check();
+            else {
+                ans = ((Cycle) s).check();
             }
             if (!ans)
                 return false;
         }
+        System.out.println("verifSequencesValides : " + ans);
         return true;
     }
+
     public String exportSol() {
         StringBuilder stringSol = new StringBuilder("// Cout total de la solution\n" +
             this.getBenefMedicalTotal() +
@@ -149,18 +172,7 @@ public class Solution {
         return stringSol.toString();
     }
 
-    public boolean doMouvementRechercheLocale(OperateurLocal infos){
-        if(infos == null) return false;
-        if(!infos.doMouvementIfRealisable()) return false;
 
-        this.benefMedicalTotal += infos.getDeltaBeneficeMedical();
-        if(!this.check()){
-            System.out.println("ERROR doMouvementRechercheLocale");
-            System.out.println(infos);
-            System.exit(-1);
-        }
-        return true;
-    }
 
     /**
      * Retourne true si la solution comporte au moins une séquence de la classe (Chaine/Cycle) passée en argument
@@ -174,71 +186,14 @@ public class Solution {
         return false;
     }
 
+    public boolean doInsertion(InsertionNoeud infos){
+        if(infos == null) return false;
+        if(!this.listeSequences.contains(infos.getSequence())) return false;
+        if(!infos.doMouvementIfRealisable()) return false;
 
-   /* public Solution generationSolution(Instance i){
-        Solution sol = new Solution(i);
-
-        Arbre arbre = new Arbre(instance.getTabNoeud()[0], instance);
-        SequencesPossibles sequencesUtilisables = arbre.detectionChainesCycles();
-
-        Selecteur selecteur = new Selecteur(sequencesUtilisables);
-        SequencesPossibles seqSol = selecteur.selectionRandom_v1();
-        SequencesPossibles seqSol2 = selecteur.selectionPlusGrosBenef();
-
-
-        //COMPARER BENEF  DES SEQUENCES ET PRENDRE LA MEILLEURE
-
-
-        LinkedHashSet<Sequence> tabCycle = seqSol.getCycles();
-        LinkedHashSet<Sequence> tabChaine = seqSol.getChaines();
-        for (Sequence seq : tabCycle){
-            sol.ajouterSequence(seq);
-        }
-        for (Sequence seq : tabChaine){
-            sol.ajouterSequence(seq);
-        }
-
-        return sol;
-    }*/
-
-    /*private OperateurLocal getMeilleurOperateurIntra(TypeOperateurLocal type){
-        return null;
-        OperateurLocal best = OperateurLocal.getOperateur(type);
-        for(Tournee t : this.listeTournees){
-            for(int i=0; i<t.getClients().size(); i++) {
-                for(int j=0; j<t.getClients().size()+1; j++) {
-                    if(j < t.getClients().size()){
-                        OperateurIntraTournee op = OperateurLocal.getOperateurIntra(type, t, i, j);
-                        if(op.isMeilleur(best)) {
-                            best = op;
-                        }
-                    }
-                }
-            }
-        }
-        return best;
-    }*/
-
-    /*private OperateurLocal getMeilleurOperateurInter(TypeOperateurLocal type){
-        OperateurLocal best = OperateurLocal.getOperateur(type), op;
-        for(Sequence s : this.listeSequences){
-            for(Sequence s1 : this.listeSequences) {
-                op = s.getMeilleurOperateurInter(type, s1);
-                if(op.isMeilleur(best))
-                    best = op;
-            }
-        }
-        return best;
-    }*/
-
-   /* public OperateurLocal getMeilleurOperateurLocal(TypeOperateurLocal type){
-        if(OperateurLocal.getOperateur(type) instanceof OperateurIntraSequence)
-            return this.getMeilleurOperateurIntra(type);
-        else if(OperateurLocal.getOperateur(type) instanceof OperateurInterSequence)
-            return this.getMeilleurOperateurInter(type);
-        //this.getMeilleurOperateurInter(type);
-        return null;
-    }*/
+        this.benefMedicalTotal += infos.getDeltaBeneficeMedical();
+        return true;
+    }
 
     public static void main(String[] args) {
         InstanceReader reader;

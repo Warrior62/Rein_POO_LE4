@@ -89,13 +89,16 @@ public class Cycle extends Sequence {
      * - La taille max de la séquence est respectée
      * */
     public boolean check() {
+        System.out.println("CHECK cycle " + this.getListeIdNoeuds());
+        System.out.println("verifTailleMax : " + verifTailleMax());
+        System.out.println("verifNoAltruiste : " + verifNoAltruiste());
+        System.out.println("verifBenefMedical : " + verifBenefMedical());
         return (verifTailleMax() && verifNoAltruiste() && verifBenefMedical());
     }
     private boolean verifTailleMax() {
         if (this.getListeNoeuds().size() <= this.getTailleMaxSequence())
             return true;
-        else
-            return false;
+        return false;
     }
     private boolean verifBenefMedical() {
         List listeNoeuds = this.getListeNoeuds();
@@ -105,11 +108,14 @@ public class Cycle extends Sequence {
         for (i=0 ; i<(listeNoeuds.size()-1) ; i++) { //On s'arrête à l'indice 'taille-1', pour manuellement calculer le bénéfice vers le 1er noeud (boucle)
             noeudCourant = (Noeud) listeNoeuds.get(i);
             noeudSuivant = (Noeud) listeNoeuds.get(i+1);
+            //System.out.println(noeudCourant.getId() + " - " + noeudSuivant.getId() + " --> " + noeudCourant.getBenefMedicalVers(noeudSuivant));
             somme += noeudCourant.getBenefMedicalVers(noeudSuivant);
         }
         noeudCourant = (Noeud) listeNoeuds.get(i);
         noeudSuivant = (Noeud) listeNoeuds.get(0);
         somme += noeudCourant.getBenefMedicalVers(noeudSuivant);
+        //System.out.println(noeudCourant.getId() + " - " + noeudSuivant.getId() + " --> " + noeudCourant.getBenefMedicalVers(noeudSuivant));
+        System.out.println("\t(somme,this.getBenefMedicalSequence()) = (" + somme + "," + this.getBenefMedicalSequence() + ")");
         return (somme == this.getBenefMedicalSequence());
     }
     private boolean verifNoAltruiste() {

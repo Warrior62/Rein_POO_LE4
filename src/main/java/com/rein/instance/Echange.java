@@ -1,6 +1,5 @@
 package com.rein.instance;
 
-import com.rein.transplantation.Sequence;
 
 public class Echange {
 
@@ -14,33 +13,19 @@ public class Echange {
         this.donneur = donneur;
         this.receveur = receveur;
         this.isRealise = false;
-
         this.donneur.getListeEchanges().put(this.receveur, this.benefMedical);
-        //System.out.println(this.donneur.getListeEchanges());
     }
 
     public int getBenefMedical() {
         return benefMedical;
     }
 
-    private void setBenefMedical(int benefMedical) {
-        this.benefMedical = benefMedical;
-    }
-
     public Noeud getDonneur() {
         return donneur;
     }
 
-    private void setDonneur(Noeud donneur) {
-        this.donneur = donneur;
-    }
-
     public Noeud getReceveur() {
         return receveur;
-    }
-
-    private void setReceveur(Noeud receveur) {
-        this.receveur = receveur;
     }
 
     @Override
