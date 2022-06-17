@@ -93,6 +93,7 @@ public class SequencesPossibles {
         this.setBenefTotal(this.getBenefTotal() + s.getBenefMedicalSequence());
     }
 
+
     /**
      * Méthode chargée de générer une solution en étant appelée sur un objet SequencesPossibles
      * */

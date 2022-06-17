@@ -15,8 +15,9 @@ import com.rein.operateur.*;
 import com.rein.solution.Chaine;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
-public abstract class Sequence {
+public abstract class Sequence implements Comparable{
     //private int id = 0;
     private int benefMedicalSequence = 0;
     private ArrayList<Noeud> listeNoeuds =new ArrayList<>();
@@ -34,6 +35,14 @@ public abstract class Sequence {
     public void decreaseBenefMedicalTotal(int nb){
         this.benefMedicalSequence -= nb;
     }
+
+    @Override
+    public int compareTo(Object o) {
+        Sequence s = (Sequence) o;
+        //System.out.println("Comparaison : " + (s.getBenefMedicalSequence() - this.getBenefMedicalSequence()));
+        return s.getBenefMedicalSequence() - this.getBenefMedicalSequence();
+    }
+
     public void calculBenefice(List<Echange> listeEchanges){
                if(this.listeNoeuds.size()>1){
             for(int i=0;i<this.listeNoeuds.size()-1;i++){

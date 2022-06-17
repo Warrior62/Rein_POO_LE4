@@ -91,6 +91,7 @@ public class AllSolveurs {
         //solveurs.add(new ArbreSequences());
         //solveurs.add(new RechercheArbre());
         solveurs.add(new BestSolution());
+        //solveurs.add(new MeilleureCombiSequence());
     }
 
     /**

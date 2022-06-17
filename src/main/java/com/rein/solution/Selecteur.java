@@ -101,9 +101,6 @@ public class Selecteur {
             diffTest.clear();
             diffTest.addAll(s.getListeNoeuds());
             diffTest.addAll(sequence.getListeNoeuds());
-            /*System.out.println(sequence.toStringShort() + " / VS / " + s.toStringShort());
-            System.out.println("APRES AJOUT : " + diffTest);
-            System.out.println((s.getListeNoeuds().size() + sequence.getListeNoeuds().size()) == diffTest.size());*/
 
             if ( (s.getListeNoeuds().size() + sequence.getListeNoeuds().size()) == diffTest.size() ) {
                 //System.out.println("Sequence fille valide ----------------");
@@ -114,10 +111,6 @@ public class Selecteur {
         //System.out.println(sequencesRestantesBis);
         return sequencesFilles;
     }
-
-    /*Set<String> result = list.stream()  .distinct()  .filter(otherList::contains)  .collect(Collectors.toSet());
-    Set<String> commonElements = new HashSet(Arrays.asList("red", "green"));
-    Assert.assertEquals(commonElements, result);*/
 
     public SequencesPossibles getSequencesPossibles() {
         return sequencesPossibles;
@@ -144,7 +137,6 @@ public class Selecteur {
         tabCycles.addAll(this.sequencesPossibles.getCycles());
         tabChaines.addAll(this.sequencesPossibles.getChaines());
 
-
         //Selection des cycles
         Collections.shuffle(tabCycles);
         for (i=0 ; i<tabCycles.size() ; i++ ) {
@@ -159,22 +151,6 @@ public class Selecteur {
 
         return sequencesChoisies;
     }
-
-    // méthode trop random
-    public SequencesPossibles selectionRandom_v2() {
-        SequencesPossibles bestsequencesChoisies = new SequencesPossibles();
-        SequencesPossibles sequencesChoisies = new SequencesPossibles();
-
-        for (int i=0;i<=10;i++) {
-            sequencesChoisies = selectionRandom_v1();
-            if (sequencesChoisies.calculBenefTotal() > bestsequencesChoisies.calculBenefTotal()) {
-                bestsequencesChoisies = sequencesChoisies;
-            }
-        }
-
-            return bestsequencesChoisies;
-    }
-
 
     /**
      * Méthode chargée de vérifier si la Séquence passé en paramètre peut être choisies dans la solution, à partir de la liste d'ids de Noeuds déjà selectionnée, dans sequencesChoisies.
@@ -285,46 +261,112 @@ public class Selecteur {
         return sequencesChoisies;
     }
 
-    /*public SequencesPossibles selectionMeilleurPlusGrosBenef(){
-        SequencesPossibles bestsequencesChoisies = new SequencesPossibles();
-        int taille = 40;
 
-        for (int i=0;i<taille;i++) {
-            SequencesPossibles sequencesChoisies = selectionPlusGrosBenef();
-            if (sequencesChoisies.calculBenefTotal() > bestsequencesChoisies.calculBenefTotal()) {
-                bestsequencesChoisies = sequencesChoisies;
-            }
-            removeBestSequence();
+
+    public SequencesPossibles selectionCombiSequence(){
+        LinkedHashSet<SequencesPossibles> solutionsPossibles = new LinkedHashSet<>();
+        int count = 0;
+        ArrayList<Sequence> arrayCycle= new ArrayList<>(this.sequencesPossibles.getCycles());
+        Collections.sort(arrayCycle);
+        ArrayList<Sequence> arrayChaine= new ArrayList<>(this.sequencesPossibles.getChaines());
+        Collections.sort(arrayChaine);
+
+        SequencesPossibles seqPosCycleChaine = new SequencesPossibles();
+        seqPosCycleChaine.getCycles().addAll(arrayCycle);
+        seqPosCycleChaine.getChaines().addAll(arrayChaine);
+       // seqPosCycleChaine.setCycles(this.sequencesPossibles.getCycles());
+       // seqPosCycleChaine.setChaines(this.sequencesPossibles.getChaines());
+
+        Iterator<Sequence> seq = seqPosCycleChaine.getCycles().iterator();
+        while(seq.hasNext() && count<2 ) {
+            count ++;
+            Sequence s = seq.next();
+            System.out.println("SEQUENCE "+ this.sequencesPossibles);
+            SequencesPossibles sequencesPossibles = copy(this.sequencesPossibles);
+            SequencesPossibles sequencesSolution = new SequencesPossibles();
+            sequencesSolution.ajouterSequence(s);
+            supprimerCombi(s,sequencesPossibles);
+            trierSequence(sequencesPossibles, sequencesSolution,solutionsPossibles);
         }
-        return bestsequencesChoisies;
+
+        System.out.println("solutions possibles "+ solutionsPossibles);
+        SequencesPossibles sequencesSolution = bestSolution(solutionsPossibles);
+        return sequencesSolution;
     }
 
-    public boolean removeBestSequence(){
-        if (sequencesPossibles.getCycles().size()>0 && sequencesPossibles.getChaines().size()==0) {
-            Sequence cycleBest = this.sequencesPossibles.getCycles().stream().findFirst().get();
-            this.sequencesPossibles.getCycles().remove(cycleBest);
-       }
 
-        else if (sequencesPossibles.getCycles().size()==0 && sequencesPossibles.getChaines().size()>0) {
-            Sequence chaineBest = this.sequencesPossibles.getChaines().stream().findFirst().get();
-            this.sequencesPossibles.getChaines().remove(chaineBest);
+
+
+    public void trierSequence(SequencesPossibles seqPossibles,SequencesPossibles seqSolution, LinkedHashSet<SequencesPossibles> listeSolPossibles){
+        if(seqPossibles.getChaines().size()== 0 && seqPossibles.getCycles().size() == 0){
+            System.out.println("--- Ajout solution "+ seqSolution);
+            listeSolPossibles.add(seqSolution);
         }
+        else {
+            LinkedHashSet<Sequence> chaines = seqPossibles.getChaines();
+            Iterator<Sequence> seqCh = chaines.iterator();
+            while(seqCh.hasNext()&& chaines.size()>0) {
+                Sequence s = seqCh.next();
+                seqSolution.ajouterSequence(s);
+                SequencesPossibles seqRestantes = copy(seqPossibles);
+                supprimerCombi(s, seqRestantes);
+                trierSequence(seqRestantes, seqSolution, listeSolPossibles);
+            }
 
-        else if (sequencesPossibles.getCycles().size()>0 && sequencesPossibles.getChaines().size()>0) {
-            Sequence cycleBest = this.sequencesPossibles.getCycles().stream().findFirst().get();
-            Sequence chaineBest = this.sequencesPossibles.getChaines().stream().findFirst().get();
-            if (cycleBest.getTailleMaxSequence() > chaineBest.getTailleMaxSequence()) {
-                this.sequencesPossibles.getCycles().remove(cycleBest);
-            } else {
-                this.sequencesPossibles.getChaines().remove(chaineBest);
+            LinkedHashSet<Sequence> cycles = seqPossibles.getCycles();
+            Iterator<Sequence> seqCy = cycles.iterator();
+            while(seqCy.hasNext() && cycles.size()>0) {
+                Sequence s = seqCy.next();
+                seqSolution.ajouterSequence(s);
+                SequencesPossibles seqRestantes = copy(seqPossibles);
+                supprimerCombi(s, seqRestantes);
+                trierSequence(seqRestantes, seqSolution, listeSolPossibles);
+            }
+            seqPossibles.setCycles(cycles);
+        }
+    }
+
+    public SequencesPossibles bestSolution(LinkedHashSet<SequencesPossibles> listeSolPossibles){
+
+        SequencesPossibles bestSolution = new SequencesPossibles();
+        for(SequencesPossibles solPossible : listeSolPossibles){
+            if(solPossible.calculBenefTotal()>bestSolution.calculBenefTotal()){
+                bestSolution = solPossible;
             }
         }
-        else
-        {
-            return false;
+        return bestSolution;
+    }
+    public SequencesPossibles supprimerCombi(Sequence seq,SequencesPossibles sequencesPossibles){
+        for(Noeud n: seq.getListeNoeuds()){
+            Iterator<Sequence> ich = sequencesPossibles.getChaines().iterator();
+            while (ich.hasNext()) {
+                Sequence s = ich.next();
+                if(s.getListeNoeuds().contains(n)){
+                    //System.out.println("Le noeud "+ n +" est dans la séquence "+ s);
+                    ich.remove();
+                }
+            }
+            Iterator<Sequence> i = sequencesPossibles.getCycles().iterator();
+            while (i.hasNext()) {
+                Sequence s = i.next();
+                if(s.getListeNoeuds().contains(n)){
+                    //System.out.println("Le noeud "+ n +" est dans la séquence "+ s);
+                    i.remove();
+                }
+            }
         }
-        return true;
-    }*/
+        return sequencesPossibles;
+    }
+
+    public SequencesPossibles copy(SequencesPossibles sequencesPossibles){
+        SequencesPossibles sequencesPossibles1 = new SequencesPossibles();
+        sequencesPossibles1.getCycles().addAll(sequencesPossibles.getCycles());
+        sequencesPossibles1.getChaines().addAll(sequencesPossibles.getChaines());
+        sequencesPossibles1.getNoeudsUtilises().addAll(sequencesPossibles.getNoeudsUtilises());
+        sequencesPossibles1.setBenefTotal(sequencesPossibles.getBenefTotal());
+
+        return sequencesPossibles1;
+    }
     /**
      *
      * Sélectionne les cycles puis les chaines

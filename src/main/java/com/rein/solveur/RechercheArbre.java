@@ -50,16 +50,23 @@ public class RechercheArbre implements Solveur {
             }
         }
         else{
-            if(instance.getTabPaire().size()==250){
+            if(instance.getTabPaire().size()>200){
                 for (int i=0;i<10;i++){
-                    Arbre arbre1 = new Arbre(instance.getTabNoeud()[i], instance,instance.getTailleMaxCycles(),0);
+                    Arbre arbre1 = new Arbre(instance.getTabNoeud()[i], instance,5,0);
+                    SequencesPossibles sequencesUtilisables1 = arbre1.detectionChainesCycles();
+                    sequencesUtilisables.getCycles().addAll(sequencesUtilisables1.getCycles());
+                }
+            }
+            else if (instance.getTabPaire().size()<=200 && instance.getTabPaire().size()>50){
+                for (int i = 0; i < instance.getTabPaire().size() - 1; i++) {
+                    Arbre arbre1 = new Arbre(instance.getTabNoeud()[i], instance,4,0);
                     SequencesPossibles sequencesUtilisables1 = arbre1.detectionChainesCycles();
                     sequencesUtilisables.getCycles().addAll(sequencesUtilisables1.getCycles());
                 }
             }
             else {
-                for (int i = 0; i < instance.getTabPaire().size() - 1; i++) {
-                    Arbre arbre1 = new Arbre(instance.getTabNoeud()[i], instance,instance.getTailleMaxCycles(),0);
+                for (int i=0;i<instance.getTabPaire().size() - 1;i++){
+                    Arbre arbre1 = new Arbre(instance.getTabNoeud()[i], instance,4,0);
                     SequencesPossibles sequencesUtilisables1 = arbre1.detectionChainesCycles();
                     sequencesUtilisables.getCycles().addAll(sequencesUtilisables1.getCycles());
                 }
