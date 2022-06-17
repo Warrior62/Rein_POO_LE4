@@ -30,7 +30,6 @@ public class Solution {
     public Solution(Instance instance) {
         this.instance = instance;
         this.listeSequences = new ArrayList<>();
-        this.benefMedicalTotal = 0;
     }
 
     /**
@@ -117,9 +116,7 @@ public class Solution {
         for (Sequence seq : tabChaine){
             s.ajouterSequence(seq);
         }
-
         return s;
-
     }
 
     /**

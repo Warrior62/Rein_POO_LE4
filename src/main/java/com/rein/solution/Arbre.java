@@ -123,16 +123,9 @@ public class Arbre implements Comparable {
     public void remplirListeFils(){
         for(Map.Entry echange : this.noeudRacine.getListeEchanges().entrySet()){
             Noeud noeudFils = (Noeud) echange.getKey();
-            if ((this.instance.getTabPaires().contains(noeudFils)) || this.instance.getTabAltruistes().contains(noeudFils) ) {
-                Arbre a = new Arbre(noeudFils, this.instance, this.profondeurMax, this.largeurMax);
-                a.niveauProfondeur = this.niveauProfondeur + 1;
-
-                this.listeFils.add(a);
-                Collections.sort(this.listeFils);
-                if (this.listeFils.size() >= this.largeurMax) {
-                    break;
-                }
-            }
+            Arbre a = new Arbre(noeudFils, this.instance, this.profondeurMax, this.largeurMax);
+            a.niveauProfondeur = this.niveauProfondeur + 1;
+            this.listeFils.add(a);
         }
     }
 

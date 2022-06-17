@@ -10,7 +10,6 @@ import com.rein.solution.*;
 
 public class RechercheArbre implements Solveur {
 
-
     @Override
     public String getNom() {
         return "Recherche Arbre";
@@ -81,8 +80,6 @@ public class RechercheArbre implements Solveur {
         SequencesPossibles sequencesSolution2 = selecteur2.selectionParBenef(false);
         sequencesSolution.getCycles().addAll(sequencesSolution2.getCycles());
         sequencesSolution.getChaines().addAll(sequencesSolution2.getChaines());
-
-       +
 
         //GENERATION SOLUTION
         Solution s = new Solution(instance);
