@@ -1,11 +1,11 @@
 package com.rein.solution;
 
+import com.rein.instance.Altruiste;
 import com.rein.instance.Instance;
 import com.rein.instance.Noeud;
+import com.rein.instance.Paire;
 import com.rein.transplantation.Cycle;
 import com.rein.transplantation.Sequence;
-import com.sun.net.httpserver.Filter;
-import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.Iterator;
 import java.util.LinkedHashSet;
@@ -16,6 +16,8 @@ public class SequencesPossibles {
     private LinkedHashSet<Sequence> cycles;
     private LinkedHashSet<Sequence> chaines;
     private LinkedHashSet<Integer> noeudsUtilises;
+    private LinkedHashSet<Noeud> pairesUtilisees;
+    private LinkedHashSet<Noeud> altruistesUtilises;
     private int benefTotal; //arbre
 
     /**
@@ -24,7 +26,9 @@ public class SequencesPossibles {
     public SequencesPossibles() {
         this.cycles = new LinkedHashSet<>();
         this.chaines = new LinkedHashSet<>();
-        this.noeudsUtilises = new LinkedHashSet<Integer>();
+        this.pairesUtilisees = new LinkedHashSet<>();
+        this.altruistesUtilises = new LinkedHashSet<>();
+        this.noeudsUtilises = new LinkedHashSet<>();
         this.benefTotal = 0;
     }
 
@@ -36,10 +40,22 @@ public class SequencesPossibles {
         this.chaines = sp.getChaines();
         this.noeudsUtilises = sp.getNoeudsUtilises();
         this.benefTotal = sp.getBenefTotal();
+        this.pairesUtilisees = sp.getPairesUtilisees();
+        this.altruistesUtilises = sp.getAltruistesUtilises();
     }
 
 
     //////////////////////////////////////////////////////////////
+
+    //Getters
+    public LinkedHashSet<Noeud> getAltruistesUtilises() {
+        return altruistesUtilises;
+    }
+
+    public LinkedHashSet<Noeud> getPairesUtilisees() {
+        return pairesUtilisees;
+    }
+
     public LinkedHashSet<Sequence> getChaines() {
         return chaines;
     }
@@ -56,6 +72,15 @@ public class SequencesPossibles {
         return benefTotal;
     }
 
+    //Setters
+    public void setAltruistesUtilises(LinkedHashSet<Noeud> altruistesUtilises) {
+        this.altruistesUtilises = altruistesUtilises;
+    }
+
+    public void setPairesUtilisees(LinkedHashSet<Noeud> pairesUtilisees) {
+        this.pairesUtilisees = pairesUtilisees;
+    }
+
     public void setChaines(LinkedHashSet<Sequence> chaines) {
         this.chaines = chaines;
     }
@@ -70,6 +95,10 @@ public class SequencesPossibles {
 
     //////////////////////////////////////////////////////////////
 
+    /**
+     * Méthode de calcul du bénéfice total de l'objet SequencesPossibles courant.
+     * @return int le bénéfice total calculé.
+     * */
     public int calculBenefTotal(){
         int benef = 0;
         for (Sequence cy: cycles){
@@ -80,21 +109,33 @@ public class SequencesPossibles {
         }
         return benef;
     }
-    // Méthode chargée d'ajouter une séquence dans un objet SequencesPossibles
+
+    /**
+     * Méthode chargée d'ajouter une séquence dans un objet SequencesPossibles.
+     * @param s Sequence a ajouter dans la SequencePossibles courante.
+     * */
     public void ajouterSequence(Sequence s) {
         if (s instanceof Chaine)
-            this.getChaines().add(s);
+            this.getChaines().add(s); //Ajout de la chaine aux chaines sélectionnées
+
         if (s instanceof Cycle)
             this.getCycles().add(s);
 
-        for (Noeud n : s.getListeNoeuds())
+        for (Noeud n : s.getListeNoeuds()) {
             this.getNoeudsUtilises().add(n.getId());
+            if (n instanceof Altruiste)
+                this.getAltruistesUtilises().add(n);
+            else
+                this.getPairesUtilisees().add(n);
+        }
 
         this.setBenefTotal(this.getBenefTotal() + s.getBenefMedicalSequence());
     }
 
     /**
      * Méthode chargée de générer une solution en étant appelée sur un objet SequencesPossibles
+     * @param i Instance pour laquelle la solution est générée.
+     * @return la Solution générée.
      * */
     public Solution generationSolution(Instance i) {
         Solution s = new Solution(i);
@@ -108,38 +149,10 @@ public class SequencesPossibles {
         return  s;
     }
 
-
-    public void remplirNoeudsUtilises(){
-        if(this.getNoeudsUtilises().size()==0) {
-            for (Sequence ch : this.chaines) {
-                for (Noeud n : ch.getListeNoeuds()) {
-                    this.noeudsUtilises.add(n.getId());
-                }
-            }
-            for (Sequence cy : this.cycles) {
-                for (Noeud n : cy.getListeNoeuds()) {
-                    this.noeudsUtilises.add(n.getId());
-                }
-            }
-        }
-    }
-
-    public Noeud[] getNoeudsNonUtilises(Instance instance){
-        remplirNoeudsUtilises();
-        Noeud[] nRestant = instance.getTabNoeud();
-
-        for (Integer id : this.getNoeudsUtilises()){
-            for (Noeud n : nRestant){
-                if(n.getId()==id){
-                    int index = n.recherchePlace(nRestant);
-                    nRestant = ArrayUtils.remove(nRestant, index);
-                }
-            }
-        }
-        return nRestant;
-    }
-
-
+    /**
+     * Méthode toString de la classe SequencePossibles.
+     * @return la chaine descriptive de la SequencePossibles courante.
+     * */
     @Override
     public String toString() {
         String chaine = "";

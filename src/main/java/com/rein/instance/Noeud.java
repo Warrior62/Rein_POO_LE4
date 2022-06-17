@@ -1,17 +1,20 @@
 package com.rein.instance;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
 import java.util.Objects;
 
-public class Noeud {
+public class Noeud implements Comparable {
     private final int id;
     private Map<Noeud, Integer> listeEchanges;
+    private int scorePopularite;
+    private int scoreBenefice;
 
     public Noeud(int id) {
         this.id = id;
         this.listeEchanges = new HashMap<>();
+        this.scorePopularite = 0;
+        this.scoreBenefice = 0;
     }
 
     /**
@@ -22,6 +25,8 @@ public class Noeud {
     public Noeud(Noeud n) {
         this.id = n.getId();
         this.listeEchanges = n.getListeEchanges();
+        this.scorePopularite = n.getScorePopularite();
+        this.scoreBenefice = n.getScoreBenefice();
     }
 
     public int getId() {
@@ -30,26 +35,39 @@ public class Noeud {
 
     public Map<Noeud, Integer> getListeEchanges() { return listeEchanges; }
 
+    public int getScoreBenefice() {
+        return scoreBenefice;
+    }
+
+    public int getScorePopularite() {
+        return scorePopularite;
+    }
+
     public void setListeEchanges(Map<Noeud, Integer> listeEchanges) {
         this.listeEchanges = listeEchanges;
     }
 
-    //FONCTION POUR CLONER UN TABLEAU MAP
+    public void setScoreBenefice(int scoreBenefice) {
+        this.scoreBenefice = scoreBenefice;
+    }
+
+    /**
+     * Clone un objet de type Map
+     * @param original à partir duquel il faut obtenir un clone
+     * @return la copie de l'objet Map
+     */
     public Map<Noeud, Integer> clone(Map<Noeud, Integer> original){
         Map<Noeud, Integer> copy = new HashMap<>();
         copy.putAll(original);
         return copy;
     }
 
-    public boolean isPresent(HashSet<Integer> set){
-        if(set.contains(this.getId()))
-            return true;
-        return false;
-    }
-
-
-    //FONCTION POUR RECUPERER LE N MEILLEUR BENEFICE
-    public Noeud MeilleurNBenefice(int numero){
+    /**
+     * Récupère le N meilleur bénéfice
+     * @param numero N
+     * @return le noeud avec le meilleur N bénéfice
+     */
+    public Noeud getNoeudMeilleurNBenefice(int numero){
         Map<Noeud, Integer> listeEchangesTest = clone(listeEchanges);
         Noeud noeud = null;
 
@@ -57,18 +75,19 @@ public class Noeud {
             for (int j = 0; j < numero; j++) {
                 Map.Entry<Noeud, Integer> entry = listeEchangesTest.entrySet().stream()
                         .max((e1, e2) -> Integer.compare(e1.getValue(), e2.getValue())).get();
-
-                //System.out.println("L'entree avec la valeur la plus elevee est (key=" + entry.getKey() + ", value=" + entry.getValue() + ")");
                 listeEchangesTest.remove(entry.getKey());
                 noeud = entry.getKey();
             }
         }
         return noeud;
-
     }
 
-    //FONCTION POUR RECUPERER LE MEILLEUR BENEFICE
-    public Noeud MeilleurBenefice(){
+    /**
+     * Récupère le meilleur bénéfice d'un échange avec
+     * le noeud this
+     * @return le noeud avec lequel le bénéfice est le meilleur
+     */
+    public Noeud getMeilleurBenefice(){
         Map.Entry<Noeud, Integer> entry = listeEchanges.entrySet().stream()
                 .max((e1, e2) -> Integer.compare(e1.getValue(), e2.getValue())).get();
         //System.out.println("L'entree ayant la valeur la plus elevee est (key=" + entry.getKey() + ", value=" + entry.getValue() + ")");
@@ -136,4 +155,9 @@ public class Noeud {
         return s;
     }
 
+    @Override
+    public int compareTo(Object o) {
+        Noeud n = (Noeud) o;
+        return n.getScoreBenefice() - this.getScoreBenefice();
+    }
 }

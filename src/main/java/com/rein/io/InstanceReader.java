@@ -8,7 +8,7 @@ import com.rein.io.exception.OpenFileException;
 import com.rein.io.exception.ReaderException;
 import org.apache.commons.cli.*;
 import java.io.*;
-
+import java.util.Map;
 
 
 /**
@@ -81,6 +81,14 @@ public class InstanceReader {
             }
             br.close();
             f.close();
+
+            for (Noeud n : instance.getTabNoeud()) {
+                //System.out.println("---------");
+                //System.out.println(n.getListeEchanges().size());
+                n.setScorePopularite(n.getListeEchanges().size());
+            }
+
+
             return instance;
         } catch (FileNotFoundException ex) {
             throw new FileExistException(instanceFile.getName());
@@ -125,6 +133,7 @@ public class InstanceReader {
             for(String noeud : ligneNoeud) {
                 int benefMedical = Integer.parseInt(noeud);
                 if(benefMedical != -1) {
+                    instance.getTabNoeud()[count].setScoreBenefice(instance.getTabNoeud()[count].getScoreBenefice() + benefMedical);
                     instance.getEchanges().add(new Echange(benefMedical,instance.getTabNoeud()[count], (Paire) instance.getTabNoeud()[i+instance.getNbAltruistes()]));
                 }
                 i++;

@@ -8,57 +8,57 @@ import java.util.*;
 
 public class Selecteur {
 
+    private static int BENEFMAX = 0;
+    private int profondeurMax;
+    private int largeurMax;
+    private LinkedHashSet<Sequence> sequencesFinales;
+    private int benefFinal;
+    private final SequencesPossibles sequencesPossibles;
 
-    private SequencesPossibles sequencesPossibles;
-    private static int BENEFMAX = 0; //arbre
-    private int profondeurMax; //arbre
-    private int largeurMax; //arbre
-    private LinkedHashSet<Sequence> sequencesFinales; //arbre
-    private int benefFinal; //arbre
-
+    /**
+     * Constructeur par valeur de Selecteur.
+     * @param sequencesPossibles Sequences possibles parmi lesquelles le selecteur devra sélectionner la solution
+     * */
     public Selecteur(SequencesPossibles sequencesPossibles) {
         this.sequencesPossibles = sequencesPossibles;
         this.sequencesFinales = new LinkedHashSet<>();
         this.benefFinal = 0;
     }
 
-    public SequencesPossibles arbreBestSol(Sequence sequenceRacine, Instance i, int profondeurArbre, int largeurArbre) {
 
-        //System.out.println("Arbre best Sol !!");
+    /////////////////////////////////////////////////////////////////////////
+
+    //Getters
+    public SequencesPossibles getSequencesPossibles() {
+        return sequencesPossibles;
+    }
+
+    /////////////////////////////////////////////////////////////////////////
+
+    public SequencesPossibles arbreBestSol(Sequence sequenceRacine, Instance i, int profondeurArbre, int largeurArbre) {
 
         this.profondeurMax = profondeurArbre;
         this.largeurMax = largeurArbre;
 
-        LinkedHashSet<Sequence> sequencesRestantes = new LinkedHashSet<>();
+        LinkedHashSet<Sequence> sequencesRestantes = new LinkedHashSet<Sequence>();
         sequencesRestantes.addAll(this.sequencesPossibles.getChaines());
         sequencesRestantes.addAll(this.sequencesPossibles.getCycles());
 
         Noeud[] noeudsRestants = i.getTabNoeud();
-
-        //System.out.println(sequencesRestantes);
-
         SequencesPossibles solutionTrouvee = arbreSequences(sequenceRacine, 0, sequencesRestantes, noeudsRestants);
 
         return solutionTrouvee;
     }
 
-    /////////////////////////////////////////////////////////////////////////
     public SequencesPossibles arbreSequences(Sequence sequenceCourante, int profondeur, LinkedHashSet<Sequence> sequencesRestantes, Noeud[] noeudsRestants) {
         int limite = 0;
         int profondeurBis = profondeur + 1;
         SequencesPossibles bestPossibilites = new SequencesPossibles();
         Noeud[] noeudsRestantsBis = noeudsRestants.clone();
 
-        //System.out.println("################### Sequence courante : ");
-        //System.out.println(sequenceCourante);
         LinkedHashSet<Sequence> sequencesFilles = getSequencesFilles(sequenceCourante, sequencesRestantes, noeudsRestantsBis);
-        /*System.out.println("Sequences filles : ");
-        for (Sequence s : sequencesFilles) {
-            System.out.println(s.toStringShort());
-        }*/
 
         if (profondeurBis < this.profondeurMax && !(sequencesFilles.isEmpty()) ) {
-            //System.out.println("APPEL RECURSIF");
             for (Sequence seq: sequencesFilles) {
                 if (limite < this.largeurMax) {
                     limite++;
@@ -72,15 +72,8 @@ public class Selecteur {
 
         bestPossibilites.ajouterSequence(sequenceCourante);
 
-        /*System.out.println("## profondeur : ");
-        System.out.println(profondeur);
-        */
-        /*System.out.println("Best solution : ");
-        System.out.println(sequenceCourante);*/
-
         return bestPossibilites;
     }
-    /////////////////////////////////////////////////////////////////////////
 
     public static LinkedHashSet<Sequence> getSequencesFilles(Sequence sequence, LinkedHashSet<Sequence> sequencesRestantes, Noeud[] noeudsRestants) {
 
@@ -99,26 +92,13 @@ public class Selecteur {
             diffTest.clear();
             diffTest.addAll(s.getListeNoeuds());
             diffTest.addAll(sequence.getListeNoeuds());
-            /*System.out.println(sequence.toStringShort() + " / VS / " + s.toStringShort());
-            System.out.println("APRES AJOUT : " + diffTest);
-            System.out.println((s.getListeNoeuds().size() + sequence.getListeNoeuds().size()) == diffTest.size());*/
 
             if ( (s.getListeNoeuds().size() + sequence.getListeNoeuds().size()) == diffTest.size() ) {
-                //System.out.println("Sequence fille valide ----------------");
                 sequencesFilles.add(s);
             }
         }
 
-        //System.out.println(sequencesRestantesBis);
         return sequencesFilles;
-    }
-
-    /*Set<String> result = list.stream()  .distinct()  .filter(otherList::contains)  .collect(Collectors.toSet());
-    Set<String> commonElements = new HashSet(Arrays.asList("red", "green"));
-    Assert.assertEquals(commonElements, result);*/
-
-    public SequencesPossibles getSequencesPossibles() {
-        return sequencesPossibles;
     }
 
     /**
@@ -141,7 +121,6 @@ public class Selecteur {
 
         tabCycles.addAll(this.sequencesPossibles.getCycles());
         tabChaines.addAll(this.sequencesPossibles.getChaines());
-
 
         //Selection des cycles
         Collections.shuffle(tabCycles);
@@ -173,14 +152,12 @@ public class Selecteur {
             return bestsequencesChoisies;
     }
 
-
     /**
      * Méthode chargée de vérifier si la Séquence passé en paramètre peut être choisies dans la solution, à partir de la liste d'ids de Noeuds déjà selectionnée, dans sequencesChoisies.
      * Si la séquence peut être ajoutée, elle est ajoutée à sequencesChoisies et ses ids de Noeuds sont ajoutés à la liste d'ids de Noeuds utilisés, dans sequencesChoisies.
      * @param sequence Sequence à ajouter.
      * @param sequencesChoisies Objet SequencesPossibles permettant de tester si les noeuds de sequence sont disponibles, et dans laquelle elle est ajoutée si possible.
-     * @return true si sequence est ajoutée à sequencesChoisies.
-     * @return false si sequence n'est pas sequencesChoisies.
+     * @return true si sequence est ajoutée à sequencesChoisies, retourne false si sequence n'est pas sequencesChoisies.
      * */
     private boolean ajouterSequenceSiDispo (Sequence sequence, SequencesPossibles sequencesChoisies) {
         Iterator it = sequence.getListeNoeuds().iterator();
@@ -283,46 +260,6 @@ public class Selecteur {
         return sequencesChoisies;
     }
 
-    /*public SequencesPossibles selectionMeilleurPlusGrosBenef(){
-        SequencesPossibles bestsequencesChoisies = new SequencesPossibles();
-        int taille = 40;
-
-        for (int i=0;i<taille;i++) {
-            SequencesPossibles sequencesChoisies = selectionPlusGrosBenef();
-            if (sequencesChoisies.calculBenefTotal() > bestsequencesChoisies.calculBenefTotal()) {
-                bestsequencesChoisies = sequencesChoisies;
-            }
-            removeBestSequence();
-        }
-        return bestsequencesChoisies;
-    }
-
-    public boolean removeBestSequence(){
-        if (sequencesPossibles.getCycles().size()>0 && sequencesPossibles.getChaines().size()==0) {
-            Sequence cycleBest = this.sequencesPossibles.getCycles().stream().findFirst().get();
-            this.sequencesPossibles.getCycles().remove(cycleBest);
-       }
-
-        else if (sequencesPossibles.getCycles().size()==0 && sequencesPossibles.getChaines().size()>0) {
-            Sequence chaineBest = this.sequencesPossibles.getChaines().stream().findFirst().get();
-            this.sequencesPossibles.getChaines().remove(chaineBest);
-        }
-
-        else if (sequencesPossibles.getCycles().size()>0 && sequencesPossibles.getChaines().size()>0) {
-            Sequence cycleBest = this.sequencesPossibles.getCycles().stream().findFirst().get();
-            Sequence chaineBest = this.sequencesPossibles.getChaines().stream().findFirst().get();
-            if (cycleBest.getTailleMaxSequence() > chaineBest.getTailleMaxSequence()) {
-                this.sequencesPossibles.getCycles().remove(cycleBest);
-            } else {
-                this.sequencesPossibles.getChaines().remove(chaineBest);
-            }
-        }
-        else
-        {
-            return false;
-        }
-        return true;
-    }*/
     /**
      * Sélectionne les cycles puis les chaines
      * avec les plus gros ou petits bénéfices

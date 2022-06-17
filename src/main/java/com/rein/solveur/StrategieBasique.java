@@ -14,7 +14,6 @@ import org.apache.commons.lang3.ArrayUtils;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Map;
 
 public class StrategieBasique implements Solveur{
     private Solveur solveur;
@@ -43,7 +42,7 @@ public class StrategieBasique implements Solveur{
             Paire pRecherche = (Paire) tabTest[0]; // premiere paire du tableau
             //System.out.println("PAIRE SELECTIONNEE " + pRecherche);
             while(rechercheCycle){
-                Paire paireBest = (Paire) pRecherche.MeilleurNBenefice(meilleurBenef);
+                Paire paireBest = (Paire) pRecherche.getNoeudMeilleurNBenefice(meilleurBenef);
                 if(paireBest != null){
 
                     if(paireBest.isPossible(pRecherche) && paireBest.isPresent(tabTest)) {

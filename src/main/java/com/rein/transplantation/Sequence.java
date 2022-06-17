@@ -29,7 +29,7 @@ public abstract class Sequence {
                 Noeud receveur = this.listeNoeuds.get(i+1);
                 //calcul du bénéfice (a vers b)
                 for(Echange ech: listeEchanges){
-                    if(donneur.getId() ==ech.getDonneur().getId() && receveur.getId()== ech.getReceveur().getId())
+                    if(donneur.getId() == ech.getDonneur().getId() && receveur.getId() == ech.getReceveur().getId())
                         this.benefMedicalSequence += ech.getBenefMedical();
                 }
                 if(this instanceof Cycle){

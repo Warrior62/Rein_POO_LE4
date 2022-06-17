@@ -31,22 +31,9 @@ public abstract class Operateur {
         return true;
     }
 
-    public boolean isMeilleur(Operateur op){
-        if(op == null) return true;
-        if(this.getDeltaBeneficeMedical() >= op.getDeltaBeneficeMedical())
-            return false;
-        return true;
-    }
-
     public boolean doMouvementIfRealisable(){
-        System.out.println("doMouvementIfRealisable()");
         if(isMouvementRealisable())
             return this.doMouvement();
-        return false;
-    }
-
-    public boolean isMouvementAmeliorant(){
-        if(this.getDeltaBeneficeMedical() < 0) return true;
         return false;
     }
 
