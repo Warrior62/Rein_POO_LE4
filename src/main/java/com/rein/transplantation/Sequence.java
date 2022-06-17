@@ -12,7 +12,6 @@ import com.rein.instance.Instance;
 import com.rein.instance.Noeud;
 import com.rein.io.InstanceReader;
 import com.rein.operateur.*;
-import com.rein.solution.Chaine;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,16 +28,15 @@ public abstract class Sequence implements Comparable {
                 Noeud donneur = this.listeNoeuds.get(i);
                 Noeud receveur = this.listeNoeuds.get(i+1);
                 //calcul du bénéfice (a vers b)
-                for(Echange ech: listeEchanges){
+                for(Echange ech: listeEchanges)
                     if(donneur.getId() == ech.getDonneur().getId() && receveur.getId() == ech.getReceveur().getId())
                         this.benefMedicalSequence += ech.getBenefMedical();
-                }
+
                 if(this instanceof Cycle){
                     //si c'est un cycle, on calcule le bénéfice retour (b vers a)
-                    for(Echange ech2: listeEchanges){
+                    for(Echange ech2: listeEchanges)
                         if(receveur.getId() ==ech2.getDonneur().getId() && donneur.getId()== ech2.getReceveur().getId())
                             this.benefMedicalSequence += ech2.getBenefMedical();
-                    }
                 }
             }
         }
@@ -63,15 +61,11 @@ public abstract class Sequence implements Comparable {
     public int getBenefMedicalSequence() {
         return benefMedicalSequence;
     }
-    public void setTailleMaxSequence(int tailleMaxSequence) {
-        this.tailleMaxSequence = tailleMaxSequence;
-    }
+
     public int getTailleMaxSequence() {
         return tailleMaxSequence;
     }
-    public void setBenefMedicalTotal(int benefMedicalTotal) {
-        this.benefMedicalSequence = benefMedicalTotal;
-    }
+
     public ArrayList<Noeud> getListeNoeuds() {
         return listeNoeuds;
     }
@@ -80,6 +74,14 @@ public abstract class Sequence implements Comparable {
         for(Noeud n : listeNoeuds)
             noeuds += n.getId() + " ";
         return noeuds;
+    }
+
+    public void setTailleMaxSequence(int tailleMaxSequence) {
+        this.tailleMaxSequence = tailleMaxSequence;
+    }
+
+    public void setBenefMedicalTotal(int benefMedicalSequence) {
+        this.benefMedicalSequence = benefMedicalSequence;
     }
 
     public boolean doInsertion(InsertionNoeud infos){
@@ -124,11 +126,11 @@ public abstract class Sequence implements Comparable {
         }
     }
 
-    private int deltaCoutInsertionFin(Noeud noeudToAdd){
+    /*private int deltaCoutInsertionFin(Noeud noeudToAdd){
         return this.deltaCoutInsertion(this.getNbNoeuds(), noeudToAdd);
-    }
+    }*/
 
-    public int deltaCoutInsertion(int position, Noeud noeudToAdd) {
+    /*public int deltaCoutInsertion(int position, Noeud noeudToAdd) {
         if(!this.isPositionInsertionValide(position) || noeudToAdd == null)
             return Integer.MAX_VALUE;
 
@@ -144,7 +146,7 @@ public abstract class Sequence implements Comparable {
         }
 
         return deltaCout;
-    }
+    }*/
 
     // renvoie le noeud de la séquence qui précéde la position position
     // position doit être comprise entre 0 et n-1

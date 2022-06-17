@@ -164,7 +164,7 @@ public class StrategieBasique implements Solveur{
                 }
                 //System.out.println("s1 : " + s1.toString() + "\n\tcheck : " + s1.check());
                 System.out.println("Checker : " + s1.check());
-                InterfaceWeb interfaceWeb = new InterfaceWeb(s1);
+                InterfaceWeb interfaceWeb = new InterfaceWeb(s1, "StrategieBasique");
                 interfaceWeb.createHtmlFile();
             } catch(Exception e){
                 System.out.println(e.getMessage());

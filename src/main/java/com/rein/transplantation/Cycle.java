@@ -89,10 +89,6 @@ public class Cycle extends Sequence {
      * - La taille max de la séquence est respectée
      * */
     public boolean check() {
-        System.out.println("CHECK cycle " + this.getListeIdNoeuds());
-        System.out.println("verifTailleMax : " + verifTailleMax());
-        System.out.println("verifNoAltruiste : " + verifNoAltruiste());
-        System.out.println("verifBenefMedical : " + verifBenefMedical());
         return (verifTailleMax() && verifNoAltruiste() && verifBenefMedical());
     }
     private boolean verifTailleMax() {
@@ -114,8 +110,6 @@ public class Cycle extends Sequence {
         noeudCourant = (Noeud) listeNoeuds.get(i);
         noeudSuivant = (Noeud) listeNoeuds.get(0);
         somme += noeudCourant.getBenefMedicalVers(noeudSuivant);
-        //System.out.println(noeudCourant.getId() + " - " + noeudSuivant.getId() + " --> " + noeudCourant.getBenefMedicalVers(noeudSuivant));
-        System.out.println("\t(somme,this.getBenefMedicalSequence()) = (" + somme + "," + this.getBenefMedicalSequence() + ")");
         return (somme == this.getBenefMedicalSequence());
     }
     private boolean verifNoAltruiste() {

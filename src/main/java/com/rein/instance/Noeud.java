@@ -134,6 +134,10 @@ public class Noeud implements Comparable {
         }
     }
 
+    public void setScorePopularite(int scorePopularite) {
+        this.scorePopularite = scorePopularite;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

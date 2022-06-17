@@ -4,25 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5dbe1660-c9ae-497e-83b8-a85dacef2117" name="Changes" comment="Ajout solution ArbreSequences opérationel + commentaires et nettoyage de code">
-<<<<<<< HEAD
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/KEP_p250_n83_k5_l17.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p250_n83_k5_l17.txt.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/instance/Instance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/instance/Instance.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solution/Arbre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solution/Arbre.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solution/Selecteur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solution/Selecteur.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solveur/ArbreSequences.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solveur/ArbreSequences.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/test/AllSolveurs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/test/AllSolveurs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/transplantation/Sequence.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/transplantation/Sequence.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/solution/Arbre.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/solution/Arbre.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/solution/Selecteur.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/solution/Selecteur.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/test/AllSolveurs.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/test/AllSolveurs.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/transplantation/Sequence.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/transplantation/Sequence.class" afterDir="false" />
-=======
-      <change afterPath="$PROJECT_DIR$/results/KEP_p250_n83_k5_l17.txt.html" afterDir="false" />
+    <list default="true" id="5dbe1660-c9ae-497e-83b8-a85dacef2117" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_24_05_2022_15_49__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_03_06_2022_11_32__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results.csv" beforeDir="false" afterPath="$PROJECT_DIR$/results.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p250_n83_k5_l17.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p250_n83_k5_l17.txt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/KEP_p50_n6_k3_l4.txt.html" beforeDir="false" afterPath="$PROJECT_DIR$/results/KEP_p50_n6_k3_l4.txt.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/instance/Instance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/instance/Instance.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/instance/Noeud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/instance/Noeud.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/interface_web/InterfaceWeb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/interface_web/InterfaceWeb.java" afterDir="false" />
@@ -38,6 +26,7 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique2.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/test/AllSolveurs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/test/AllSolveurs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/transplantation/Cycle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/transplantation/Cycle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rein/transplantation/Sequence.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rein/transplantation/Sequence.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/rein/instance/Instance.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/instance/Instance.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/rein/instance/Noeud.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/instance/Noeud.class" afterDir="false" />
@@ -52,10 +41,8 @@
       <change beforePath="$PROJECT_DIR$/target/classes/com/rein/solveur/RechercheArbre.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/solveur/RechercheArbre.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/rein/solveur/StrategieBasique.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/solveur/StrategieBasique.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/rein/solveur/StrategieBasique2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/solveur/StrategieBasique2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/test/AllSolveurs$InstanceSolveur.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/test/AllSolveurs$InstanceSolveur.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/test/AllSolveurs$Resultat.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/test/AllSolveurs$Resultat.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/rein/test/AllSolveurs.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/test/AllSolveurs.class" afterDir="false" />
->>>>>>> selecteurs-merge
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rein/transplantation/Sequence.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rein/transplantation/Sequence.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,11 +77,6 @@
     <setting file="file://$PROJECT_DIR$/pom.xml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/io/InstanceReader.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/instance/Noeud.java" root0="FORCE_HIGHLIGHTING" />
-<<<<<<< HEAD
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/transplantation/Sequence.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/solution/Solution.java" root0="FORCE_HIGHLIGHTING" />
-=======
->>>>>>> selecteurs-merge
     <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/solveur/StrategieBasique.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/solution/Solution.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/rein/transplantation/Cycle.java" root0="FORCE_HIGHLIGHTING" />
@@ -132,7 +114,7 @@
       <recent name="com.rein.solution" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.AllSolveurs">
+  <component name="RunManager" selected="Application.ArbreSequences">
     <configuration name="AllSolveurs" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.rein.test.AllSolveurs" />
       <module name="rein-poo-le4" />
@@ -219,8 +201,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.AllSolveurs" />
         <item itemvalue="Application.ArbreSequences" />
+        <item itemvalue="Application.AllSolveurs" />
         <item itemvalue="Application.RechercheArbre" />
         <item itemvalue="Application.StrategieBasique2" />
         <item itemvalue="Application.Arbre" />

@@ -6,14 +6,10 @@
 package com.rein.solution;
 import com.rein.instance.Instance;
 import com.rein.io.InstanceReader;
-import com.rein.operateur.OperateurInterSequence;
-import com.rein.operateur.OperateurIntraSequence;
-import com.rein.operateur.OperateurLocal;
 import com.rein.transplantation.Cycle;
 import com.rein.transplantation.Sequence;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.LinkedHashSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 /**
@@ -220,27 +216,7 @@ public class Solution {
             stringSol.append("\n");
         return stringSol.toString();
     }
-
-    /**
-     * Méthode fille de la méthode de recherche locale.
-     * Permet d'effectuer un mouvement au sein de séquences manipulées pour générer une solution.
-     * Fait appel à la méthode fille doMouvementIfRealisable().
-     * @param infos operateur local associé à la transaction.
-     * @return un boolean true so l'opération a bien été effectuée, false si elle est impossible.
-     * */
-    public boolean doMouvementRechercheLocale(OperateurLocal infos){
-        if(infos == null) return false;
-        if(!infos.doMouvementIfRealisable()) return false;
-
-        this.benefMedicalTotal += infos.getDeltaBeneficeMedical();
-        if(!this.check()){
-            System.out.println("ERROR doMouvementRechercheLocale");
-            System.out.println(infos);
-            System.exit(-1);
-        }
-        return true;
-    }
-
+    
     /**
      *
      * Retourne true si la solution comporte au moins une séquence de la classe (Chaine/Cycle) passée en argument

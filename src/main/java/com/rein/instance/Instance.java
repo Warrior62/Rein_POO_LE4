@@ -75,6 +75,8 @@ public class Instance {
         //this.tabPaires.addAll((Collection<? extends Paire>) pairesDispo);
     }*/
 
+    
+
     public int hashCode() {
         int hash = 7;
         hash = 37 * hash + Objects.hashCode(this.nom);
