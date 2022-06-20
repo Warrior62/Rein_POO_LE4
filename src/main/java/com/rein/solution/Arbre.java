@@ -8,7 +8,6 @@ import com.rein.io.InstanceReader;
 import com.rein.transplantation.Cycle;
 import com.rein.transplantation.Sequence;
 
-import java.text.CollationElementIterator;
 import java.util.*;
 
 public class Arbre implements Comparable {
@@ -166,7 +165,7 @@ public class Arbre implements Comparable {
      * @param listeChainesPossibles LinkedHashSet des chaines détectées.
      * @param listeCyclesPossibles LinkedHashSet des cycles détectés.
      * */
-    /*public void recurrArbre(LinkedHashSet<Integer> listeId, int profondeurCourante, LinkedHashSet<Sequence> listeChainesPossibles, LinkedHashSet<Sequence> listeCyclesPossibles){;
+    public void recurrArbre2(LinkedHashSet<Integer> listeId, int profondeurCourante, LinkedHashSet<Sequence> listeChainesPossibles, LinkedHashSet<Sequence> listeCyclesPossibles){;
         profondeurCourante++;
         LinkedHashSet<Integer> listeIdBis = new LinkedHashSet<Integer>();
         listeIdBis.addAll(listeId);
@@ -176,7 +175,7 @@ public class Arbre implements Comparable {
                 //System.out.println("fils : ");
                 this.remplirListeFils();       //Récupération de ses fils
                 for(Arbre fils : this.getListeFils()) {
-                    fils.recurrArbre(listeIdBis, profondeurCourante, listeChainesPossibles, listeCyclesPossibles);
+                    fils.recurrArbre2(listeIdBis, profondeurCourante, listeChainesPossibles, listeCyclesPossibles);
                 }
             }else {
                 //System.out.println("Chaine détectée");
@@ -203,7 +202,7 @@ public class Arbre implements Comparable {
                 listeCyclesPossibles.add(new Cycle(listeIdBis, this.instance));
             }
         }
-    }*/
+    }
 
     /**
      * Méthode fille de recurrArbre(), chargée de déterminer si une chaine est ajoutable aux chaines détectées.
@@ -288,14 +287,14 @@ public class Arbre implements Comparable {
         }
     }
 
-    public SequencesPossibles detectionChainesCycles() {
+    public SequencesPossibles detectionChainesCycles2() {
         LinkedHashSet<Sequence> listeChainesPossibles = new LinkedHashSet<>();
         LinkedHashSet<Sequence> listeCyclesPossibles = new LinkedHashSet<>();
         LinkedHashSet<Integer> listeId = new LinkedHashSet<>();
         SequencesPossibles s = new SequencesPossibles();
 
         //Détection des séquences via méthode récursive d'arbre.... Renvoie les cycles et chaines potentielles dans des LinkedHashSet<LinkedHashSet> (listeCyclesPossibles et listeChainesPossibles)
-        this.recurrArbre(listeId, 0, listeChainesPossibles, listeCyclesPossibles);
+        this.recurrArbre2(listeId, 0, listeChainesPossibles, listeCyclesPossibles);
 
         s.setCycles(listeCyclesPossibles);
         s.setChaines(listeChainesPossibles);
@@ -309,7 +308,7 @@ public class Arbre implements Comparable {
      * @param profondeurMaxi profondeur max de l'arbre de détection.
      * @return un objet SequencesPossibles contenant l'ensemble des séquences détectées.
      * */
-    public SequencesPossibles detectionChainesCycles(int largeurMaxi, int profondeurMaxi) {
+    public SequencesPossibles detectionChainesCycles2(int largeurMaxi, int profondeurMaxi) {
 
         LinkedHashSet<Sequence> listeChainesPossibles = new LinkedHashSet<Sequence>();
         LinkedHashSet<Sequence> listeCyclesPossibles = new LinkedHashSet<Sequence>();
@@ -326,7 +325,7 @@ public class Arbre implements Comparable {
         // Run de 10 arbres de détection
         for (int i=0; i<10 && i<noeudsDepart.size()  ; i++) {
             Arbre racine = new Arbre(noeudsDepart.get(i), this.instance, profondeurMaxi, largeurMaxi);
-            racine.recurrArbre(listeId, 0, listeChainesPossibles, listeCyclesPossibles);
+            racine.recurrArbre2(listeId, 0, listeChainesPossibles, listeCyclesPossibles);
         }
 
         //Ajout des sequences détectées à l'objet SequencesPossibles
@@ -416,7 +415,7 @@ public class Arbre implements Comparable {
             Instance i = reader.readInstance();
             Arbre a = new Arbre(i);
             // --> Détection chaines et cycles <-- //
-            SequencesPossibles sequencesDetectees = a.detectionChainesCycles(5, 20);
+            SequencesPossibles sequencesDetectees = a.detectionChainesCycles2(5, 20);
 
             System.out.println("Sequeces Détectées : ");
             System.out.println(sequencesDetectees);

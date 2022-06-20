@@ -1,7 +1,6 @@
 package com.rein.solveur;
 
 import com.rein.instance.Instance;
-import com.rein.interface_web.InterfaceWeb;
 import com.rein.io.InstanceReader;
 import com.rein.io.exception.ReaderException;
 import com.rein.solution.Arbre;
@@ -10,7 +9,6 @@ import com.rein.solution.SequencesPossibles;
 import com.rein.solution.Solution;
 import com.rein.transplantation.Sequence;
 
-import java.io.IOException;
 import java.util.*;
 
 public class ArbreSequences implements Solveur {
@@ -53,7 +51,7 @@ public class ArbreSequences implements Solveur {
         System.out.println("~~~~~~~~~~~~ 1ER PASSAGE");
         a = new Arbre(instance);
         // detection des sequences
-        sequencesDetectees = a.detectionChainesCycles(parametres.get("largeurMaxArbreDetection"), parametres.get("profondeurMaxArbreDetection"));
+        sequencesDetectees = a.detectionChainesCycles2(parametres.get("largeurMaxArbreDetection"), parametres.get("profondeurMaxArbreDetection"));
         System.out.println("<===>");
         // selection des sequences
         selecteur = new Selecteur(sequencesDetectees);
@@ -86,7 +84,7 @@ public class ArbreSequences implements Solveur {
             // Nouvelle sélection
             a = new Arbre(instance);
             //Nouvelle détection des séquences possibles restantes
-            sequencesDetectees = a.detectionChainesCycles(parametres.get("largeurMaxArbreDetection"), parametres.get("profondeurMaxArbreDetection"));
+            sequencesDetectees = a.detectionChainesCycles2(parametres.get("largeurMaxArbreDetection"), parametres.get("profondeurMaxArbreDetection"));
             System.out.println("<===>");
 
             selecteur = new Selecteur(sequencesDetectees);
@@ -167,7 +165,7 @@ public class ArbreSequences implements Solveur {
         InstanceReader reader = null;
         long startTime = System.nanoTime();
         try {
-            reader = new InstanceReader("instances/KEP_p250_n28_k3_l4.txt");
+            reader = new InstanceReader("instances/KEP_p50_n3_k3_l4.txt");
             Instance i = reader.readInstance();
             ArbreSequences ra = new ArbreSequences();
             System.out.println("================= SEQUENCE "+ i.getNom() +" =================");
