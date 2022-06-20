@@ -11,8 +11,10 @@ import com.rein.solveur.RechercheArbre;
 import com.rein.solveur.Solveur;
 import com.rein.solveur.StrategieBasique;
 import com.rein.solveur.StrategieBasique2;
+import org.apache.commons.cli.*;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -348,9 +350,35 @@ public class AllSolveurs {
      * @param args
      */
     public static void main(String[] args) {
-
-        AllSolveurs test = new AllSolveurs("instances");
-        test.printAllResultats("results");
+        CommandLineParser parser = new DefaultParser();
+        // Création des options
+        Options options = new Options();
+        options.addOption(Option.builder("inst")
+                .hasArg(true)
+                .valueSeparator(' ')
+                .desc("Nom du fichier d'instance")
+                .build());
+        options.addOption(Option.builder("dSol")
+                .hasArg(true)
+                .valueSeparator(' ')
+                .desc("Répertoire des fichiers solutions")
+                .build());
+        try {
+            // Lecture des arguments CLI
+            CommandLine line = parser.parse(options, args);
+            System.out.println(line.getOptionValue("inst"));
+            System.out.println(line.getOptionValue("dSol"));
+            InstanceReader reader;
+            try {
+                AllSolveurs test = new AllSolveurs(line.getOptionValue("inst"));
+                // Création du fichier de solution
+                test.printAllResultats(line.getOptionValue("dSol"));
+            } catch(Exception e){
+                System.out.println(e.getMessage());
+                System.err.println("ERROR All Solveurs");
+            }
+        } catch (ParseException exp) {
+            System.err.println("Unexpected exception:" + exp.getMessage());
+        }
     }
-
 }
